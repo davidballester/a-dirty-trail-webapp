@@ -27,6 +27,7 @@ const App = ({ Component, pageProps }): React.ReactElement => (
                 }
 
                 #__next {
+                    position: relative;
                     min-height: 100vh;
                 }
 
@@ -44,6 +45,10 @@ const App = ({ Component, pageProps }): React.ReactElement => (
                     text-transform: capitalize;
                     font-weight: bold;
                     font-size: 1rem;
+                }
+
+                .text-small {
+                    font-size: 0.8rem;
                 }
             `}
         />

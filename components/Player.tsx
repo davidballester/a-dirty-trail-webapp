@@ -2,68 +2,160 @@ import React, { Fragment } from 'react';
 import { css } from 'emotion';
 import {
     Actor,
-    SkillLevel,
-    SkillName,
-    Inventory as GameInventory,
+    Ammunition as GameAmmunition,
+    Weapon as GameWeapon,
+    Item,
 } from 'a-dirty-trail';
 import { useGame } from '../contexts/gameContext';
-import Inventory from './Inventory';
 import Health from './Health';
+import IconAndText from './IconAndText';
+import Weapon from './Weapon';
+import SkillName from './SkillName';
+import { SkillLevelText } from './SkillLevel';
+import Ammunition from './Ammunition';
+import { Col, Container, Row } from 'react-bootstrap';
+import SideArticle from './SideArticle';
 
-const getSkillName = (skillName: SkillName) => {
-    switch (skillName) {
-        case SkillName.closeCombat: {
-            return 'Hand to hand combat';
-        }
-        case SkillName.distanceCombat: {
-            return 'Ranged combat';
-        }
-        case SkillName.pacify: {
-            return 'Pacify';
-        }
-    }
-};
-
-const getSkillLevel = (skillLevel: SkillLevel) => {
-    switch (skillLevel) {
-        case SkillLevel.poor: {
-            return 'poor';
-        }
-        case SkillLevel.mediocre: {
-            return 'mediocre';
-        }
-        case SkillLevel.good: {
-            return 'good';
-        }
-        case SkillLevel.master: {
-            return 'master';
-        }
-    }
-};
+const PlayerData = ({ player }: { player: Actor }) => (
+    <SideArticle even={false}>
+        <IconAndText
+            iconSrc="/player.svg"
+            iconAlt="player icon"
+            iconSize="large"
+            textSize="large"
+        >
+            <strong>{player.name}</strong>
+            <Health health={player.health} />
+        </IconAndText>
+    </SideArticle>
+);
 
 const Skills = ({ player }: { player: Actor }) => (
-    <section>
-        <h3>Skills</h3>
+    <SideArticle even={true}>
+        <header>
+            <h3>Skills</h3>
+        </header>
         <dl
             className={css`
-                text-transform: capitalize;
+                font-size: 0.8rem;
             `}
         >
             {player.skills.map((skill) => (
                 <Fragment key={skill.name}>
-                    <dt>{getSkillName(skill.name)}</dt>
-                    <dd>{getSkillLevel(skill.level)}</dd>
+                    <dt>
+                        <SkillName skillName={skill.name} />
+                    </dt>
+                    <dd>
+                        <SkillLevelText
+                            id={`skill-${player.id}-${skill.name}`}
+                            skillLevel={skill.level}
+                        />
+                    </dd>
                 </Fragment>
             ))}
         </dl>
-    </section>
+    </SideArticle>
 );
 
-const PlayerInventory = ({ inventory }: { inventory: GameInventory }) => (
-    <section>
-        <h3>Inventory</h3>
-        <Inventory inventory={inventory} />
-    </section>
+const Weapons = ({ player }: { player: Actor }) => (
+    <SideArticle even={false}>
+        <header>
+            <h3>Weapons</h3>
+        </header>
+        <ul className="list-unstyled">
+            {player.inventory.getWeapons().map((weapon) => (
+                <li
+                    key={weapon.id}
+                    className={css`
+                        margin-bottom: 0.5rem;
+                    `}
+                >
+                    <Weapon
+                        weapon={weapon}
+                        skillLevel={player.getSkill(weapon.skillName).level}
+                    />
+                </li>
+            ))}
+        </ul>
+    </SideArticle>
+);
+
+const AmmunitionsList = ({
+    ammunitions,
+}: {
+    ammunitions: GameAmmunition[];
+}) => (
+    <ul className="list-unstyled">
+        {ammunitions.map((ammunition) => (
+            <li
+                key={ammunition.id}
+                className={css`
+                    margin-bottom: 0.5rem;
+                `}
+            >
+                <Ammunition ammunition={ammunition as GameAmmunition} />
+            </li>
+        ))}
+    </ul>
+);
+
+const Ammunitions = ({ player }: { player: Actor }) => (
+    <SideArticle even={true}>
+        <header>
+            <h3>Ammunitions</h3>
+        </header>
+        <Container>
+            <Row>
+                <Col
+                    className={css`
+                        padding-left: 0;
+                    `}
+                >
+                    <AmmunitionsList
+                        ammunitions={
+                            player.inventory.items
+                                .filter(
+                                    (item) => item instanceof GameAmmunition
+                                )
+                                .filter(
+                                    (_, index) => index % 2 === 0
+                                ) as GameAmmunition[]
+                        }
+                    />
+                </Col>
+                <Col
+                    className={css`
+                        padding-right: 0;
+                    `}
+                >
+                    <AmmunitionsList
+                        ammunitions={
+                            player.inventory.items
+                                .filter(
+                                    (item) => item instanceof GameAmmunition
+                                )
+                                .filter(
+                                    (_, index) => index % 2 === 1
+                                ) as GameAmmunition[]
+                        }
+                    />
+                </Col>
+            </Row>
+        </Container>
+    </SideArticle>
+);
+
+const Inventory = ({ items }: { items: Item[] }) => (
+    <SideArticle even={false}>
+        <header>
+            <h3>Inventory</h3>
+        </header>
+        <ul className="list-unstyled">
+            {items.map((item) => (
+                <li key={item.id}>{item.name}</li>
+            ))}
+        </ul>
+    </SideArticle>
 );
 
 const Player = () => {
@@ -72,13 +164,18 @@ const Player = () => {
         return null;
     }
     const player = game.player;
+    const regularItems = player.inventory.items.filter(
+        (item) =>
+            !(item instanceof GameWeapon) && !(item instanceof GameAmmunition)
+    );
     return (
-        <article>
-            <h2>{player.name}</h2>
-            <Health health={player.health} />
+        <div>
+            <PlayerData player={player} />
             <Skills player={player} />
-            <PlayerInventory inventory={player.inventory} />
-        </article>
+            <Weapons player={player} />
+            <Ammunitions player={player} />
+            {!regularItems.length ? null : <Inventory items={regularItems} />}
+        </div>
     );
 };
 

@@ -11,27 +11,23 @@ const AboutContent = ({
 }) => (
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>About</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <IconsAttribution />
         </Modal.Body>
-        <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-                Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-                Save Changes
-            </Button>
-        </Modal.Footer>
     </Modal>
 );
 
-const AboutButton = () => {
+const AboutButton = ({ className = '' }: { className?: string }) => {
     const [show, setShow] = useState(false);
     return (
         <>
-            <Button variant="link" onClick={() => setShow(true)}>
+            <Button
+                variant="link"
+                onClick={() => setShow(true)}
+                className={className}
+            >
                 About
             </Button>
             <AboutContent show={show} handleClose={() => setShow(false)} />

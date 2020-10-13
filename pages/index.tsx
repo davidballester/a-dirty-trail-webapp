@@ -2,28 +2,26 @@ import { css } from 'emotion';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import MainTitle from '../components/MainTitle';
 import { GameProvider } from '../contexts/gameContext';
 import Narration from '../components/Narration';
 import PlayerActions from '../components/PlayerActions';
 import Player from '../components/Player';
 import Scene from '../components/Scene';
 import Head from 'next/head';
-import About from '../components/About';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const Home = (): React.ReactElement => (
     <>
         <Head>
             <title>A dirty trail</title>
         </Head>
-        <header
+        <Header />
+        <main
             className={css`
-                position: sticky;
+                padding-bottom: 7.5rem;
             `}
         >
-            <MainTitle />
-        </header>
-        <main>
             <GameProvider>
                 <Container>
                     <Row>
@@ -41,9 +39,7 @@ const Home = (): React.ReactElement => (
                 </Container>
             </GameProvider>
         </main>
-        <footer>
-            <About />
-        </footer>
+        <Footer />
     </>
 );
 

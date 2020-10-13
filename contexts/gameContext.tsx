@@ -63,7 +63,7 @@ const useGameState = (): State => {
     return state;
 };
 
-const useGame = (): Game => {
+export const useGame = (): Game => {
     const state = useGameState();
     return state.game;
 };
@@ -85,17 +85,12 @@ export const usePlayerActions = (): Action[] => {
 
 export const useOponentsActions = (): Action[] => {
     const game = useGame();
-    return game.oponentsActions;
+    return game ? game.oponentsActions : [];
 };
 
-export const useLastAction = (): Action | undefined => {
+export const useLastActionAndOutcome = () => {
     const state = useGameState();
-    return state.lastAction;
-};
-
-export const useLastOutcome = (): any => {
-    const state = useGameState();
-    return state.lastOutcome;
+    return state.lastAction ? [state.lastAction, state.lastOutcome] : [];
 };
 
 export const useGameDispatch = () => {
@@ -121,17 +116,19 @@ export const selectPlayerAction = (
         const playerAbandonedScene =
             action instanceof AdvanceToSceneAction ||
             action instanceof AdvanceToActAction;
+        let nextOponentAction;
+        let nextOponentActionOutcome;
         if (!playerAbandonedScene && game.oponentsActions.length) {
-            setTimeout(() => {
-                const nextOponentAction = game.oponentsActions[0];
-                const nextOponentActionOutcome = game.executeNextOponentAction();
-                const playerActions = game.getPlayerActions();
-                dispatch({
-                    lastAction: nextOponentAction,
-                    lastOutcome: nextOponentActionOutcome,
-                    playerActions,
-                });
-            }, 1000);
+            nextOponentAction = game.oponentsActions[0];
+            nextOponentActionOutcome = game.executeNextOponentAction();
         }
+        setTimeout(() => {
+            const playerActions = game.getPlayerActions();
+            dispatch({
+                lastAction: nextOponentAction,
+                lastOutcome: nextOponentActionOutcome,
+                playerActions,
+            });
+        }, 150);
     }
 };
