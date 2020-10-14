@@ -8,18 +8,21 @@ import {
     Scene,
 } from 'a-dirty-trail';
 
+export interface SceneActionAndOutcome {
+    action: Action;
+    outcome: any;
+}
+
 interface State {
     game?: Game;
     playerActions: Action[];
-    lastAction?: Action;
-    lastOutcome?: any;
+    sceneActionsAndOutcomes: SceneActionAndOutcome[];
 }
 
 interface DeltaState {
     game?: Game;
     playerActions?: Action[];
-    lastAction?: Action;
-    lastOutcome?: any;
+    sceneActionsAndOutcomes?: SceneActionAndOutcome[];
 }
 
 type Dispatch = (deltaState: DeltaState) => void;
@@ -37,6 +40,7 @@ const gameReducer = (state: State, deltaState: DeltaState): State => {
 export const GameProvider = ({ children }): React.ReactElement => {
     const [state, dispatch] = useReducer(gameReducer, {
         playerActions: [],
+        sceneActionsAndOutcomes: [],
     });
     useEffect(() => {
         const game = new Game('Find Timmy');
@@ -55,7 +59,7 @@ export const GameProvider = ({ children }): React.ReactElement => {
     );
 };
 
-const useGameState = (): State => {
+export const useGameState = () => {
     const state = useContext(GameStateContext) as State;
     if (state === undefined) {
         throw new Error('useGame must be used within a GameProvider');
@@ -63,7 +67,7 @@ const useGameState = (): State => {
     return state;
 };
 
-export const useGame = (): Game => {
+export const useGame = () => {
     const state = useGameState();
     return state.game;
 };
@@ -78,19 +82,19 @@ export const useScene = (): Scene | undefined => {
     return game ? game.currentScene : undefined;
 };
 
-export const usePlayerActions = (): Action[] => {
+export const usePlayerActions = () => {
     const state = useGameState();
     return state.playerActions;
 };
 
-export const useOponentsActions = (): Action[] => {
+export const useOponentsActions = () => {
     const game = useGame();
     return game ? game.oponentsActions : [];
 };
 
-export const useLastActionAndOutcome = () => {
+export const useSceneActionsAndOutcomes = () => {
     const state = useGameState();
-    return state.lastAction ? [state.lastAction, state.lastOutcome] : [];
+    return state.sceneActionsAndOutcomes;
 };
 
 export const useGameDispatch = () => {
@@ -102,33 +106,78 @@ export const useGameDispatch = () => {
 };
 
 export const selectPlayerAction = (
-    action: Action,
-    game: Game,
+    playerAction: Action,
+    state: State,
     dispatch: Dispatch
 ): void => {
-    if (game.canExecuteAction(action)) {
-        const outcome = game.executeAction(action);
-        dispatch({
-            playerActions: [],
-            lastAction: action,
-            lastOutcome: outcome,
-        });
-        const playerAbandonedScene =
-            action instanceof AdvanceToSceneAction ||
-            action instanceof AdvanceToActAction;
-        let nextOponentAction;
-        let nextOponentActionOutcome;
-        if (!playerAbandonedScene && game.oponentsActions.length) {
-            nextOponentAction = game.oponentsActions[0];
-            nextOponentActionOutcome = game.executeNextOponentAction();
-        }
-        setTimeout(() => {
-            const playerActions = game.getPlayerActions();
-            dispatch({
-                lastAction: nextOponentAction,
-                lastOutcome: nextOponentActionOutcome,
-                playerActions,
-            });
-        }, 150);
+    const game = state.game;
+    const playerActionOutcome = game.executeAction(playerAction);
+    const playerActionAndOutcome = {
+        action: playerAction,
+        outcome: playerActionOutcome,
+    };
+    const isPlayerAbandonedScene =
+        playerAction instanceof AdvanceToSceneAction ||
+        playerAction instanceof AdvanceToActAction;
+    if (isPlayerAbandonedScene) {
+        resetActionsForNewScene(game, dispatch);
+        return;
     }
+    const isOponentActionsAvailable = game.oponentsActions.length > 0;
+    if (!isOponentActionsAvailable) {
+        advanceSceneTurn(state, dispatch, playerActionAndOutcome);
+        return;
+    }
+    executeOponentActionAndAdvanceSceneTurn(
+        state,
+        dispatch,
+        playerActionAndOutcome
+    );
+};
+
+const resetActionsForNewScene = (game: Game, dispatch: Dispatch) => {
+    const playerActions = game.getPlayerActions();
+    dispatch({
+        playerActions,
+        sceneActionsAndOutcomes: [],
+    });
+};
+
+const advanceSceneTurn = (
+    state: State,
+    dispatch: Dispatch,
+    playerActionAndOutcome: SceneActionAndOutcome
+) => {
+    const playerActions = state.game.getPlayerActions();
+    dispatch({
+        playerActions,
+        sceneActionsAndOutcomes: [
+            ...state.sceneActionsAndOutcomes,
+            playerActionAndOutcome,
+        ],
+    });
+};
+
+const executeOponentActionAndAdvanceSceneTurn = (
+    state: State,
+    dispatch: Dispatch,
+    playerActionAndOutcome: SceneActionAndOutcome
+) => {
+    const { game } = state;
+    const { action: nextOponentAction, outcome: nextOponentActionOutcome } =
+        game.executeNextOponentAction() || {};
+    const playerActions = game.getPlayerActions();
+    dispatch({
+        playerActions,
+        sceneActionsAndOutcomes: [
+            ...state.sceneActionsAndOutcomes,
+            playerActionAndOutcome,
+            nextOponentActionOutcome !== undefined
+                ? {
+                      action: nextOponentAction,
+                      outcome: nextOponentActionOutcome,
+                  }
+                : undefined,
+        ].filter(Boolean),
+    });
 };

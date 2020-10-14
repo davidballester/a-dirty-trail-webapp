@@ -1,17 +1,10 @@
 import React from 'react';
 import { css } from 'emotion';
-import {
-    usePlayerActions,
-    selectPlayerAction,
-    useGame,
-    useGameDispatch,
-} from '../contexts/gameContext';
-import Button from 'react-bootstrap/Button';
+import { usePlayerActions } from '../contexts/gameContext';
+import PlayerAction from './PlayerAction';
 
 const PlayerActions = () => {
     const playerActions = usePlayerActions();
-    const game = useGame();
-    const dispatch = useGameDispatch();
     if (!playerActions.length) {
         return null;
     }
@@ -22,16 +15,7 @@ const PlayerActions = () => {
             `}
         >
             {playerActions.map((playerAction) => (
-                <Button
-                    key={playerAction.getName()}
-                    variant="dark"
-                    onClick={() =>
-                        selectPlayerAction(playerAction, game, dispatch)
-                    }
-                    block
-                >
-                    {playerAction.getName()}
-                </Button>
+                <PlayerAction key={playerAction.id} action={playerAction} />
             ))}
         </section>
     );

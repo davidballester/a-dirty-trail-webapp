@@ -1,36 +1,57 @@
-import { AdvanceToActAction, AdvanceToSceneAction } from 'a-dirty-trail/build';
 import React, { useEffect, useState } from 'react';
-import { useLastActionAndOutcome, useScene } from '../contexts/gameContext';
+import {
+    SceneActionAndOutcome,
+    useScene,
+    useSceneActionsAndOutcomes,
+} from '../contexts/gameContext';
+import ActionNarration from './ActionNarration';
 
 const Narration = (): React.ReactElement => {
-    const [texts, setTexts] = useState([] as string[]);
-    const [lastSceneId, setLastSceneId] = useState(undefined as string);
-    const [lastAction, lastOutcome] = useLastActionAndOutcome();
     const scene = useScene();
+    const [lastActionId, setLastActionId] = useState(undefined as string);
+    const [lastSceneId, setLastSceneId] = useState(
+        scene ? scene.id : (undefined as string)
+    );
+    const [
+        latestSceneActionsAndOutcomes,
+        setLatestSceneActionsAndOutcomes,
+    ] = useState([] as SceneActionAndOutcome[]);
+    const sceneActionsAndOutcomes = useSceneActionsAndOutcomes();
     useEffect(() => {
-        console.log('useEffect - scene', scene ? scene.setup : []);
-        if (scene && scene.id !== lastSceneId) {
+        if (scene && lastSceneId !== scene.id) {
             setLastSceneId(scene.id);
-            setTexts(scene.setup);
+            setLatestSceneActionsAndOutcomes([]);
         }
     }, [scene]);
     useEffect(() => {
-        if (
-            lastAction &&
-            !(lastAction instanceof AdvanceToActAction) &&
-            !(lastAction instanceof AdvanceToSceneAction)
-        ) {
-            setTexts([...texts, lastAction.getName()]);
+        if (sceneActionsAndOutcomes && sceneActionsAndOutcomes.length) {
+            if (!lastActionId) {
+                setLastActionId(
+                    sceneActionsAndOutcomes[sceneActionsAndOutcomes.length - 1]
+                        .action.id
+                );
+                setLatestSceneActionsAndOutcomes(sceneActionsAndOutcomes);
+            } else {
+                const lastIndex = sceneActionsAndOutcomes.findIndex(
+                    ({ action }) => action.id === lastActionId
+                );
+                const latest = sceneActionsAndOutcomes.slice(lastIndex + 1);
+                setLastActionId(latest[latest.length - 1].action.id);
+                setLatestSceneActionsAndOutcomes(latest);
+            }
         }
-    }, [lastAction, lastOutcome]);
-    if (!scene) {
-        return null;
-    }
-    console.log(texts);
+    }, [sceneActionsAndOutcomes]);
     return (
         <section>
-            {texts.map((text) => (
-                <p key={text}>{text}</p>
+            {!scene || !!sceneActionsAndOutcomes.length
+                ? null
+                : scene.setup.map((text) => <p key={text}>{text}</p>)}
+            {latestSceneActionsAndOutcomes.map(({ action, outcome }) => (
+                <ActionNarration
+                    key={action.id}
+                    action={action}
+                    outcome={outcome}
+                />
             ))}
         </section>
     );

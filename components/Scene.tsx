@@ -1,7 +1,5 @@
 import React from 'react';
-import { css } from 'emotion';
 import {
-    useLastActionAndOutcome,
     useOponentsActions,
     usePlayer,
     useScene,
@@ -35,27 +33,25 @@ const HostileActors = ({
 const Actions = ({
     actions,
     player,
-    startsWithPlayer,
 }: {
     actions: GameAction[];
     player: Actor;
-    startsWithPlayer: boolean;
 }) => (
     <SideArticle even={true}>
         <header>
             <h3>Actions</h3>
         </header>
         <ul className="list-unstyled">
-            {!startsWithPlayer ? null : (
-                <ActionListPlayerAction player={player} active={true} />
-            )}
-            {actions.map((action) => (
+            {actions.map((action, index) => (
                 <React.Fragment key={action.id}>
                     <li>
-                        <ActionListHostileActorAction action={action} />
+                        <ActionListPlayerAction
+                            player={player}
+                            active={index === 0}
+                        />
                     </li>
                     <li>
-                        <ActionListPlayerAction player={player} />
+                        <ActionListHostileActorAction action={action} />
                     </li>
                 </React.Fragment>
             ))}
@@ -66,26 +62,20 @@ const Actions = ({
 const Scene = () => {
     const scene = useScene();
     const player = usePlayer();
-    const [lastAction] = useLastActionAndOutcome();
     const oponentsActions = useOponentsActions();
     if (!scene) {
         return null;
     }
     const hostileActors = scene.getHostileActors();
-    const containers = scene.containers;
-    if (!hostileActors.length && !containers.length) {
+    if (!hostileActors.length) {
         return <EmptyState />;
     }
     return (
         <article>
             <HostileActors hostileActors={hostileActors} />
-            <Actions
-                actions={oponentsActions}
-                player={player}
-                startsWithPlayer={
-                    !lastAction || lastAction.player.id !== player.id
-                }
-            />
+            {!oponentsActions.length ? null : (
+                <Actions actions={oponentsActions} player={player} />
+            )}
         </article>
     );
 };

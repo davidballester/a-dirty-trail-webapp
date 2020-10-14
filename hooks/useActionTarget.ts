@@ -2,17 +2,17 @@ import {
     Action,
     AdvanceToSceneAction,
     AttackAction,
-    PacifyAction,
+    LootAction,
     ReloadAction,
     ScapeAction,
 } from 'a-dirty-trail';
 
 const useActionTarget = (action: Action) => {
     if (action instanceof AttackAction) {
-        return action.oponent.name;
+        return action.oponent;
     }
     if (action instanceof ReloadAction) {
-        return action.weapon.name;
+        return action.weapon;
     }
     if (
         action instanceof AdvanceToSceneAction ||
@@ -21,8 +21,8 @@ const useActionTarget = (action: Action) => {
     ) {
         return null;
     }
-    if (action instanceof PacifyAction) {
-        return action.oponent;
+    if (action instanceof LootAction) {
+        return action.inventory;
     }
 };
 

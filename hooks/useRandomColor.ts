@@ -51,7 +51,6 @@ const useRandomColor = (seed: string) => {
         return null;
     }
     const seedHashCode = hashCode(seed);
-    console.log(seed, seedHashCode, Math.abs(seedHashCode % colors.length));
     const colorIndex = Math.abs(seedHashCode % colors.length);
     return colors[colorIndex];
 };

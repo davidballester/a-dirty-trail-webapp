@@ -1,32 +1,28 @@
 import {
     Action,
-    AdvanceToActAction,
     AdvanceToSceneAction,
     AttackAction,
     LootAction,
     ReloadAction,
-    ScapeAction,
 } from 'a-dirty-trail';
 
-const useActionVerb = (action: Action) => {
+const useActionVariant = (action: Action) => {
     if (action instanceof AttackAction) {
-        return 'attack';
+        return 'danger';
     }
     if (action instanceof ReloadAction) {
-        return 'reload';
+        return 'warning';
     }
     if (
         action instanceof AdvanceToSceneAction ||
-        action instanceof AdvanceToActAction
+        action instanceof AdvanceToSceneAction
     ) {
-        return 'advance';
-    }
-    if (action instanceof ScapeAction) {
-        return 'scape';
+        return 'success';
     }
     if (action instanceof LootAction) {
-        return 'loot';
+        return 'secondary';
     }
+    return 'info';
 };
 
-export default useActionVerb;
+export default useActionVariant;

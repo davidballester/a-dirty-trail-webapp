@@ -39,10 +39,10 @@ const ActionListHostileActorAction = ({ action }: { action: Action }) => {
                     `}
                 >
                     {' '}
-                    {actionTarget}
+                    {actionTarget.name}
                 </span>
             )}
-            {!auxiliaryTool ? null : (
+            {!auxiliaryTool || auxiliaryTool.id === actionTarget.id ? null : (
                 <>
                     <span> with </span>
                     <span

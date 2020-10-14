@@ -1,4 +1,7 @@
 const useWeaponIconSrc = (weaponName: string) => {
+    if (!weaponName) {
+        return undefined;
+    }
     const knownWeaponNames = [
         'revolver',
         'rifle',
