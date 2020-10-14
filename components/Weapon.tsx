@@ -1,9 +1,7 @@
 import React from 'react';
 import { css } from 'emotion';
 import { Weapon as GameWeapon, Ammunition, SkillLevel } from 'a-dirty-trail';
-import IconAndText from './IconAndText';
 import QuantityOutOfMax from './QuantityOutOfMax';
-import { Col, Container, Row } from 'react-bootstrap';
 import useAmmunitionIconName from '../hooks/useAmmunitionIconName';
 import useWeaponIconSrc from '../hooks/useWeaponIconSrc';
 import { SkillLevelBadge } from './SkillLevel';
@@ -43,7 +41,7 @@ const Weapon = ({
     skillLevel: SkillLevel;
 }) => {
     const iconSrc = useWeaponIconSrc(weapon.name);
-    const backgroundColor = useRandomColor(weapon.id);
+    const color = useRandomColor(weapon.id);
     return (
         <article
             className={css`
@@ -58,7 +56,8 @@ const Weapon = ({
                         width: 4rem;
                         height: 4rem;
                         border-radius: 50%;
-                        background: ${backgroundColor};
+                        background: ${color.background};
+                        color: ${color.textOverBackground};
                         position: relative;
                     ` + ' mr-3'
                 }
@@ -76,7 +75,9 @@ const Weapon = ({
                         font-size: 0.8rem;
                         bottom: -0.25rem;
                         right: -0.25rem;
-                        background: white;
+                        background: var(--light);
+                        color: var(--dark);
+                        font-weight: bold;
                         border-radius: 50%;
                         padding: 0.25rem;
                         box-shadow: 0 0 2px var(--dark);

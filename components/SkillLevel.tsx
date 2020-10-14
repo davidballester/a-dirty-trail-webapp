@@ -38,6 +38,7 @@ export const SkillLevelText = ({ id, skillLevel }: BaseSkillLevelProps) => {
                     `text-${skillLevelVariant} ` +
                     css`
                         cursor: default;
+                        font-weight: bold;
                     `
                 }
             >

@@ -11,7 +11,7 @@ import Health from './Health';
 import IconAndText from './IconAndText';
 import Weapon from './Weapon';
 import SkillName from './SkillName';
-import { SkillLevelText } from './SkillLevel';
+import { SkillLevelBadge, SkillLevelText } from './SkillLevel';
 import Ammunition from './Ammunition';
 import { Col, Container, Row } from 'react-bootstrap';
 import SideArticle from './SideArticle';
@@ -35,18 +35,14 @@ const Skills = ({ player }: { player: Actor }) => (
         <header>
             <h3>Skills</h3>
         </header>
-        <dl
-            className={css`
-                font-size: 0.8rem;
-            `}
-        >
+        <dl>
             {player.skills.map((skill) => (
                 <Fragment key={skill.name}>
                     <dt>
                         <SkillName skillName={skill.name} />
                     </dt>
                     <dd>
-                        <SkillLevelText
+                        <SkillLevelBadge
                             id={`skill-${player.id}-${skill.name}`}
                             skillLevel={skill.level}
                         />

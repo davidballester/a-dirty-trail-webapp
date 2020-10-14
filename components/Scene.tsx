@@ -7,45 +7,11 @@ import {
     useScene,
 } from '../contexts/gameContext';
 import { NonPlayableActor, Action as GameAction, Actor } from 'a-dirty-trail';
-import Health from './Health';
 import EmptyState from './EmptyState';
 import SideArticle from './SideArticle';
-import Weapon from './Weapon';
-import useActionVerb from '../hooks/useActionVerb';
-import useActionTarget from '../hooks/useActionTarget';
-import StripedBackground from './StripedBackground';
-
-const HostileActor = ({
-    hostileActor,
-    even,
-}: {
-    hostileActor: NonPlayableActor;
-    even: boolean;
-}) => (
-    <article
-        className={css`
-            padding: 0.5rem;
-            ${even ? 'background-color: #F6F4E1;' : ''}
-        `}
-    >
-        <header className="text-capitalize">
-            <h3>{hostileActor.name}</h3>
-            <Health health={hostileActor.health} />
-        </header>
-        <ul className="list-unstyled">
-            {hostileActor.inventory.getWeapons().map((weapon) => (
-                <li key={weapon.id}>
-                    <Weapon
-                        weapon={weapon}
-                        skillLevel={
-                            hostileActor.getSkill(weapon.skillName).level
-                        }
-                    />
-                </li>
-            ))}
-        </ul>
-    </article>
-);
+import HostileActor from './HostileActor';
+import ActionListHostileActorAction from './ActionListHostileActorAction';
+import ActionListPlayerAction from './ActionListPlayerAction';
 
 const HostileActors = ({
     hostileActors,
@@ -59,45 +25,11 @@ const HostileActors = ({
         <ul className="list-unstyled">
             {hostileActors.map((hostileActor, index) => (
                 <li key={hostileActor.id}>
-                    <HostileActor
-                        hostileActor={hostileActor}
-                        even={index % 2 === 0}
-                    />
+                    <HostileActor hostileActor={hostileActor} />
                 </li>
             ))}
         </ul>
     </SideArticle>
-);
-
-const Action = ({ action }: { action: GameAction }) => {
-    const actionVerb = useActionVerb(action);
-    const actionTarget = useActionTarget(action);
-    return (
-        <div
-            className={css`
-                position: relative;
-                font-weight: bold;
-                margin-bottom: 1rem;
-            `}
-        >
-            <StripedBackground />
-            <span className="text-capitalize">{action.player.name}</span>
-            {` will ${actionVerb}`}
-            {!actionTarget ? null : (
-                <span className="text-capitalize"> {actionTarget}</span>
-            )}
-        </div>
-    );
-};
-
-const UserAction = ({ player }: { player: Actor }) => (
-    <p
-        className={css`
-            font-style: italic;
-        `}
-    >
-        {`${player.name} action`.toUpperCase()}
-    </p>
 );
 
 const Actions = ({
@@ -114,14 +46,16 @@ const Actions = ({
             <h3>Actions</h3>
         </header>
         <ul className="list-unstyled">
-            {!startsWithPlayer ? null : <UserAction player={player} />}
+            {!startsWithPlayer ? null : (
+                <ActionListPlayerAction player={player} active={true} />
+            )}
             {actions.map((action) => (
                 <React.Fragment key={action.id}>
                     <li>
-                        <Action action={action} />
+                        <ActionListHostileActorAction action={action} />
                     </li>
                     <li>
-                        <UserAction player={player} />
+                        <ActionListPlayerAction player={player} />
                     </li>
                 </React.Fragment>
             ))}
