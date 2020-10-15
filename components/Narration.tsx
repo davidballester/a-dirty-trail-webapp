@@ -1,57 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import {
-    SceneActionAndOutcome,
-    useScene,
-    useSceneActionsAndOutcomes,
-} from '../contexts/gameContext';
-import ActionNarration from './ActionNarration';
+import React from 'react';
+import { css } from 'emotion';
+import { animated, useTransition } from 'react-spring';
+import { usePlayerActions, useScene } from '../contexts/gameContext';
+import PlayerActions from './PlayerActions';
 
-const Narration = (): React.ReactElement => {
+const Narration = () => {
     const scene = useScene();
-    const [lastActionId, setLastActionId] = useState(undefined as string);
-    const [lastSceneId, setLastSceneId] = useState(
-        scene ? scene.id : (undefined as string)
-    );
-    const [
-        latestSceneActionsAndOutcomes,
-        setLatestSceneActionsAndOutcomes,
-    ] = useState([] as SceneActionAndOutcome[]);
-    const sceneActionsAndOutcomes = useSceneActionsAndOutcomes();
-    useEffect(() => {
-        if (scene && lastSceneId !== scene.id) {
-            setLastSceneId(scene.id);
-            setLatestSceneActionsAndOutcomes([]);
-        }
-    }, [scene]);
-    useEffect(() => {
-        if (sceneActionsAndOutcomes && sceneActionsAndOutcomes.length) {
-            if (!lastActionId) {
-                setLastActionId(
-                    sceneActionsAndOutcomes[sceneActionsAndOutcomes.length - 1]
-                        .action.id
-                );
-                setLatestSceneActionsAndOutcomes(sceneActionsAndOutcomes);
-            } else {
-                const lastIndex = sceneActionsAndOutcomes.findIndex(
-                    ({ action }) => action.id === lastActionId
-                );
-                const latest = sceneActionsAndOutcomes.slice(lastIndex + 1);
-                setLastActionId(latest[latest.length - 1].action.id);
-                setLatestSceneActionsAndOutcomes(latest);
-            }
-        }
-    }, [sceneActionsAndOutcomes]);
+    const playerActions = usePlayerActions();
+    if (!scene || !playerActions) {
+        return null;
+    }
     return (
-        <section>
-            {!scene || !!sceneActionsAndOutcomes.length
-                ? null
-                : scene.setup.map((text) => <p key={text}>{text}</p>)}
-            {latestSceneActionsAndOutcomes.map(({ action, outcome }) => (
-                <ActionNarration
-                    key={action.id}
-                    action={action}
-                    outcome={outcome}
-                />
+        <article>
+            <NarrationTitle title={scene.name} />
+            <SceneSetup sceneSetup={scene.setup} />
+            <PlayerActions />
+        </article>
+    );
+};
+
+const NarrationTitle = ({ title }: { title: string }) => <h2>{title}</h2>;
+
+const SceneSetup = ({ sceneSetup }: { sceneSetup: string[] }) => {
+    const transition = useTransition(sceneSetup, {
+        from: {
+            opacity: 0,
+            transform: 'translate3d(0, 40px, 0)',
+        },
+        enter: {
+            opacity: 1,
+            transform: 'translate3d(0, 0px, 0)',
+        },
+    });
+    return (
+        <section
+            className={css`
+                > p {
+                    will-change: opacity, translate;
+                }
+            `}
+        >
+            {transition((style, item) => (
+                <animated.p style={style as any}>{item}</animated.p>
             ))}
         </section>
     );

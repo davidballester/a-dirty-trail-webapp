@@ -1,3 +1,5 @@
+import hashCode from '../helpers/hashCode';
+
 interface Color {
     background: string;
     textOverBackground: string;
@@ -53,16 +55,6 @@ const useRandomColor = (seed: string) => {
     const seedHashCode = hashCode(seed);
     const colorIndex = Math.abs(seedHashCode % colors.length);
     return colors[colorIndex];
-};
-
-const hashCode = (string: string) => {
-    var hash = 0;
-    for (var i = 0; i < string.length; i++) {
-        var character = string.charCodeAt(i);
-        hash = (hash << 5) - hash + character;
-        hash = hash & hash;
-    }
-    return hash;
 };
 
 export default useRandomColor;
