@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import { usePlayerActions, useScene } from '../contexts/gameContext';
+import { usePlayerActions } from '../contexts/gameContext';
 import {
     Action,
     AdvanceToActAction,
@@ -19,7 +19,7 @@ import { animated, useTransition } from 'react-spring';
 import useIsCombat from '../hooks/useIsCombat';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 
-const PlayerActions = () => {
+const NarrationPlayerActions = () => {
     const isCombat = useIsCombat();
     const playerActions = usePlayerActions();
     const transition = useTransition(playerActions, {
@@ -131,4 +131,4 @@ const GoToCombatAction = () => {
     );
 };
 
-export default PlayerActions;
+export default NarrationPlayerActions;

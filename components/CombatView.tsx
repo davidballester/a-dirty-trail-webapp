@@ -2,10 +2,20 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import CombatOponents from './CombatOponents';
 import CombatPlayerArea from './CombatPlayerArea';
+import CombatPlayerActions from './CombatPlayerActions';
+import CombatLog from './CombatLog';
 
 const CombatView = () => (
     <CombatBoard>
-        <CombatOponents />
+        <CombatPlayerArea />
+        <div
+            className={css`
+                margin-top: 3rem;
+            `}
+        >
+            <CombatOponents />
+        </div>
+        <CombatLog />
         <div
             className={css`
                 position: absolute;
@@ -13,7 +23,7 @@ const CombatView = () => (
                 width: 100%;
             `}
         >
-            <CombatPlayerArea />
+            <CombatPlayerActions />
         </div>
     </CombatBoard>
 );

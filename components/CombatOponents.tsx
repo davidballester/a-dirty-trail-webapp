@@ -11,6 +11,7 @@ import {
 import useOponentPortraitSrc from '../hooks/useOponentPortraitSrc';
 import Health from './Health';
 import { animated, useSpring } from 'react-spring';
+import useIsNextOponent from '../hooks/useIsNextOponent';
 
 const Oponents = () => {
     const scene = useScene();
@@ -46,12 +47,9 @@ const Oponents = () => {
 export default Oponents;
 
 const Oponent = ({ oponent }: { oponent: NonPlayableActor }) => {
-    const oponentsActions = useOponentsActions();
-    const isThisOponentNext =
-        oponentsActions.length && oponentsActions[0].player.id === oponent.id;
-    console.log(oponent.id, oponentsActions, isThisOponentNext);
+    const isNextOponent = useIsNextOponent(oponent);
     const transformStyle = useSpring({
-        transform: `scale(${isThisOponentNext ? 1 : 0.7})`,
+        transform: `scale(${isNextOponent ? 1 : 0.7})`,
     });
     return (
         <div

@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 import { animated, useTransition } from 'react-spring';
 import { usePlayerActions, useScene } from '../contexts/gameContext';
-import PlayerActions from './PlayerActions';
+import NarrationPlayerActions from './NarrationPlayerActions';
 
 const Narration = () => {
     const scene = useScene();
@@ -14,7 +14,7 @@ const Narration = () => {
         <article>
             <NarrationTitle title={scene.name} />
             <SceneSetup sceneSetup={scene.setup} />
-            <PlayerActions />
+            <NarrationPlayerActions />
         </article>
     );
 };
