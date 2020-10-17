@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 import useOponentPortraitSrc from '../hooks/useOponentPortraitSrc';
 import Weapon from './Weapon';
 
-const PlayerArea = () => {
+const CombatPlayerArea = () => {
     const player = usePlayer();
     if (!player) {
         return null;
@@ -199,4 +199,4 @@ const PlayerAmmunition = ({ ammunition }: { ammunition: Ammunition }) => (
     </figure>
 );
 
-export default PlayerArea;
+export default CombatPlayerArea;

@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import Oponents from './CombatOponents';
-import PlayerArea from './PlayerArea';
+import CombatOponents from './CombatOponents';
+import CombatPlayerArea from './CombatPlayerArea';
 
 const CombatView = () => (
     <CombatBoard>
-        <Oponents />
+        <CombatOponents />
         <div
             className={css`
                 position: absolute;
@@ -13,7 +13,7 @@ const CombatView = () => (
                 width: 100%;
             `}
         >
-            <PlayerArea />
+            <CombatPlayerArea />
         </div>
     </CombatBoard>
 );
