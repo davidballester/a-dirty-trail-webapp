@@ -5,6 +5,7 @@ import Narration from './Narration';
 import { Button } from 'react-bootstrap';
 import NarrationInventory from './NarrationInventory';
 import NarrationPlayer from './NarrationPlayer';
+import Header from './Header';
 
 enum Tab {
     narration = 0,
@@ -34,34 +35,37 @@ const NarrationView = () => {
         },
     });
     return (
-        <CenteredContainer>
-            <TabsButtons
-                currentTab={currentTab}
-                onClick={(newTab) => {
-                    setPrevTab(currentTab);
-                    setCurrentTab(newTab);
-                }}
-            />
-            <div
-                className={css`
-                    position: relative;
-                    > div {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        will-change: opacity, translate;
-                    }
-                `}
-            >
-                {tabTransition((style, item) => (
-                    <animated.div style={style as any}>
-                        {item === Tab.narration && <Narration />}
-                        {item === Tab.inventory && <NarrationInventory />}
-                        {item === Tab.player && <NarrationPlayer />}
-                    </animated.div>
-                ))}
-            </div>
-        </CenteredContainer>
+        <>
+            <Header />
+            <CenteredContainer>
+                <TabsButtons
+                    currentTab={currentTab}
+                    onClick={(newTab) => {
+                        setPrevTab(currentTab);
+                        setCurrentTab(newTab);
+                    }}
+                />
+                <div
+                    className={css`
+                        position: relative;
+                        > div {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            will-change: opacity, translate;
+                        }
+                    `}
+                >
+                    {tabTransition((style, item) => (
+                        <animated.div style={style as any}>
+                            {item === Tab.narration && <Narration />}
+                            {item === Tab.inventory && <NarrationInventory />}
+                            {item === Tab.player && <NarrationPlayer />}
+                        </animated.div>
+                    ))}
+                </div>
+            </CenteredContainer>
+        </>
     );
 };
 

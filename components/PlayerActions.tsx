@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import { usePlayerActions } from '../contexts/gameContext';
+import { usePlayerActions, useScene } from '../contexts/gameContext';
 import {
     Action,
     AdvanceToActAction,
@@ -16,8 +16,11 @@ import useActionVerb from '../hooks/useActionVerb';
 import useActionTarget from '../hooks/useActionTarget';
 import useActionAuxiliaryTool from '../hooks/useActionAuxiliaryTool';
 import { animated, useTransition } from 'react-spring';
+import useIsCombat from '../hooks/useIsCombat';
+import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 
 const PlayerActions = () => {
+    const isCombat = useIsCombat();
     const playerActions = usePlayerActions();
     const transition = useTransition(playerActions, {
         from: {
@@ -42,11 +45,13 @@ const PlayerActions = () => {
                 }
             `}
         >
-            {transition((style, playerAction) => (
-                <animated.div style={style as any}>
-                    <PlayerAction action={playerAction} />
-                </animated.div>
-            ))}
+            {!isCombat &&
+                transition((style, playerAction) => (
+                    <animated.div style={style as any}>
+                        <PlayerAction action={playerAction} />
+                    </animated.div>
+                ))}
+            {isCombat && <GoToCombatAction />}
         </section>
     );
 };
@@ -108,6 +113,22 @@ const PlayerActionText = ({ action }: { action: Action }) => {
         );
     }
     return <StandardPlayerActionText action={action} />;
+};
+
+const GoToCombatAction = () => {
+    const toggleGameViewMode = useToggleGameViewMode();
+    return (
+        <Button
+            variant="dark"
+            onClick={() => toggleGameViewMode()}
+            block
+            className={css`
+                margin-bottom: 0.5rem;
+            `}
+        >
+            Combat!
+        </Button>
+    );
 };
 
 export default PlayerActions;

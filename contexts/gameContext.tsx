@@ -25,10 +25,10 @@ interface DeltaState {
     sceneActionsAndOutcomes?: SceneActionAndOutcome[];
 }
 
-type Dispatch = (deltaState: DeltaState) => void;
+type GameDispatch = (deltaState: DeltaState) => void;
 
 const GameStateContext = React.createContext(undefined as State);
-const GameDispatchContext = React.createContext(undefined as Dispatch);
+const GameDispatchContext = React.createContext(undefined as GameDispatch);
 
 const gameReducer = (state: State, deltaState: DeltaState): State => {
     return {
@@ -108,7 +108,7 @@ export const useGameDispatch = () => {
 export const selectPlayerAction = (
     playerAction: Action,
     state: State,
-    dispatch: Dispatch
+    dispatch: GameDispatch
 ): void => {
     const game = state.game;
     const playerActionOutcome = game.executeAction(playerAction);
@@ -135,7 +135,7 @@ export const selectPlayerAction = (
     );
 };
 
-const resetActionsForNewScene = (game: Game, dispatch: Dispatch) => {
+const resetActionsForNewScene = (game: Game, dispatch: GameDispatch) => {
     const playerActions = game.getPlayerActions();
     dispatch({
         playerActions,
@@ -145,7 +145,7 @@ const resetActionsForNewScene = (game: Game, dispatch: Dispatch) => {
 
 const advanceSceneTurn = (
     state: State,
-    dispatch: Dispatch,
+    dispatch: GameDispatch,
     playerActionAndOutcome: SceneActionAndOutcome
 ) => {
     const playerActions = state.game.getPlayerActions();
@@ -160,7 +160,7 @@ const advanceSceneTurn = (
 
 const executeOponentActionAndAdvanceSceneTurn = (
     state: State,
-    dispatch: Dispatch,
+    dispatch: GameDispatch,
     playerActionAndOutcome: SceneActionAndOutcome
 ) => {
     const { game } = state;

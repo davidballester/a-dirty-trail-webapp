@@ -4,12 +4,10 @@ import {
     Weapon as GameWeapon,
     Ammunition as GameAmmunition,
     Item as GameItem,
-    Actor,
 } from 'a-dirty-trail';
 import { usePlayer } from '../contexts/gameContext';
-import useWeaponIconSrc from '../hooks/useWeaponIconSrc';
-import QuantityOutOfMax from './QuantityOutOfMax';
-import useSkillLevelText from '../hooks/useSkillLevelText';
+import ItemIcon from './ItemIcon';
+import Weapon from './Weapon';
 
 const NarrationInventory = () => (
     <article>
@@ -65,67 +63,6 @@ const ListOfItems = () => {
     );
 };
 
-const Weapon = ({ weapon, player }: { weapon: GameWeapon; player: Actor }) => {
-    const skillLevelText = useSkillLevelText(
-        player.getSkill(weapon.skillName).level
-    );
-    return (
-        <article
-            className={css`
-                display: flex;
-                align-items: center;
-                justify-content: left;
-            `}
-        >
-            <ItemIcon src={`${weapon.name}-outlined.svg`} alt={weapon.name} />
-            <dl
-                className={
-                    'row ' +
-                    css`
-                        margin-bottom: 0;
-                        flex-grow: 1;
-                    `
-                }
-            >
-                <dt className="col-sm-3">Name</dt>
-                <dd className="col-sm-9">
-                    <span className="text-capitalize">{weapon.name}</span>
-                </dd>
-
-                <dt className="col-sm-3">Damage</dt>
-                <dd className="col-sm-9">
-                    {weapon.minDamage}-{weapon.maxDamage}
-                </dd>
-
-                <dt className="col-sm-3">Skill level</dt>
-                <dd className="col-sm-9">{skillLevelText}</dd>
-
-                {weapon.ammunition && (
-                    <>
-                        <dt className="col-sm-3">Ammunition</dt>
-                        <dd className="col-sm-9">
-                            <WeaponAmmunition ammunition={weapon.ammunition} />
-                        </dd>
-                    </>
-                )}
-            </dl>
-        </article>
-    );
-};
-
-const WeaponAmmunition = ({ ammunition }: { ammunition: GameAmmunition }) => (
-    <QuantityOutOfMax
-        iconSrc={`${ammunition.name}-outlined.svg`}
-        emptyIconSrc={`${ammunition.name}-outlined-empty.svg`}
-        alt={`${ammunition.quantity} out of ${ammunition.maxAmmunition} ${ammunition.name}`}
-        current={ammunition.quantity}
-        max={ammunition.maxAmmunition}
-        iconClassName={css`
-            margin-left: -0.4rem;
-        `}
-    />
-);
-
 const Ammunition = ({ ammunition }: { ammunition: GameAmmunition }) => (
     <article
         className={css`
@@ -151,16 +88,5 @@ const Ammunition = ({ ammunition }: { ammunition: GameAmmunition }) => (
 const Item = ({ item }: { item: GameItem }) => {
     return <strong>{item.name}</strong>;
 };
-
-const ItemIcon = ({ src, alt }: { src: string; alt: string }) => (
-    <img
-        src={src}
-        alt={alt}
-        className={css`
-            width: 3rem;
-            margin-right: 1rem;
-        `}
-    />
-);
 
 export default NarrationInventory;
