@@ -1,102 +1,161 @@
 import React from 'react';
 import { css } from 'emotion';
 import {
-    usePlayer,
     usePlayerActions,
-    useSelectPlayerAction,
+    useExecutePlayerAction,
 } from '../contexts/gameContext';
 import {
     Action,
     Actor,
+    AdvanceToActAction,
+    AdvanceToSceneAction,
     AttackAction,
+    LootAction,
     NonPlayableActor,
+    ReloadAction,
     Weapon,
 } from 'a-dirty-trail';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import useOponentPortraitSrc from '../hooks/useOponentPortraitSrc';
 import useIsNextOponent from '../hooks/useIsNextOponent';
 import WeaponAmmunition from './WeaponAmmunition';
+import { animated, Transition } from 'react-spring';
+import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 
-const CombatPlayerActions = () => {
-    const player = usePlayer();
-    const playerActions = usePlayerActions();
-    return (
-        <section>
-            <header>
-                <h2 className="text-center">Actions</h2>
-            </header>
-            <Container fluid>
-                <Row>
-                    {playerActions.map((playerAction) => (
-                        <Col
-                            key={playerAction.id}
-                            xs={12}
-                            sm={6}
-                            className={css`
-                                margin-bottom: 1rem;
-                                > * {
-                                    height: 100%;
-                                }
-                            `}
-                        >
-                            <PlayerAction
-                                player={player}
-                                action={playerAction}
-                            />
-                        </Col>
-                    ))}
-                </Row>
-            </Container>
-        </section>
-    );
-};
+const CombatPlayerActions = ({ enabled }: { enabled: boolean }) => (
+    <section>
+        <Container fluid>
+            <Row>
+                <PlayerActionsCards enabled={enabled} />
+            </Row>
+        </Container>
+    </section>
+);
 
 export default CombatPlayerActions;
 
-const PlayerAction = ({
-    action,
-    player,
-}: {
-    action: Action;
-    player: Actor;
-}) => {
-    const selectPlayerAction = useSelectPlayerAction();
-    const onClick = () => selectPlayerAction(action);
+const PlayerActionsCards = ({ enabled }: { enabled: boolean }) => {
+    const playerActions = usePlayerActions();
+    return (
+        <Transition
+            items={playerActions}
+            keys={(playerAction) => getActionKey(playerAction)}
+            from={{
+                height: '0px',
+                opacity: 0,
+            }}
+            enter={{
+                height: '125px',
+                opacity: 1,
+            }}
+            leave={{ height: '0px', opacity: 0 }}
+        >
+            {(style, playerAction) => (
+                <Col
+                    xs={12}
+                    sm={6}
+                    className={css`
+                        margin-bottom: 1rem;
+                    `}
+                >
+                    <animated.div style={style}>
+                        <PlayerAction enabled={enabled} action={playerAction} />
+                    </animated.div>
+                </Col>
+            )}
+        </Transition>
+    );
+};
+
+const getActionKey = (action: Action) => {
     if (action instanceof AttackAction) {
-        return (
-            <PlayerAttackAction
-                action={action}
-                player={player}
-                onClick={onClick}
-            />
-        );
+        return getAttackActionKey(action);
     }
-    return null;
+    if (action instanceof ReloadAction) {
+        return getReloadActionKey(action);
+    }
+    if (action instanceof LootAction) {
+        return getLootActionKey(action);
+    }
+    return action.id;
+};
+
+const getAttackActionKey = (action: AttackAction) =>
+    `${action.weapon.name}-${action.oponent.name}`;
+
+const getReloadActionKey = (action: ReloadAction) => action.weapon.name;
+
+const getLootActionKey = (action: LootAction) => action.inventory.name;
+
+const PlayerAction = ({
+    enabled,
+    action,
+}: {
+    enabled: boolean;
+    action: Action;
+}) => {
+    const executePlayerAction = useExecutePlayerAction();
+    const toggleGameViewMode = useToggleGameViewMode();
+    let onClick = () => executePlayerAction(action);
+    let button;
+    if (action instanceof AttackAction) {
+        button = {
+            content: <PlayerAttackAction action={action} />,
+            title: `Attack ${action.oponent.name} with ${action.weapon.name}`,
+        };
+    } else if (action instanceof ReloadAction) {
+        button = {
+            content: <PlayerReloadAction action={action} />,
+            title: `Reload ${action.weapon.name}`,
+        };
+    } else if (action instanceof LootAction) {
+        button = {
+            content: <PlayerLootAction action={action} />,
+            title: `Loot ${action.inventory.name}`,
+        };
+    } else if (
+        action instanceof AdvanceToActAction ||
+        action instanceof AdvanceToSceneAction
+    ) {
+        button = {
+            content: <PlayerAdvanceAction action={action} />,
+            title: action.getName(),
+        };
+        onClick = () => {
+            executePlayerAction(action);
+            toggleGameViewMode();
+        };
+    } else {
+        return null;
+    }
+    return (
+        <Button
+            disabled={!enabled}
+            block
+            variant="light"
+            title={button.title}
+            onClick={onClick}
+            className={css`
+                height: 125px;
+                border-color: var(--dark);
+                :hover,
+                :active,
+                :focus {
+                    border-color: var(--dark) !important;
+                }
+            `}
+        >
+            {button.content}
+        </Button>
+    );
 };
 
 const PlayerAttackAction = ({
-    action: { weapon, oponent },
-    player,
-    onClick,
+    action: { weapon, oponent, player },
 }: {
     action: AttackAction;
-    player: Actor;
-    onClick: () => void;
 }) => (
-    <Button
-        block
-        variant="light"
-        title={`Attack ${oponent.name} with ${weapon.name}`}
-        onClick={onClick}
-        className={css`
-            border-color: var(--dark);
-            :hover,
-            :active,
-            :focus {
-                border-color: var(--dark) !important;
-            }
-        `}
-    >
+    <>
         <div
             className={css`
                 display: flex;
@@ -117,7 +176,7 @@ const PlayerAttackAction = ({
             </div>
             <PlayerAttackActionOponent oponent={oponent} />
         </div>
-    </Button>
+    </>
 );
 
 const PlayerAttackActionWeapon = ({ weapon }: { weapon: Weapon }) => (
@@ -168,7 +227,7 @@ const PlayerAttackActionProbability = ({
 };
 
 const PlayerAttackActionOponent = ({ oponent }: { oponent: Actor }) => {
-    const oponentPortraitSrc = useOponentPortraitSrc(oponent.id);
+    const oponentPortraitSrc = useOponentPortraitSrc(oponent.name);
     const isNextOponent = useIsNextOponent(oponent as NonPlayableActor);
     return (
         <div>
@@ -189,3 +248,66 @@ const PlayerAttackActionOponent = ({ oponent }: { oponent: Actor }) => {
         </div>
     );
 };
+
+const PlayerReloadAction = ({
+    action: { weapon, ammunition },
+}: {
+    action: ReloadAction;
+}) => (
+    <div
+        className={css`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            > img {
+                height: 3rem;
+            }
+            > img:last-child {
+                margin-left: 0.5rem;
+            }
+        `}
+    >
+        <img
+            src={`${ammunition.name}-outlined-empty.svg`}
+            alt={ammunition.name}
+        />
+        {'➜'}
+        <img src={`${weapon.name}-outlined.svg`} alt={weapon.name} />
+    </div>
+);
+
+const PlayerLootAction = ({
+    action: { inventory },
+}: {
+    action: LootAction;
+}) => {
+    const oponentPortraitSrc = useOponentPortraitSrc(inventory.name);
+    return (
+        <div
+            className={css`
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                > img {
+                    height: 3rem;
+                }
+                > img:first-child {
+                    margin-right: 0.5rem;
+                }
+                > img:last-child {
+                    margin-left: 0.5rem;
+                }
+            `}
+        >
+            <img src={oponentPortraitSrc} alt={inventory.name} />
+            {'➜'}
+            <img src="loot.svg" alt="loot" />
+        </div>
+    );
+};
+
+const PlayerAdvanceAction = ({
+    action,
+}: {
+    action: AdvanceToActAction | AdvanceToSceneAction;
+}) => <span>{action.getName()}</span>;

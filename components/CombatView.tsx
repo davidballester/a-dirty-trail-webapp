@@ -1,32 +1,47 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useCallback, useState } from 'react';
 import { css } from 'emotion';
 import CombatOponents from './CombatOponents';
 import CombatPlayerArea from './CombatPlayerArea';
 import CombatPlayerActions from './CombatPlayerActions';
 import CombatLog from './CombatLog';
+import {
+    useCanPlayerAct,
+    useExecuteNextOponentAction,
+} from '../contexts/gameContext';
 
-const CombatView = () => (
-    <CombatBoard>
-        <CombatPlayerArea />
-        <div
-            className={css`
-                margin-top: 3rem;
-            `}
-        >
-            <CombatOponents />
-        </div>
-        <CombatLog />
-        <div
-            className={css`
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-            `}
-        >
-            <CombatPlayerActions />
-        </div>
-    </CombatBoard>
-);
+const CombatView = () => {
+    const canPlayerAct = useCanPlayerAct();
+    const executeNextOponentAction = useExecuteNextOponentAction();
+    const onOutcomeLogged = useCallback(() => {
+        if (!canPlayerAct) {
+            setTimeout(() => {
+                executeNextOponentAction();
+            }, 1000);
+        }
+    }, [canPlayerAct, executeNextOponentAction]);
+    return (
+        <CombatBoard>
+            <CombatPlayerArea />
+            <div
+                className={css`
+                    margin-top: 3rem;
+                `}
+            >
+                <CombatOponents />
+            </div>
+            <CombatLog onOutcomeLogged={onOutcomeLogged} />
+            <div
+                className={css`
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                `}
+            >
+                <CombatPlayerActions enabled={canPlayerAct} />
+            </div>
+        </CombatBoard>
+    );
+};
 
 export default CombatView;
 

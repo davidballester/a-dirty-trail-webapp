@@ -91,7 +91,7 @@ const OponentCard = ({ oponent }: { oponent: NonPlayableActor }) => (
 );
 
 const OponentPortrait = ({ oponent }: { oponent: NonPlayableActor }) => {
-    const oponentPortraitSrc = useOponentPortraitSrc(oponent.id);
+    const oponentPortraitSrc = useOponentPortraitSrc(oponent.name);
     return (
         <img
             src={oponentPortraitSrc}
@@ -192,6 +192,9 @@ const OponentNextReloadActionContent = ({
                 justify-content: center;
                 > img {
                     height: 3rem;
+                }
+                > img:last-child {
+                    margin-left: 0.5rem;
                 }
             `}
         >

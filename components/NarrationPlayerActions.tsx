@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 import {
     usePlayerActions,
-    useSelectPlayerAction,
+    useExecutePlayerAction,
 } from '../contexts/gameContext';
 import {
     Action,
@@ -20,17 +20,8 @@ import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 const NarrationPlayerActions = () => {
     const isCombat = useIsCombat();
     const playerActions = usePlayerActions();
-    const transition = useTransition(playerActions, {
-        from: {
-            opacity: 0,
-            transform: 'translate3d(0, 40px, 0)',
-        },
-        enter: {
-            opacity: 1,
-            transform: 'translate3d(0, 0px, 0)',
-        },
-        key: (playerAction) => playerAction.id,
-    });
+    const playerActionsTransition = usePlayerActionsTransition(playerActions);
+    const isCombatTransition = usePlayerActionsTransition(isCombat);
     if (!playerActions.length) {
         return null;
     }
@@ -44,22 +35,42 @@ const NarrationPlayerActions = () => {
             `}
         >
             {!isCombat &&
-                transition((style, playerAction) => (
+                playerActionsTransition((style, playerAction) => (
                     <animated.div style={style as any}>
                         <PlayerAction action={playerAction} />
                     </animated.div>
                 ))}
-            {isCombat && <GoToCombatAction />}
+            {isCombat &&
+                isCombatTransition((style) => (
+                    <animated.div style={style as any}>
+                        <GoToCombatAction />
+                    </animated.div>
+                ))}
         </section>
     );
 };
 
+export default NarrationPlayerActions;
+
+const usePlayerActionsTransition = (items) => {
+    return useTransition(items, {
+        from: {
+            opacity: 0,
+            transform: 'translate3d(0, 40px, 0)',
+        },
+        enter: {
+            opacity: 1,
+            transform: 'translate3d(0, 0px, 0)',
+        },
+    });
+};
+
 const PlayerAction = ({ action }: { action: Action }) => {
-    const selectPlayerAction = useSelectPlayerAction();
+    const executePlayerAction = useExecutePlayerAction();
     return (
         <Button
             variant="outline-dark"
-            onClick={() => selectPlayerAction(action)}
+            onClick={() => executePlayerAction(action)}
             block
             className={css`
                 margin-bottom: 0.5rem;
@@ -127,5 +138,3 @@ const GoToCombatAction = () => {
         </Button>
     );
 };
-
-export default NarrationPlayerActions;

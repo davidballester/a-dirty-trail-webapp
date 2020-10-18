@@ -14,12 +14,14 @@ export interface SceneActionAndOutcome {
 }
 
 interface State {
+    canPlayerAct: boolean;
     game?: Game;
     playerActions: Action[];
     sceneActionsAndOutcomes: SceneActionAndOutcome[];
 }
 
 interface DeltaState {
+    canPlayerAct?: boolean;
     game?: Game;
     playerActions?: Action[];
     sceneActionsAndOutcomes?: SceneActionAndOutcome[];
@@ -39,6 +41,7 @@ const gameReducer = (state: State, deltaState: DeltaState): State => {
 
 export const GameProvider = ({ children }): React.ReactElement => {
     const [state, dispatch] = useReducer(gameReducer, {
+        canPlayerAct: true,
         playerActions: [],
         sceneActionsAndOutcomes: [],
     });
@@ -105,40 +108,71 @@ export const useGameDispatch = () => {
     return context;
 };
 
-export const useSelectPlayerAction = () => {
+export const useCanPlayerAct = () => {
     const state = useGameState();
-    const dispatch = useGameDispatch();
-    return (action: Action) => selectPlayerAction(action, state, dispatch);
+    return state.canPlayerAct;
 };
 
-const selectPlayerAction = (
+export const useExecutePlayerAction = () => {
+    const state = useGameState();
+    const dispatch = useGameDispatch();
+    return (action: Action) => executePlayerAction(action, state, dispatch);
+};
+
+export const useExecuteNextOponentAction = () => {
+    const state = useGameState();
+    const dispatch = useGameDispatch();
+    return () => executeNextOponentAction(state, dispatch);
+};
+
+const executePlayerAction = (
     playerAction: Action,
     state: State,
     dispatch: GameDispatch
 ): void => {
+    if (!state.canPlayerAct) {
+        return;
+    }
     const game = state.game;
     const playerActionOutcome = game.executeAction(playerAction);
-    const playerActionAndOutcome = {
-        action: playerAction,
-        outcome: playerActionOutcome,
-    };
-    const isPlayerAbandonedScene =
-        playerAction instanceof AdvanceToSceneAction ||
-        playerAction instanceof AdvanceToActAction;
-    if (isPlayerAbandonedScene) {
+    if (isPlayerAbandonedScene(playerAction)) {
         resetActionsForNewScene(game, dispatch);
-        return;
+    } else {
+        pushOutcomeToStateAndPrepareForOponentAction(
+            state,
+            dispatch,
+            playerAction,
+            playerActionOutcome,
+            state.playerActions,
+            false
+        );
     }
-    const isOponentActionsAvailable = game.oponentsActions.length > 0;
-    if (!isOponentActionsAvailable) {
-        advanceSceneTurn(state, dispatch, playerActionAndOutcome);
-        return;
+};
+
+const isPlayerAbandonedScene = (action: Action) =>
+    action instanceof AdvanceToSceneAction ||
+    action instanceof AdvanceToActAction;
+
+const pushOutcomeToStateAndPrepareForOponentAction = (
+    state: State,
+    dispatch: GameDispatch,
+    action: Action,
+    outcome: any,
+    playerActions: Action[],
+    canPlayerAct: boolean
+) => {
+    const sceneActionsAndOutcomes = [...state.sceneActionsAndOutcomes];
+    if (outcome !== undefined) {
+        sceneActionsAndOutcomes.push({
+            action: action,
+            outcome: outcome,
+        });
     }
-    executeOponentActionAndAdvanceSceneTurn(
-        state,
-        dispatch,
-        playerActionAndOutcome
-    );
+    dispatch({
+        canPlayerAct,
+        playerActions,
+        sceneActionsAndOutcomes: sceneActionsAndOutcomes,
+    });
 };
 
 const resetActionsForNewScene = (game: Game, dispatch: GameDispatch) => {
@@ -149,41 +183,25 @@ const resetActionsForNewScene = (game: Game, dispatch: GameDispatch) => {
     });
 };
 
-const advanceSceneTurn = (
-    state: State,
-    dispatch: GameDispatch,
-    playerActionAndOutcome: SceneActionAndOutcome
-) => {
-    const playerActions = state.game.getPlayerActions();
-    dispatch({
-        playerActions,
-        sceneActionsAndOutcomes: [
-            ...state.sceneActionsAndOutcomes,
-            playerActionAndOutcome,
-        ],
-    });
+const executeNextOponentAction = (state: State, dispatch: GameDispatch) => {
+    if (state.canPlayerAct) {
+        return;
+    }
+    const game = state.game;
+    if (isOponentActionAvailable(game)) {
+        const { action: nextOponentAction, outcome: nextOponentActionOutcome } =
+            game.executeNextOponentAction() || {};
+        const playerActions = game.getPlayerActions();
+        pushOutcomeToStateAndPrepareForOponentAction(
+            state,
+            dispatch,
+            nextOponentAction,
+            nextOponentActionOutcome,
+            playerActions,
+            true
+        );
+    }
 };
 
-const executeOponentActionAndAdvanceSceneTurn = (
-    state: State,
-    dispatch: GameDispatch,
-    playerActionAndOutcome: SceneActionAndOutcome
-) => {
-    const { game } = state;
-    const { action: nextOponentAction, outcome: nextOponentActionOutcome } =
-        game.executeNextOponentAction() || {};
-    const playerActions = game.getPlayerActions();
-    dispatch({
-        playerActions,
-        sceneActionsAndOutcomes: [
-            ...state.sceneActionsAndOutcomes,
-            playerActionAndOutcome,
-            nextOponentActionOutcome !== undefined
-                ? {
-                      action: nextOponentAction,
-                      outcome: nextOponentActionOutcome,
-                  }
-                : undefined,
-        ].filter(Boolean),
-    });
-};
+const isOponentActionAvailable = (game: Game) =>
+    game.oponentsActions.length > 0;
