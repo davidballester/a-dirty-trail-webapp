@@ -8,10 +8,10 @@ import {
     AttackAction,
     ReloadAction,
 } from 'a-dirty-trail';
-import useOponentPortraitSrc from '../hooks/useOponentPortraitSrc';
 import Health from './Health';
 import { animated, useSpring } from 'react-spring';
 import useIsNextOponent from '../hooks/useIsNextOponent';
+import { useOponentIcon } from '../contexts/oponentsIconsContext';
 
 const Oponents = () => {
     const scene = useScene();
@@ -91,7 +91,7 @@ const OponentCard = ({ oponent }: { oponent: NonPlayableActor }) => (
 );
 
 const OponentPortrait = ({ oponent }: { oponent: NonPlayableActor }) => {
-    const oponentPortraitSrc = useOponentPortraitSrc(oponent.name);
+    const oponentPortraitSrc = useOponentIcon(oponent.name);
     return (
         <img
             src={oponentPortraitSrc}

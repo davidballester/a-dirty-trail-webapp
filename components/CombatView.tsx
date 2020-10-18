@@ -8,6 +8,7 @@ import {
     useCanPlayerAct,
     useExecuteNextOponentAction,
 } from '../contexts/gameContext';
+import { OponentsIconsProvider } from '../contexts/oponentsIconsContext';
 
 const CombatView = () => {
     const canPlayerAct = useCanPlayerAct();
@@ -20,26 +21,28 @@ const CombatView = () => {
         }
     }, [canPlayerAct, executeNextOponentAction]);
     return (
-        <CombatBoard>
-            <CombatPlayerArea />
-            <div
-                className={css`
-                    margin-top: 3rem;
-                `}
-            >
-                <CombatOponents />
-            </div>
-            <CombatLog onOutcomeLogged={onOutcomeLogged} />
-            <div
-                className={css`
-                    position: absolute;
-                    bottom: 0;
-                    width: 100%;
-                `}
-            >
-                <CombatPlayerActions enabled={canPlayerAct} />
-            </div>
-        </CombatBoard>
+        <OponentsIconsProvider>
+            <CombatBoard>
+                <CombatPlayerArea />
+                <div
+                    className={css`
+                        margin-top: 3rem;
+                    `}
+                >
+                    <CombatOponents />
+                </div>
+                <CombatLog onOutcomeLogged={onOutcomeLogged} />
+                <div
+                    className={css`
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                    `}
+                >
+                    <CombatPlayerActions enabled={canPlayerAct} />
+                </div>
+            </CombatBoard>
+        </OponentsIconsProvider>
     );
 };
 

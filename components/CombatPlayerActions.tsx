@@ -16,11 +16,11 @@ import {
     Weapon,
 } from 'a-dirty-trail';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import useOponentPortraitSrc from '../hooks/useOponentPortraitSrc';
 import useIsNextOponent from '../hooks/useIsNextOponent';
 import WeaponAmmunition from './WeaponAmmunition';
 import { animated, Transition } from 'react-spring';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
+import { useOponentIcon } from '../contexts/oponentsIconsContext';
 
 const CombatPlayerActions = ({ enabled }: { enabled: boolean }) => (
     <section>
@@ -227,7 +227,7 @@ const PlayerAttackActionProbability = ({
 };
 
 const PlayerAttackActionOponent = ({ oponent }: { oponent: Actor }) => {
-    const oponentPortraitSrc = useOponentPortraitSrc(oponent.name);
+    const oponentPortraitSrc = useOponentIcon(oponent.name);
     const isNextOponent = useIsNextOponent(oponent as NonPlayableActor);
     return (
         <div>
@@ -281,7 +281,7 @@ const PlayerLootAction = ({
 }: {
     action: LootAction;
 }) => {
-    const oponentPortraitSrc = useOponentPortraitSrc(inventory.name);
+    const oponentPortraitSrc = useOponentIcon(inventory.name);
     return (
         <div
             className={css`
