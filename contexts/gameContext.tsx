@@ -59,7 +59,7 @@ export const GameProvider = ({ children }): React.ReactElement => {
     );
 };
 
-export const useGameState = () => {
+const useGameState = () => {
     const state = useContext(GameStateContext) as State;
     if (state === undefined) {
         throw new Error('useGame must be used within a GameProvider');
@@ -105,7 +105,13 @@ export const useGameDispatch = () => {
     return context;
 };
 
-export const selectPlayerAction = (
+export const useSelectPlayerAction = () => {
+    const state = useGameState();
+    const dispatch = useGameDispatch();
+    return (action: Action) => selectPlayerAction(action, state, dispatch);
+};
+
+const selectPlayerAction = (
     playerAction: Action,
     state: State,
     dispatch: GameDispatch

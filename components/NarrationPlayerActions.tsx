@@ -1,16 +1,14 @@
 import React from 'react';
 import { css } from 'emotion';
-import { usePlayerActions } from '../contexts/gameContext';
+import {
+    usePlayerActions,
+    useSelectPlayerAction,
+} from '../contexts/gameContext';
 import {
     Action,
     AdvanceToActAction,
     AdvanceToSceneAction,
 } from 'a-dirty-trail';
-import {
-    selectPlayerAction,
-    useGameDispatch,
-    useGameState,
-} from '../contexts/gameContext';
 import { Button } from 'react-bootstrap';
 import useActionVerb from '../hooks/useActionVerb';
 import useActionTarget from '../hooks/useActionTarget';
@@ -57,12 +55,11 @@ const NarrationPlayerActions = () => {
 };
 
 const PlayerAction = ({ action }: { action: Action }) => {
-    const gameState = useGameState();
-    const dispatch = useGameDispatch();
+    const selectPlayerAction = useSelectPlayerAction();
     return (
         <Button
             variant="outline-dark"
-            onClick={() => selectPlayerAction(action, gameState, dispatch)}
+            onClick={() => selectPlayerAction(action)}
             block
             className={css`
                 margin-bottom: 0.5rem;

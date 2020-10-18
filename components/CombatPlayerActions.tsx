@@ -1,11 +1,9 @@
 import React from 'react';
 import { css } from 'emotion';
 import {
-    selectPlayerAction,
-    useGameDispatch,
-    useGameState,
     usePlayer,
     usePlayerActions,
+    useSelectPlayerAction,
 } from '../contexts/gameContext';
 import {
     Action,
@@ -62,9 +60,8 @@ const PlayerAction = ({
     action: Action;
     player: Actor;
 }) => {
-    const gameState = useGameState();
-    const gameDispatch = useGameDispatch();
-    const onClick = () => selectPlayerAction(action, gameState, gameDispatch);
+    const selectPlayerAction = useSelectPlayerAction();
+    const onClick = () => selectPlayerAction(action);
     if (action instanceof AttackAction) {
         return (
             <PlayerAttackAction
