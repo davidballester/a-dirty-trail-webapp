@@ -6,6 +6,9 @@ import {
     Actor,
     AdvanceToActAction,
     Scene,
+    ReloadAction,
+    AttackAction,
+    Weapon,
 } from 'a-dirty-trail';
 
 export interface SceneActionAndOutcome {
@@ -90,6 +93,15 @@ export const usePlayerActions = () => {
     return state.playerActions;
 };
 
+export const useNarrationPlayerActions = () => {
+    const playerActions = usePlayerActions();
+    return playerActions.filter(
+        (action) =>
+            !(action instanceof ReloadAction) &&
+            !(action instanceof AttackAction)
+    );
+};
+
 export const useOponentsActions = () => {
     const game = useGame();
     return game ? game.oponentsActions : [];
@@ -98,6 +110,19 @@ export const useOponentsActions = () => {
 export const useSceneActionsAndOutcomes = () => {
     const state = useGameState();
     return state.sceneActionsAndOutcomes;
+};
+
+export const useWeaponReloadAction = (weapon: Weapon) => {
+    const playerActions = usePlayerActions();
+    return playerActions.find((action) => {
+        const isReloadAction = action instanceof ReloadAction;
+        if (!isReloadAction) {
+            return false;
+        }
+        const reloadAction = action as ReloadAction;
+        const isSameWeapon = reloadAction.weapon.id === weapon.id;
+        return isSameWeapon;
+    });
 };
 
 export const useGameDispatch = () => {
@@ -143,7 +168,6 @@ const executePlayerAction = (
             dispatch,
             playerAction,
             playerActionOutcome,
-            state.playerActions,
             false
         );
     }
@@ -158,7 +182,6 @@ const pushOutcomeToStateAndPrepareForOponentAction = (
     dispatch: GameDispatch,
     action: Action,
     outcome: any,
-    playerActions: Action[],
     canPlayerAct: boolean
 ) => {
     const sceneActionsAndOutcomes = [...state.sceneActionsAndOutcomes];
@@ -168,6 +191,7 @@ const pushOutcomeToStateAndPrepareForOponentAction = (
             outcome: outcome,
         });
     }
+    const playerActions = state.game.getPlayerActions();
     dispatch({
         canPlayerAct,
         playerActions,
@@ -191,13 +215,11 @@ const executeNextOponentAction = (state: State, dispatch: GameDispatch) => {
     if (isOponentActionAvailable(game)) {
         const { action: nextOponentAction, outcome: nextOponentActionOutcome } =
             game.executeNextOponentAction() || {};
-        const playerActions = game.getPlayerActions();
         pushOutcomeToStateAndPrepareForOponentAction(
             state,
             dispatch,
             nextOponentAction,
             nextOponentActionOutcome,
-            playerActions,
             true
         );
     }

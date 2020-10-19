@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from 'emotion';
 import {
-    usePlayerActions,
+    useNarrationPlayerActions,
     useExecutePlayerAction,
 } from '../contexts/gameContext';
 import {
@@ -19,12 +19,9 @@ import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 
 const NarrationPlayerActions = () => {
     const isCombat = useIsCombat();
-    const playerActions = usePlayerActions();
+    const playerActions = useNarrationPlayerActions();
     const playerActionsTransition = usePlayerActionsTransition(playerActions);
     const isCombatTransition = usePlayerActionsTransition(isCombat);
-    if (!playerActions.length) {
-        return null;
-    }
     return (
         <section
             className={css`
