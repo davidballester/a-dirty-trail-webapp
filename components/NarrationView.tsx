@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { css } from 'emotion';
-import { animated, useTransition } from 'react-spring';
+import { animated, Transition } from 'react-spring';
 import Narration from './Narration';
 import { Button } from 'react-bootstrap';
 import NarrationInventory from './NarrationInventory';
@@ -15,25 +15,6 @@ enum Tab {
 const NarrationView = () => {
     const [prevTab, setPrevTab] = useState(undefined as Tab);
     const [currentTab, setCurrentTab] = useState(Tab.narration);
-    const isTransitionLeftToRight = currentTab < prevTab;
-    const tabTransition = useTransition(currentTab, {
-        from: {
-            opacity: 0,
-            transform: `translate3d(${
-                isTransitionLeftToRight ? '-50%' : '100%'
-            },0,0)`,
-        },
-        enter: {
-            opacity: 1,
-            transform: 'translate3d(0%,0,0)',
-        },
-        leave: {
-            opacity: 0,
-            transform: `translate3d(${
-                isTransitionLeftToRight ? '100%' : '-50%'
-            },0,0)`,
-        },
-    });
     return (
         <>
             <Header />
@@ -45,31 +26,64 @@ const NarrationView = () => {
                         setCurrentTab(newTab);
                     }}
                 />
-                <div
-                    className={css`
-                        position: relative;
-                        > div {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            will-change: opacity, translate;
-                        }
-                    `}
-                >
-                    {tabTransition((style, item) => (
-                        <animated.div style={style as any}>
-                            {item === Tab.narration && <Narration />}
-                            {item === Tab.inventory && <NarrationInventory />}
-                            {item === Tab.player && <NarrationPlayer />}
-                        </animated.div>
-                    ))}
-                </div>
+                <TabContentsWithTransition
+                    prevTab={prevTab}
+                    currentTab={currentTab}
+                />
             </CenteredContainer>
         </>
     );
 };
 
 export default NarrationView;
+
+const TabContentsWithTransition = ({
+    currentTab,
+    prevTab,
+}: {
+    currentTab: Tab;
+    prevTab: Tab;
+}) => {
+    const isTransitionLeftToRight = currentTab < prevTab;
+    return (
+        <div
+            className={css`
+                position: relative;
+                > div {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    will-change: opacity, translate;
+                }
+            `}
+        >
+            <Transition
+                items={currentTab}
+                from={{
+                    opacity: 0,
+                    transform: `translate3d(${
+                        isTransitionLeftToRight ? '-50%' : '100%'
+                    },0,0)`,
+                }}
+                enter={{ opacity: 1, transform: 'translate3d(0%,0,0)' }}
+                leave={{
+                    opacity: 0,
+                    transform: `translate3d(${
+                        isTransitionLeftToRight ? '100%' : '-50%'
+                    },0,0)`,
+                }}
+            >
+                {(style, item) => (
+                    <animated.div style={style as any}>
+                        {item === Tab.narration && <Narration />}
+                        {item === Tab.inventory && <NarrationInventory />}
+                        {item === Tab.player && <NarrationPlayer />}
+                    </animated.div>
+                )}
+            </Transition>
+        </div>
+    );
+};
 
 const CenteredContainer = ({
     children,

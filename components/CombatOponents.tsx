@@ -9,7 +9,7 @@ import {
     ReloadAction,
 } from 'a-dirty-trail';
 import Health from './Health';
-import { animated, useSpring } from 'react-spring';
+import { animated, Spring } from 'react-spring';
 import useIsNextOponent from '../hooks/useIsNextOponent';
 import { useOponentIcon } from '../contexts/oponentsIconsContext';
 
@@ -48,19 +48,17 @@ export default Oponents;
 
 const Oponent = ({ oponent }: { oponent: NonPlayableActor }) => {
     const isNextOponent = useIsNextOponent(oponent);
-    const transformStyle = useSpring({
-        transform: `scale(${isNextOponent ? 1 : 0.7})`,
-    });
     return (
-        <div
-            className={css`
-                will-change: transform;
-            `}
+        <Spring
+            from={{ transform: `scale(1)` }}
+            to={{ transform: `scale(${isNextOponent ? 1 : 0.7})` }}
         >
-            <animated.div style={transformStyle as any}>
-                <OponentCard oponent={oponent} />
-            </animated.div>
-        </div>
+            {(style) => (
+                <animated.div style={style}>
+                    <OponentCard oponent={oponent} />
+                </animated.div>
+            )}
+        </Spring>
     );
 };
 

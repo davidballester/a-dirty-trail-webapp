@@ -58,15 +58,9 @@ const CombatBoard = ({
             position: relative;
             width: 100vw;
             height: 100vh;
+            background-color: var(--light);
         `}
     >
-        <div
-            className={css`
-                position: absolute;
-                width: 100%;
-                height: 100%;
-            `}
-        />
         <div
             className={css`
                 position: absolute;

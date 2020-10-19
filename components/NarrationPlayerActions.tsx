@@ -13,15 +13,13 @@ import { Button } from 'react-bootstrap';
 import useActionVerb from '../hooks/useActionVerb';
 import useActionTarget from '../hooks/useActionTarget';
 import useActionAuxiliaryTool from '../hooks/useActionAuxiliaryTool';
-import { animated, useTransition } from 'react-spring';
+import { animated, Transition } from 'react-spring';
 import useIsCombat from '../hooks/useIsCombat';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 
 const NarrationPlayerActions = () => {
     const isCombat = useIsCombat();
     const playerActions = useNarrationPlayerActions();
-    const playerActionsTransition = usePlayerActionsTransition(playerActions);
-    const isCombatTransition = usePlayerActionsTransition(isCombat);
     return (
         <section
             className={css`
@@ -31,36 +29,33 @@ const NarrationPlayerActions = () => {
                 }
             `}
         >
-            {!isCombat &&
-                playerActionsTransition((style, playerAction) => (
-                    <animated.div style={style as any}>
-                        <PlayerAction action={playerAction} />
+            <Transition
+                items={[...playerActions, { isCombat }]}
+                from={{
+                    opacity: 0,
+                    transform: 'translate3d(0, 40px, 0)',
+                }}
+                enter={{
+                    opacity: 1,
+                    transform: 'translate3d(0, 0px, 0)',
+                }}
+            >
+                {(style, action) => (
+                    <animated.div style={style}>
+                        {action instanceof Action && (
+                            <PlayerAction action={action} />
+                        )}
+                        {!(action instanceof Action) && action.isCombat && (
+                            <GoToCombatAction />
+                        )}
                     </animated.div>
-                ))}
-            {isCombat &&
-                isCombatTransition((style) => (
-                    <animated.div style={style as any}>
-                        <GoToCombatAction />
-                    </animated.div>
-                ))}
+                )}
+            </Transition>
         </section>
     );
 };
 
 export default NarrationPlayerActions;
-
-const usePlayerActionsTransition = (items) => {
-    return useTransition(items, {
-        from: {
-            opacity: 0,
-            transform: 'translate3d(0, 40px, 0)',
-        },
-        enter: {
-            opacity: 1,
-            transform: 'translate3d(0, 0px, 0)',
-        },
-    });
-};
 
 const PlayerAction = ({ action }: { action: Action }) => {
     const executePlayerAction = useExecutePlayerAction();

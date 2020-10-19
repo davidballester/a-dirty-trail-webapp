@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import { animated, useTransition } from 'react-spring';
+import { animated, Transition } from 'react-spring';
 import { usePlayerActions, useScene } from '../contexts/gameContext';
 import NarrationPlayerActions from './NarrationPlayerActions';
 
@@ -22,16 +22,6 @@ const Narration = () => {
 const NarrationTitle = ({ title }: { title: string }) => <h2>{title}</h2>;
 
 const SceneSetup = ({ sceneSetup }: { sceneSetup: string[] }) => {
-    const transition = useTransition(sceneSetup, {
-        from: {
-            opacity: 0,
-            transform: 'translate3d(0, 40px, 0)',
-        },
-        enter: {
-            opacity: 1,
-            transform: 'translate3d(0, 0px, 0)',
-        },
-    });
     return (
         <section
             className={css`
@@ -40,9 +30,21 @@ const SceneSetup = ({ sceneSetup }: { sceneSetup: string[] }) => {
                 }
             `}
         >
-            {transition((style, item) => (
-                <animated.p style={style as any}>{item}</animated.p>
-            ))}
+            <Transition
+                items={sceneSetup}
+                from={{
+                    opacity: 0,
+                    transform: 'translate3d(0, 40px, 0)',
+                }}
+                enter={{
+                    opacity: 1,
+                    transform: 'translate3d(0, 0px, 0)',
+                }}
+            >
+                {(style, item) => (
+                    <animated.p style={style as any}>{item}</animated.p>
+                )}
+            </Transition>
         </section>
     );
 };

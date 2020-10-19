@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import { animated, useSpring } from 'react-spring';
+import { animated, Spring } from 'react-spring';
 import { GameViewMode, useGameViewMode } from '../contexts/gameViewModeContext';
 import CombatView from './CombatView';
 import NarrationView from './NarrationView';
@@ -8,46 +8,36 @@ import NarrationView from './NarrationView';
 const GameView = () => {
     const gameViewMode = useGameViewMode();
     const isNarration = gameViewMode === GameViewMode.narration;
-    const { transform, opacity } = useSpring({
-        opacity: isNarration ? 0 : 1,
-        transform: `perspective(600px) rotateX(${isNarration ? 0 : 180}deg)`,
-        config: { mass: 5, tension: 500, friction: 80 },
-    });
     return (
         <div
             className={css`
                 position: relative;
                 > div {
                     position: absolute;
+                    top: 0;
+                    left: 0;
                     width: 100%;
                     height: 100%;
-                    will-change: opacity, transform;
+                    will-change: transform;
                 }
             `}
         >
-            <animated.div
-                style={
-                    {
-                        opacity: opacity.to((o) => 1 - o),
-                        transform,
-                    } as any
-                }
-            >
-                <NarrationView />
-            </animated.div>
+            <NarrationView />
             {!isNarration && (
-                <animated.div
-                    style={
-                        {
-                            opacity,
-                            transform: transform.to(
-                                (t) => `${t} rotateX(180deg)`
-                            ),
-                        } as any
-                    }
+                <Spring
+                    from={{
+                        transform: `perspective(600px) rotateX(180deg)`,
+                    }}
+                    to={{
+                        transform: `perspective(600px) rotateX(0deg)`,
+                    }}
                 >
-                    <CombatView />
-                </animated.div>
+                    {(style) => (
+                        <animated.div style={style as any}>
+                            <CombatView />
+                        </animated.div>
+                    )}
+                </Spring>
             )}
         </div>
     );

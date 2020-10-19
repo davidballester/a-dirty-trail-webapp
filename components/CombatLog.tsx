@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { css } from 'emotion';
-import { animated, useTransition } from 'react-spring';
 import {
     SceneActionAndOutcome,
     useSceneActionsAndOutcomes,
@@ -22,20 +21,7 @@ import Health from './Health';
 
 const CombatLog = ({ onOutcomeLogged }: { onOutcomeLogged: () => void }) => {
     const { action, outcome } = useLastActionAndOutcome();
-    const outcomeTransition = useTransition(action ? action.id : undefined, {
-        from: {
-            opacity: 0,
-        },
-        enter: {
-            opacity: 1,
-            onRest: () => {
-                onOutcomeLogged();
-            },
-        },
-        leave: {
-            opacity: 0,
-        },
-    });
+    useDelayNotifyOutcomeLogged(onOutcomeLogged);
     if (!action) {
         return null;
     }
@@ -51,27 +37,36 @@ const CombatLog = ({ onOutcomeLogged }: { onOutcomeLogged: () => void }) => {
                 }
             `}
         >
-            {outcomeTransition((style) => (
-                <animated.div
-                    style={style as any}
-                    className={css`
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 2rem;
-                        will-change: opacity;
-                    `}
-                >
-                    <div>
-                        <ActionOutcome action={action} outcome={outcome} />
-                    </div>
-                </animated.div>
-            ))}
+            <div
+                className={css`
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 2rem;
+                    will-change: opacity;
+                `}
+            >
+                <div>
+                    <ActionOutcome action={action} outcome={outcome} />
+                </div>
+            </div>
         </section>
     );
 };
 
 export default CombatLog;
+
+const useDelayNotifyOutcomeLogged = (onOutcomeLogged: () => void) => {
+    const { action } = useLastActionAndOutcome();
+    useEffect(() => {
+        if (action) {
+            const timeoutKey = setTimeout(() => {
+                onOutcomeLogged();
+            }, 1000);
+            return () => clearTimeout(timeoutKey);
+        }
+    }, [action]);
+};
 
 const useLastActionAndOutcome = () => {
     const sceneActionsAndOutcomes = useSceneActionsAndOutcomes();
