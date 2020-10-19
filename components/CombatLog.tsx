@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { css } from 'emotion';
 import { animated, useTransition } from 'react-spring';
 import {
@@ -194,10 +194,10 @@ const ItemsEnumeration = ({ items }: { items: Item[] }) => (
         {items.length > 1 && (
             <>
                 {items.slice(0, -1).map((item, index) => (
-                    <>
+                    <Fragment key={item.id}>
                         <ItemName item={item} />
                         {index < items.length - 2 && <span>, </span>}
-                    </>
+                    </Fragment>
                 ))}
                 <span> and </span>
                 <ItemName item={items[items.length - 1]} />
