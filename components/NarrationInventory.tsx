@@ -6,11 +6,16 @@ import {
     Item as GameItem,
     Actor,
 } from 'a-dirty-trail';
-import { usePlayer } from '../contexts/gameContext';
+import {
+    useExecutePlayerAction,
+    usePlayer,
+    useWeaponReloadAction,
+} from '../contexts/gameContext';
 import ItemIcon from './ItemIcon';
 import WeaponAmmunition from './WeaponAmmunition';
 import Ammunition from './Ammunition';
 import useSkillLevelText from '../hooks/useSkillLevelText';
+import { Button } from 'react-bootstrap';
 
 const NarrationInventory = () => (
     <article>
@@ -71,51 +76,77 @@ const Weapon = ({ weapon, player }: { weapon: GameWeapon; player: Actor }) => {
         player.getSkill(weapon.skillName).level
     );
     return (
-        <article
-            className={css`
-                display: flex;
-                align-items: center;
-                justify-content: left;
-            `}
-        >
-            <ItemIcon src={`${weapon.name}-outlined.svg`} alt={weapon.name} />
-            <dl
-                className={
-                    'row ' +
-                    css`
-                        margin-bottom: 0;
-                        flex-grow: 1;
-                    `
-                }
+        <article>
+            <div
+                className={css`
+                    display: flex;
+                    align-items: center;
+                    justify-content: left;
+                `}
             >
-                <dt className="col-sm-3">Name</dt>
-                <dd className="col-sm-9">
-                    <span className="text-capitalize">{weapon.name}</span>
-                </dd>
+                <ItemIcon
+                    src={`${weapon.name}-outlined.svg`}
+                    alt={weapon.name}
+                />
+                <dl
+                    className={
+                        'row ' +
+                        css`
+                            margin-bottom: 0;
+                            flex-grow: 1;
+                        `
+                    }
+                >
+                    <dt className="col-sm-3">Name</dt>
+                    <dd className="col-sm-9">
+                        <span className="text-capitalize">{weapon.name}</span>
+                    </dd>
 
-                <dt className="col-sm-3">Damage</dt>
-                <dd className="col-sm-9">
-                    {weapon.minDamage}-{weapon.maxDamage}
-                </dd>
+                    <dt className="col-sm-3">Damage</dt>
+                    <dd className="col-sm-9">
+                        {weapon.minDamage}-{weapon.maxDamage}
+                    </dd>
 
-                <dt className="col-sm-3">Skill level</dt>
-                <dd className="col-sm-9">{skillLevelText}</dd>
+                    <dt className="col-sm-3">Skill level</dt>
+                    <dd className="col-sm-9">{skillLevelText}</dd>
 
-                {weapon.ammunition && (
-                    <>
-                        <dt className="col-sm-3">Ammunition</dt>
-                        <dd className="col-sm-9">
-                            <WeaponAmmunition ammunition={weapon.ammunition} />
-                        </dd>
-                    </>
-                )}
-            </dl>
+                    {weapon.ammunition && (
+                        <>
+                            <dt className="col-sm-3">Ammunition</dt>
+                            <dd className="col-sm-9">
+                                <WeaponAmmunition
+                                    ammunition={weapon.ammunition}
+                                />
+                            </dd>
+                        </>
+                    )}
+                </dl>
+            </div>
+            <ReloadWeaponButton weapon={weapon} />
         </article>
     );
 };
 
 const Item = ({ item }: { item: GameItem }) => {
     return <strong>{item.name}</strong>;
+};
+
+const ReloadWeaponButton = ({ weapon }: { weapon: GameWeapon }) => {
+    const reloadAction = useWeaponReloadAction(weapon);
+    const executePlayerAction = useExecutePlayerAction();
+    if (!reloadAction) {
+        return null;
+    }
+    return (
+        <Button
+            variant="outline-dark"
+            block
+            size="sm"
+            onClick={() => executePlayerAction(reloadAction)}
+        >
+            Reload
+        </Button>
+    );
 };
 
 export default NarrationInventory;
