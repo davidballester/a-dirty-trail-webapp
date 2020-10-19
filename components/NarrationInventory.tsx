@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { css } from 'emotion';
 import {
     Weapon as GameWeapon,
@@ -16,6 +16,7 @@ import WeaponAmmunition from './WeaponAmmunition';
 import Ammunition from './Ammunition';
 import useSkillLevelText from '../hooks/useSkillLevelText';
 import { Button } from 'react-bootstrap';
+import { animated, Transition } from 'react-spring';
 
 const NarrationInventory = () => (
     <article>
@@ -134,18 +135,36 @@ const Item = ({ item }: { item: GameItem }) => {
 const ReloadWeaponButton = ({ weapon }: { weapon: GameWeapon }) => {
     const reloadAction = useWeaponReloadAction(weapon);
     const executePlayerAction = useExecutePlayerAction();
-    if (!reloadAction) {
-        return null;
-    }
     return (
-        <Button
-            variant="outline-dark"
-            block
-            size="sm"
-            onClick={() => executePlayerAction(reloadAction)}
+        <Transition
+            items={reloadAction}
+            from={{
+                opacity: 0,
+                height: 0,
+                overflow: 'hidden',
+            }}
+            enter={{
+                opacity: 1,
+                height: 31,
+            }}
+            leave={{
+                opacity: 0,
+                height: 0,
+            }}
         >
-            Reload
-        </Button>
+            {(style, action) => (
+                <animated.div style={style}>
+                    <Button
+                        variant="outline-dark"
+                        block
+                        size="sm"
+                        onClick={() => executePlayerAction(action)}
+                    >
+                        Reload
+                    </Button>
+                </animated.div>
+            )}
+        </Transition>
     );
 };
 
