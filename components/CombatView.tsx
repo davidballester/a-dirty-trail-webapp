@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import { css } from 'emotion';
 import CombatOponents from './CombatOponents';
 import CombatPlayerArea from './CombatPlayerArea';
@@ -8,9 +8,37 @@ import {
     useCanPlayerAct,
     useExecuteNextOponentAction,
 } from '../contexts/gameContext';
-import { OponentsIconsProvider } from '../contexts/oponentsIconsContext';
 
 const CombatView = () => {
+    const onOutcomeLogged = useOnOutcomeLogged();
+    const canPlayerAct = useCanPlayerAct();
+    return (
+        <CombatBoard>
+            <CombatPlayerArea />
+            <div
+                className={css`
+                    margin-top: 3rem;
+                `}
+            >
+                <CombatOponents />
+            </div>
+            <CombatLog onOutcomeLogged={onOutcomeLogged} />
+            <div
+                className={css`
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                `}
+            >
+                <CombatPlayerActions enabled={canPlayerAct} />
+            </div>
+        </CombatBoard>
+    );
+};
+
+export default CombatView;
+
+const useOnOutcomeLogged = () => {
     const canPlayerAct = useCanPlayerAct();
     const executeNextOponentAction = useExecuteNextOponentAction();
     const onOutcomeLogged = useCallback(() => {
@@ -20,33 +48,8 @@ const CombatView = () => {
             }, 1000);
         }
     }, [canPlayerAct, executeNextOponentAction]);
-    return (
-        <OponentsIconsProvider>
-            <CombatBoard>
-                <CombatPlayerArea />
-                <div
-                    className={css`
-                        margin-top: 3rem;
-                    `}
-                >
-                    <CombatOponents />
-                </div>
-                <CombatLog onOutcomeLogged={onOutcomeLogged} />
-                <div
-                    className={css`
-                        position: absolute;
-                        bottom: 0;
-                        width: 100%;
-                    `}
-                >
-                    <CombatPlayerActions enabled={canPlayerAct} />
-                </div>
-            </CombatBoard>
-        </OponentsIconsProvider>
-    );
+    return onOutcomeLogged;
 };
-
-export default CombatView;
 
 const CombatBoard = ({
     children,

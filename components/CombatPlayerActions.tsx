@@ -20,7 +20,7 @@ import useIsNextOponent from '../hooks/useIsNextOponent';
 import WeaponAmmunition from './WeaponAmmunition';
 import { animated, Transition } from 'react-spring';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
-import { useOponentIcon } from '../contexts/oponentsIconsContext';
+import useOponentIcon from '../hooks/useOponentIcon';
 
 const CombatPlayerActions = ({ enabled }: { enabled: boolean }) => (
     <section>
