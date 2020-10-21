@@ -16,7 +16,7 @@ const NarrationView = () => {
     const [prevTab, setPrevTab] = useState(undefined as Tab);
     const [currentTab, setCurrentTab] = useState(Tab.narration);
     return (
-        <>
+        <section>
             <Header />
             <CenteredContainer>
                 <TabsButtons
@@ -31,7 +31,7 @@ const NarrationView = () => {
                     currentTab={currentTab}
                 />
             </CenteredContainer>
-        </>
+        </section>
     );
 };
 
