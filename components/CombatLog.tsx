@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { css } from 'emotion';
 import {
     SceneActionAndOutcome,
+    useLastActionAndOutcome,
     useSceneActionsAndOutcomes,
 } from '../contexts/gameContext';
 import {
@@ -18,6 +19,7 @@ import {
     ScapeAction,
 } from 'a-dirty-trail';
 import Health from './Health';
+import { WAIT_FOR_OPONENT_ACTION_MS } from '../helpers/constants';
 
 const CombatLog = ({ onOutcomeLogged }: { onOutcomeLogged: () => void }) => {
     const { action, outcome } = useLastActionAndOutcome();
@@ -62,18 +64,10 @@ const useDelayNotifyOutcomeLogged = (onOutcomeLogged: () => void) => {
         if (action) {
             const timeoutKey = setTimeout(() => {
                 onOutcomeLogged();
-            }, 1000);
+            }, WAIT_FOR_OPONENT_ACTION_MS);
             return () => clearTimeout(timeoutKey);
         }
     }, [action]);
-};
-
-const useLastActionAndOutcome = () => {
-    const sceneActionsAndOutcomes = useSceneActionsAndOutcomes();
-    if (sceneActionsAndOutcomes.length === 0) {
-        return {} as SceneActionAndOutcome;
-    }
-    return sceneActionsAndOutcomes[sceneActionsAndOutcomes.length - 1];
 };
 
 const ActionOutcome = ({

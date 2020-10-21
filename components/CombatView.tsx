@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react';
+import React, { ReactElement, useCallback, useEffect } from 'react';
 import { css } from 'emotion';
 import CombatOponents from './CombatOponents';
 import CombatPlayerArea from './CombatPlayerArea';
@@ -7,7 +7,11 @@ import CombatLog from './CombatLog';
 import {
     useCanPlayerAct,
     useExecuteNextOponentAction,
+    useLastActionAndOutcome,
 } from '../contexts/gameContext';
+import { WAIT_FOR_OPONENT_ACTION_MS } from '../helpers/constants';
+import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
+import { AdvanceToSceneAction } from 'a-dirty-trail/build';
 
 const CombatView = () => {
     const onOutcomeLogged = useOnOutcomeLogged();
@@ -30,7 +34,7 @@ const CombatView = () => {
                     width: 100%;
                 `}
             >
-                <CombatPlayerActions enabled={canPlayerAct} />
+                <CombatPlayerActions />
             </div>
         </CombatBoard>
     );
@@ -45,7 +49,7 @@ const useOnOutcomeLogged = () => {
         if (!canPlayerAct) {
             setTimeout(() => {
                 executeNextOponentAction();
-            }, 1000);
+            }, WAIT_FOR_OPONENT_ACTION_MS);
         }
     }, [canPlayerAct, executeNextOponentAction]);
     return onOutcomeLogged;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useScene } from '../contexts/gameContext';
 
 const useOponentIcon = (oponentName: string) => {
@@ -26,9 +26,13 @@ const allIcons = [
 ] as OponentIcon[];
 
 const useClearOponentIconsMapOnSceneChange = () => {
+    const [lastSceneId, setLastSceneId] = useState(undefined);
     const scene = useScene();
     useEffect(() => {
-        oponentIconsMap = {};
+        if (scene && scene.id !== lastSceneId) {
+            oponentIconsMap = {};
+            setLastSceneId(scene.id);
+        }
     }, [scene]);
 };
 

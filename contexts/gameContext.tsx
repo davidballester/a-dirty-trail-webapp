@@ -112,6 +112,14 @@ export const useSceneActionsAndOutcomes = () => {
     return state.sceneActionsAndOutcomes;
 };
 
+export const useLastActionAndOutcome = () => {
+    const sceneActionsAndOutcomes = useSceneActionsAndOutcomes();
+    if (sceneActionsAndOutcomes.length === 0) {
+        return {} as SceneActionAndOutcome;
+    }
+    return sceneActionsAndOutcomes[sceneActionsAndOutcomes.length - 1];
+};
+
 export const useWeaponReloadAction = (weapon: Weapon) => {
     const playerActions = usePlayerActions();
     return playerActions.find((action) => {
