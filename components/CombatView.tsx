@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { css } from 'emotion';
 import CombatOponents from './CombatOponents';
 import CombatPlayerArea from './CombatPlayerArea';
@@ -12,8 +12,7 @@ import { WAIT_FOR_OPONENT_ACTION_MS } from '../helpers/constants';
 import { OponentsIconsProvider } from '../contexts/oponentIconsContext';
 
 const CombatView = () => {
-    const onOutcomeLogged = useOnOutcomeLogged();
-    const canPlayerAct = useCanPlayerAct();
+    useAdvanceTurn();
     return (
         <CombatBoard>
             <OponentsIconsProvider>
@@ -25,7 +24,7 @@ const CombatView = () => {
                 >
                     <CombatOponents />
                 </div>
-                <CombatLog onOutcomeLogged={onOutcomeLogged} />
+                <CombatLog />
                 <div
                     className={css`
                         position: absolute;
@@ -42,17 +41,17 @@ const CombatView = () => {
 
 export default CombatView;
 
-const useOnOutcomeLogged = () => {
-    const canPlayerAct = useCanPlayerAct();
+const useAdvanceTurn = () => {
     const executeNextOponentAction = useExecuteNextOponentAction();
-    const onOutcomeLogged = useCallback(() => {
+    const canPlayerAct = useCanPlayerAct();
+    useEffect(() => {
         if (!canPlayerAct) {
-            setTimeout(() => {
+            const executeNextOponentActionTimeoutKey = setTimeout(() => {
                 executeNextOponentAction();
             }, WAIT_FOR_OPONENT_ACTION_MS);
+            return () => clearTimeout(executeNextOponentActionTimeoutKey);
         }
-    }, [canPlayerAct, executeNextOponentAction]);
-    return onOutcomeLogged;
+    }, [canPlayerAct]);
 };
 
 const CombatBoard = ({

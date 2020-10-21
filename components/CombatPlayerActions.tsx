@@ -12,23 +12,38 @@ import CombatSelectionOponents from './CombatSelectionOponents';
 import CombatSelectionInventories from './CombatSelectionInventories';
 import CombatSelectionClear from './CombatSelectionClear';
 import CombatSelectionExitCombat from './CombatSelectionExitCombat';
-import { useExecutePlayerAction } from '../contexts/gameContext';
+import {
+    useCanPlayerAct,
+    useExecutePlayerAction,
+} from '../contexts/gameContext';
 import CombatSelectionWeapons from './CombatSelectionWeapons';
-import { WAIT_FOR_OPONENT_ACTION_MS } from '../helpers/constants';
-import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
+import { animated, Transition } from 'react-spring';
 
-const CombatPlayerActions = () => (
-    <section>
-        <CombatActionSelectionProvider>
-            <ExecuteActionOnSelectionCompleted>
-                <CombatSelectionBreadcrumb />
-                <SelectionItems />
-                <CombatSelectionClear />
-                <CombatSelectionExitCombat />
-            </ExecuteActionOnSelectionCompleted>
-        </CombatActionSelectionProvider>
-    </section>
-);
+const CombatPlayerActions = () => {
+    const canPlayerAct = useCanPlayerAct();
+    return (
+        <section>
+            <CombatActionSelectionProvider>
+                <ExecuteActionOnSelectionCompleted>
+                    <Transition
+                        items={canPlayerAct || undefined}
+                        from={{ opacity: 0 }}
+                        enter={{ opacity: 1 }}
+                    >
+                        {(style) => (
+                            <animated.div style={style}>
+                                <CombatSelectionBreadcrumb />
+                                <SelectionItems />
+                                <CombatSelectionClear />
+                                <CombatSelectionExitCombat />
+                            </animated.div>
+                        )}
+                    </Transition>
+                </ExecuteActionOnSelectionCompleted>
+            </CombatActionSelectionProvider>
+        </section>
+    );
+};
 
 export default CombatPlayerActions;
 
@@ -49,9 +64,7 @@ const useExecuteActionOnSelectionCompleted = () => {
     useEffect(() => {
         if (isSelectionComplete) {
             executePlayerAction(selectedPlayerAction);
-            setTimeout(() => {
-                clearSelection();
-            }, WAIT_FOR_OPONENT_ACTION_MS * 2);
+            clearSelection();
         }
     }, [isSelectionComplete]);
 };

@@ -1,10 +1,6 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { css } from 'emotion';
-import {
-    SceneActionAndOutcome,
-    useLastActionAndOutcome,
-    useSceneActionsAndOutcomes,
-} from '../contexts/gameContext';
+import { useLastActionAndOutcome } from '../contexts/gameContext';
 import {
     Action,
     Actor,
@@ -19,11 +15,9 @@ import {
     ScapeAction,
 } from 'a-dirty-trail';
 import Health from './Health';
-import { WAIT_FOR_OPONENT_ACTION_MS } from '../helpers/constants';
 
-const CombatLog = ({ onOutcomeLogged }: { onOutcomeLogged: () => void }) => {
+const CombatLog = () => {
     const { action, outcome } = useLastActionAndOutcome();
-    useDelayNotifyOutcomeLogged(onOutcomeLogged);
     if (!action) {
         return null;
     }
@@ -57,18 +51,6 @@ const CombatLog = ({ onOutcomeLogged }: { onOutcomeLogged: () => void }) => {
 };
 
 export default CombatLog;
-
-const useDelayNotifyOutcomeLogged = (onOutcomeLogged: () => void) => {
-    const { action } = useLastActionAndOutcome();
-    useEffect(() => {
-        if (action) {
-            const timeoutKey = setTimeout(() => {
-                onOutcomeLogged();
-            }, WAIT_FOR_OPONENT_ACTION_MS);
-            return () => clearTimeout(timeoutKey);
-        }
-    }, [action]);
-};
 
 const ActionOutcome = ({
     action,
