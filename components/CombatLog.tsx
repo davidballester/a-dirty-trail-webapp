@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { css } from 'emotion';
 import { useLastActionAndOutcome } from '../contexts/gameContext';
 import {
@@ -16,7 +16,7 @@ import {
 } from 'a-dirty-trail';
 import Health from './Health';
 
-const CombatLog = () => {
+const CombatLog = (): ReactElement => {
     const { action, outcome } = useLastActionAndOutcome();
     if (!action) {
         return null;
@@ -58,7 +58,7 @@ const ActionOutcome = ({
 }: {
     action: Action;
     outcome: any;
-}) => {
+}): ReactElement => {
     if (action instanceof AttackAction) {
         return (
             <AttackActionOutcome
@@ -85,7 +85,7 @@ const AttackActionOutcome = ({
 }: {
     action: AttackAction;
     outcome: AttackOutcome;
-}) => {
+}): ReactElement => {
     if (outcome.status === AttackOutcomeStatus.missed) {
         return <MissedAttackActionOutcome action={action} />;
     }
@@ -117,7 +117,11 @@ const AttackActionOutcome = ({
     );
 };
 
-const MissedAttackActionOutcome = ({ action }: { action: AttackAction }) => (
+const MissedAttackActionOutcome = ({
+    action,
+}: {
+    action: AttackAction;
+}): ReactElement => (
     <>
         <ActionPlayer player={action.player} />
         <span> missed </span>
@@ -125,11 +129,15 @@ const MissedAttackActionOutcome = ({ action }: { action: AttackAction }) => (
     </>
 );
 
-const ActionPlayer = ({ player }: { player: Actor }) => (
+const ActionPlayer = ({ player }: { player: Actor }): ReactElement => (
     <strong className="text-capitalize">{player.name}</strong>
 );
 
-const ReloadActionOutcome = ({ action }: { action: ReloadAction }) => (
+const ReloadActionOutcome = ({
+    action,
+}: {
+    action: ReloadAction;
+}): ReactElement => (
     <>
         <ActionPlayer player={action.player} />
         <span> reloaded their </span>
@@ -137,7 +145,11 @@ const ReloadActionOutcome = ({ action }: { action: ReloadAction }) => (
     </>
 );
 
-const ScapeActionOutcome = ({ action }: { action: ScapeAction }) => (
+const ScapeActionOutcome = ({
+    action,
+}: {
+    action: ScapeAction;
+}): ReactElement => (
     <>
         <ActionPlayer player={action.player} />
         <span> scaped!</span>
@@ -150,7 +162,7 @@ const LootActionOutcome = ({
 }: {
     action: LootAction;
     outcome: Item[];
-}) => (
+}): ReactElement => (
     <>
         <ActionPlayer player={action.player} />
         <span> found </span>
@@ -159,7 +171,7 @@ const LootActionOutcome = ({
     </>
 );
 
-const ItemsEnumeration = ({ items }: { items: Item[] }) => (
+const ItemsEnumeration = ({ items }: { items: Item[] }): ReactElement => (
     <>
         {items.length === 1 && <ItemName item={items[0]} />}
         {items.length > 1 && (
@@ -177,7 +189,7 @@ const ItemsEnumeration = ({ items }: { items: Item[] }) => (
     </>
 );
 
-const ItemName = ({ item }: { item: Item }) => {
+const ItemName = ({ item }: { item: Item }): ReactElement => {
     if (item instanceof Ammunition) {
         return (
             <strong>

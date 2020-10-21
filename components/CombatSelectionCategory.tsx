@@ -10,7 +10,7 @@ const CombatSelectionCategoryTransition = ({
     visible: boolean | undefined;
     items: any[];
     children: (item: any) => ReactElement;
-}) => (
+}): ReactElement => (
     <Transition
         items={visible || undefined}
         from={{
@@ -28,10 +28,9 @@ const CombatSelectionCategoryTransition = ({
                         justify-content: center;
                     `}
                 >
-                    <SelectionItemsTransition
-                        items={items}
-                        children={children}
-                    />
+                    <SelectionItemsTransition items={items}>
+                        {children}
+                    </SelectionItemsTransition>
                 </div>
             </animated.div>
         )}
@@ -46,7 +45,7 @@ const SelectionItemsTransition = ({
 }: {
     items: any[];
     children: (item: any) => ReactElement;
-}) => (
+}): ReactElement => (
     <Transition
         items={items}
         from={{

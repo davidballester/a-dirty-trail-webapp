@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { Button } from 'react-bootstrap';
 import {
@@ -9,7 +9,7 @@ import {
 } from '../contexts/combatActionSelectionContext';
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 
-const CombatSelectionActionType = () => {
+const CombatSelectionActionType = (): ReactElement => {
     const actionType = useActionType();
     const availableActionTypes = useAvailableActionTypes();
     return (
@@ -26,7 +26,11 @@ const CombatSelectionActionType = () => {
 
 export default CombatSelectionActionType;
 
-const ActionTypeButton = ({ actionType }: { actionType: ActionType }) => {
+const ActionTypeButton = ({
+    actionType,
+}: {
+    actionType: ActionType;
+}): ReactElement => {
     const selectActionType = useSelectActionType();
     return (
         <Button

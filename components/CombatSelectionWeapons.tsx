@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import {
     useActionType,
@@ -13,7 +13,7 @@ import CombatSelectionIconButton from './CombatSelectionIconButton';
 import WeaponAmmunition from './WeaponAmmunition';
 import { usePlayer } from '../contexts/gameContext';
 
-const CombatSelectionWeapons = () => {
+const CombatSelectionWeapons = (): ReactElement => {
     const availableWeapons = useAvailableWeapons();
     const isVisible = useIsWeaponSelectionVisible();
     return (
@@ -52,7 +52,7 @@ const useIsWeaponSelectionVisibleForAttackAction = () => {
     return isVisibleIfAttack;
 };
 
-const WeaponButton = ({ weapon }: { weapon: Weapon }) => {
+const WeaponButton = ({ weapon }: { weapon: Weapon }): ReactElement => {
     const player = usePlayer();
     const selectWeapon = useSelectWeapon();
     const hitChance = player.getSkill(weapon.skillName).level * 100;

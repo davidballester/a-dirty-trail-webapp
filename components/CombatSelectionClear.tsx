@@ -7,7 +7,7 @@ import {
     useActionType,
 } from '../contexts/combatActionSelectionContext';
 
-const CombatSelectionClear = () => {
+const CombatSelectionClear = (): ReactElement => {
     const actionType = useActionType();
     return (
         <Spring
@@ -25,7 +25,7 @@ const CombatSelectionClear = () => {
 
 export default CombatSelectionClear;
 
-const CombatSelectionButton = () => {
+const CombatSelectionButton = (): ReactElement => {
     const clearSelection = useClearSelection();
     return (
         <div

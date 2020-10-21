@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
 import { usePlayerActions, useScene } from '../contexts/gameContext';
 import NarrationPlayerActions from './NarrationPlayerActions';
 
-const Narration = () => {
+const Narration = (): ReactElement => {
     const scene = useScene();
     const playerActions = usePlayerActions();
     if (!scene || !playerActions) {
@@ -19,9 +19,11 @@ const Narration = () => {
     );
 };
 
-const NarrationTitle = ({ title }: { title: string }) => <h2>{title}</h2>;
+const NarrationTitle = ({ title }: { title: string }): ReactElement => (
+    <h2>{title}</h2>
+);
 
-const SceneSetup = ({ sceneSetup }: { sceneSetup: string[] }) => {
+const SceneSetup = ({ sceneSetup }: { sceneSetup: string[] }): ReactElement => {
     return (
         <section
             className={css`

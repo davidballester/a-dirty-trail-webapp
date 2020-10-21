@@ -3,6 +3,7 @@ import { Global, css } from '@emotion/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Head from 'next/head';
 
+// eslint-disable-next-line react/prop-types,@typescript-eslint/explicit-module-boundary-types
 const App = ({ Component, pageProps }): React.ReactElement => (
     <>
         <Head>

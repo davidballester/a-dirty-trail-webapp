@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import {
     useNarrationPlayerActions,
@@ -12,12 +12,11 @@ import {
 import { Button } from 'react-bootstrap';
 import useActionVerb from '../hooks/useActionVerb';
 import useActionTarget from '../hooks/useActionTarget';
-import useActionAuxiliaryTool from '../hooks/useActionAuxiliaryTool';
 import { animated, Transition } from 'react-spring';
 import useIsCombat from '../hooks/useIsCombat';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 
-const NarrationPlayerActions = () => {
+const NarrationPlayerActions = (): ReactElement => {
     const isCombat = useIsCombat();
     const playerActions = useNarrationPlayerActions();
     return (
@@ -57,7 +56,7 @@ const NarrationPlayerActions = () => {
 
 export default NarrationPlayerActions;
 
-const PlayerAction = ({ action }: { action: Action }) => {
+const PlayerAction = ({ action }: { action: Action }): ReactElement => {
     const executePlayerAction = useExecutePlayerAction();
     return (
         <Button
@@ -77,12 +76,15 @@ const AdvancePlayerActionText = ({
     action,
 }: {
     action: AdvanceToSceneAction | AdvanceToActAction;
-}) => <span>{action.getName()}</span>;
+}): ReactElement => <span>{action.getName()}</span>;
 
-const StandardPlayerActionText = ({ action }: { action: Action }) => {
+const StandardPlayerActionText = ({
+    action,
+}: {
+    action: Action;
+}): ReactElement => {
     const actionVerb = useActionVerb(action);
     const actionTarget = useActionTarget(action);
-    const auxiliaryTool = useActionAuxiliaryTool(action);
     return (
         <div
             className={css`
@@ -91,17 +93,11 @@ const StandardPlayerActionText = ({ action }: { action: Action }) => {
         >
             <span className="text-capitalize">{actionVerb}</span>
             {!actionTarget ? null : <strong> {actionTarget.name}</strong>}
-            {!auxiliaryTool || auxiliaryTool.id === actionTarget.id ? null : (
-                <>
-                    <span> with </span>
-                    <strong>{auxiliaryTool.name}</strong>
-                </>
-            )}
         </div>
     );
 };
 
-const PlayerActionText = ({ action }: { action: Action }) => {
+const PlayerActionText = ({ action }: { action: Action }): ReactElement => {
     const isAdvanceAction =
         action instanceof AdvanceToActAction ||
         action instanceof AdvanceToSceneAction;
@@ -115,7 +111,7 @@ const PlayerActionText = ({ action }: { action: Action }) => {
     return <StandardPlayerActionText action={action} />;
 };
 
-const GoToCombatAction = () => {
+const GoToCombatAction = (): ReactElement => {
     const toggleGameViewMode = useToggleGameViewMode();
     return (
         <Button

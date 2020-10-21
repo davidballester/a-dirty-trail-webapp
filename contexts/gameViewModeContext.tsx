@@ -38,7 +38,7 @@ export const GameViewModeProvider = ({
     );
 };
 
-export const useGameViewMode = () => {
+export const useGameViewMode = (): GameViewMode => {
     const gameViewMode = useContext(GameViewModeContext) as GameViewMode;
     if (gameViewMode === undefined) {
         throw new Error(
@@ -48,7 +48,7 @@ export const useGameViewMode = () => {
     return gameViewMode;
 };
 
-export const useToggleGameViewMode = () => {
+export const useToggleGameViewMode = (): GameViewModeDispatch => {
     const gameViewModeDispatch = useContext(GameViewModeDispatchContext);
     if (gameViewModeDispatch === undefined) {
         throw new Error(

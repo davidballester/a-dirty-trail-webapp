@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
     useOponent,
     useActionType,
@@ -10,7 +10,7 @@ import { NonPlayableActor } from 'a-dirty-trail';
 import CombatSelectionIconButton from './CombatSelectionIconButton';
 import { useOponentIcon } from '../contexts/oponentIconsContext';
 
-const CombatSelectionOponents = () => {
+const CombatSelectionOponents = (): ReactElement => {
     const oponent = useOponent();
     const actionType = useActionType();
     const availableOponents = useAvailableOponents();
@@ -26,7 +26,11 @@ const CombatSelectionOponents = () => {
 
 export default CombatSelectionOponents;
 
-const OponentButton = ({ oponent }: { oponent: NonPlayableActor }) => {
+const OponentButton = ({
+    oponent,
+}: {
+    oponent: NonPlayableActor;
+}): ReactElement => {
     const selectOponent = useSelectOponent();
     const oponentIcon = useOponentIcon(oponent.name);
     return (

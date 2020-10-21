@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { Ammunition as GameAmmunition } from 'a-dirty-trail';
 import ItemIcon from './ItemIcon';
 
-const Ammunition = ({ ammunition }: { ammunition: GameAmmunition }) => (
+const Ammunition = ({
+    ammunition,
+}: {
+    ammunition: GameAmmunition;
+}): ReactElement => (
     <article
         className={css`
             display: flex;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 
 interface QuantityOutOfMaxProps {
@@ -16,7 +16,7 @@ const QuantityOutOfMax = ({
     emptyIconSrc,
     alt,
     iconClassName = '',
-}: QuantityOutOfMaxProps) => {
+}: QuantityOutOfMaxProps): ReactElement => {
     const icons = new Array(max).fill(null).map((_, index) => (
         <img
             key={index}

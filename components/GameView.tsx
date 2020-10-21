@@ -1,33 +1,31 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
 import { GameViewMode, useGameViewMode } from '../contexts/gameViewModeContext';
 import CombatView from './CombatView';
 import NarrationView from './NarrationView';
 
-const GameView = () => {
-    return (
-        <div
-            className={css`
-                position: relative;
-                > * {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                }
-            `}
-        >
-            <NarrationView />
-            <CombatWithTransition />
-        </div>
-    );
-};
+const GameView = (): ReactElement => (
+    <div
+        className={css`
+            position: relative;
+            > * {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        `}
+    >
+        <NarrationView />
+        <CombatWithTransition />
+    </div>
+);
 
 export default GameView;
 
-const CombatWithTransition = () => {
+const CombatWithTransition = (): ReactElement => {
     const gameViewMode = useGameViewMode();
     const isCombat = gameViewMode === GameViewMode.combat;
     return (

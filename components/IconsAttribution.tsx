@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 const iconMakers = [
     {
@@ -23,7 +23,7 @@ const iconMakers = [
     },
 ];
 
-const IconsAttribution = () => (
+const IconsAttribution = (): ReactElement => (
     <section>
         <div>
             Icons made by{' '}

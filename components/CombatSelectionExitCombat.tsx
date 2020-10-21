@@ -1,5 +1,4 @@
-import React from 'react';
-import { css } from 'emotion';
+import React, { ReactElement } from 'react';
 import {
     useExecutePlayerAction,
     usePlayerActions,
@@ -13,7 +12,7 @@ import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 import { Button } from 'react-bootstrap';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 
-const CombatSelectionExitCombat = () => {
+const CombatSelectionExitCombat = (): ReactElement => {
     const playerActions = usePlayerActions();
     const leaveActions = playerActions.filter(
         (action) =>
@@ -32,7 +31,7 @@ const CombatSelectionExitCombat = () => {
 
 export default CombatSelectionExitCombat;
 
-const ExitButton = ({ action }: { action: Action }) => {
+const ExitButton = ({ action }: { action: Action }): ReactElement => {
     const executePlayerAction = useExecutePlayerAction();
     const toggleGameViewMode = useToggleGameViewMode();
     return (

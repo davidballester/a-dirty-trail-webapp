@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import {
     Weapon as GameWeapon,
@@ -18,7 +18,7 @@ import useSkillLevelText from '../hooks/useSkillLevelText';
 import { Button } from 'react-bootstrap';
 import { animated, Transition } from 'react-spring';
 
-const NarrationInventory = () => (
+const NarrationInventory = (): ReactElement => (
     <article>
         <header>
             <h2>Inventory</h2>
@@ -27,7 +27,7 @@ const NarrationInventory = () => (
     </article>
 );
 
-const ListOfItems = () => {
+const ListOfItems = (): ReactElement => {
     const player = usePlayer();
     const inventory = player.inventory;
     const weapons = inventory.getWeapons();
@@ -72,7 +72,13 @@ const ListOfItems = () => {
     );
 };
 
-const Weapon = ({ weapon, player }: { weapon: GameWeapon; player: Actor }) => {
+const Weapon = ({
+    weapon,
+    player,
+}: {
+    weapon: GameWeapon;
+    player: Actor;
+}): ReactElement => {
     const skillLevelText = useSkillLevelText(
         player.getSkill(weapon.skillName).level
     );
@@ -125,11 +131,15 @@ const Weapon = ({ weapon, player }: { weapon: GameWeapon; player: Actor }) => {
     );
 };
 
-const Item = ({ item }: { item: GameItem }) => {
+const Item = ({ item }: { item: GameItem }): ReactElement => {
     return <strong>{item.name}</strong>;
 };
 
-const ReloadWeaponButton = ({ weapon }: { weapon: GameWeapon }) => {
+const ReloadWeaponButton = ({
+    weapon,
+}: {
+    weapon: GameWeapon;
+}): ReactElement => {
     const reloadAction = useWeaponReloadAction(weapon);
     const executePlayerAction = useExecutePlayerAction();
     return (

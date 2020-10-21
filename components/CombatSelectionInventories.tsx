@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {
     useActionType,
     useAvailableInventories,
@@ -10,7 +10,7 @@ import { Inventory } from 'a-dirty-trail';
 import CombatSelectionIconButton from './CombatSelectionIconButton';
 import { useOponentIcon } from '../contexts/oponentIconsContext';
 
-const CombatSelectionInventories = () => {
+const CombatSelectionInventories = (): ReactElement => {
     const inventory = useInventory();
     const actionType = useActionType();
     const availableInventories = useAvailableInventories();
@@ -28,7 +28,11 @@ const CombatSelectionInventories = () => {
 
 export default CombatSelectionInventories;
 
-const InventoryButton = ({ inventory }: { inventory: Inventory }) => {
+const InventoryButton = ({
+    inventory,
+}: {
+    inventory: Inventory;
+}): ReactElement => {
     const selectInventory = useSelectInventory();
     const inventoryIcon = useOponentIcon(inventory.name);
     return (

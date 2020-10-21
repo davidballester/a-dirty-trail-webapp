@@ -12,7 +12,7 @@ const CombatSelectionIconButton = ({
     name: string;
     onClick: () => void;
     children?: ReactElement | ReactElement[];
-}) => (
+}): ReactElement => (
     <Button
         variant="outline-dark"
         onClick={onClick}

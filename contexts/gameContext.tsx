@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useContext } from 'react';
+import React, { useReducer, useEffect, useContext, ReactElement } from 'react';
 import {
     Game,
     Action,
@@ -42,7 +42,11 @@ const gameReducer = (state: State, deltaState: DeltaState): State => {
     };
 };
 
-export const GameProvider = ({ children }): React.ReactElement => {
+export const GameProvider = ({
+    children,
+}: {
+    children: ReactElement | ReactElement[];
+}): React.ReactElement => {
     const [state, dispatch] = useReducer(gameReducer, {
         canPlayerAct: true,
         playerActions: [],
@@ -73,7 +77,7 @@ const useGameState = () => {
     return state;
 };
 
-export const useGame = () => {
+export const useGame = (): Game => {
     const state = useGameState();
     return state.game;
 };
@@ -88,12 +92,12 @@ export const useScene = (): Scene | undefined => {
     return game ? game.currentScene : undefined;
 };
 
-export const usePlayerActions = () => {
+export const usePlayerActions = (): Action[] => {
     const state = useGameState();
     return state.playerActions;
 };
 
-export const useNarrationPlayerActions = () => {
+export const useNarrationPlayerActions = (): Action[] => {
     const playerActions = usePlayerActions();
     return playerActions.filter(
         (action) =>
@@ -102,17 +106,17 @@ export const useNarrationPlayerActions = () => {
     );
 };
 
-export const useOponentsActions = () => {
+export const useOponentsActions = (): Action[] => {
     const game = useGame();
     return game ? game.oponentsActions : [];
 };
 
-export const useSceneActionsAndOutcomes = () => {
+export const useSceneActionsAndOutcomes = (): SceneActionAndOutcome[] => {
     const state = useGameState();
     return state.sceneActionsAndOutcomes;
 };
 
-export const useLastActionAndOutcome = () => {
+export const useLastActionAndOutcome = (): SceneActionAndOutcome => {
     const sceneActionsAndOutcomes = useSceneActionsAndOutcomes();
     if (sceneActionsAndOutcomes.length === 0) {
         return {} as SceneActionAndOutcome;
@@ -120,7 +124,7 @@ export const useLastActionAndOutcome = () => {
     return sceneActionsAndOutcomes[sceneActionsAndOutcomes.length - 1];
 };
 
-export const useWeaponReloadAction = (weapon: Weapon) => {
+export const useWeaponReloadAction = (weapon: Weapon): Action => {
     const playerActions = usePlayerActions();
     return playerActions.find((action) => {
         const isReloadAction = action instanceof ReloadAction;
@@ -133,7 +137,7 @@ export const useWeaponReloadAction = (weapon: Weapon) => {
     });
 };
 
-export const useGameDispatch = () => {
+export const useGameDispatch = (): GameDispatch => {
     const context = React.useContext(GameDispatchContext);
     if (context === undefined) {
         throw new Error('useGameDispatch must be used within a GameProvider');
@@ -141,18 +145,18 @@ export const useGameDispatch = () => {
     return context;
 };
 
-export const useCanPlayerAct = () => {
+export const useCanPlayerAct = (): boolean => {
     const state = useGameState();
     return state.canPlayerAct;
 };
 
-export const useExecutePlayerAction = () => {
+export const useExecutePlayerAction = (): ((action: Action) => void) => {
     const state = useGameState();
     const dispatch = useGameDispatch();
     return (action: Action) => executePlayerAction(action, state, dispatch);
 };
 
-export const useExecuteNextOponentAction = () => {
+export const useExecuteNextOponentAction = (): (() => void) => {
     const state = useGameState();
     const dispatch = useGameDispatch();
     return () => executeNextOponentAction(state, dispatch);

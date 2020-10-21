@@ -11,7 +11,7 @@ import {
 import { WAIT_FOR_OPONENT_ACTION_MS } from '../helpers/constants';
 import { OponentsIconsProvider } from '../contexts/oponentIconsContext';
 
-const CombatView = () => {
+const CombatView = (): ReactElement => {
     useAdvanceTurn();
     return (
         <CombatBoard>
@@ -58,7 +58,7 @@ const CombatBoard = ({
     children,
 }: {
     children: ReactElement | ReactElement[];
-}) => (
+}): ReactElement => (
     <div
         className={css`
             position: relative;
@@ -91,7 +91,7 @@ const CombatBoard = ({
     </div>
 );
 
-const GradientBackground = () => (
+const GradientBackground = (): ReactElement => (
     <div
         className={css`
             position: absolute;

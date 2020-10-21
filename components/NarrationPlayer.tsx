@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { usePlayer } from '../contexts/gameContext';
 import Health from './Health';
 import { Skill as GameSkill } from 'a-dirty-trail';
 import useSkillName from '../hooks/useSkillName';
 import useSkillLevelText from '../hooks/useSkillLevelText';
 
-const NarrationPlayer = () => (
+const NarrationPlayer = (): ReactElement => (
     <article>
         <Header />
         <Player />
     </article>
 );
 
-const Header = () => (
+const Header = (): ReactElement => (
     <header>
         <h2 className="text-capitalize">Character</h2>
     </header>
 );
 
-const Player = () => {
+const Player = (): ReactElement => {
     const player = usePlayer();
     return (
         <dl className="row">
@@ -42,7 +42,7 @@ const Player = () => {
     );
 };
 
-const PlayerSkills = ({ skills }: { skills: GameSkill[] }) => (
+const PlayerSkills = ({ skills }: { skills: GameSkill[] }): ReactElement => (
     <dl>
         {skills.map((skill) => (
             <PlayerSkill key={skill.name} skill={skill} />
@@ -50,7 +50,7 @@ const PlayerSkills = ({ skills }: { skills: GameSkill[] }) => (
     </dl>
 );
 
-const PlayerSkill = ({ skill }: { skill: GameSkill }) => {
+const PlayerSkill = ({ skill }: { skill: GameSkill }): ReactElement => {
     const skillName = useSkillName(skill.name);
     const skillLevel = useSkillLevelText(skill.level);
     return (

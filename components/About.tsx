@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import IconsAttribution from './IconsAttribution';
 
@@ -8,7 +8,7 @@ const AboutContent = ({
 }: {
     show: boolean;
     handleClose: () => void;
-}) => (
+}): ReactElement => (
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
             <Modal.Title>About</Modal.Title>
@@ -19,7 +19,11 @@ const AboutContent = ({
     </Modal>
 );
 
-const AboutButton = ({ className = '' }: { className?: string }) => {
+const AboutButton = ({
+    className = '',
+}: {
+    className?: string;
+}): ReactElement => {
     const [show, setShow] = useState(false);
     return (
         <>

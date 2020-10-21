@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 
-const MainTitle = (): React.ReactElement => {
+const MainTitle = (): ReactElement => {
     return (
         <h1
             className={css`

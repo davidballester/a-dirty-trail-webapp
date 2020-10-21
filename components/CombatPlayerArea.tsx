@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { usePlayer } from '../contexts/gameContext';
 import Health from './Health';
 import { Actor, Ammunition as GameAmmunition } from 'a-dirty-trail';
 import Ammunition from './Ammunition';
 
-const CombatPlayerArea = () => {
+const CombatPlayerArea = (): ReactElement => {
     const player = usePlayer();
     if (!player) {
         return null;
@@ -29,7 +29,7 @@ const CombatPlayerArea = () => {
         </section>
     );
 };
-const PlayerHealth = ({ player }: { player: Actor }) => (
+const PlayerHealth = ({ player }: { player: Actor }): ReactElement => (
     <section>
         <header>
             <h3>Health</h3>
@@ -43,7 +43,7 @@ const PlayerHealth = ({ player }: { player: Actor }) => (
     </section>
 );
 
-const PlayerAmmunitions = ({ player }: { player: Actor }) => {
+const PlayerAmmunitions = ({ player }: { player: Actor }): ReactElement => {
     const ammunitions = player.inventory.items.filter(
         (item) => item instanceof GameAmmunition
     );
@@ -75,6 +75,6 @@ const PlayerAmmunitions = ({ player }: { player: Actor }) => {
     );
 };
 
-const OutOfAmmunitions = () => <h3>Out of ammo!</h3>;
+const OutOfAmmunitions = (): ReactElement => <h3>Out of ammo!</h3>;
 
 export default CombatPlayerArea;

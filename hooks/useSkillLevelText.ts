@@ -1,6 +1,6 @@
 import { SkillLevel } from 'a-dirty-trail/build';
 
-const useSkillLevelText = (skillLevel: SkillLevel) => {
+const useSkillLevelText = (skillLevel: SkillLevel): string => {
     switch (skillLevel) {
         case SkillLevel.poor: {
             return 'poor';

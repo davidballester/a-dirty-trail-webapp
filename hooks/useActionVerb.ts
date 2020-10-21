@@ -8,7 +8,7 @@ import {
     ScapeAction,
 } from 'a-dirty-trail';
 
-const useActionVerb = (action: Action) => {
+const useActionVerb = (action: Action): string => {
     if (action instanceof AttackAction) {
         return 'attack';
     }

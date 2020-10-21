@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 
-const ItemIcon = ({ src, alt }: { src: string; alt: string }) => (
+const ItemIcon = ({ src, alt }: { src: string; alt: string }): ReactElement => (
     <img
         src={src}
         alt={alt}

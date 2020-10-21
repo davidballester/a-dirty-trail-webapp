@@ -13,7 +13,7 @@ import { animated, Spring } from 'react-spring';
 import useIsNextOponent from '../hooks/useIsNextOponent';
 import { useOponentIcon } from '../contexts/oponentIconsContext';
 
-const Oponents = () => {
+const Oponents = (): ReactElement => {
     const scene = useScene();
     if (!scene) {
         return null;
@@ -46,7 +46,7 @@ const Oponents = () => {
 
 export default Oponents;
 
-const Oponent = ({ oponent }: { oponent: NonPlayableActor }) => {
+const Oponent = ({ oponent }: { oponent: NonPlayableActor }): ReactElement => {
     const isNextOponent = useIsNextOponent(oponent);
     return (
         <Spring
@@ -62,7 +62,11 @@ const Oponent = ({ oponent }: { oponent: NonPlayableActor }) => {
     );
 };
 
-const OponentCard = ({ oponent }: { oponent: NonPlayableActor }) => (
+const OponentCard = ({
+    oponent,
+}: {
+    oponent: NonPlayableActor;
+}): ReactElement => (
     <article
         className={css`
             width: 10rem;
@@ -88,7 +92,11 @@ const OponentCard = ({ oponent }: { oponent: NonPlayableActor }) => (
     </article>
 );
 
-const OponentPortrait = ({ oponent }: { oponent: NonPlayableActor }) => {
+const OponentPortrait = ({
+    oponent,
+}: {
+    oponent: NonPlayableActor;
+}): ReactElement => {
     const oponentPortraitSrc = useOponentIcon(oponent.name);
     return (
         <img
@@ -101,7 +109,7 @@ const OponentPortrait = ({ oponent }: { oponent: NonPlayableActor }) => {
     );
 };
 
-const OponentName = ({ name }: { name: string }) => (
+const OponentName = ({ name }: { name: string }): ReactElement => (
     <h3
         className={
             'text-capitalize ' +
@@ -114,7 +122,7 @@ const OponentName = ({ name }: { name: string }) => (
     </h3>
 );
 
-const OponentHealth = ({ health }: { health: GameHealth }) => (
+const OponentHealth = ({ health }: { health: GameHealth }): ReactElement => (
     <Health
         health={health}
         iconClassName={css`
@@ -123,7 +131,11 @@ const OponentHealth = ({ health }: { health: GameHealth }) => (
     />
 );
 
-const OponentNextAction = ({ oponent }: { oponent: NonPlayableActor }) => {
+const OponentNextAction = ({
+    oponent,
+}: {
+    oponent: NonPlayableActor;
+}): ReactElement => {
     const oponentsActions = useOponentsActions();
     const nextAction = oponentsActions.find(
         ({ player }) => player.id === oponent.id
@@ -134,7 +146,11 @@ const OponentNextAction = ({ oponent }: { oponent: NonPlayableActor }) => {
     return <OponentNextActionContent nextAction={nextAction} />;
 };
 
-const OponentNextActionContent = ({ nextAction }: { nextAction: Action }) => {
+const OponentNextActionContent = ({
+    nextAction,
+}: {
+    nextAction: Action;
+}): ReactElement => {
     let nextActionContent: ReactElement;
     if (nextAction instanceof AttackAction) {
         nextActionContent = (
@@ -161,7 +177,7 @@ const OponentNextAttackActionContent = ({
     nextAction,
 }: {
     nextAction: AttackAction;
-}) => {
+}): ReactElement => {
     const weapon = nextAction.weapon;
     return (
         <img
@@ -179,7 +195,7 @@ const OponentNextReloadActionContent = ({
     nextAction,
 }: {
     nextAction: ReloadAction;
-}) => {
+}): ReactElement => {
     const weapon = nextAction.weapon;
     const ammunition = nextAction.ammunition;
     return (
@@ -203,4 +219,6 @@ const OponentNextReloadActionContent = ({
     );
 };
 
-const OponentNextScapeActionContent = () => <strong>Scape!</strong>;
+const OponentNextScapeActionContent = (): ReactElement => (
+    <strong>Scape!</strong>
+);

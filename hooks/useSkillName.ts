@@ -1,6 +1,6 @@
 import { SkillName } from 'a-dirty-trail';
 
-const useSkillName = (skillName: SkillName) => {
+const useSkillName = (skillName: SkillName): string => {
     switch (skillName) {
         case SkillName.closeCombat: {
             return 'Hand to hand combat';

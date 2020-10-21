@@ -117,7 +117,7 @@ const useOponentsIcons = () => {
     return state;
 };
 
-export const useOponentIcon = (oponentName: string) => {
+export const useOponentIcon = (oponentName: string): string => {
     const dispatch = useDispatch();
     const state = useOponentsIcons();
     const existingIcon = state[oponentName];

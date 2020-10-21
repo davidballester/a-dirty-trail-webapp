@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint --no-error-on-unmatched-pattern components/**/*.tsx contexts/**/*.tsx helpers/**/*.ts hooks/**/*.ts pages/**/*.tsx"
+        "lint": "eslint --no-error-on-unmatched-pattern components/**/*.tsx contexts/**/*.tsx helpers/**/*.ts hooks/**/*.ts pages/**/*.tsx",
+        "lint-fix": "npm run lint -- --fix"
     },
     "dependencies": {
         "@emotion/core": "^10.0.35",

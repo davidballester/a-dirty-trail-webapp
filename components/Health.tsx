@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { Health as GameHealth } from 'a-dirty-trail';
 import QuantityOutOfMax from './QuantityOutOfMax';
@@ -9,7 +9,7 @@ const Health = ({
 }: {
     health: GameHealth;
     iconClassName?: string;
-}) => (
+}): ReactElement => (
     <QuantityOutOfMax
         iconSrc="/health.svg"
         emptyIconSrc="/health-empty.svg"

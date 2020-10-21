@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
 import Narration from './Narration';
@@ -12,7 +12,7 @@ enum Tab {
     player = 1,
     inventory = 2,
 }
-const NarrationView = () => {
+const NarrationView = (): ReactElement => {
     const [prevTab, setPrevTab] = useState(undefined as Tab);
     const [currentTab, setCurrentTab] = useState(Tab.narration);
     return (
@@ -43,7 +43,7 @@ const TabContentsWithTransition = ({
 }: {
     currentTab: Tab;
     prevTab: Tab;
-}) => {
+}): ReactElement => {
     const isTransitionLeftToRight = currentTab < prevTab;
     return (
         <div
@@ -89,7 +89,7 @@ const CenteredContainer = ({
     children,
 }: {
     children: React.ReactElement | React.ReactElement[];
-}) => (
+}): ReactElement => (
     <main
         className={css`
             position: relative;
@@ -107,7 +107,7 @@ const TabsButtons = ({
 }: {
     onClick: (newTab: Tab) => void;
     currentTab: Tab;
-}) => (
+}): ReactElement => (
     <nav>
         <NarrationButton
             onClick={() => onClick(Tab.narration)}
@@ -128,7 +128,7 @@ interface ButtonProps {
     onClick: () => void;
     selected: boolean;
 }
-const NarrationButton = ({ onClick, selected }: ButtonProps) => (
+const NarrationButton = ({ onClick, selected }: ButtonProps): ReactElement => (
     <TabButton
         onClick={onClick}
         iconAlt="narration"
@@ -136,7 +136,7 @@ const NarrationButton = ({ onClick, selected }: ButtonProps) => (
     />
 );
 
-const PlayerButton = ({ onClick, selected }: ButtonProps) => (
+const PlayerButton = ({ onClick, selected }: ButtonProps): ReactElement => (
     <TabButton
         onClick={onClick}
         iconAlt="player"
@@ -144,7 +144,7 @@ const PlayerButton = ({ onClick, selected }: ButtonProps) => (
     />
 );
 
-const InventoryButton = ({ onClick, selected }: ButtonProps) => (
+const InventoryButton = ({ onClick, selected }: ButtonProps): ReactElement => (
     <TabButton
         onClick={onClick}
         iconAlt="inventory"
@@ -160,7 +160,7 @@ const TabButton = ({
     onClick: () => void;
     iconSrc: string;
     iconAlt: string;
-}) => (
+}): ReactElement => (
     <Button
         variant="link"
         onClick={onClick}

@@ -19,7 +19,7 @@ import {
 import CombatSelectionWeapons from './CombatSelectionWeapons';
 import { animated, Transition } from 'react-spring';
 
-const CombatPlayerActions = () => {
+const CombatPlayerActions = (): ReactElement => {
     const canPlayerAct = useCanPlayerAct();
     return (
         <section>
@@ -51,12 +51,12 @@ const ExecuteActionOnSelectionCompleted = ({
     children,
 }: {
     children: ReactElement | ReactElement[];
-}) => {
+}): ReactElement => {
     useExecuteActionOnSelectionCompleted();
     return <>{children}</>;
 };
 
-const useExecuteActionOnSelectionCompleted = () => {
+const useExecuteActionOnSelectionCompleted = (): ReactElement => {
     const isSelectionComplete = useIsSelectionComplete();
     const selectedPlayerAction = useSelectedPlayerAction();
     const executePlayerAction = useExecutePlayerAction();
@@ -69,7 +69,7 @@ const useExecuteActionOnSelectionCompleted = () => {
     }, [isSelectionComplete]);
 };
 
-const SelectionItems = () => (
+const SelectionItems = (): ReactElement => (
     <div
         className={css`
             position: relative;

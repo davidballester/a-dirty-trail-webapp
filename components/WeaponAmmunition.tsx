@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { Ammunition } from 'a-dirty-trail';
 import QuantityOutOfMax from './QuantityOutOfMax';
 
-const WeaponAmmunition = ({ ammunition }: { ammunition: Ammunition }) => (
+const WeaponAmmunition = ({
+    ammunition,
+}: {
+    ammunition: Ammunition;
+}): ReactElement => (
     <QuantityOutOfMax
         iconSrc={`${ammunition.name}.svg`}
         emptyIconSrc={`${ammunition.name}-empty.svg`}

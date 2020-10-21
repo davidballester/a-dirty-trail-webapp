@@ -1,5 +1,6 @@
 import {
     Action,
+    Actor,
     AttackAction,
     Inventory,
     LootAction,
@@ -122,27 +123,27 @@ const useState = () => {
     return combatActionSelection;
 };
 
-export const useActionType = () => {
+export const useActionType = (): ActionType => {
     const state = useState();
     return state.actionType;
 };
 
-export const useOponent = () => {
+export const useOponent = (): NonPlayableActor => {
     const state = useState();
     return state.oponent;
 };
 
-export const useInventory = () => {
+export const useInventory = (): Inventory => {
     const state = useState();
     return state.inventory;
 };
 
-export const useWeapon = () => {
+export const useWeapon = (): Weapon => {
     const state = useState();
     return state.weapon;
 };
 
-export const useIsSelectionComplete = () => {
+export const useIsSelectionComplete = (): boolean => {
     const state = useState();
     if (!state.actionType) {
         return false;
@@ -160,7 +161,7 @@ export const useIsSelectionComplete = () => {
     }
 };
 
-export const useSelectedPlayerAction = () => {
+export const useSelectedPlayerAction = (): Action => {
     const state = useState();
     const isSelectionComplete = useIsSelectionComplete();
     const playerActions = usePlayerActions();
@@ -228,7 +229,7 @@ const useDispatch = () => {
     return dispatch;
 };
 
-export const useClearSelection = () => {
+export const useClearSelection = (): (() => void) => {
     const dispatch = useDispatch();
     return () =>
         dispatch({
@@ -236,7 +237,7 @@ export const useClearSelection = () => {
         });
 };
 
-export const useSelectActionType = () => {
+export const useSelectActionType = (): ((actionType: ActionType) => void) => {
     const dispatch = useDispatch();
     return (actionType: ActionType) =>
         dispatch({
@@ -245,7 +246,7 @@ export const useSelectActionType = () => {
         });
 };
 
-export const useSelectOponent = () => {
+export const useSelectOponent = (): ((oponent: NonPlayableActor) => void) => {
     const dispatch = useDispatch();
     return (oponent: NonPlayableActor) =>
         dispatch({
@@ -254,7 +255,7 @@ export const useSelectOponent = () => {
         });
 };
 
-export const useSelectInventory = () => {
+export const useSelectInventory = (): ((inventory: Inventory) => void) => {
     const dispatch = useDispatch();
     return (inventory: Inventory) =>
         dispatch({
@@ -263,7 +264,7 @@ export const useSelectInventory = () => {
         });
 };
 
-export const useSelectWeapon = () => {
+export const useSelectWeapon = (): ((weapon: Weapon) => void) => {
     const dispatch = useDispatch();
     return (weapon: Weapon) =>
         dispatch({
@@ -272,7 +273,7 @@ export const useSelectWeapon = () => {
         });
 };
 
-export const useAvailableActionTypes = () => {
+export const useAvailableActionTypes = (): ActionType[] => {
     const playerActions = usePlayerActions();
     const actionTypes = playerActions
         .map(mapActionToActionType)
@@ -299,7 +300,7 @@ const getUniqueActionTypes = (actionTypes: ActionType[]) => {
     return Array.from(actionTypesSet);
 };
 
-export const useAvailableOponents = () => {
+export const useAvailableOponents = (): Actor[] => {
     const playerActions = usePlayerActions();
     const attackActions = getAttackActions(playerActions);
     const oponents = getOponents(attackActions);
@@ -323,7 +324,7 @@ const getUniqueObjectsWithId = <T extends { id: string }>(objects: T[]) =>
         return indexOfFirstMatch === index;
     });
 
-export const useAvailableInventories = () => {
+export const useAvailableInventories = (): Inventory[] => {
     const playerActions = usePlayerActions();
     const lootActions = getLootActions(playerActions);
     const inventories = getInventories(lootActions);
@@ -339,7 +340,7 @@ const getLootActions = (action: Action[]) =>
 const getInventories = (actions: LootAction[]) =>
     actions.map((action) => action.inventory);
 
-export const useAvailableWeapons = () => {
+export const useAvailableWeapons = (): Weapon[] => {
     const actionType = useActionType();
     const playerActions = usePlayerActions();
     const actionsToGetWeaponsFrom =

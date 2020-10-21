@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { Transition, animated } from 'react-spring';
 import {
@@ -9,7 +9,7 @@ import {
 } from '../contexts/combatActionSelectionContext';
 import capitalize from '../helpers/capitalize';
 
-const CombatSelectionBreadcrumb = () => {
+const CombatSelectionBreadcrumb = (): ReactElement => {
     const breadcrumbText = useBreadcrumbText();
     return (
         <div
