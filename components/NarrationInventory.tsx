@@ -85,10 +85,7 @@ const Weapon = ({ weapon, player }: { weapon: GameWeapon; player: Actor }) => {
                     justify-content: left;
                 `}
             >
-                <ItemIcon
-                    src={`${weapon.name}-outlined.svg`}
-                    alt={weapon.name}
-                />
+                <ItemIcon src={`${weapon.name}.svg`} alt={weapon.name} />
                 <dl
                     className={
                         'row ' +

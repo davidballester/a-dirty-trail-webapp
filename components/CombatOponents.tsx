@@ -165,7 +165,7 @@ const OponentNextAttackActionContent = ({
     const weapon = nextAction.weapon;
     return (
         <img
-            src={`${weapon.name}-outlined.svg`}
+            src={`${weapon.name}.svg`}
             alt={weapon.name}
             title={`The oponent will attack with their ${weapon.name}`}
             className={css`
@@ -196,12 +196,9 @@ const OponentNextReloadActionContent = ({
                 }
             `}
         >
-            <img
-                src={`${ammunition.name}-outlined-empty.svg`}
-                alt={ammunition.name}
-            />
+            <img src={`${ammunition.name}-empty.svg`} alt={ammunition.name} />
             {'➜'}
-            <img src={`${weapon.name}-outlined.svg`} alt={weapon.name} />
+            <img src={`${weapon.name}.svg`} alt={weapon.name} />
         </div>
     );
 };

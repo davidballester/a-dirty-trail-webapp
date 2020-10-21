@@ -11,10 +11,7 @@ const Ammunition = ({ ammunition }: { ammunition: GameAmmunition }) => (
             justify-content: left;
         `}
     >
-        <ItemIcon
-            src={`${ammunition.name}-outlined-empty.svg`}
-            alt={ammunition.name}
-        />
+        <ItemIcon src={`${ammunition.name}-empty.svg`} alt={ammunition.name} />
         <strong
             className={css`
                 font-size: 1.2rem;

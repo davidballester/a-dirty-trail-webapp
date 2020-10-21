@@ -58,7 +58,7 @@ const WeaponButton = ({ weapon }: { weapon: Weapon }) => {
     const hitChance = player.getSkill(weapon.skillName).level * 100;
     return (
         <CombatSelectionIconButton
-            iconSrc={`${weapon.name}-outlined.svg`}
+            iconSrc={`${weapon.name}.svg`}
             name={weapon.name}
             onClick={() => selectWeapon(weapon)}
         >

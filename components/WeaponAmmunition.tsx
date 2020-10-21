@@ -5,8 +5,8 @@ import QuantityOutOfMax from './QuantityOutOfMax';
 
 const WeaponAmmunition = ({ ammunition }: { ammunition: Ammunition }) => (
     <QuantityOutOfMax
-        iconSrc={`${ammunition.name}-outlined.svg`}
-        emptyIconSrc={`${ammunition.name}-outlined-empty.svg`}
+        iconSrc={`${ammunition.name}.svg`}
+        emptyIconSrc={`${ammunition.name}-empty.svg`}
         alt={`${ammunition.quantity} out of ${ammunition.maxAmmunition} ${ammunition.name}`}
         current={ammunition.quantity}
         max={ammunition.maxAmmunition}

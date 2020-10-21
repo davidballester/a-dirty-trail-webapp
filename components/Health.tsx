@@ -11,8 +11,8 @@ const Health = ({
     iconClassName?: string;
 }) => (
     <QuantityOutOfMax
-        iconSrc="/health-narration.svg"
-        emptyIconSrc="/health-narration-empty.svg"
+        iconSrc="/health.svg"
+        emptyIconSrc="/health-empty.svg"
         current={health.currentHitpoints}
         max={health.maxHitpoints}
         alt={`${health.currentHitpoints} hitpoints out of ${health.maxHitpoints}`}
