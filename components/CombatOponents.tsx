@@ -11,7 +11,7 @@ import {
 import Health from './Health';
 import { animated, Spring } from 'react-spring';
 import useIsNextOponent from '../hooks/useIsNextOponent';
-import useOponentIcon from '../hooks/useOponentIcon';
+import { useOponentIcon } from '../contexts/oponentIconsContext';
 
 const Oponents = () => {
     const scene = useScene();

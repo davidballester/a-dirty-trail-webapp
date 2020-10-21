@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from 'emotion';
 import {
     useExecutePlayerAction,
     usePlayerActions,
@@ -34,10 +35,9 @@ export default CombatSelectionExitCombat;
 const ExitButton = ({ action }: { action: Action }) => {
     const executePlayerAction = useExecutePlayerAction();
     const toggleGameViewMode = useToggleGameViewMode();
-    console.log(action);
     return (
         <Button
-            variant="outline-dark"
+            variant="dark"
             onClick={() => {
                 executePlayerAction(action);
                 toggleGameViewMode();

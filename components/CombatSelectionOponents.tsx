@@ -5,10 +5,10 @@ import {
     useAvailableOponents,
     useSelectOponent,
 } from '../contexts/combatActionSelectionContext';
-import useOponentIcon from '../hooks/useOponentIcon';
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 import { NonPlayableActor } from 'a-dirty-trail';
 import CombatSelectionIconButton from './CombatSelectionIconButton';
+import { useOponentIcon } from '../contexts/oponentIconsContext';
 
 const CombatSelectionOponents = () => {
     const oponent = useOponent();

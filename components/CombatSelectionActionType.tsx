@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from 'emotion';
 import { Button } from 'react-bootstrap';
 import {
     useActionType,
@@ -34,7 +35,29 @@ const ActionTypeButton = ({ actionType }: { actionType: ActionType }) => {
             className="text-capitalize"
             block
         >
-            {actionType}
+            <div
+                className={css`
+                    width: 80%;
+                    position: relative;
+                    margin: auto;
+                    :after {
+                        content: '';
+                        display: block;
+                        padding-bottom: calc(100% + 1.5rem);
+                    }
+                `}
+            >
+                <div
+                    className={css`
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    `}
+                >
+                    {actionType}
+                </div>
+            </div>
         </Button>
     );
 };

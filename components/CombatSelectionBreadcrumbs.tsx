@@ -1,5 +1,6 @@
 import React from 'react';
-import { Spring, animated } from 'react-spring';
+import { css } from 'emotion';
+import { Transition, animated } from 'react-spring';
 import {
     useActionType,
     useInventory,
@@ -9,19 +10,36 @@ import {
 import capitalize from '../helpers/capitalize';
 
 const CombatSelectionBreadcrumb = () => {
-    const actionType = useActionType();
     const breadcrumbText = useBreadcrumbText();
     return (
-        <Spring
-            from={{ opacity: !!actionType ? 0 : 1 }}
-            to={{ opacity: !!actionType ? 1 : 0 }}
+        <div
+            className={css`
+                position: relative;
+                padding-bottom: 2rem;
+                > div {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            `}
         >
-            {(style) => (
-                <animated.div style={style as any}>
-                    <h6 className="text-center">{breadcrumbText}</h6>
-                </animated.div>
-            )}
-        </Spring>
+            <Transition
+                items={breadcrumbText}
+                from={{ opacity: 0 }}
+                enter={{ opacity: 1 }}
+                leave={{ opacity: 0 }}
+            >
+                {(style) => (
+                    <animated.div style={style as any}>
+                        <h6>{breadcrumbText}</h6>
+                    </animated.div>
+                )}
+            </Transition>
+        </div>
     );
 };
 
@@ -58,7 +76,7 @@ const useAttackBreadcrumbtText = () => {
     if (!weapon) {
         return `Select weapon to attack ${capitalize(oponent.name)}`;
     }
-    return `Attacking ${capitalize(oponent.name)} with ${weapon.name}`;
+    return null;
 };
 
 const useReloadBreadcrumbtText = () => {
@@ -66,7 +84,7 @@ const useReloadBreadcrumbtText = () => {
     if (!weapon) {
         return 'Select weapon to reload';
     }
-    return `Reloading ${weapon.name}`;
+    return null;
 };
 
 const useLootBreadcrumbtText = () => {
@@ -74,5 +92,5 @@ const useLootBreadcrumbtText = () => {
     if (!inventory) {
         return 'Select fallen oponent to loot';
     }
-    return `Looting ${inventory.name}`;
+    return null;
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from 'emotion';
 import {
     useActionType,
     useAvailableWeapons,
@@ -9,6 +10,8 @@ import {
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 import { Weapon } from 'a-dirty-trail';
 import CombatSelectionIconButton from './CombatSelectionIconButton';
+import WeaponAmmunition from './WeaponAmmunition';
+import { usePlayer } from '../contexts/gameContext';
 
 const CombatSelectionWeapons = () => {
     const availableWeapons = useAvailableWeapons();
@@ -50,12 +53,26 @@ const useIsWeaponSelectionVisibleForAttackAction = () => {
 };
 
 const WeaponButton = ({ weapon }: { weapon: Weapon }) => {
+    const player = usePlayer();
     const selectWeapon = useSelectWeapon();
+    const hitChance = player.getSkill(weapon.skillName).level * 100;
     return (
         <CombatSelectionIconButton
             iconSrc={`${weapon.name}-outlined.svg`}
             name={weapon.name}
             onClick={() => selectWeapon(weapon)}
-        />
+        >
+            {weapon.ammunition && (
+                <WeaponAmmunition ammunition={weapon.ammunition} />
+            )}
+            <p
+                className={css`
+                    margin: 0;
+                    padding: 0.5rem 0;
+                `}
+            >
+                Hit chance: <strong>{hitChance}%</strong>
+            </p>
+        </CombatSelectionIconButton>
     );
 };

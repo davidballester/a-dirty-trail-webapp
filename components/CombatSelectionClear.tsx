@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from 'emotion';
 import { Button } from 'react-bootstrap';
 import { Spring, animated } from 'react-spring';
 import {
@@ -7,7 +8,6 @@ import {
 } from '../contexts/combatActionSelectionContext';
 
 const CombatSelectionClear = () => {
-    const clearSelection = useClearSelection();
     const actionType = useActionType();
     return (
         <Spring
@@ -16,14 +16,7 @@ const CombatSelectionClear = () => {
         >
             {(style) => (
                 <animated.div style={style as any}>
-                    <Button
-                        variant="outline-dark"
-                        onClick={() => clearSelection()}
-                        block
-                        size="sm"
-                    >
-                        Reset
-                    </Button>
+                    <CombatSelectionButton />
                 </animated.div>
             )}
         </Spring>
@@ -31,3 +24,26 @@ const CombatSelectionClear = () => {
 };
 
 export default CombatSelectionClear;
+
+const CombatSelectionButton = () => {
+    const clearSelection = useClearSelection();
+    return (
+        <div
+            className={css`
+                width: 33%;
+                padding: 0.5rem;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+            `}
+        >
+            <Button
+                variant="outline-dark"
+                onClick={() => clearSelection()}
+                block
+            >
+                Reset
+            </Button>
+        </div>
+    );
+};

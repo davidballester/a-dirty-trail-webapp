@@ -8,7 +8,7 @@ import {
 } from '../contexts/combatActionSelectionContext';
 import CombatSelectionBreadcrumb from './CombatSelectionBreadcrumbs';
 import CombatSelectionActionType from './CombatSelectionActionType';
-import CombatSelectionOponents from './CombatSelectionOponens';
+import CombatSelectionOponents from './CombatSelectionOponents';
 import CombatSelectionInventories from './CombatSelectionInventories';
 import CombatSelectionClear from './CombatSelectionClear';
 import CombatSelectionExitCombat from './CombatSelectionExitCombat';
@@ -51,7 +51,7 @@ const useExecuteActionOnSelectionCompleted = () => {
             executePlayerAction(selectedPlayerAction);
             setTimeout(() => {
                 clearSelection();
-            }, WAIT_FOR_OPONENT_ACTION_MS);
+            }, WAIT_FOR_OPONENT_ACTION_MS * 2);
         }
     }, [isSelectionComplete]);
 };
@@ -60,14 +60,6 @@ const SelectionItems = () => (
     <div
         className={css`
             position: relative;
-            height: 25vh;
-            > div {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
         `}
     >
         <CombatSelectionActionType />

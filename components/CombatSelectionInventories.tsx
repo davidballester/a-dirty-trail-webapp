@@ -7,8 +7,8 @@ import {
 } from '../contexts/combatActionSelectionContext';
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 import { Inventory } from 'a-dirty-trail';
-import useOponentIcon from '../hooks/useOponentIcon';
 import CombatSelectionIconButton from './CombatSelectionIconButton';
+import { useOponentIcon } from '../contexts/oponentIconsContext';
 
 const CombatSelectionInventories = () => {
     const inventory = useInventory();
