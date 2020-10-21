@@ -1,29 +1,36 @@
 {
-  "name": "a-dirty-trail-webapp",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "a-dirty-trail": "git+https://github.com/davidballester/a-dirty-trail.git",
-    "bootstrap": "^4.5.2",
-    "emotion": "^10.0.27",
-    "next": "9.5.3",
-    "react": "16.13.1",
-    "react-bootstrap": "^1.3.0",
-    "react-dom": "16.13.1",
-    "react-helmet": "^6.1.0",
-    "react-spring": "^9.0.0-rc.3",
-    "uuid": "^8.3.1"
-  },
-  "devDependencies": {
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.50",
-    "prettier": "^2.1.2",
-    "typescript": "^4.0.3"
-  }
+    "name": "a-dirty-trail-webapp",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint --no-error-on-unmatched-pattern components/**/*.tsx contexts/**/*.tsx helpers/**/*.ts hooks/**/*.ts pages/**/*.tsx"
+    },
+    "dependencies": {
+        "@emotion/core": "^10.0.35",
+        "a-dirty-trail": "git+https://github.com/davidballester/a-dirty-trail.git",
+        "bootstrap": "^4.5.2",
+        "emotion": "^10.0.27",
+        "next": "9.5.3",
+        "react": "16.13.1",
+        "react-bootstrap": "^1.3.0",
+        "react-dom": "16.13.1",
+        "react-helmet": "^6.1.0",
+        "react-spring": "^9.0.0-rc.3",
+        "uuid": "^8.3.1"
+    },
+    "devDependencies": {
+        "@types/node": "^14.11.2",
+        "@types/react": "^16.9.50",
+        "@typescript-eslint/eslint-plugin": "^4.5.0",
+        "@typescript-eslint/parser": "^4.5.0",
+        "eslint": "^7.11.0",
+        "eslint-config-prettier": "^6.13.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-react": "^7.21.5",
+        "prettier": "^2.1.2",
+        "typescript": "^4.0.3"
+    }
 }
