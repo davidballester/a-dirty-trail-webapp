@@ -5,10 +5,9 @@ import React, {
     useState,
     useEffect,
 } from 'react';
-import { Narration, Scene } from 'a-dirty-trail';
+import { Narration } from 'a-dirty-trail';
 import MyNarrationsCatalogue from '../helpers/MyNarrationsCatalogue';
 import MySceneTemplateResolver from '../helpers/MySceneTemplateResolver';
-import Actor from 'a-dirty-trail/build/core/Actor';
 
 const NarrationContext = React.createContext(
     undefined as Narration | undefined
@@ -46,14 +45,4 @@ export const NarrationProvider = ({
 
 export const useNarration = (): Narration | undefined => {
     return useContext(NarrationContext) as Narration;
-};
-
-export const useScene = (): Scene => {
-    const narration = useNarration();
-    return narration.getCurrentScene();
-};
-
-export const usePlayer = (): Actor => {
-    const scene = useScene();
-    return scene.getPlayer();
 };

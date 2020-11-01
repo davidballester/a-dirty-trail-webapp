@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
 import NarrationPlayerActions from './NarrationPlayerActions';
-import { useScene } from '../contexts/narrationContext';
 import ReactMarkdown from 'react-markdown';
+import { useScene } from '../contexts/sceneContext';
 
 const Narration = (): ReactElement => {
     const scene = useScene();

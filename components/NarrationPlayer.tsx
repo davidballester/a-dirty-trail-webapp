@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import Health from './Health';
 import useSkillLevelText from '../hooks/useSkillLevelText';
-import { usePlayer } from '../contexts/narrationContext';
 import GameSkillSet from 'a-dirty-trail/build/core/SkillSet';
 import GameSkill from 'a-dirty-trail/build/core/Skill';
+import { usePlayer } from '../contexts/sceneContext';
 
 const NarrationPlayer = (): ReactElement => (
     <article>

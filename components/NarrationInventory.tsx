@@ -6,13 +6,13 @@ import Ammunition from './Ammunition';
 import useSkillLevelText from '../hooks/useSkillLevelText';
 import { Button } from 'react-bootstrap';
 import { animated, Transition } from 'react-spring';
-import { usePlayer } from '../contexts/narrationContext';
 import GameWeapon from 'a-dirty-trail/build/core/Weapon';
 import Damage from 'a-dirty-trail/build/core/Damage';
 import GameTrinket from 'a-dirty-trail/build/core/Trinket';
 import { AmmunitionByType } from 'a-dirty-trail/build/core/Inventory';
 import { useNarrativeSceneEngine } from '../contexts/narrativeSceneEngineContext';
 import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
+import { usePlayer } from '../contexts/sceneContext';
 
 const NarrationInventory = (): ReactElement => (
     <article>

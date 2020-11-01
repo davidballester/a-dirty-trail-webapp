@@ -4,11 +4,11 @@ import { animated, Transition } from 'react-spring';
 import { GameViewMode, useGameViewMode } from '../contexts/gameViewModeContext';
 // import CombatView from './CombatView';
 import NarrationView from './NarrationView';
-import { useNarration } from '../contexts/narrationContext';
+import { useScene } from '../contexts/sceneContext';
 
 const GameView = (): ReactElement => {
-    const narration = useNarration();
-    if (!narration) {
+    const scene = useScene();
+    if (!scene) {
         return null;
     }
     return (

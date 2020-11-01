@@ -3,10 +3,10 @@ import { css } from 'emotion';
 import { Button } from 'react-bootstrap';
 import { animated, Transition } from 'react-spring';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
-import { useScene } from '../contexts/narrationContext';
 import { useNarrativeSceneEngine } from '../contexts/narrativeSceneEngineContext';
 import GameAdvanceAction from 'a-dirty-trail/build/actions/AdvanceAction';
 import ReactMarkdown from 'react-markdown';
+import { useScene, useUpdateScene } from '../contexts/sceneContext';
 
 const NarrationPlayerActions = (): ReactElement => {
     const scene = useScene();
@@ -57,11 +57,13 @@ const AdvanceAction = ({
     action: GameAdvanceAction;
 }): ReactElement => {
     const narrativeSceneEngine = useNarrativeSceneEngine();
+    const updateScene = useUpdateScene();
     return (
         <Button
             variant="outline-dark"
-            onClick={() => {
-                narrativeSceneEngine.executePlayerAction(action);
+            onClick={async () => {
+                await narrativeSceneEngine.executePlayerAction(action);
+                updateScene();
             }}
             block
             className={css`
