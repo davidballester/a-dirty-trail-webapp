@@ -2,26 +2,33 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
 import { GameViewMode, useGameViewMode } from '../contexts/gameViewModeContext';
-import CombatView from './CombatView';
+// import CombatView from './CombatView';
 import NarrationView from './NarrationView';
+import { useNarration } from '../contexts/narrationContext';
 
-const GameView = (): ReactElement => (
-    <div
-        className={css`
-            position: relative;
-            > * {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-        `}
-    >
-        <NarrationView />
-        <CombatWithTransition />
-    </div>
-);
+const GameView = (): ReactElement => {
+    const narration = useNarration();
+    if (!narration) {
+        return null;
+    }
+    return (
+        <div
+            className={css`
+                position: relative;
+                > * {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            `}
+        >
+            <NarrationView />
+            <CombatWithTransition />
+        </div>
+    );
+};
 
 export default GameView;
 
@@ -42,9 +49,7 @@ const CombatWithTransition = (): ReactElement => {
             }}
         >
             {(style) => (
-                <animated.div style={style}>
-                    <CombatView />
-                </animated.div>
+                <animated.div style={style}>{/*<CombatView />*/}</animated.div>
             )}
         </Transition>
     );

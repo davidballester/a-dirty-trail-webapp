@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import { usePlayer } from '../contexts/gameContext';
 import Health from './Health';
-import { Skill as GameSkill } from 'a-dirty-trail';
-import useSkillName from '../hooks/useSkillName';
 import useSkillLevelText from '../hooks/useSkillLevelText';
+import { usePlayer } from '../contexts/narrationContext';
+import GameSkillSet from 'a-dirty-trail/build/core/SkillSet';
+import GameSkill from 'a-dirty-trail/build/core/Skill';
 
 const NarrationPlayer = (): ReactElement => (
     <article>
@@ -24,38 +24,39 @@ const Player = (): ReactElement => {
         <dl className="row">
             <dt className="col-sm-3">Name</dt>
             <dd className="col-sm-9">
-                <span className="text-capitalize">{player.name}</span>
+                <span className="text-capitalize">{player.getName()}</span>
             </dd>
 
             <dt className="col-sm-3">Health</dt>
             <dd className="col-sm-9">
                 <span className="text-capitalize">
-                    <Health health={player.health} />
+                    <Health health={player.getHealth()} />
                 </span>
             </dd>
 
             <dt className="col-sm-3">Skills</dt>
             <dd className="col-sm-9">
-                <PlayerSkills skills={player.skills} />
+                <SkillSet skillSet={player.getSkillSet()} />
             </dd>
         </dl>
     );
 };
 
-const PlayerSkills = ({ skills }: { skills: GameSkill[] }): ReactElement => (
+const SkillSet = ({ skillSet }: { skillSet: GameSkillSet }): ReactElement => (
     <dl>
-        {skills.map((skill) => (
-            <PlayerSkill key={skill.name} skill={skill} />
+        {skillSet.getAll().map((skill) => (
+            <Skill key={skill.getName()} skill={skill} />
         ))}
     </dl>
 );
 
-const PlayerSkill = ({ skill }: { skill: GameSkill }): ReactElement => {
-    const skillName = useSkillName(skill.name);
-    const skillLevel = useSkillLevelText(skill.level);
+const Skill = ({ skill }: { skill: GameSkill }): ReactElement => {
+    const skillLevel = useSkillLevelText(skill);
     return (
         <>
-            <dt>{skillName}</dt>
+            <dt>
+                <span className="text-capitalize">{skill.getName()}</span>
+            </dt>
             <dd>{skillLevel}</dd>
         </>
     );

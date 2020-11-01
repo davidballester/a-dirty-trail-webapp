@@ -1,20 +1,17 @@
-import { SkillLevel } from 'a-dirty-trail/build';
+import Skill from 'a-dirty-trail/build/core/Skill';
 
-const useSkillLevelText = (skillLevel: SkillLevel): string => {
-    switch (skillLevel) {
-        case SkillLevel.poor: {
-            return 'poor';
-        }
-        case SkillLevel.mediocre: {
-            return 'mediocre';
-        }
-        case SkillLevel.good: {
-            return 'good';
-        }
-        case SkillLevel.master: {
-            return 'master';
-        }
+const useSkillLevelText = (skill: Skill): string => {
+    const probabilityOfSuccess = skill.getProbabilityOfSuccess();
+    if (probabilityOfSuccess < 0.25) {
+        return 'poor';
     }
+    if (probabilityOfSuccess < 0.5) {
+        return 'mediocre';
+    }
+    if (probabilityOfSuccess < 0.75) {
+        return 'good';
+    }
+    return 'master';
 };
 
 export default useSkillLevelText;

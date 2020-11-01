@@ -1,24 +1,20 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import {
-    useNarrationPlayerActions,
-    useExecutePlayerAction,
-} from '../contexts/gameContext';
-import {
-    Action,
-    AdvanceToActAction,
-    AdvanceToSceneAction,
-} from 'a-dirty-trail';
 import { Button } from 'react-bootstrap';
-import useActionVerb from '../hooks/useActionVerb';
-import useActionTarget from '../hooks/useActionTarget';
 import { animated, Transition } from 'react-spring';
-import useIsCombat from '../hooks/useIsCombat';
 import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
+import { useScene } from '../contexts/narrationContext';
+import { useNarrativeSceneEngine } from '../contexts/narrativeSceneEngineContext';
+import GameAdvanceAction from 'a-dirty-trail/build/actions/AdvanceAction';
+import ReactMarkdown from 'react-markdown';
 
 const NarrationPlayerActions = (): ReactElement => {
-    const isCombat = useIsCombat();
-    const playerActions = useNarrationPlayerActions();
+    const scene = useScene();
+    const narrativeSceneEngine = useNarrativeSceneEngine();
+    const playerActions = narrativeSceneEngine
+        .getPlayerActions()
+        .getAdvanceActions();
+    const isCombat = scene.isCombat();
     return (
         <section
             className={css`
@@ -41,12 +37,11 @@ const NarrationPlayerActions = (): ReactElement => {
             >
                 {(style, action) => (
                     <animated.div style={style}>
-                        {action instanceof Action && (
-                            <PlayerAction action={action} />
+                        {action instanceof GameAdvanceAction && (
+                            <AdvanceAction action={action} />
                         )}
-                        {!(action instanceof Action) && action.isCombat && (
-                            <GoToCombatAction />
-                        )}
+                        {!(action instanceof GameAdvanceAction) &&
+                            action.isCombat && <GoToCombatAction />}
                     </animated.div>
                 )}
             </Transition>
@@ -56,59 +51,34 @@ const NarrationPlayerActions = (): ReactElement => {
 
 export default NarrationPlayerActions;
 
-const PlayerAction = ({ action }: { action: Action }): ReactElement => {
-    const executePlayerAction = useExecutePlayerAction();
+const AdvanceAction = ({
+    action,
+}: {
+    action: GameAdvanceAction;
+}): ReactElement => {
+    const narrativeSceneEngine = useNarrativeSceneEngine();
     return (
         <Button
             variant="outline-dark"
-            onClick={() => executePlayerAction(action)}
+            onClick={() => {
+                narrativeSceneEngine.executePlayerAction(action);
+            }}
             block
             className={css`
                 margin-bottom: 0.5rem;
             `}
         >
-            <PlayerActionText action={action} />
+            <ReactMarkdown
+                className={css`
+                    p {
+                        margin-bottom: 0;
+                    }
+                `}
+            >
+                {action.getName()}
+            </ReactMarkdown>
         </Button>
     );
-};
-
-const AdvancePlayerActionText = ({
-    action,
-}: {
-    action: AdvanceToSceneAction | AdvanceToActAction;
-}): ReactElement => <span>{action.getName()}</span>;
-
-const StandardPlayerActionText = ({
-    action,
-}: {
-    action: Action;
-}): ReactElement => {
-    const actionVerb = useActionVerb(action);
-    const actionTarget = useActionTarget(action);
-    return (
-        <div
-            className={css`
-                position: relative;
-            `}
-        >
-            <span className="text-capitalize">{actionVerb}</span>
-            {!actionTarget ? null : <strong> {actionTarget.name}</strong>}
-        </div>
-    );
-};
-
-const PlayerActionText = ({ action }: { action: Action }): ReactElement => {
-    const isAdvanceAction =
-        action instanceof AdvanceToActAction ||
-        action instanceof AdvanceToSceneAction;
-    if (isAdvanceAction) {
-        return (
-            <AdvancePlayerActionText
-                action={action as AdvanceToActAction | AdvanceToSceneAction}
-            />
-        );
-    }
-    return <StandardPlayerActionText action={action} />;
 };
 
 const GoToCombatAction = (): ReactElement => {

@@ -1,12 +1,13 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import { Ammunition as GameAmmunition } from 'a-dirty-trail';
 import ItemIcon from './ItemIcon';
 
 const Ammunition = ({
-    ammunition,
+    type,
+    quantity,
 }: {
-    ammunition: GameAmmunition;
+    type: string;
+    quantity: number;
 }): ReactElement => (
     <article
         className={css`
@@ -15,13 +16,13 @@ const Ammunition = ({
             justify-content: left;
         `}
     >
-        <ItemIcon src={`${ammunition.name}-empty.svg`} alt={ammunition.name} />
+        <ItemIcon src={`${type}-empty.svg`} alt={type} />
         <strong
             className={css`
                 font-size: 1.2rem;
             `}
         >
-            x {ammunition.quantity}
+            x {quantity}
         </strong>
     </article>
 );

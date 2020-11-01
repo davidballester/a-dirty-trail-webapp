@@ -1,29 +1,26 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
-import { usePlayerActions, useScene } from '../contexts/gameContext';
 import NarrationPlayerActions from './NarrationPlayerActions';
+import { useScene } from '../contexts/narrationContext';
+import ReactMarkdown from 'react-markdown';
 
 const Narration = (): ReactElement => {
     const scene = useScene();
-    const playerActions = usePlayerActions();
-    if (!scene || !playerActions) {
-        return null;
-    }
     return (
         <article>
-            <NarrationTitle title={scene.name} />
-            <SceneSetup sceneSetup={scene.setup} />
+            <SceneTitle title={scene.getTitle()} />
+            <SceneSetup sceneSetup={scene.getSetup()} />
             <NarrationPlayerActions />
         </article>
     );
 };
 
-const NarrationTitle = ({ title }: { title: string }): ReactElement => (
+const SceneTitle = ({ title }: { title: string }): ReactElement => (
     <h2>{title}</h2>
 );
 
-const SceneSetup = ({ sceneSetup }: { sceneSetup: string[] }): ReactElement => {
+const SceneSetup = ({ sceneSetup }: { sceneSetup: string }): ReactElement => {
     return (
         <section
             className={css`
@@ -43,8 +40,10 @@ const SceneSetup = ({ sceneSetup }: { sceneSetup: string[] }): ReactElement => {
                     transform: 'translate3d(0, 0px, 0)',
                 }}
             >
-                {(style, item) => (
-                    <animated.p style={style as any}>{item}</animated.p>
+                {(style, markdownText) => (
+                    <animated.div style={style as any}>
+                        <ReactMarkdown>{markdownText}</ReactMarkdown>
+                    </animated.div>
                 )}
             </Transition>
         </section>

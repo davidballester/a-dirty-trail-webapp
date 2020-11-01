@@ -1,22 +1,18 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import {
-    Weapon as GameWeapon,
-    Ammunition as GameAmmunition,
-    Item as GameItem,
-    Actor,
-} from 'a-dirty-trail';
-import {
-    useExecutePlayerAction,
-    usePlayer,
-    useWeaponReloadAction,
-} from '../contexts/gameContext';
 import ItemIcon from './ItemIcon';
 import WeaponAmmunition from './WeaponAmmunition';
 import Ammunition from './Ammunition';
 import useSkillLevelText from '../hooks/useSkillLevelText';
 import { Button } from 'react-bootstrap';
 import { animated, Transition } from 'react-spring';
+import { usePlayer } from '../contexts/narrationContext';
+import GameWeapon from 'a-dirty-trail/build/core/Weapon';
+import Damage from 'a-dirty-trail/build/core/Damage';
+import GameTrinket from 'a-dirty-trail/build/core/Trinket';
+import { AmmunitionByType } from 'a-dirty-trail/build/core/Inventory';
+import { useNarrativeSceneEngine } from '../contexts/narrativeSceneEngineContext';
+import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
 
 const NarrationInventory = (): ReactElement => (
     <article>
@@ -29,15 +25,7 @@ const NarrationInventory = (): ReactElement => (
 
 const ListOfItems = (): ReactElement => {
     const player = usePlayer();
-    const inventory = player.inventory;
-    const weapons = inventory.getWeapons();
-    const ammunitions = inventory.items.filter(
-        (item) => item instanceof GameAmmunition
-    ) as GameAmmunition[];
-    const regularItems = inventory.items.filter(
-        (item) =>
-            !(item instanceof GameWeapon) && !(item instanceof GameAmmunition)
-    );
+    const inventory = player.getInventory();
     return (
         <ul
             className={
@@ -53,35 +41,27 @@ const ListOfItems = (): ReactElement => {
                 `
             }
         >
-            {ammunitions.map((ammunition) => (
-                <li key={ammunition.id}>
-                    <Ammunition ammunition={ammunition} />
-                </li>
-            ))}
-            {weapons.map((weapon) => (
-                <li key={weapon.id}>
-                    <Weapon weapon={weapon} player={player} />
-                </li>
-            ))}
-            {regularItems.map((item) => (
-                <li key={item.id}>
-                    <Item item={item} />
-                </li>
-            ))}
+            <Weapons weapons={inventory.getWeapons()} />
+            <Ammunitions ammunitions={inventory.getAmmunitionsByType()} />
+            <Trinkets trinkets={inventory.getTrinkets()} />
         </ul>
     );
 };
 
-const Weapon = ({
-    weapon,
-    player,
-}: {
-    weapon: GameWeapon;
-    player: Actor;
-}): ReactElement => {
-    const skillLevelText = useSkillLevelText(
-        player.getSkill(weapon.skillName).level
-    );
+const Weapons = ({ weapons }: { weapons: GameWeapon[] }): ReactElement => (
+    <>
+        {weapons.map((weapon) => (
+            <li key={weapon.getId()}>
+                <Weapon weapon={weapon} />
+            </li>
+        ))}
+    </>
+);
+
+const Weapon = ({ weapon }: { weapon: GameWeapon }): ReactElement => {
+    const player = usePlayer();
+    const skill = player.getSkill(weapon.getSkill());
+    const skillLevelText = useSkillLevelText(skill);
     return (
         <article>
             <div
@@ -91,7 +71,10 @@ const Weapon = ({
                     justify-content: left;
                 `}
             >
-                <ItemIcon src={`${weapon.name}.svg`} alt={weapon.name} />
+                <ItemIcon
+                    src={`${weapon.getType()}.svg`}
+                    alt={weapon.getName()}
+                />
                 <dl
                     className={
                         'row ' +
@@ -103,23 +86,25 @@ const Weapon = ({
                 >
                     <dt className="col-sm-3">Name</dt>
                     <dd className="col-sm-9">
-                        <span className="text-capitalize">{weapon.name}</span>
+                        <span className="text-capitalize">
+                            {weapon.getName()}
+                        </span>
                     </dd>
 
                     <dt className="col-sm-3">Damage</dt>
                     <dd className="col-sm-9">
-                        {weapon.minDamage}-{weapon.maxDamage}
+                        <WeaponDamage damage={weapon.getDamage()} />
                     </dd>
 
                     <dt className="col-sm-3">Skill level</dt>
                     <dd className="col-sm-9">{skillLevelText}</dd>
 
-                    {weapon.ammunition && (
+                    {weapon.getAmmunition() && (
                         <>
                             <dt className="col-sm-3">Ammunition</dt>
                             <dd className="col-sm-9">
                                 <WeaponAmmunition
-                                    ammunition={weapon.ammunition}
+                                    ammunition={weapon.getAmmunition()}
                                 />
                             </dd>
                         </>
@@ -131,17 +116,16 @@ const Weapon = ({
     );
 };
 
-const Item = ({ item }: { item: GameItem }): ReactElement => {
-    return <strong>{item.name}</strong>;
-};
-
 const ReloadWeaponButton = ({
     weapon,
 }: {
     weapon: GameWeapon;
 }): ReactElement => {
     const reloadAction = useWeaponReloadAction(weapon);
-    const executePlayerAction = useExecutePlayerAction();
+    const narrativeSceneEngine = useNarrativeSceneEngine();
+    if (!reloadAction) {
+        return null;
+    }
     return (
         <Transition
             items={reloadAction}
@@ -159,13 +143,17 @@ const ReloadWeaponButton = ({
                 height: 0,
             }}
         >
-            {(style, action) => (
+            {(style) => (
                 <animated.div style={style}>
                     <Button
                         variant="outline-dark"
                         block
                         size="sm"
-                        onClick={() => executePlayerAction(action)}
+                        onClick={() => {
+                            narrativeSceneEngine.executePlayerAction(
+                                reloadAction
+                            );
+                        }}
                     >
                         Reload
                     </Button>
@@ -174,5 +162,63 @@ const ReloadWeaponButton = ({
         </Transition>
     );
 };
+
+const useWeaponReloadAction = (
+    weapon: GameWeapon
+): ReloadAction | undefined => {
+    const narrativeSceneEngine = useNarrativeSceneEngine();
+    const reloadActions = narrativeSceneEngine
+        .getPlayerActions()
+        .getReloadActions();
+    return reloadActions.find((action) => action.getWeapon().equals(weapon));
+};
+
+const WeaponDamage = ({ damage }: { damage: Damage }) => (
+    <span>
+        {damage.getMin()} - {damage.getMax()}
+    </span>
+);
+
+const Ammunitions = ({
+    ammunitions,
+}: {
+    ammunitions: AmmunitionByType;
+}): ReactElement => (
+    <>
+        {Object.keys(ammunitions).map((ammunitionType) => (
+            <li key={ammunitionType}>
+                <Ammunition
+                    type={ammunitionType}
+                    quantity={ammunitions[ammunitionType]}
+                />
+            </li>
+        ))}
+    </>
+);
+
+const Trinkets = ({ trinkets }: { trinkets: GameTrinket[] }): ReactElement => (
+    <>
+        {trinkets.map((trinket) => (
+            <li key={trinket.getId()}>
+                <Trinket trinket={trinket} />
+            </li>
+        ))}
+    </>
+);
+
+const Trinket = ({ trinket }: { trinket: GameTrinket }): ReactElement => (
+    <p>
+        <span
+            className={css`
+                display: block;
+            `}
+        >
+            {trinket.getName()}
+        </span>
+        {trinket.getDescription() && (
+            <span className="font-italic">{trinket.getDescription()}</span>
+        )}
+    </p>
+);
 
 export default NarrationInventory;
