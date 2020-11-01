@@ -1,19 +1,19 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import { Ammunition } from 'a-dirty-trail';
 import QuantityOutOfMax from './QuantityOutOfMax';
+import GameWeaponAmmunition from 'a-dirty-trail/build/core/WeaponAmmunition';
 
 const WeaponAmmunition = ({
     ammunition,
 }: {
-    ammunition: Ammunition;
+    ammunition: GameWeaponAmmunition;
 }): ReactElement => (
     <QuantityOutOfMax
-        iconSrc={`${ammunition.name}.svg`}
-        emptyIconSrc={`${ammunition.name}-empty.svg`}
-        alt={`${ammunition.quantity} out of ${ammunition.maxAmmunition} ${ammunition.name}`}
-        current={ammunition.quantity}
-        max={ammunition.maxAmmunition}
+        iconSrc={`${ammunition.getType()}.svg`}
+        emptyIconSrc={`${ammunition.getType()}-empty.svg`}
+        alt={`${ammunition.getCurrent()} out of ${ammunition.getMax()} ${ammunition.getType()}`}
+        current={ammunition.getCurrent()}
+        max={ammunition.getMax()}
         iconClassName={css`
             margin-left: -0.4rem;
         `}
