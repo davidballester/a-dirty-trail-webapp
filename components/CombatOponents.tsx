@@ -19,6 +19,9 @@ const Oponents = (): ReactElement => {
         return null;
     }
     const oponents = scene.getAliveActors();
+    if (!oponents.length) {
+        return <NoOponents />;
+    }
     return (
         <section>
             <ul
@@ -45,6 +48,31 @@ const Oponents = (): ReactElement => {
 };
 
 export default Oponents;
+
+const NoOponents = (): ReactElement => (
+    <Spring
+        from={{
+            opacity: 0,
+            transform: `scale(0.5)`,
+        }}
+        to={{
+            opacity: 1,
+            transform: `scale(1)`,
+        }}
+    >
+        {(style) => (
+            <animated.div style={style as any} className="text-center">
+                <img
+                    src="no-oponents.svg"
+                    alt="No oponents left"
+                    className={css`
+                        max-width: 10rem;
+                    `}
+                />
+            </animated.div>
+        )}
+    </Spring>
+);
 
 const Oponent = ({ oponent }: { oponent: NonPlayableActor }): ReactElement => {
     const isNextOponent = useIsNextOponent(oponent);
