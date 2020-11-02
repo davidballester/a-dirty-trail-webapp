@@ -2,22 +2,18 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { Button } from 'react-bootstrap';
 import { animated, Transition } from 'react-spring';
-import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
 import {
     useExecutePlayerAction,
     useNarrativeSceneEngine,
-    useScene,
 } from '../contexts/narrativeSceneEngineContext';
 import GameAdvanceAction from 'a-dirty-trail/build/actions/AdvanceAction';
 import ReactMarkdown from 'react-markdown';
 
 const NarrationPlayerActions = (): ReactElement => {
-    const scene = useScene();
     const narrativeSceneEngine = useNarrativeSceneEngine();
     const playerActions = narrativeSceneEngine
         .getPlayerActions()
         .getAdvanceActions();
-    const isCombat = scene.isCombat();
     return (
         <section
             className={css`
@@ -28,7 +24,7 @@ const NarrationPlayerActions = (): ReactElement => {
             `}
         >
             <Transition
-                items={[...playerActions, { isCombat }]}
+                items={[...playerActions]}
                 from={{
                     opacity: 0,
                     transform: 'translate3d(0, 40px, 0)',
@@ -43,8 +39,6 @@ const NarrationPlayerActions = (): ReactElement => {
                         {action instanceof GameAdvanceAction && (
                             <AdvanceAction action={action} />
                         )}
-                        {!(action instanceof GameAdvanceAction) &&
-                            action.isCombat && <GoToCombatAction />}
                     </animated.div>
                 )}
             </Transition>
@@ -80,22 +74,6 @@ const AdvanceAction = ({
             >
                 {action.getName()}
             </ReactMarkdown>
-        </Button>
-    );
-};
-
-const GoToCombatAction = (): ReactElement => {
-    const toggleGameViewMode = useToggleGameViewMode();
-    return (
-        <Button
-            variant="dark"
-            onClick={() => toggleGameViewMode()}
-            block
-            className={css`
-                margin-bottom: 0.5rem;
-            `}
-        >
-            Combat!
         </Button>
     );
 };
