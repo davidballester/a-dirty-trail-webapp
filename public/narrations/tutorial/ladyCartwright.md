@@ -1,7 +1,7 @@
 ---
 title: Lady Cartwright
 actions:
-    'Alys opened the door and jumped out':
+    '{{playerName}} opened the door and jumped out':
         sideEffect:
             loot:
                 weapons:

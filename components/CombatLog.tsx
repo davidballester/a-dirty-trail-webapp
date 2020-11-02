@@ -1,23 +1,19 @@
 import React, { Fragment, ReactElement } from 'react';
 import { css } from 'emotion';
-import { useLastActionAndOutcome } from '../contexts/gameContext';
-import {
-    Action,
-    Actor,
-    Ammunition,
-    AttackAction,
-    AttackOutcome,
-    AttackOutcomeStatus,
-    Health as GameHealth,
-    Item,
-    LootAction,
-    ReloadAction,
-    ScapeAction,
-} from 'a-dirty-trail';
 import Health from './Health';
+import { useLastActionAndOutcome } from '../contexts/combatSceneEngineContext';
+import Action from 'a-dirty-trail/build/actions/Action';
+import AttackAction from 'a-dirty-trail/build/actions/AttackAction';
+import { AttackOutcome } from 'a-dirty-trail/build/core/Weapon';
+import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
+import ScapeAction from 'a-dirty-trail/build/actions/ScapeAction';
+import LootAction from 'a-dirty-trail/build/actions/LootAction';
+import GameHealth from 'a-dirty-trail/build/core/Health';
+import Actor from 'a-dirty-trail/build/core/Actor';
+import Inventory from 'a-dirty-trail/build/core/Inventory';
 
 const CombatLog = (): ReactElement => {
-    const { action, outcome } = useLastActionAndOutcome();
+    const [action, outcome] = useLastActionAndOutcome();
     if (!action) {
         return null;
     }
@@ -56,7 +52,7 @@ const ActionOutcome = ({
     action,
     outcome,
 }: {
-    action: Action;
+    action: Action<any>;
     outcome: any;
 }): ReactElement => {
     if (action instanceof AttackAction) {
@@ -86,14 +82,14 @@ const AttackActionOutcome = ({
     action: AttackAction;
     outcome: AttackOutcome;
 }): ReactElement => {
-    if (outcome.status === AttackOutcomeStatus.missed) {
+    if (outcome.type === 'missed') {
         return <MissedAttackActionOutcome action={action} />;
     }
     return (
         <>
-            <ActionPlayer player={action.player} />
+            <ActionPlayer player={action.getActor()} />
             <span> hit </span>
-            <ActionPlayer player={action.oponent} />
+            <ActionPlayer player={action.getOponent()} />
             <span> for </span>
             {!!outcome.damage && (
                 <div
@@ -102,7 +98,9 @@ const AttackActionOutcome = ({
                     `}
                 >
                     <Health
-                        health={new GameHealth(0, outcome.damage)}
+                        health={
+                            new GameHealth({ current: 0, max: outcome.damage })
+                        }
                         iconClassName={css`
                             height: 1.5rem;
                         `}
@@ -110,9 +108,7 @@ const AttackActionOutcome = ({
                 </div>
             )}
             {!outcome.damage && <strong>0 hitpoints</strong>}
-            {outcome.status === AttackOutcomeStatus.oponentDead && (
-                <strong>, killing them!</strong>
-            )}
+            {!action.getOponent().isAlive() && <strong>, killing them!</strong>}
         </>
     );
 };
@@ -123,14 +119,14 @@ const MissedAttackActionOutcome = ({
     action: AttackAction;
 }): ReactElement => (
     <>
-        <ActionPlayer player={action.player} />
+        <ActionPlayer player={action.getActor()} />
         <span> missed </span>
-        <ActionPlayer player={action.oponent} />
+        <ActionPlayer player={action.getOponent()} />
     </>
 );
 
 const ActionPlayer = ({ player }: { player: Actor }): ReactElement => (
-    <strong className="text-capitalize">{player.name}</strong>
+    <strong className="text-capitalize">{player.getName()}</strong>
 );
 
 const ReloadActionOutcome = ({
@@ -139,9 +135,9 @@ const ReloadActionOutcome = ({
     action: ReloadAction;
 }): ReactElement => (
     <>
-        <ActionPlayer player={action.player} />
+        <ActionPlayer player={action.getActor()} />
         <span> reloaded their </span>
-        <strong>{action.weapon.name}</strong>
+        <strong>{action.getWeapon().getName()}</strong>
     </>
 );
 
@@ -151,51 +147,61 @@ const ScapeActionOutcome = ({
     action: ScapeAction;
 }): ReactElement => (
     <>
-        <ActionPlayer player={action.player} />
+        <ActionPlayer player={action.getActor()} />
         <span> scaped!</span>
     </>
 );
 
 const LootActionOutcome = ({
     action,
-    outcome: items,
+    outcome: inventory,
 }: {
     action: LootAction;
-    outcome: Item[];
+    outcome: Inventory;
 }): ReactElement => (
     <>
-        <ActionPlayer player={action.player} />
+        <ActionPlayer player={action.getActor()} />
         <span> found </span>
-        {!items.length && <span>nothing of interest</span>}
-        {!!items.length && <ItemsEnumeration items={items} />}
+        <InventoryEnumeration inventory={inventory} />
     </>
 );
 
-const ItemsEnumeration = ({ items }: { items: Item[] }): ReactElement => (
-    <>
-        {items.length === 1 && <ItemName item={items[0]} />}
-        {items.length > 1 && (
-            <>
-                {items.slice(0, -1).map((item, index) => (
-                    <Fragment key={item.id}>
-                        <ItemName item={item} />
-                        {index < items.length - 2 && <span>, </span>}
-                    </Fragment>
-                ))}
-                <span> and </span>
-                <ItemName item={items[items.length - 1]} />
-            </>
-        )}
-    </>
-);
-
-const ItemName = ({ item }: { item: Item }): ReactElement => {
-    if (item instanceof Ammunition) {
-        return (
-            <strong>
-                {item.quantity} {item.name}
-            </strong>
-        );
-    }
-    return <strong>{item.name}</strong>;
+const InventoryEnumeration = ({
+    inventory,
+}: {
+    inventory: Inventory;
+}): ReactElement => {
+    const weaponNames = inventory
+        .getWeapons()
+        .map((weapon) => weapon.getName());
+    const ammunitionsByType = inventory.getAmmunitionsByType();
+    const ammunitions = Object.keys(ammunitionsByType).map(
+        (ammunitionType) =>
+            `${ammunitionsByType[ammunitionType]} ${ammunitionType}`
+    );
+    const trinkets = inventory
+        .getTrinkets()
+        .map((trinket) => trinket.getName());
+    const allItems = [...weaponNames, ...ammunitions, ...trinkets];
+    return (
+        <>
+            {allItems.length === 1 && <ItemName item={allItems[0]} />}
+            {allItems.length > 1 && (
+                <>
+                    {allItems.slice(0, -1).map((item, index) => (
+                        <Fragment key={index}>
+                            <ItemName item={item} />
+                            {index < allItems.length - 2 && <span>, </span>}
+                        </Fragment>
+                    ))}
+                    <span> and </span>
+                    <ItemName item={allItems[allItems.length - 1]} />
+                </>
+            )}
+        </>
+    );
 };
+
+const ItemName = ({ item }: { item: string }): ReactElement => (
+    <strong>{item}</strong>
+);

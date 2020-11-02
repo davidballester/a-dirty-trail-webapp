@@ -1,24 +1,24 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import { useOponentsActions, useScene } from '../contexts/gameContext';
-import {
-    NonPlayableActor,
-    Health as GameHealth,
-    Action,
-    AttackAction,
-    ReloadAction,
-} from 'a-dirty-trail';
 import Health from './Health';
 import { animated, Spring } from 'react-spring';
-import useIsNextOponent from '../hooks/useIsNextOponent';
 import { useOponentIcon } from '../contexts/oponentIconsContext';
+import {
+    useCombatSceneEngine,
+    useScene,
+} from '../contexts/combatSceneEngineContext';
+import NonPlayableActor from 'a-dirty-trail/build/core/NonPlayableActor';
+import GameHealth from 'a-dirty-trail/build/core/Health';
+import Action from 'a-dirty-trail/build/actions/Action';
+import AttackAction from 'a-dirty-trail/build/actions/AttackAction';
+import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
 
 const Oponents = (): ReactElement => {
     const scene = useScene();
     if (!scene) {
         return null;
     }
-    const oponents = scene.getHostileActors();
+    const oponents = scene.getAliveActors();
     return (
         <section>
             <ul
@@ -35,7 +35,7 @@ const Oponents = (): ReactElement => {
                 }
             >
                 {oponents.map((oponent) => (
-                    <li key={oponent.id}>
+                    <li key={oponent.getId()}>
                         <Oponent oponent={oponent} />
                     </li>
                 ))}
@@ -62,6 +62,12 @@ const Oponent = ({ oponent }: { oponent: NonPlayableActor }): ReactElement => {
     );
 };
 
+const useIsNextOponent = (oponent: NonPlayableActor): boolean => {
+    const combatSceneEngine = useCombatSceneEngine();
+    const oponentsInActionOrder = combatSceneEngine.getActorNextTurn();
+    return oponentsInActionOrder.equals(oponent);
+};
+
 const OponentCard = ({
     oponent,
 }: {
@@ -80,8 +86,8 @@ const OponentCard = ({
         `}
     >
         <OponentPortrait oponent={oponent} />
-        <OponentName name={oponent.name} />
-        <OponentHealth health={oponent.health} />
+        <OponentName name={oponent.getName()} />
+        <OponentHealth health={oponent.getHealth()} />
         <div
             className={css`
                 margin-top: 1rem;
@@ -97,11 +103,11 @@ const OponentPortrait = ({
 }: {
     oponent: NonPlayableActor;
 }): ReactElement => {
-    const oponentPortraitSrc = useOponentIcon(oponent.name);
+    const oponentPortraitSrc = useOponentIcon(oponent.getName());
     return (
         <img
             src={oponentPortraitSrc}
-            alt={oponent.name}
+            alt={oponent.getName()}
             className={css`
                 width: 5rem;
             `}
@@ -136,10 +142,8 @@ const OponentNextAction = ({
 }: {
     oponent: NonPlayableActor;
 }): ReactElement => {
-    const oponentsActions = useOponentsActions();
-    const nextAction = oponentsActions.find(
-        ({ player }) => player.id === oponent.id
-    );
+    const scene = useScene();
+    const nextAction = oponent.getNextAction(scene);
     if (!nextAction) {
         return null;
     }
@@ -149,7 +153,7 @@ const OponentNextAction = ({
 const OponentNextActionContent = ({
     nextAction,
 }: {
-    nextAction: Action;
+    nextAction: Action<any>;
 }): ReactElement => {
     let nextActionContent: ReactElement;
     if (nextAction instanceof AttackAction) {
@@ -178,12 +182,12 @@ const OponentNextAttackActionContent = ({
 }: {
     nextAction: AttackAction;
 }): ReactElement => {
-    const weapon = nextAction.weapon;
+    const weapon = nextAction.getWeapon();
     return (
         <img
-            src={`${weapon.name}.svg`}
-            alt={weapon.name}
-            title={`The oponent will attack with their ${weapon.name}`}
+            src={`${weapon.getType()}.svg`}
+            alt={weapon.getName()}
+            title={`The oponent will attack with their ${weapon.getName()}`}
             className={css`
                 height: 3rem;
             `}
@@ -196,8 +200,8 @@ const OponentNextReloadActionContent = ({
 }: {
     nextAction: ReloadAction;
 }): ReactElement => {
-    const weapon = nextAction.weapon;
-    const ammunition = nextAction.ammunition;
+    const weapon = nextAction.getWeapon();
+    const ammunitionType = weapon.getAmmunition().getType();
     return (
         <div
             className={css`
@@ -212,9 +216,9 @@ const OponentNextReloadActionContent = ({
                 }
             `}
         >
-            <img src={`${ammunition.name}-empty.svg`} alt={ammunition.name} />
+            <img src={`${ammunitionType}-empty.svg`} alt={ammunitionType} />
             {'➜'}
-            <img src={`${weapon.name}.svg`} alt={weapon.name} />
+            <img src={`${weapon.getType()}.svg`} alt={weapon.getName()} />
         </div>
     );
 };

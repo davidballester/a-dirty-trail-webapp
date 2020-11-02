@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import {
-    useOponent,
     useActionType,
-    useAvailableOponents,
+    useAvailableDeadOponents,
+    useOponent,
     useSelectOponent,
 } from '../contexts/combatActionSelectionContext';
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
@@ -10,23 +10,23 @@ import CombatSelectionIconButton from './CombatSelectionIconButton';
 import { useOponentIcon } from '../contexts/oponentIconsContext';
 import NonPlayableActor from 'a-dirty-trail/build/core/NonPlayableActor';
 
-const CombatSelectionOponents = (): ReactElement => {
+const CombatSelectionDeadOponents = (): ReactElement => {
     const oponent = useOponent();
     const actionType = useActionType();
-    const availableOponents = useAvailableOponents();
+    const deadOponents = useAvailableDeadOponents();
     return (
         <CombatSelectionCategoryTransition
-            visible={actionType === 'attack' && !oponent}
-            items={availableOponents}
+            visible={actionType === 'loot' && !oponent}
+            items={deadOponents}
         >
-            {(availableOponent) => <OponentButton oponent={availableOponent} />}
+            {(deadOponent) => <DeadOponentButton oponent={deadOponent} />}
         </CombatSelectionCategoryTransition>
     );
 };
 
-export default CombatSelectionOponents;
+export default CombatSelectionDeadOponents;
 
-const OponentButton = ({
+const DeadOponentButton = ({
     oponent,
 }: {
     oponent: NonPlayableActor;

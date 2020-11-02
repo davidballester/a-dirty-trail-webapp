@@ -29,7 +29,7 @@ actors:
                     damage: 2-2
                     skill: aim
                     ammunitionType: big bullets
-                    ammunition: 0-1
+                    ammunition: 1-1
         skills:
             aim: 0.3
 ---

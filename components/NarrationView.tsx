@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import NarrationInventory from './NarrationInventory';
 import NarrationPlayer from './NarrationPlayer';
 import Header from './Header';
-import { NarrativeSceneEngineProvider } from '../contexts/narrativeSceneEngineContext';
+import { useScene } from '../contexts/narrativeSceneEngineContext';
 
 enum Tab {
     narration = 0,
@@ -14,26 +14,28 @@ enum Tab {
     inventory = 2,
 }
 const NarrationView = (): ReactElement => {
+    const scene = useScene();
     const [prevTab, setPrevTab] = useState(undefined as Tab);
     const [currentTab, setCurrentTab] = useState(Tab.narration);
+    if (!scene) {
+        return null;
+    }
     return (
         <section>
-            <NarrativeSceneEngineProvider>
-                <Header />
-                <CenteredContainer>
-                    <TabsButtons
-                        currentTab={currentTab}
-                        onClick={(newTab) => {
-                            setPrevTab(currentTab);
-                            setCurrentTab(newTab);
-                        }}
-                    />
-                    <TabContentsWithTransition
-                        prevTab={prevTab}
-                        currentTab={currentTab}
-                    />
-                </CenteredContainer>
-            </NarrativeSceneEngineProvider>
+            <Header />
+            <CenteredContainer>
+                <TabsButtons
+                    currentTab={currentTab}
+                    onClick={(newTab) => {
+                        setPrevTab(currentTab);
+                        setCurrentTab(newTab);
+                    }}
+                />
+                <TabContentsWithTransition
+                    prevTab={prevTab}
+                    currentTab={currentTab}
+                />
+            </CenteredContainer>
         </section>
     );
 };

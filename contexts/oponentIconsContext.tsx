@@ -6,7 +6,7 @@ import React, {
     useReducer,
     useState,
 } from 'react';
-import { useScene } from './gameContext';
+import { useScene } from './combatSceneEngineContext';
 
 const allIcons = [
     'oponent-portrait-1.svg',
@@ -85,9 +85,9 @@ const useClearOponentIconsOnSceneChange = () => {
     const scene = useScene();
     const clearOponentsIcons = useClearOponentsIcons();
     useEffect(() => {
-        if (scene && scene.id !== lastSceneId) {
+        if (scene && scene.getId() !== lastSceneId) {
             clearOponentsIcons();
-            setLastSceneId(scene.id);
+            setLastSceneId(scene.getId());
         }
     }, [scene, lastSceneId]);
 };

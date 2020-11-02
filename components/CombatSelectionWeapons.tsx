@@ -8,10 +8,10 @@ import {
     useSelectWeapon,
 } from '../contexts/combatActionSelectionContext';
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
-import { Weapon } from 'a-dirty-trail';
 import CombatSelectionIconButton from './CombatSelectionIconButton';
 import WeaponAmmunition from './WeaponAmmunition';
-import { usePlayer } from '../contexts/gameContext';
+import Weapon from 'a-dirty-trail/build/core/Weapon';
+import { usePlayer } from '../contexts/combatSceneEngineContext';
 
 const CombatSelectionWeapons = (): ReactElement => {
     const availableWeapons = useAvailableWeapons();
@@ -55,15 +55,16 @@ const useIsWeaponSelectionVisibleForAttackAction = () => {
 const WeaponButton = ({ weapon }: { weapon: Weapon }): ReactElement => {
     const player = usePlayer();
     const selectWeapon = useSelectWeapon();
-    const hitChance = player.getSkill(weapon.skillName).level * 100;
+    const hitChance =
+        player.getSkill(weapon.getSkill()).getProbabilityOfSuccess() * 100;
     return (
         <CombatSelectionIconButton
-            iconSrc={`${weapon.name}.svg`}
-            name={weapon.name}
+            iconSrc={`${weapon.getType()}.svg`}
+            name={weapon.getName()}
             onClick={() => selectWeapon(weapon)}
         >
-            {weapon.ammunition && (
-                <WeaponAmmunition ammunition={weapon.ammunition} />
+            {weapon.getAmmunition() && (
+                <WeaponAmmunition ammunition={weapon.getAmmunition()} />
             )}
             <p
                 className={css`

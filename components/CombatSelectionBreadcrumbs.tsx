@@ -3,7 +3,6 @@ import { css } from 'emotion';
 import { Transition, animated } from 'react-spring';
 import {
     useActionType,
-    useInventory,
     useOponent,
     useWeapon,
 } from '../contexts/combatActionSelectionContext';
@@ -74,7 +73,7 @@ const useAttackBreadcrumbtText = () => {
         return 'Select oponent to attack';
     }
     if (!weapon) {
-        return `Select weapon to attack ${capitalize(oponent.name)}`;
+        return `Select weapon to attack ${capitalize(oponent.getName())}`;
     }
     return null;
 };
@@ -88,8 +87,8 @@ const useReloadBreadcrumbtText = () => {
 };
 
 const useLootBreadcrumbtText = () => {
-    const inventory = useInventory();
-    if (!inventory) {
+    const oponent = useOponent();
+    if (!oponent) {
         return 'Select fallen oponent to loot';
     }
     return null;

@@ -1,21 +1,18 @@
-import {
-    Action,
-    Actor,
-    AttackAction,
-    Inventory,
-    LootAction,
-    NonPlayableActor,
-    ReloadAction,
-    Weapon,
-} from 'a-dirty-trail/build';
+import Action from 'a-dirty-trail/build/actions/Action';
+import AttackAction from 'a-dirty-trail/build/actions/AttackAction';
+import LootAction from 'a-dirty-trail/build/actions/LootAction';
+import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
+import ActionsMap from 'a-dirty-trail/build/core/ActionsMap';
+import NonPlayableActor from 'a-dirty-trail/build/core/NonPlayableActor';
+import ThingWithId from 'a-dirty-trail/build/core/ThingWithId';
+import Weapon from 'a-dirty-trail/build/core/Weapon';
 import { createContext, ReactElement, useContext, useReducer } from 'react';
-import { usePlayerActions } from './gameContext';
+import { usePlayerActions } from './combatSceneEngineContext';
 
 export type ActionType = 'attack' | 'reload' | 'loot';
 export interface CombatActionSelectionState {
     actionType?: ActionType;
     oponent?: NonPlayableActor;
-    inventory?: Inventory;
     weapon?: Weapon;
 }
 
@@ -29,9 +26,9 @@ interface SelectOponent {
     payload: NonPlayableActor;
 }
 
-interface SelectInventory {
-    type: 'selectInventory';
-    payload: Inventory;
+interface SelectDeadOponent {
+    type: 'selectDeadOponent';
+    payload: NonPlayableActor;
 }
 
 interface SelectWeapon {
@@ -46,7 +43,7 @@ interface ClearSelection {
 type CombatActionSelectionAction =
     | SelectActionTypeAction
     | SelectOponent
-    | SelectInventory
+    | SelectDeadOponent
     | SelectWeapon
     | ClearSelection;
 
@@ -78,10 +75,10 @@ const combatActionSelectionReducer = (
                 oponent: action.payload,
             };
         }
-        case 'selectInventory': {
+        case 'selectDeadOponent': {
             return {
                 ...state,
-                inventory: action.payload,
+                oponent: action.payload,
             };
         }
         case 'selectWeapon': {
@@ -133,11 +130,6 @@ export const useOponent = (): NonPlayableActor => {
     return state.oponent;
 };
 
-export const useInventory = (): Inventory => {
-    const state = useState();
-    return state.inventory;
-};
-
 export const useWeapon = (): Weapon => {
     const state = useState();
     return state.weapon;
@@ -153,7 +145,7 @@ export const useIsSelectionComplete = (): boolean => {
             return !!state.oponent && !!state.weapon;
         }
         case 'loot': {
-            return !!state.inventory;
+            return !!state.oponent;
         }
         case 'reload': {
             return !!state.weapon;
@@ -161,7 +153,7 @@ export const useIsSelectionComplete = (): boolean => {
     }
 };
 
-export const useSelectedPlayerAction = (): Action => {
+export const useSelectedPlayerAction = (): Action<any> => {
     const state = useState();
     const isSelectionComplete = useIsSelectionComplete();
     const playerActions = usePlayerActions();
@@ -173,7 +165,7 @@ export const useSelectedPlayerAction = (): Action => {
 };
 
 const findPlayerActionSelected = (
-    playerActions: Action[],
+    playerActions: ActionsMap,
     state: CombatActionSelectionState
 ) => {
     switch (state.actionType) {
@@ -190,32 +182,29 @@ const findPlayerActionSelected = (
 };
 
 const findPlayerAttackActionSelected = (
-    playerActions: Action[],
+    playerActions: ActionsMap,
     state: CombatActionSelectionState
 ) =>
     playerActions
-        .filter((action) => action instanceof AttackAction)
-        .map((action) => action as AttackAction)
-        .filter((action) => action.oponent.id === state.oponent.id)
-        .find((action) => action.weapon.id === state.weapon.id);
+        .getAttackActions()
+        .filter((action) => action.getOponent().equals(state.oponent))
+        .find((action) => action.getWeapon().equals(state.weapon));
 
 const findPlayerReloadActionSelected = (
-    playerActions: Action[],
+    playerActions: ActionsMap,
     state: CombatActionSelectionState
 ) =>
     playerActions
-        .filter((action) => action instanceof ReloadAction)
-        .map((action) => action as ReloadAction)
-        .find((action) => action.weapon.id === state.weapon.id);
+        .getReloadActions()
+        .find((action) => action.getWeapon().equals(state.weapon));
 
 const findLootActionSelected = (
-    playerActions: Action[],
+    playerActions: ActionsMap,
     state: CombatActionSelectionState
 ) =>
     playerActions
-        .filter((action) => action instanceof LootAction)
-        .map((action) => action as LootAction)
-        .find((action) => action.inventory.id === state.inventory.id);
+        .getLootActions()
+        .find((action) => action.getOponent().equals(state.oponent));
 
 const useDispatch = () => {
     const dispatch = useContext(
@@ -255,15 +244,6 @@ export const useSelectOponent = (): ((oponent: NonPlayableActor) => void) => {
         });
 };
 
-export const useSelectInventory = (): ((inventory: Inventory) => void) => {
-    const dispatch = useDispatch();
-    return (inventory: Inventory) =>
-        dispatch({
-            type: 'selectInventory',
-            payload: inventory,
-        });
-};
-
 export const useSelectWeapon = (): ((weapon: Weapon) => void) => {
     const dispatch = useDispatch();
     return (weapon: Weapon) =>
@@ -275,87 +255,60 @@ export const useSelectWeapon = (): ((weapon: Weapon) => void) => {
 
 export const useAvailableActionTypes = (): ActionType[] => {
     const playerActions = usePlayerActions();
-    const actionTypes = playerActions
-        .map(mapActionToActionType)
-        .filter(Boolean);
-    const uniqueActionTypes = getUniqueActionTypes(actionTypes);
-    return uniqueActionTypes;
+    const actionTypes = [];
+    if (playerActions.getAttackActions().length) {
+        actionTypes.push('attack');
+    }
+    if (playerActions.getReloadActions().length) {
+        actionTypes.push('reload');
+    }
+    if (playerActions.getLootActions().length) {
+        actionTypes.push('loot');
+    }
+    return actionTypes;
 };
 
-const mapActionToActionType = (action: Action): ActionType => {
-    if (action instanceof AttackAction) {
-        return 'attack';
-    }
-    if (action instanceof ReloadAction) {
-        return 'reload';
-    }
-    if (action instanceof LootAction) {
-        return 'loot';
-    }
-    return undefined;
-};
-
-const getUniqueActionTypes = (actionTypes: ActionType[]) => {
-    const actionTypesSet = new Set(actionTypes);
-    return Array.from(actionTypesSet);
-};
-
-export const useAvailableOponents = (): Actor[] => {
+export const useAvailableOponents = (): NonPlayableActor[] => {
     const playerActions = usePlayerActions();
-    const attackActions = getAttackActions(playerActions);
+    const attackActions = playerActions.getAttackActions();
     const oponents = getOponents(attackActions);
     const uniqueOponents = getUniqueObjectsWithId(oponents);
     return uniqueOponents;
 };
 
-const getAttackActions = (action: Action[]) =>
-    action
-        .filter((action) => action instanceof AttackAction)
-        .map((action) => action as AttackAction);
+const getOponents = (actions: AttackAction[]): NonPlayableActor[] =>
+    actions.map((action) => action.getOponent() as NonPlayableActor);
 
-const getOponents = (actions: AttackAction[]) =>
-    actions.map((action) => action.oponent);
-
-const getUniqueObjectsWithId = <T extends { id: string }>(objects: T[]) =>
-    objects.filter(({ id }, index) => {
-        const indexOfFirstMatch = objects.findIndex(
-            (candidate) => candidate.id === id
+const getUniqueObjectsWithId = <T extends ThingWithId>(objects: T[]) =>
+    objects.filter((object, index) => {
+        const indexOfFirstMatch = objects.findIndex((candidate) =>
+            candidate.equals(object)
         );
         return indexOfFirstMatch === index;
     });
 
-export const useAvailableInventories = (): Inventory[] => {
+export const useAvailableDeadOponents = (): NonPlayableActor[] => {
     const playerActions = usePlayerActions();
-    const lootActions = getLootActions(playerActions);
-    const inventories = getInventories(lootActions);
-    const uniqueInventories = getUniqueObjectsWithId(inventories);
+    const lootActions = playerActions.getLootActions();
+    const deadOponents = getDeadOponents(lootActions);
+    const uniqueInventories = getUniqueObjectsWithId(deadOponents);
     return uniqueInventories;
 };
 
-const getLootActions = (action: Action[]) =>
-    action
-        .filter((action) => action instanceof LootAction)
-        .map((action) => action as LootAction);
-
-const getInventories = (actions: LootAction[]) =>
-    actions.map((action) => action.inventory);
+const getDeadOponents = (actions: LootAction[]): NonPlayableActor[] =>
+    actions.map((action) => action.getOponent() as NonPlayableActor);
 
 export const useAvailableWeapons = (): Weapon[] => {
     const actionType = useActionType();
     const playerActions = usePlayerActions();
     const actionsToGetWeaponsFrom =
         actionType === 'attack'
-            ? getAttackActions(playerActions)
-            : getReloadActions(playerActions);
+            ? playerActions.getAttackActions()
+            : playerActions.getReloadActions();
     const weapons = getWeapons(actionsToGetWeaponsFrom);
     const uniqueWeapons = getUniqueObjectsWithId(weapons);
     return uniqueWeapons;
 };
 
-const getWeapons = (actions: { weapon: Weapon }[]) =>
-    actions.map((action) => action.weapon);
-
-const getReloadActions = (action: Action[]) =>
-    action
-        .filter((action) => action instanceof ReloadAction)
-        .map((action) => action as ReloadAction);
+const getWeapons = (actions: Array<AttackAction | ReloadAction>) =>
+    actions.map((action) => action.getWeapon());

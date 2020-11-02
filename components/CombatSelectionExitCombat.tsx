@@ -1,45 +1,34 @@
 import React, { ReactElement } from 'react';
+import CombatSelectionCategoryTransition from './CombatSelectionCategory';
+import { Button } from 'react-bootstrap';
 import {
     useExecutePlayerAction,
     usePlayerActions,
-} from '../contexts/gameContext';
-import {
-    Action,
-    AdvanceToActAction,
-    AdvanceToSceneAction,
-} from 'a-dirty-trail';
-import CombatSelectionCategoryTransition from './CombatSelectionCategory';
-import { Button } from 'react-bootstrap';
-import { useToggleGameViewMode } from '../contexts/gameViewModeContext';
+} from '../contexts/combatSceneEngineContext';
+import AdvanceAction from 'a-dirty-trail/build/actions/AdvanceAction';
 
 const CombatSelectionExitCombat = (): ReactElement => {
     const playerActions = usePlayerActions();
-    const leaveActions = playerActions.filter(
-        (action) =>
-            action instanceof AdvanceToActAction ||
-            action instanceof AdvanceToSceneAction
-    );
+    const advanceActions = playerActions.getAdvanceActions();
     return (
         <CombatSelectionCategoryTransition
-            visible={leaveActions.length > 0}
-            items={leaveActions}
+            visible={advanceActions.length > 0}
+            items={advanceActions}
         >
-            {(leaveAction) => <ExitButton action={leaveAction} />}
+            {(advanceAction) => <ExitButton action={advanceAction} />}
         </CombatSelectionCategoryTransition>
     );
 };
 
 export default CombatSelectionExitCombat;
 
-const ExitButton = ({ action }: { action: Action }): ReactElement => {
+const ExitButton = ({ action }: { action: AdvanceAction }): ReactElement => {
     const executePlayerAction = useExecutePlayerAction();
-    const toggleGameViewMode = useToggleGameViewMode();
     return (
         <Button
             variant="dark"
             onClick={() => {
                 executePlayerAction(action);
-                toggleGameViewMode();
             }}
             className="text-capitalize"
             block

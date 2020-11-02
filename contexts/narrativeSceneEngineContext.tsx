@@ -25,12 +25,15 @@ export const NarrativeSceneEngineProvider = ({
     children: ReactElement | ReactElement[];
 }): React.ReactElement => {
     const narration = useNarration();
-    const scene = narration.getCurrentScene();
-    const player = scene.getPlayer();
+    const scene = narration ? narration.getCurrentScene() : undefined;
+    const player = scene ? scene.getPlayer() : undefined;
+    const narrativeSceneEngine = scene
+        ? new NarrativeSceneEngine({ scene })
+        : undefined;
     const [state, dispatch] = useReducer(narrativeSceneEngineReducer, {
         scene,
         player,
-        narrativeSceneEngine: new NarrativeSceneEngine({ scene }),
+        narrativeSceneEngine,
     });
     useEffect(() => {
         if (scene && player) {

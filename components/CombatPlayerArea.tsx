@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import { usePlayer } from '../contexts/gameContext';
 import Health from './Health';
-import { Actor, Ammunition as GameAmmunition } from 'a-dirty-trail';
 import Ammunition from './Ammunition';
+import { usePlayer } from '../contexts/combatSceneEngineContext';
+import Actor from 'a-dirty-trail/build/core/Actor';
 
 const CombatPlayerArea = (): ReactElement => {
     const player = usePlayer();
@@ -35,7 +35,7 @@ const PlayerHealth = ({ player }: { player: Actor }): ReactElement => (
             <h3>Health</h3>
         </header>
         <Health
-            health={player.health}
+            health={player.getHealth()}
             iconClassName={css`
                 height: 3rem !important;
             `}
@@ -44,10 +44,9 @@ const PlayerHealth = ({ player }: { player: Actor }): ReactElement => (
 );
 
 const PlayerAmmunitions = ({ player }: { player: Actor }): ReactElement => {
-    const ammunitions = player.inventory.items.filter(
-        (item) => item instanceof GameAmmunition
-    );
-    if (!ammunitions) {
+    const ammunitionsByType = player.getInventory().getAmmunitionsByType();
+    const ammunitionTypes = Object.keys(ammunitionsByType);
+    if (!ammunitionTypes.length) {
         return <OutOfAmmunitions />;
     }
     return (
@@ -65,9 +64,12 @@ const PlayerAmmunitions = ({ player }: { player: Actor }): ReactElement => {
                     `
                 }
             >
-                {ammunitions.map((ammunition) => (
-                    <li key={ammunition.id}>
-                        <Ammunition ammunition={ammunition as GameAmmunition} />
+                {ammunitionTypes.map((ammunitionType) => (
+                    <li key={ammunitionType}>
+                        <Ammunition
+                            type={ammunitionType}
+                            quantity={ammunitionsByType[ammunitionType]}
+                        />
                     </li>
                 ))}
             </ul>

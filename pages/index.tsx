@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import GameView from '../components/GameView';
-import { GameViewModeProvider } from '../contexts/gameViewModeContext';
 import { NarrationProvider } from '../contexts/narrationContext';
+import { NarrativeSceneEngineProvider } from '../contexts/narrativeSceneEngineContext';
+import { CombatSceneEngineProvider } from '../contexts/combatSceneEngineContext';
 
 const Home = (): React.ReactElement => (
     <>
@@ -9,9 +10,11 @@ const Home = (): React.ReactElement => (
             <title>A dirty trail</title>
         </Head>
         <NarrationProvider>
-            <GameViewModeProvider>
-                <GameView />
-            </GameViewModeProvider>
+            <NarrativeSceneEngineProvider>
+                <CombatSceneEngineProvider>
+                    <GameView />
+                </CombatSceneEngineProvider>
+            </NarrativeSceneEngineProvider>
         </NarrationProvider>
     </>
 );

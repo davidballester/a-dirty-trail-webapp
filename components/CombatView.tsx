@@ -4,15 +4,20 @@ import CombatOponents from './CombatOponents';
 import CombatPlayerArea from './CombatPlayerArea';
 import CombatPlayerActions from './CombatPlayerActions';
 import CombatLog from './CombatLog';
-import {
-    useCanPlayerAct,
-    useExecuteNextOponentAction,
-} from '../contexts/gameContext';
 import { WAIT_FOR_OPONENT_ACTION_MS } from '../helpers/constants';
 import { OponentsIconsProvider } from '../contexts/oponentIconsContext';
+import {
+    useExecuteNextOponentAction,
+    useIsPlayerTurn,
+    useScene,
+} from '../contexts/combatSceneEngineContext';
 
 const CombatView = (): ReactElement => {
+    const scene = useScene();
     useAdvanceTurn();
+    if (!scene) {
+        return null;
+    }
     return (
         <CombatBoard>
             <OponentsIconsProvider>
@@ -43,15 +48,15 @@ export default CombatView;
 
 const useAdvanceTurn = () => {
     const executeNextOponentAction = useExecuteNextOponentAction();
-    const canPlayerAct = useCanPlayerAct();
+    const isPlayerTurn = useIsPlayerTurn();
     useEffect(() => {
-        if (!canPlayerAct) {
+        if (!isPlayerTurn) {
             const executeNextOponentActionTimeoutKey = setTimeout(() => {
                 executeNextOponentAction();
             }, WAIT_FOR_OPONENT_ACTION_MS);
             return () => clearTimeout(executeNextOponentActionTimeoutKey);
         }
-    }, [canPlayerAct]);
+    }, [isPlayerTurn]);
 };
 
 const CombatBoard = ({

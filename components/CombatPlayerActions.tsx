@@ -9,24 +9,24 @@ import {
 import CombatSelectionBreadcrumb from './CombatSelectionBreadcrumbs';
 import CombatSelectionActionType from './CombatSelectionActionType';
 import CombatSelectionOponents from './CombatSelectionOponents';
-import CombatSelectionInventories from './CombatSelectionInventories';
+import CombatSelectionDeadOponents from './CombatSelectionDeadOponents';
 import CombatSelectionClear from './CombatSelectionClear';
 import CombatSelectionExitCombat from './CombatSelectionExitCombat';
-import {
-    useCanPlayerAct,
-    useExecutePlayerAction,
-} from '../contexts/gameContext';
 import CombatSelectionWeapons from './CombatSelectionWeapons';
 import { animated, Transition } from 'react-spring';
+import {
+    useExecutePlayerAction,
+    useIsPlayerTurn,
+} from '../contexts/combatSceneEngineContext';
 
 const CombatPlayerActions = (): ReactElement => {
-    const canPlayerAct = useCanPlayerAct();
+    const isPlayerTurn = useIsPlayerTurn();
     return (
         <section>
             <CombatActionSelectionProvider>
                 <ExecuteActionOnSelectionCompleted>
                     <Transition
-                        items={canPlayerAct || undefined}
+                        items={isPlayerTurn || undefined}
                         from={{ opacity: 0 }}
                         enter={{ opacity: 1 }}
                     >
@@ -56,7 +56,7 @@ const ExecuteActionOnSelectionCompleted = ({
     return <>{children}</>;
 };
 
-const useExecuteActionOnSelectionCompleted = (): ReactElement => {
+const useExecuteActionOnSelectionCompleted = (): void => {
     const isSelectionComplete = useIsSelectionComplete();
     const selectedPlayerAction = useSelectedPlayerAction();
     const executePlayerAction = useExecutePlayerAction();
@@ -77,7 +77,7 @@ const SelectionItems = (): ReactElement => (
     >
         <CombatSelectionActionType />
         <CombatSelectionOponents />
-        <CombatSelectionInventories />
+        <CombatSelectionDeadOponents />
         <CombatSelectionWeapons />
     </div>
 );

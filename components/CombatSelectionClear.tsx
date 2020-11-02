@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { Button } from 'react-bootstrap';
 import { Spring, animated } from 'react-spring';
