@@ -208,18 +208,27 @@ const Trinkets = ({ trinkets }: { trinkets: GameTrinket[] }): ReactElement => (
 );
 
 const Trinket = ({ trinket }: { trinket: GameTrinket }): ReactElement => (
-    <p>
-        <span
-            className={css`
-                display: block;
-            `}
-        >
-            {trinket.getName()}
-        </span>
-        {trinket.getDescription() && (
-            <span className="font-italic">{trinket.getDescription()}</span>
-        )}
-    </p>
+    <div
+        className={css`
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        `}
+    >
+        <ItemIcon src="trinket.svg" alt={trinket.getName()} />
+        <p>
+            <strong
+                className={css`
+                    display: block;
+                `}
+            >
+                {trinket.getName()}
+            </strong>
+            {trinket.getDescription() && (
+                <span className="font-italic">{trinket.getDescription()}</span>
+            )}
+        </p>
+    </div>
 );
 
 export default NarrationInventory;
