@@ -9,37 +9,43 @@ import { OponentsIconsProvider } from '../contexts/oponentIconsContext';
 import {
     useExecuteNextOponentAction,
     useIsPlayerTurn,
+    usePlayer,
     useScene,
 } from '../contexts/combatSceneEngineContext';
+import PlayerDead from './PlayerDead';
 
 const CombatView = (): ReactElement => {
     const scene = useScene();
+    const player = usePlayer();
     useAdvanceTurn();
     if (!scene) {
         return null;
     }
     return (
         <CombatBoard>
-            <OponentsIconsProvider>
-                <CombatPlayerArea />
-                <div
-                    className={css`
-                        margin-top: 3rem;
-                    `}
-                >
-                    <CombatOponents />
-                </div>
-                <CombatLog />
-                <div
-                    className={css`
-                        position: absolute;
-                        bottom: 0;
-                        width: 100%;
-                    `}
-                >
-                    <CombatPlayerActions />
-                </div>
-            </OponentsIconsProvider>
+            {player.isAlive() && (
+                <OponentsIconsProvider>
+                    <CombatPlayerArea />
+                    <div
+                        className={css`
+                            margin-top: 3rem;
+                        `}
+                    >
+                        <CombatOponents />
+                    </div>
+                    <CombatLog />
+                    <div
+                        className={css`
+                            position: absolute;
+                            bottom: 0;
+                            width: 100%;
+                        `}
+                    >
+                        <CombatPlayerActions />
+                    </div>
+                </OponentsIconsProvider>
+            )}
+            {!player.isAlive() && <PlayerDead />}
         </CombatBoard>
     );
 };
