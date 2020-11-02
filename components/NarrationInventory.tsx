@@ -10,9 +10,12 @@ import GameWeapon from 'a-dirty-trail/build/core/Weapon';
 import Damage from 'a-dirty-trail/build/core/Damage';
 import GameTrinket from 'a-dirty-trail/build/core/Trinket';
 import { AmmunitionByType } from 'a-dirty-trail/build/core/Inventory';
-import { useNarrativeSceneEngine } from '../contexts/narrativeSceneEngineContext';
+import {
+    useExecutePlayerAction,
+    useNarrativeSceneEngine,
+    usePlayer,
+} from '../contexts/narrativeSceneEngineContext';
 import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
-import { usePlayer } from '../contexts/sceneContext';
 
 const NarrationInventory = (): ReactElement => (
     <article>
@@ -122,7 +125,7 @@ const ReloadWeaponButton = ({
     weapon: GameWeapon;
 }): ReactElement => {
     const reloadAction = useWeaponReloadAction(weapon);
-    const narrativeSceneEngine = useNarrativeSceneEngine();
+    const executePlayerAction = useExecutePlayerAction();
     if (!reloadAction) {
         return null;
     }
@@ -150,9 +153,7 @@ const ReloadWeaponButton = ({
                         block
                         size="sm"
                         onClick={() => {
-                            narrativeSceneEngine.executePlayerAction(
-                                reloadAction
-                            );
+                            executePlayerAction(reloadAction);
                         }}
                     >
                         Reload

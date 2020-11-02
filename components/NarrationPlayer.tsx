@@ -3,7 +3,7 @@ import Health from './Health';
 import useSkillLevelText from '../hooks/useSkillLevelText';
 import GameSkillSet from 'a-dirty-trail/build/core/SkillSet';
 import GameSkill from 'a-dirty-trail/build/core/Skill';
-import { usePlayer } from '../contexts/sceneContext';
+import { usePlayer } from '../contexts/narrativeSceneEngineContext';
 
 const NarrationPlayer = (): ReactElement => (
     <article>

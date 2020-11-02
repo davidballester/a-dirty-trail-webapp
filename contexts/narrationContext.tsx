@@ -5,7 +5,7 @@ import React, {
     useState,
     useEffect,
 } from 'react';
-import { Narration } from 'a-dirty-trail';
+import { Narration, Scene } from 'a-dirty-trail';
 import MyNarrationsCatalogue from '../helpers/MyNarrationsCatalogue';
 import MySceneTemplateResolver from '../helpers/MySceneTemplateResolver';
 
@@ -45,4 +45,9 @@ export const NarrationProvider = ({
 
 export const useNarration = (): Narration | undefined => {
     return useContext(NarrationContext) as Narration;
+};
+
+export const useScene = (): Scene | undefined => {
+    const narration = useNarration();
+    return narration ? narration.getCurrentScene() : undefined;
 };

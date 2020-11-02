@@ -3,7 +3,7 @@ import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
 import NarrationPlayerActions from './NarrationPlayerActions';
 import ReactMarkdown from 'react-markdown';
-import { useScene } from '../contexts/sceneContext';
+import { useScene } from '../contexts/narrativeSceneEngineContext';
 
 const Narration = (): ReactElement => {
     const scene = useScene();
