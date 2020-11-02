@@ -20,7 +20,9 @@ const App = ({ Component, pageProps }): React.ReactElement => (
                     font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
                         Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
                         Helvetica Neue, sans-serif;
-                    overflow: hidden;
+                    scrollbar-width: 5px;
+                    scollbar-color: var(--dark);
+                    overflow-y: overlay;
                 }
 
                 a {
@@ -51,6 +53,16 @@ const App = ({ Component, pageProps }): React.ReactElement => (
 
                 .text-small {
                     font-size: 0.8rem;
+                }
+
+                ::-webkit-scrollbar {
+                    width: 5px;
+                    height: 8px;
+                    background-color: var(--secondary);
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    background: var(--dark);
                 }
             `}
         />
