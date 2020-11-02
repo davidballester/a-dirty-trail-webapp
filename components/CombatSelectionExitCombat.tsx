@@ -1,11 +1,9 @@
 import React, { ReactElement } from 'react';
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 import { Button } from 'react-bootstrap';
-import {
-    useExecutePlayerAction,
-    usePlayerActions,
-} from '../contexts/combatSceneEngineContext';
+import { usePlayerActions } from '../contexts/combatSceneEngineContext';
 import AdvanceAction from 'a-dirty-trail/build/actions/AdvanceAction';
+import { useExecutePlayerAction } from '../contexts/narrativeSceneEngineContext';
 
 const CombatSelectionExitCombat = (): ReactElement => {
     const playerActions = usePlayerActions();
