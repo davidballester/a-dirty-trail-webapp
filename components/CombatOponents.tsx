@@ -137,7 +137,10 @@ const OponentPortrait = ({
             src={oponentPortraitSrc}
             alt={oponent.getName()}
             className={css`
-                width: 5rem;
+                width: 4rem;
+                @media (min-width: 900px) {
+                    width: 5rem;
+                }
             `}
         />
     );
@@ -148,7 +151,10 @@ const OponentName = ({ name }: { name: string }): ReactElement => (
         className={
             'text-capitalize ' +
             css`
-                font-size: 2rem;
+                font-size: 1.2rem;
+                @media (min-width: 900px) {
+                    font-size: 2rem !important;
+                }
             `
         }
     >
@@ -160,7 +166,10 @@ const OponentHealth = ({ health }: { health: GameHealth }): ReactElement => (
     <Health
         health={health}
         iconClassName={css`
-            height: 2rem;
+            height: 1.5rem !important;
+            @media (min-width: 900px) {
+                height: 2rem !important;
+            }
         `}
     />
 );
@@ -217,7 +226,10 @@ const OponentNextAttackActionContent = ({
             alt={weapon.getName()}
             title={`The oponent will attack with their ${weapon.getName()}`}
             className={css`
-                height: 3rem;
+                height: 2rem;
+                @media (min-width: 900px) {
+                    height: 3rem;
+                }
             `}
         />
     );
@@ -237,7 +249,10 @@ const OponentNextReloadActionContent = ({
                 align-items: center;
                 justify-content: center;
                 > img {
-                    height: 3rem;
+                    height: 2rem;
+                    @media (min-width: 900px) {
+                        height: 3rem;
+                    }
                 }
                 > img:last-child {
                     margin-left: 0.5rem;

@@ -10,9 +10,7 @@ actions:
                         damage: 1-2
                         skill: aim
                         ammunitionType: bullets
-                        ammunition: 5-6
-                ammunitions:
-                    bullets: 5
+                        ammunition: 6-6
         nextSceneTitle: outsideTheStageCoach
 ---
 

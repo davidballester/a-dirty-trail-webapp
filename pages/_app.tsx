@@ -23,6 +23,7 @@ const App = ({ Component, pageProps }): React.ReactElement => (
                     scrollbar-width: 5px;
                     scollbar-color: var(--dark);
                     overflow-y: overlay;
+                    overflow-x: hidden;
                     min-height: 100vh;
                 }
 
@@ -64,6 +65,20 @@ const App = ({ Component, pageProps }): React.ReactElement => (
 
                 ::-webkit-scrollbar-thumb {
                     background: var(--dark);
+                }
+
+                .absolute-top-left {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                }
+
+                .absolute-bottom-left {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
                 }
             `}
         />

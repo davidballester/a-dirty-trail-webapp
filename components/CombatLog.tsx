@@ -22,21 +22,19 @@ const CombatLog = (): ReactElement => {
             className={css`
                 text-align: center;
                 position: relative;
-                > div {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                }
             `}
         >
             <div
-                className={css`
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 2rem;
-                    will-change: opacity;
-                `}
+                className={
+                    'absolute-top-left ' +
+                    css`
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 2rem;
+                        will-change: opacity;
+                    `
+                }
             >
                 <div>
                     <ActionOutcome action={action} outcome={outcome} />

@@ -12,20 +12,8 @@ const CombatPlayerArea = (): ReactElement => {
     }
     return (
         <section>
-            <div
-                className={css`
-                    display: flex;
-                    > * {
-                        width: 50%;
-                    }
-                    > :first-child {
-                        margin-right: 1rem;
-                    }
-                `}
-            >
-                <PlayerHealth player={player} />
-                <PlayerAmmunitions player={player} />
-            </div>
+            <PlayerHealth player={player} />
+            <PlayerAmmunitions player={player} />
         </section>
     );
 };
@@ -37,7 +25,10 @@ const PlayerHealth = ({ player }: { player: Actor }): ReactElement => (
         <Health
             health={player.getHealth()}
             iconClassName={css`
-                height: 3rem !important;
+                height: 2rem !important;
+                @media (min-width: 900px) {
+                    height: 3rem !important;
+                }
             `}
         />
     </section>
@@ -47,7 +38,7 @@ const PlayerAmmunitions = ({ player }: { player: Actor }): ReactElement => {
     const ammunitionsByType = player.getInventory().getAmmunitionsByType();
     const ammunitionTypes = Object.keys(ammunitionsByType);
     if (!ammunitionTypes.length) {
-        return <OutOfAmmunitions />;
+        return null;
     }
     return (
         <section>
@@ -76,7 +67,5 @@ const PlayerAmmunitions = ({ player }: { player: Actor }): ReactElement => {
         </section>
     );
 };
-
-const OutOfAmmunitions = (): ReactElement => <h3>Out of ammo!</h3>;
 
 export default CombatPlayerArea;

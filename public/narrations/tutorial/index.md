@@ -2,7 +2,7 @@
 title: The stage coach
 player:
     name: The damsel
-    health: 6-6
+    health: 8-8
     inventory:
         trinkets:
             - name: Opened letter

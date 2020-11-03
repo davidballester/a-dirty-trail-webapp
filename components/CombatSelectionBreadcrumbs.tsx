@@ -16,10 +16,6 @@ const CombatSelectionBreadcrumb = (): ReactElement => {
                 position: relative;
                 padding-bottom: 2rem;
                 > div {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -33,7 +29,10 @@ const CombatSelectionBreadcrumb = (): ReactElement => {
                 leave={{ opacity: 0 }}
             >
                 {(style) => (
-                    <animated.div style={style as any}>
+                    <animated.div
+                        style={style as any}
+                        className="absolute-top-left"
+                    >
                         <h6>{breadcrumbText}</h6>
                     </animated.div>
                 )}

@@ -62,8 +62,6 @@ const TabContentsWithTransition = ({
             className={css`
                 position: relative;
                 > div {
-                    position: absolute;
-                    width: 100%;
                     height: 100%;
                     will-change: opacity, translate;
                 }
@@ -86,7 +84,10 @@ const TabContentsWithTransition = ({
                 }}
             >
                 {(style, item) => (
-                    <animated.div style={style as any}>
+                    <animated.div
+                        style={style as any}
+                        className="absolute-top-left"
+                    >
                         {item === Tab.narration && <Narration />}
                         {item === Tab.inventory && <NarrationInventory />}
                         {item === Tab.player && <NarrationPlayer />}
@@ -107,6 +108,7 @@ const CenteredContainer = ({
             position: relative;
             margin: auto;
             max-width: 600px;
+            padding: 0 2rem;
         `}
     >
         {children}

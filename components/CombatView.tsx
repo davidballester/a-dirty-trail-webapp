@@ -28,19 +28,16 @@ const CombatView = (): ReactElement => {
                     <CombatPlayerArea />
                     <div
                         className={css`
-                            margin-top: 3rem;
+                            margin-top: 1.5rem;
+                            @media (min-width: 900px) {
+                                margin-top: 3rem;
+                            }
                         `}
                     >
                         <CombatOponents />
                     </div>
                     <CombatLog />
-                    <div
-                        className={css`
-                            position: absolute;
-                            bottom: 0;
-                            width: 100%;
-                        `}
-                    >
+                    <div className="absolute-bottom-left">
                         <CombatPlayerActions />
                     </div>
                 </OponentsIconsProvider>
@@ -80,13 +77,14 @@ const CombatBoard = ({
     >
         <GradientBackground />
         <div
-            className={css`
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                z-index: 10;
-                padding: 1rem;
-            `}
+            className={
+                'absolute-top-left ' +
+                css`
+                    height: 100%;
+                    z-index: 10;
+                    padding: 1rem;
+                `
+            }
         >
             <div
                 className={css`
@@ -94,6 +92,7 @@ const CombatBoard = ({
                     max-width: 600px;
                     height: 100%;
                     margin: auto;
+                    padding: 0 2rem;
                 `}
             >
                 {children}
@@ -104,15 +103,16 @@ const CombatBoard = ({
 
 const GradientBackground = (): ReactElement => (
     <div
-        className={css`
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle,
-                transparent 0%,
-                rgba(0, 0, 0, 0.1) 100%
-            );
-        `}
+        className={
+            'absolute-top-left ' +
+            css`
+                height: 100%;
+                background: radial-gradient(
+                    circle,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.1) 100%
+                );
+            `
+        }
     />
 );
