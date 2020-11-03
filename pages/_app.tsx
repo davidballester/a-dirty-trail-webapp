@@ -23,6 +23,7 @@ const App = ({ Component, pageProps }): React.ReactElement => (
                     scrollbar-width: 5px;
                     scollbar-color: var(--dark);
                     overflow-y: overlay;
+                    min-height: 100vh;
                 }
 
                 a {

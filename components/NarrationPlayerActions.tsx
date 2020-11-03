@@ -17,7 +17,7 @@ const NarrationPlayerActions = (): ReactElement => {
     return (
         <section
             className={css`
-                padding-top: 1rem;
+                padding: 1rem 0 3rem 0;
                 > div {
                     will-change: opacity, translate;
                 }

@@ -180,6 +180,9 @@ const TabButton = ({
             :focus {
                 box-shadow: none;
             }
+            border: none;
+            padding-left: 0;
+            padding-right: 1rem;
         `}
     >
         <img
