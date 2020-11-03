@@ -7,6 +7,7 @@ const ItemIcon = ({ src, alt }: { src: string; alt: string }): ReactElement => (
         alt={alt}
         className={css`
             width: 2rem;
+            margin-right: 0.5rem;
             @media (min-width: 900px) {
                 width: 3rem;
                 margin-right: 1rem;

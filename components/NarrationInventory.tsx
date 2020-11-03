@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import ItemIcon from './ItemIcon';
 import WeaponAmmunition from './WeaponAmmunition';
 import Ammunition from './Ammunition';
 import useSkillLevelText from '../hooks/useSkillLevelText';
@@ -39,6 +38,13 @@ const ListOfItems = (): ReactElement => {
                         transition: background 0.5s;
                         :hover {
                             background: var(--light);
+                        }
+
+                        @media (max-width: 900px) {
+                            border-bottom: 1px solid var(--secondary);
+                            :last-child {
+                                border-bottom: none;
+                            }
                         }
                     }
                 `
@@ -229,6 +235,17 @@ const Trinket = ({ trinket }: { trinket: GameTrinket }): ReactElement => (
             )}
         </p>
     </div>
+);
+
+const ItemIcon = ({ src, alt }: { src: string; alt: string }): ReactElement => (
+    <img
+        src={src}
+        alt={alt}
+        className={css`
+            width: 3rem;
+            margin-right: 1rem;
+        `}
+    />
 );
 
 export default NarrationInventory;
