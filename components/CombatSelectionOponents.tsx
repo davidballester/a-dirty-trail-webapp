@@ -7,8 +7,8 @@ import {
 } from '../contexts/combatActionSelectionContext';
 import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 import CombatSelectionIconButton from './CombatSelectionIconButton';
-import { useOponentIcon } from '../contexts/oponentIconsContext';
 import NonPlayableActor from 'a-dirty-trail/build/core/NonPlayableActor';
+import OponentIcon from './OponentIcon';
 
 const CombatSelectionOponents = (): ReactElement => {
     const oponent = useOponent();
@@ -32,10 +32,9 @@ const OponentButton = ({
     oponent: NonPlayableActor;
 }): ReactElement => {
     const selectOponent = useSelectOponent();
-    const oponentIcon = useOponentIcon(oponent.getName());
     return (
         <CombatSelectionIconButton
-            iconSrc={oponentIcon}
+            icon={<OponentIcon oponent={oponent} />}
             name={oponent.getName()}
             onClick={() => selectOponent(oponent)}
         />

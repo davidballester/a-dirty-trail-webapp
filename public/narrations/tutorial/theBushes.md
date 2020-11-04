@@ -1,8 +1,8 @@
 ---
 title: Among the bushes
 actions:
-    'Limp away (-1 hitpoints)':
-        nextSceneTitle: theRoad
+    'She limped away (-1 hitpoints)':
+        nextSceneTitle: theOldLady
         sideEffect:
             modifyHealth: -1
             loot:

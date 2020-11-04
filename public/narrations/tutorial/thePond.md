@@ -1,8 +1,8 @@
 ---
 title: The pond
 actions:
-    'Return to the road (+1 hitpoints)':
-        nextSceneTitle: theRoad
+    'She returned to the road (+1 hitpoints)':
+        nextSceneTitle: theOldLady
         sideEffect:
             modifyHealth: +1
 ---

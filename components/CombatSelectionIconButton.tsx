@@ -4,11 +4,13 @@ import { Button } from 'react-bootstrap';
 
 const CombatSelectionIconButton = ({
     iconSrc,
+    icon,
     name,
     onClick,
     children,
 }: {
-    iconSrc: string;
+    iconSrc?: string;
+    icon?: ReactElement;
     name: string;
     onClick: () => void;
     children?: ReactElement | ReactElement[];
@@ -42,7 +44,8 @@ const CombatSelectionIconButton = ({
                 }
             `}
         >
-            <img src={iconSrc} alt={name} />
+            {iconSrc ? <img src={iconSrc} alt={name} /> : null}
+            {icon ? icon : null}
             {children}
             <figcaption className="text-capitalize">{name}</figcaption>
         </figure>

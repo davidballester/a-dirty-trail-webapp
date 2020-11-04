@@ -1,0 +1,22 @@
+---
+title: The old lady's advice
+actions:
+    She kept going:
+        nextSceneTitle: theInn
+---
+
+"It's alright, child," the old lady said. "It'll come to me."
+
+Silence fell between them, and {{playerName}} smiled faintly.
+
+"I'll be going now."
+
+"You should. To the inn, right?"
+
+"Yes."
+
+"You'll get there. But once you do, be careful."
+
+"Why is that?"
+
+The old lady looked into the woods, or into herself, perhaps.

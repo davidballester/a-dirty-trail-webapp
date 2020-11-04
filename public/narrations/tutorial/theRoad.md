@@ -9,6 +9,8 @@ actions:
                 nextSceneTitle: thePond
             failure:
                 nextSceneTitle: theBushes
+    'She kept going':
+        nextSceneTitle: theOldLady
 ---
 
 A dirty trail extended into the distance. {{playerName}} strode along it, leaving deep footprints on the mud. Despite the humid air and the dark clouded sky, she felt thirsty. As the walk went on and on, she was parched.

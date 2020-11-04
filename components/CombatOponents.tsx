@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import Health from './Health';
 import { animated, Spring } from 'react-spring';
-import { useOponentIcon } from '../contexts/oponentIconsContext';
 import {
     useCombatSceneEngine,
     useScene,
@@ -12,6 +11,7 @@ import GameHealth from 'a-dirty-trail/build/core/Health';
 import Action from 'a-dirty-trail/build/actions/Action';
 import AttackAction from 'a-dirty-trail/build/actions/AttackAction';
 import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
+import OponentIcon from './OponentIcon';
 
 const Oponents = (): ReactElement => {
     const scene = useScene();
@@ -113,7 +113,17 @@ const OponentCard = ({
             align-items: center;
         `}
     >
-        <OponentPortrait oponent={oponent} />
+        <OponentIcon
+            oponent={oponent}
+            className={css`
+                width: 4rem;
+                min-width: 4rem;
+                @media (min-width: 900px) {
+                    width: 5rem;
+                    min-width: 5rem;
+                }
+            `}
+        />
         <OponentName name={oponent.getName()} />
         <OponentHealth health={oponent.getHealth()} />
         <div
@@ -125,26 +135,6 @@ const OponentCard = ({
         </div>
     </article>
 );
-
-const OponentPortrait = ({
-    oponent,
-}: {
-    oponent: NonPlayableActor;
-}): ReactElement => {
-    const oponentPortraitSrc = useOponentIcon(oponent.getName());
-    return (
-        <img
-            src={oponentPortraitSrc}
-            alt={oponent.getName()}
-            className={css`
-                width: 4rem;
-                @media (min-width: 900px) {
-                    width: 5rem;
-                }
-            `}
-        />
-    );
-};
 
 const OponentName = ({ name }: { name: string }): ReactElement => (
     <h3
