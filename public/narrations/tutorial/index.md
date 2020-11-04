@@ -12,6 +12,14 @@ player:
                 type: 'knife'
                 damage: 1-1
                 skill: stab
+            'Six shooter':
+                type: 'revolver'
+                damage: 1-2
+                skill: aim
+                ammunitionType: bullets
+                ammunition: 5-6
+        ammunitions:
+            bullets: 5
     skills:
         aim: 0.6
         stab: 0.75
