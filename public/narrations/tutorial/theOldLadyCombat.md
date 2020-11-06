@@ -1,5 +1,5 @@
 ---
-title: The old lady
+title: The claws of the old lady
 actions:
     The old lady was dead now:
         nextSceneTitle: theOldLadyIsDead
@@ -10,9 +10,9 @@ actors:
             weapons:
                 Claws:
                     type: fangs
-                    damage: 4-4
+                    damage: 2-3
                     skill: rush
                     canBeLooted: false
         skills:
-            rush: 0.75
+            rush: 0.6
 ---
