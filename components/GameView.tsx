@@ -19,19 +19,10 @@ const GameView = (): ReactElement => {
         return null;
     }
     return (
-        <div
-            className={css`
-                position: relative;
-                > * {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                }
-            `}
-        >
-            <NarrationView />
+        <div>
+            <NarrationWithTransition
+                isNarration={gameViewMode === GameViewMode.narration}
+            />
             <CombatWithTransition
                 isCombat={gameViewMode === GameViewMode.combat}
             />
@@ -46,6 +37,20 @@ export enum GameViewMode {
     combat,
 }
 
+const NarrationWithTransition = ({
+    isNarration,
+}: {
+    isNarration: boolean;
+}): ReactElement => (
+    <div
+        className={css`
+            display: ${isNarration ? 'block' : 'none'};
+        `}
+    >
+        <NarrationView />
+    </div>
+);
+
 const CombatWithTransition = ({
     isCombat,
 }: {
@@ -54,15 +59,19 @@ const CombatWithTransition = ({
     <Transition
         items={isCombat || undefined}
         from={{
-            transform: `perspective(600px) rotateX(180deg)`,
+            opacity: 0,
+            transform: 'translate3d(0, -50%, 0)',
         }}
-        enter={{
-            transform: `perspective(600px) rotateX(0deg)`,
-        }}
+        enter={{ opacity: 1, transform: 'translate3d(0, 0, 0)' }}
         leave={{
-            transform: `perspective(600px) rotateX(-180deg)`,
+            opacity: 0,
+            transform: 'translate3d(0, 50%, 0)',
         }}
     >
-        {(style) => <animated.div style={style}>{<CombatView />}</animated.div>}
+        {(style) => (
+            <animated.div style={style} className="absolute-top-left">
+                {<CombatView />}
+            </animated.div>
+        )}
     </Transition>
 );

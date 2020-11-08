@@ -62,7 +62,6 @@ const TabContentsWithTransition = ({
             className={css`
                 position: relative;
                 > div {
-                    height: 100%;
                     will-change: opacity, translate;
                 }
             `}
@@ -76,18 +75,9 @@ const TabContentsWithTransition = ({
                     },0,0)`,
                 }}
                 enter={{ opacity: 1, transform: 'translate3d(0%,0,0)' }}
-                leave={{
-                    opacity: 0,
-                    transform: `translate3d(${
-                        isTransitionLeftToRight ? '100%' : '-50%'
-                    },0,0)`,
-                }}
             >
                 {(style, item) => (
-                    <animated.div
-                        style={style as any}
-                        className="absolute-top-left"
-                    >
+                    <animated.div style={style}>
                         {item === Tab.narration && <Narration />}
                         {item === Tab.inventory && <NarrationInventory />}
                         {item === Tab.player && <NarrationPlayer />}
