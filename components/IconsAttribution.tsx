@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, Fragment } from 'react';
 
 const iconMakers = [
     {
@@ -24,24 +24,22 @@ const iconMakers = [
 ];
 
 const IconsAttribution = (): ReactElement => (
-    <section>
-        <div>
-            Icons made by{' '}
-            {iconMakers.map(({ link, name }, index) => (
-                <>
-                    <a key={name} href={link} title={name}>
-                        {name}
-                    </a>
-                    {index < iconMakers.length - 2 && <span>, </span>}
-                    {index === iconMakers.length - 2 && <span> and </span>}
-                </>
-            ))}
-            {' from '}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-            </a>
-        </div>
-    </section>
+    <p>
+        Icons made by{' '}
+        {iconMakers.map(({ link, name }, index) => (
+            <Fragment key={link}>
+                <a key={name} href={link} title={name}>
+                    {name}
+                </a>
+                {index < iconMakers.length - 2 && <span>, </span>}
+                {index === iconMakers.length - 2 && <span> and </span>}
+            </Fragment>
+        ))}
+        {' from '}
+        <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+        </a>
+    </p>
 );
 
 export default IconsAttribution;

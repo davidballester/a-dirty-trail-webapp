@@ -29,7 +29,7 @@ const App = ({ Component, pageProps }): React.ReactElement => (
 
                 a {
                     color: inherit;
-                    text-decoration: none;
+                    text-decoration: underline;
                 }
 
                 #__next {
