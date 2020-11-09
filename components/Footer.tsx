@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { css } from 'emotion';
-import AboutButton from './About';
+import AboutButton from './AboutButton';
 import SocialIcons from './SocialIcons';
 import CookiesButton from './CookiesButton';
 
