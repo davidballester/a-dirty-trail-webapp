@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import AboutButton from './About';
 import SocialIcons from './SocialIcons';
+import CookiesButton from './CookiesButton';
 
 const Footer = (): ReactElement => {
     return (
@@ -25,6 +26,7 @@ const Footer = (): ReactElement => {
                 }
             >
                 <AboutButton />
+                <CookiesButton />
                 <div className="flex-grow-1" />
                 <SocialIcons />
             </div>
