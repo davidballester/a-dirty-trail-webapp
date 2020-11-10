@@ -69,7 +69,15 @@ const CombatWithTransition = ({
         }}
     >
         {(style) => (
-            <animated.div style={style} className="absolute-top-left">
+            <animated.div
+                style={style}
+                className={
+                    'absolute-top-left ' +
+                    css`
+                        z-index: 1;
+                    `
+                }
+            >
                 {<CombatView />}
             </animated.div>
         )}
