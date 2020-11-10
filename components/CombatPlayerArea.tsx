@@ -37,11 +37,12 @@ const PlayerHealth = ({ player }: { player: Actor }): ReactElement => (
 const PlayerAmmunitions = ({ player }: { player: Actor }): ReactElement => {
     const ammunitionsByType = player.getInventory().getAmmunitionsByType();
     const ammunitionTypes = Object.keys(ammunitionsByType);
-    if (!ammunitionTypes.length) {
-        return null;
-    }
     return (
-        <section>
+        <section
+            className={css`
+                margin-top: 1rem;
+            `}
+        >
             <header>
                 <h3>Ammunitions</h3>
             </header>
@@ -63,6 +64,17 @@ const PlayerAmmunitions = ({ player }: { player: Actor }): ReactElement => {
                         />
                     </li>
                 ))}
+                {!ammunitionTypes.length ? (
+                    <li>
+                        <h4
+                            className={css`
+                                line-height: calc(32px - 0.5rem);
+                            `}
+                        >
+                            Out of ammunition!
+                        </h4>
+                    </li>
+                ) : null}
             </ul>
         </section>
     );
