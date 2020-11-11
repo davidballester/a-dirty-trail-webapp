@@ -55,7 +55,7 @@ const useShouldShowNotice = (): boolean => {
     return !doNotShowSaveGameNotice;
 };
 
-const useDoNotShowAgain = (): void => {
+const useDoNotShowAgain = (): (() => void) => {
     return () => {
         const doNotShowSaveGameNoticeCookie = cookie.serialize(
             DO_NOT_SHOW_SAVE_GAME_NOTICE,
