@@ -1,18 +1,19 @@
 ---
+id: theOldLady
 title: The old lady
 actions:
     '"I think so."':
         condition:
             hasTrinket: Necklace
-        nextSceneTitle: theOldLadysNecklace
+        nextSceneId: theOldLadysNecklace
     '"No, sorry," she lied':
         condition:
             hasTrinket: Necklace
-        nextSceneTitle: lieToTheOldLady
+        nextSceneId: lieToTheOldLady
     "No, I'm sorry":
         condition:
             doesNotHaveTrinket: Necklace
-        nextSceneTitle: theOldLadysAdvice
+        nextSceneId: theOldLadysAdvice
 ---
 
 Further down road there were the ruins of a shrine. They stood on the side of the path. Under its bent roof an old lady sat still. "Is she alive?" asked herself {{playerName}}.

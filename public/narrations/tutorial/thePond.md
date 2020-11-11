@@ -1,8 +1,9 @@
 ---
+id: thePond
 title: The pond
 actions:
     'She returned to the road (+1 hitpoints)':
-        nextSceneTitle: theOldLady
+        nextSceneId: theOldLady
         sideEffect:
             modifyHealth: +1
 ---

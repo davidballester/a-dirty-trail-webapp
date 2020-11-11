@@ -1,8 +1,9 @@
 ---
+id: theBushes
 title: Among the bushes
 actions:
     'She limped away (-1 hitpoints)':
-        nextSceneTitle: theOldLady
+        nextSceneId: theOldLady
         sideEffect:
             modifyHealth: -1
             loot:

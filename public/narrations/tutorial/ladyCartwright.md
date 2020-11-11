@@ -1,4 +1,5 @@
 ---
+id: ladyCartwright
 title: Lady Cartwright
 actions:
     '{{playerName}} opened the door and jumped out':
@@ -11,7 +12,7 @@ actions:
                         skill: aim
                         ammunitionType: bullets
                         ammunition: 6-6
-        nextSceneTitle: outsideTheStageCoach
+        nextSceneId: outsideTheStageCoach
 ---
 
 "Such an honor, milady," the minister said with, bowing slightly.

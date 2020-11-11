@@ -1,8 +1,9 @@
 ---
+id: combat
 title: Brigands on the road
 actions:
     'Continue':
-        nextSceneTitle: afterTheShootout
+        nextSceneId: afterTheShootout
 actors:
     'Scarred brigand':
         health: 2-2

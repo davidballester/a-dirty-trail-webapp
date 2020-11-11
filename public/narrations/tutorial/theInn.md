@@ -1,4 +1,5 @@
 ---
+id: theInn
 title: The inn
 ---
 

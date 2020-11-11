@@ -1,4 +1,5 @@
 ---
+id: alys
 title: Alys
 actions:
     'Alys opened the door and jumped out':
@@ -11,7 +12,7 @@ actions:
                         skill: aim
                         ammunitionType: bullets
                         ammunition: 6-6
-        nextSceneTitle: outsideTheStageCoach
+        nextSceneId: outsideTheStageCoach
 ---
 
 "Alys it is, then," the minister said and then the driver anounced they were parting.

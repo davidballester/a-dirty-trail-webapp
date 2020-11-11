@@ -19,8 +19,10 @@
     },
     "dependencies": {
         "@emotion/core": "^10.0.35",
+        "@types/cookie": "^0.4.0",
         "a-dirty-trail": "git+https://github.com/davidballester/a-dirty-trail.git",
         "bootstrap": "^4.5.2",
+        "cookie": "^0.4.1",
         "emotion": "^10.0.27",
         "next": "9.5.3",
         "react": "16.13.1",

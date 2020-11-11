@@ -1,4 +1,5 @@
 ---
+id: theRoad
 title: The road
 actions:
     'She looked for the water stream':
@@ -6,11 +7,11 @@ actions:
             skill: perception
             modifier: -0.05
             success:
-                nextSceneTitle: thePond
+                nextSceneId: thePond
             failure:
-                nextSceneTitle: theBushes
+                nextSceneId: theBushes
     'She kept going':
-        nextSceneTitle: theOldLady
+        nextSceneId: theOldLady
 ---
 
 A dirty trail extended into the distance. {{playerName}} strode along it, leaving deep footprints on the mud. Despite the humid air and the dark clouded sky, she felt thirsty. As the walk went on and on, she was parched.

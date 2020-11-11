@@ -3,10 +3,10 @@ import { SceneTemplateResolver } from 'a-dirty-trail';
 class MySceneTemplateResolver extends SceneTemplateResolver {
     protected async fetchMarkdownSceneTemplate(
         narrationTitle: string,
-        sceneTitle = 'index'
+        sceneId = 'index'
     ): Promise<string> {
         const sceneTemplateResponse = await fetch(
-            `/narrations/${narrationTitle}/${sceneTitle}.md`
+            `/narrations/${narrationTitle}/${sceneId}.md`
         );
         return sceneTemplateResponse.text();
     }

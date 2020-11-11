@@ -1,8 +1,9 @@
 ---
+id: theOldLadysAdvice
 title: The old lady's advice
 actions:
     She kept going:
-        nextSceneTitle: theInn
+        nextSceneId: theInn
 ---
 
 "It's alright, child," the old lady said. "It'll come to me."

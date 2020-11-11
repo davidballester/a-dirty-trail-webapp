@@ -1,8 +1,9 @@
 ---
+id: theOldLadyIsDead
 title: The old lady is dead
 actions:
     She kept going:
-        nextSceneTitle: theInn
+        nextSceneId: theInn
 ---
 
 For some reason, {{playerName}} expected the old lady to vanish into the air, but she didn't. Her corpse lied there, tore open, her teeth bare.

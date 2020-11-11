@@ -1,8 +1,9 @@
 ---
+id: afterTheShootout
 title: After the shootout
 actions:
     'She started walking (+1 hitpoints)':
-        nextSceneTitle: theRoad
+        nextSceneId: theRoad
         sideEffect:
             modifyHealth: +1
 ---

@@ -1,8 +1,9 @@
 ---
+id: theOldLadysNecklace
 title: The old lady's necklace
 actions:
     She kept going:
-        nextSceneTitle: theInn
+        nextSceneId: theInn
         sideEffect:
             lose:
                 trinkets:

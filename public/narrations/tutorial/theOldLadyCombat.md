@@ -1,8 +1,9 @@
 ---
+id: theOldLadyCombat
 title: The claws of the old lady
 actions:
     The old lady was dead now:
-        nextSceneTitle: theOldLadyIsDead
+        nextSceneId: theOldLadyIsDead
 actors:
     Old lady:
         health: 5-5

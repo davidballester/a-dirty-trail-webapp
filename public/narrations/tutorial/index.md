@@ -1,4 +1,5 @@
 ---
+id: index
 title: The stage coach
 player:
     name: The damsel
@@ -20,11 +21,11 @@ actions:
     '"Alys"':
         sideEffect:
             rename: Alys
-        nextSceneTitle: alys
+        nextSceneId: alys
     '"Lady Cartwright"':
         sideEffect:
             rename: Lady Cartwright
-        nextSceneTitle: ladyCartwright
+        nextSceneId: ladyCartwright
 ---
 
 The stage coach rumbled softly over the packed dirt of the path.
