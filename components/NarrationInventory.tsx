@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import Ammunition from './Ammunition';
 import GameWeapon from 'a-dirty-trail/build/core/Weapon';
-import GameTrinket from 'a-dirty-trail/build/core/Trinket';
+import GameTrinket, { SkillsModifiers } from 'a-dirty-trail/build/core/Trinket';
 import { AmmunitionByType } from 'a-dirty-trail/build/core/Inventory';
 import { usePlayer } from '../contexts/narrativeSceneEngineContext';
 import NarrationInventoryWeapon from './NarrationInventoryWeapon';
@@ -106,8 +106,35 @@ const Trinket = ({ trinket }: { trinket: GameTrinket }): ReactElement => (
             {trinket.getDescription() && (
                 <span className="font-italic">{trinket.getDescription()}</span>
             )}
+            {Object.keys(trinket.getSkillsModifiers()).length > 0 ? (
+                <TrinketSkillModifiers
+                    modifiers={trinket.getSkillsModifiers()}
+                />
+            ) : null}
         </p>
     </div>
 );
+
+const TrinketSkillModifiers = ({
+    modifiers,
+}: {
+    modifiers: SkillsModifiers;
+}): ReactElement => {
+    const text = Object.keys(modifiers)
+        .map((skillName) => {
+            const modifier = modifiers[skillName];
+            return `${modifier > 0 ? '+' : ''}${
+                modifier * 100
+            }% to ${skillName}`;
+        })
+        .join(', ');
+    return (
+        <div>
+            <small>
+                <strong>{text}</strong>
+            </small>
+        </div>
+    );
+};
 
 export default NarrationInventory;
