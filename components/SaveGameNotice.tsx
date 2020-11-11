@@ -46,7 +46,7 @@ const SaveGameNotice = (): ReactElement => {
 
 export default SaveGameNotice;
 
-const useShouldShowNotice = () => {
+const useShouldShowNotice = (): boolean => {
     if (!process.browser) {
         return false;
     }
@@ -55,7 +55,7 @@ const useShouldShowNotice = () => {
     return !doNotShowSaveGameNotice;
 };
 
-const useDoNotShowAgain = () => {
+const useDoNotShowAgain = (): void => {
     return () => {
         const doNotShowSaveGameNoticeCookie = cookie.serialize(
             DO_NOT_SHOW_SAVE_GAME_NOTICE,

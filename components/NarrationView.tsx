@@ -24,8 +24,8 @@ const NarrationView = (): ReactElement => {
     }
     return (
         <section>
-            <Header />
             <CenteredContainer>
+                <Header />
                 {player.isAlive() && (
                     <>
                         <TabsButtons
