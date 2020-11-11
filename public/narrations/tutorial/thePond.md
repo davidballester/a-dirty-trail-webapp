@@ -1,6 +1,6 @@
 ---
 id: thePond
-title: The pond
+title: The road
 actions:
     'She returned to the road (+1 hitpoints)':
         nextSceneId: theOldLady

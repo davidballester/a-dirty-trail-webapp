@@ -1,6 +1,6 @@
 ---
 id: theOldLadyIsDead
-title: The old lady is dead
+title: The old lady
 actions:
     She kept going:
         nextSceneId: theInn

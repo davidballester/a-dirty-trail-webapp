@@ -1,6 +1,6 @@
 ---
 id: combat
-title: Brigands on the road
+title: The stage coach
 actions:
     'Continue':
         nextSceneId: afterTheShootout

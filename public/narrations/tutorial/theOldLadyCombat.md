@@ -1,6 +1,6 @@
 ---
 id: theOldLadyCombat
-title: The claws of the old lady
+title: The old lady
 actions:
     The old lady was dead now:
         nextSceneId: theOldLadyIsDead

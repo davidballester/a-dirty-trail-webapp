@@ -1,6 +1,6 @@
 ---
 id: theOldLadysNecklace
-title: The old lady's necklace
+title: The old lady
 actions:
     She kept going:
         nextSceneId: theInn

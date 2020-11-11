@@ -1,6 +1,6 @@
 ---
 id: theBushes
-title: Among the bushes
+title: The road
 actions:
     'She limped away (-1 hitpoints)':
         nextSceneId: theOldLady
@@ -10,6 +10,8 @@ actions:
                 trinkets:
                     - name: Necklace
                       description: Found in the woods.
+                      skillsModifiers:
+                          perception: 0.2
 ---
 
 {{playerName}} tried to make her way through thicket. The deeper she went, the darker it got.

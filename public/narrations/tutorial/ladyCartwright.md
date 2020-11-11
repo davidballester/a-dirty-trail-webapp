@@ -1,6 +1,6 @@
 ---
 id: ladyCartwright
-title: Lady Cartwright
+title: The stage coach
 actions:
     '{{playerName}} opened the door and jumped out':
         sideEffect:

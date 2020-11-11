@@ -1,6 +1,6 @@
 ---
 id: alys
-title: Alys
+title: The stage coach
 actions:
     'Alys opened the door and jumped out':
         sideEffect:

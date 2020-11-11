@@ -1,6 +1,6 @@
 ---
 id: outsideTheStageCoach
-title: Outside the stage coach
+title: The stage coach
 actions:
     'She raised the revolver':
         nextSceneId: combat

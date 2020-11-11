@@ -1,6 +1,6 @@
 ---
 id: theOldLadysAdvice
-title: The old lady's advice
+title: The old lady
 actions:
     She kept going:
         nextSceneId: theInn

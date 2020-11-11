@@ -1,6 +1,6 @@
 ---
 id: afterTheShootout
-title: After the shootout
+title: The stage coach
 actions:
     'She started walking (+1 hitpoints)':
         nextSceneId: theRoad
