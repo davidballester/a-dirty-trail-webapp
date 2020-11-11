@@ -6,6 +6,7 @@ import { NarrativeSceneEngineProvider } from '../contexts/narrativeSceneEngineCo
 import { CombatSceneEngineProvider } from '../contexts/combatSceneEngineContext';
 import Footer from '../components/Footer';
 import SaveGameOnSceneChange from '../components/SaveGameOnSceneChange';
+import SaveGameNotice from '../components/SaveGameNotice';
 
 const Home = (): React.ReactElement => (
     <>
@@ -22,6 +23,7 @@ const Home = (): React.ReactElement => (
                 <NarrativeSceneEngineProvider>
                     <CombatSceneEngineProvider>
                         <SaveGameOnSceneChange>
+                            <SaveGameNotice />
                             <GameView />
                         </SaveGameOnSceneChange>
                     </CombatSceneEngineProvider>

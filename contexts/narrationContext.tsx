@@ -83,7 +83,6 @@ const loadSavedNarration = async (
     savedNarrationTemplate: NarrationTemplate,
     dispatch: Dispatch<Narration>
 ): Promise<void> => {
-    console.log(savedNarrationTemplate);
     const narration = await narrationsCatalogue.loadNarration(
         savedNarrationTemplate
     );

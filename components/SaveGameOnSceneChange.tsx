@@ -1,6 +1,9 @@
 import React, { ReactElement, useEffect } from 'react';
 import cookie from 'cookie';
-import { SAVED_GAME_COOKIE } from '../helpers/constants';
+import {
+    COOKIES_MAX_AGE_SECONDS,
+    SAVED_GAME_COOKIE,
+} from '../helpers/constants';
 import { NarrationTemplate } from 'a-dirty-trail/build/templateSystem/NarrationTemplate';
 import { useScene } from '../contexts/narrativeSceneEngineContext';
 import { useNarration } from '../contexts/narrationContext';
@@ -30,11 +33,10 @@ const useSaveGameOnSceneChanged = (): void => {
 };
 
 const saveGame = (narrationTemplate: NarrationTemplate): void => {
-    const eightyYearsInSeconds = 80 * 365 * 24 * 60 * 60;
     const savedGameCookie = cookie.serialize(
         SAVED_GAME_COOKIE,
         JSON.stringify(narrationTemplate),
-        { maxAge: eightyYearsInSeconds }
+        { maxAge: COOKIES_MAX_AGE_SECONDS }
     );
     document.cookie = savedGameCookie;
 };
