@@ -1,5 +1,5 @@
 ---
-id: ladyCartwright
+id: theStageCoach_ladyCartwright
 title: The stage coach
 actions:
     '{{playerName}} opened the door and jumped out':
@@ -19,15 +19,13 @@ actions:
 
 Now he snored, reeking of booze, and Lady Cartwright glanced at the woods.
 
-"Why here?" she muttered. "Why now?"
-
-The horses neighed at once and the driver shouted. More voices outside, and then the dry bark of a rifle. The driver slided off his box and hit the ground with a thud. It was the middle of nowhere.
+The horses neighed at once and the driver shouted. More **voices outside**, and then the dry bark of a **rifle**. The driver slided off his box and hit the ground with a thud. It was the middle of nowhere.
 
 Lady Cartwright heart raced in her chest and the minister awoke at once. He looked almost serene.
 
-"Told you this road wasn's safe, didn't I, milady?" he said. As Lady Cartwright looked frantically at the other side of the window, trying to understand what the voices were saying over the neighing of the horses, the minister rummaged through his belongins until he found a black box.
+"Told you this road wasn's safe, didn't I, milady?" he said. As Lady Cartwright looked frantically at the other side of the window, the minister rummaged through his belongins until he found a black box.
 
-"Now, take this," he said, opening the box and handing Lady Cartwright a revolver.
+"Now, take this," he said, opening the box and handing Lady Cartwright a **revolver**.
 
 "What? No, you take it".
 

@@ -1,5 +1,5 @@
 ---
-id: theOldLadyCombat
+id: theOldLady_theOldLadyCombat
 title: The old lady
 actions:
     The old lady was dead now:

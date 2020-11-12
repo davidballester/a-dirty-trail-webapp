@@ -1,5 +1,5 @@
 ---
-id: combat
+id: theStageCoach_combat
 title: The stage coach
 actions:
     'Continue':

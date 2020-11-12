@@ -1,5 +1,5 @@
 ---
-id: theOldLadysAdvice
+id: theOldLady_theOldLadysAdvice
 title: The old lady
 actions:
     She kept going:
@@ -16,7 +16,7 @@ Silence fell between them, and {{playerName}} smiled faintly.
 
 "Yes."
 
-"You'll get there. But once you do, be careful."
+"You'll get there. But once you do, **be careful**."
 
 "Why is that?"
 

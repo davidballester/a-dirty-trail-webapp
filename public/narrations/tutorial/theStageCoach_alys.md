@@ -1,5 +1,5 @@
 ---
-id: alys
+id: theStageCoach_alys
 title: The stage coach
 actions:
     'Alys opened the door and jumped out':
@@ -15,19 +15,17 @@ actions:
         nextSceneId: theStageCoach_outsideTheStageCoach
 ---
 
-"Alys it is, then," the minister said and then the driver anounced they were parting.
+"**Alys** it is, then," the minister said and then the driver anounced they were parting.
 
 Now he snored, reeking of booze, and Alys glanced at the woods.
 
-"Why here?" she muttered. "Why now?"
-
-The horses neighed at once and the driver shouted. More voices outside, and then the dry bark of a rifle. The driver slided off his box and hit the ground with a thud. It was the middle of nowhere.
+The horses neighed at once and the driver shouted. More **voices outside**, and then the dry bark of a **rifle**. The driver slided off his box and hit the ground with a thud. It was the middle of nowhere.
 
 Alys heart raced in her chest and the minister awoke at once. He looked almost serene.
 
-"Told you this road wasn's safe, didn't I?" he said. As Alys looked frantically at the other side of the window, trying to understand what the voices were saying over the neighing of the horses, the minister rummaged through his belongins until he found a black box.
+"Told you this road wasn's safe, didn't I?" he said. As Alys looked frantically at the other side of the window, the minister rummaged through his belongins until he found a black box.
 
-"Now, take this," he said, opening the box and handing Alys a revolver.
+"Now, take this," he said, opening the box and handing Alys a **revolver**.
 
 "What? No, you take it".
 
