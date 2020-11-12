@@ -55,8 +55,7 @@ const useIsWeaponSelectionVisibleForAttackAction = () => {
 const WeaponButton = ({ weapon }: { weapon: Weapon }): ReactElement => {
     const player = usePlayer();
     const selectWeapon = useSelectWeapon();
-    const hitChance =
-        player.getSkill(weapon.getSkill()).getProbabilityOfSuccess() * 100;
+    const hitChance = player.getProbabilityOfSuccess(weapon.getSkill()) * 100;
     return (
         <CombatSelectionIconButton
             iconSrc={`${weapon.getType()}.svg`}
