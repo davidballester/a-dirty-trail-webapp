@@ -7,9 +7,9 @@ actions:
             skill: perception
             modifier: -0.05
             success:
-                nextSceneId: thePond
+                nextSceneId: theRoad_thePond
             failure:
-                nextSceneId: theBushes
+                nextSceneId: theRoad_theBushes
     'She kept going':
         nextSceneId: theOldLady
 ---

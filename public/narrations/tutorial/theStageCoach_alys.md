@@ -12,7 +12,7 @@ actions:
                         skill: aim
                         ammunitionType: bullets
                         ammunition: 6-6
-        nextSceneId: outsideTheStageCoach
+        nextSceneId: theStageCoach_outsideTheStageCoach
 ---
 
 "Alys it is, then," the minister said and then the driver anounced they were parting.

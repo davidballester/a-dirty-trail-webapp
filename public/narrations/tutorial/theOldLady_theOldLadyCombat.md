@@ -3,7 +3,7 @@ id: theOldLadyCombat
 title: The old lady
 actions:
     The old lady was dead now:
-        nextSceneId: theOldLadyIsDead
+        nextSceneId: theOldLady_theOldLadyIsDead
 actors:
     Old lady:
         health: 5-5

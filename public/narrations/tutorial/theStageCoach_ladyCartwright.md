@@ -12,7 +12,7 @@ actions:
                         skill: aim
                         ammunitionType: bullets
                         ammunition: 6-6
-        nextSceneId: outsideTheStageCoach
+        nextSceneId: theStageCoach_outsideTheStageCoach
 ---
 
 "Such an honor, milady," the minister said with, bowing slightly.

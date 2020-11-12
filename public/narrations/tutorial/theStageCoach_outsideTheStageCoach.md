@@ -3,7 +3,7 @@ id: outsideTheStageCoach
 title: The stage coach
 actions:
     'She raised the revolver':
-        nextSceneId: combat
+        nextSceneId: theStageCoach_combat
 ---
 
 The sun was still up, but it was cold. It had rained the day before and the road was muddy.

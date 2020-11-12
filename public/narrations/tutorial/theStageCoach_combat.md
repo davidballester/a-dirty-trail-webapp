@@ -3,7 +3,7 @@ id: combat
 title: The stage coach
 actions:
     'Continue':
-        nextSceneId: afterTheShootout
+        nextSceneId: theStageCoach_afterTheShootout
 actors:
     'Scarred brigand':
         health: 2-2

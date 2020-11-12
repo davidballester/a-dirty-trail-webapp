@@ -21,11 +21,11 @@ actions:
     '"Alys"':
         sideEffect:
             rename: Alys
-        nextSceneId: alys
+        nextSceneId: theStageCoach_alys
     '"Lady Cartwright"':
         sideEffect:
             rename: Lady Cartwright
-        nextSceneId: ladyCartwright
+        nextSceneId: theStageCoach_ladyCartwright
 ---
 
 The stage coach rumbled softly over the packed dirt of the path.
