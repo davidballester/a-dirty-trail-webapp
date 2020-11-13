@@ -1,0 +1,7 @@
+id: theRoad_thePond
+title: The road
+actions:
+    'She returned to the road (+1 hitpoints)':
+        nextSceneId: theOldLady
+        sideEffect:
+            modifyHealth: +1

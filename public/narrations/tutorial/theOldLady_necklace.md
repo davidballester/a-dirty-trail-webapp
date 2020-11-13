@@ -1,5 +1,5 @@
 ---
-id: theOldLady_theOldLadysNecklace
+id: theOldLady_necklace
 title: The old lady
 actions:
     She kept going:

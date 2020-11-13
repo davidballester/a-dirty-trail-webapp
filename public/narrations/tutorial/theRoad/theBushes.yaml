@@ -1,0 +1,13 @@
+id: theRoad_theBushes
+title: The road
+actions:
+    'She limped away (-1 hitpoints)':
+        nextSceneId: theOldLady
+        sideEffect:
+            modifyHealth: -1
+            loot:
+                trinkets:
+                    - name: Necklace
+                      description: Found in the woods.
+                      skillsModifiers:
+                          perception: 0.2

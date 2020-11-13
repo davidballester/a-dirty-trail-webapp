@@ -1,9 +1,9 @@
 ---
-id: theOldLady_lieToTheOldLady
+id: theOldLady_lie
 title: The old lady
 actions:
     '{{playerName}} prepared to face her':
-        nextSceneId: theOldLadyCombat
+        nextSceneId: theOldLady_combat
 ---
 
 The smile in the old lady's face died away, slowly, as the tide flows back, retreating into the endless ocean.

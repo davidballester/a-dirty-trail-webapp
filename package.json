@@ -4,13 +4,14 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "prebuild": "node patchReactSpring.js",
+        "prebuild": "node patchReactSpring.js && npm run buildNarrations",
         "build": "next build",
         "export": "next export",
         "start": "next start",
         "lint": "eslint --max-warnings=0 --no-error-on-unmatched-pattern components/**/*.tsx contexts/**/*.tsx helpers/**/*.ts hooks/**/*.ts pages/**/*.tsx",
         "lint-fix": "npm run lint -- --fix",
-        "test": "jest tests/.*.spec.ts"
+        "test": "jest tests/.*.spec.ts",
+        "buildNarrations": "node buildNarrations.js"
     },
     "husky": {
         "hooks": {

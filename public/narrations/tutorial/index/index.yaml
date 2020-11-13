@@ -1,0 +1,27 @@
+id: index
+title: The stage coach
+player:
+    name: The damsel
+    health: 8-8
+    inventory:
+        trinkets:
+            - name: Opened letter
+              description: A worrying farewell from her uncle.
+        weapons:
+            'Letter opener':
+                type: 'knife'
+                damage: 1-1
+                skill: stab
+    skills:
+        aim: 0.6
+        stab: 0.75
+        perception: 0.5
+actions:
+    '"Alys"':
+        sideEffect:
+            rename: Alys
+        nextSceneId: theStageCoach_alys
+    '"Lady Cartwright"':
+        sideEffect:
+            rename: Lady Cartwright
+        nextSceneId: theStageCoach_ladyCartwright
