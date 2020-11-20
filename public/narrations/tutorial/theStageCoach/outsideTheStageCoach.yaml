@@ -1,5 +1,0 @@
-id: theStageCoach_outsideTheStageCoach
-title: The stage coach
-actions:
-    'She raised the revolver':
-        nextSceneId: theStageCoach_combat

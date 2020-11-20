@@ -1,0 +1,7 @@
+id: theForest_backToTheRoad
+title: The forest
+actions:
+    '"Fine, I guess"':
+        nextSceneId: theForest
+        sideEffect:
+            addFlag: theForestSecondAttempt

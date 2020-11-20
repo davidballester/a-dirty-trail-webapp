@@ -1,0 +1,7 @@
+id: mudPeople_mudPeople
+title: Mud people
+actions:
+    '"And I guess you''re robbers"':
+        nextSceneId: mudPeople_robbers
+    '"I have almonds, somewhere. Do you want some?"':
+        nextSceneId: mudPeople_almonds

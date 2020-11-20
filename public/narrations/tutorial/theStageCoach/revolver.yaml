@@ -1,0 +1,14 @@
+id: theStagecoach_revolver
+title: The stagecoach
+actions:
+    '{{playerName}} stepped outside':
+        nextSceneId: theStagecoach_outside
+        sideEffect:
+            loot:
+                weapons:
+                    Revolver:
+                        ammunition: 6-6
+                        ammunitionType: Bullets
+                        damage: 1-2
+                        skill: aim
+                        type: revolver

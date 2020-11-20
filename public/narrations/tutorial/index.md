@@ -1,15 +1,12 @@
 ---
 id: index
-title: The stage coach
+title: The stagecoach
 player:
     name: The damsel
     health: 8-8
     inventory:
-        trinkets:
-            - name: Opened letter
-              description: A worrying farewell from her uncle.
         weapons:
-            'Letter opener':
+            'Hair clip':
                 type: 'knife'
                 damage: 1-1
                 skill: stab
@@ -17,23 +14,28 @@ player:
         aim: 0.6
         stab: 0.75
         perception: 0.5
+        survival: 0.4
 actions:
-    '"Alys"':
+    '"Please, minister, don''t be rude"':
         sideEffect:
-            rename: Alys
-        nextSceneId: theStageCoach_alys
-    '"Lady Cartwright"':
+            addFlag: ladyFriend
+        nextSceneId: theStagecoach_ladyFriend
+    '"I thought she was visiting her grandchildren!"':
         sideEffect:
-            rename: Lady Cartwright
-        nextSceneId: theStageCoach_ladyCartwright
+            addFlag: ministerFriend
+        nextSceneId: theStagecoach_ministerFriend
 ---
 
-The stage coach rumbled softly over the packed dirt of the path.
+The stagecoach rumbled softly over the packed dirt of the path.
 
-**The damsel** looked at the dark woods at the other side of the windows. Between her hands, a letter she had read just once, yet it was already worn out.
+"All this movement is making me nauseous," said Lady Willsbourgh, fanning her face furiously, her impossible bun wobbling on top of her head.
 
-The stage coach was for her only, except for the **drunken minister** who snored beside her.
+"You'll get plenty of fresh air soon enough," said the minister, and burst in laughter. Luckily, **the damsel** thought, he had put out his pipe, because otherwise his breath could have caught fire.
 
-"A dangerous road this one," he had said at the beginning of the journey, already dizzy and sipping from a flask he kept close to his heart. The damsel had nodded, but the minister was insistent.
+"Aren't you a bit too... festive for a minister?" Lady Willsbourgh asked.
 
-"Nobody knows what lies ahead, so I'd rather face the unknown with someone whose name I can cry in fear, don't you think?"
+"And aren't you a bit old to be marrying?" the minister responded, laughing again and causing Lady Willsbourgh to open her eyes so wide the damsel thought they could fall out and splash against the stagecoach floor.
+
+"How dare you?" said Lady Willsbourgh with her shrilliest voice.
+
+"I bet I'm not the first one to tell you so," defended himself the minister. "What do you think, young lady?" he asked the damsel sitting by his side.

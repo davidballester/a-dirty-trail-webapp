@@ -1,0 +1,7 @@
+id: theForest_creviceFall
+title: The forest
+actions:
+    Was she alive? (-3 health):
+        nextSceneId: theForest_creviceFallAdvance
+        sideEffect:
+            modifyHealth: -3

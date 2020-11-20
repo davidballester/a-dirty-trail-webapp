@@ -1,0 +1,7 @@
+id: mudPeople
+title: Mud people
+actions:
+    '"What is going on here?"':
+        nextSceneId: backToTheRoad_mudPeople
+    '"Oh boy, here I go again," she said, **taking aim**':
+        nextSceneId: backToTheRoad_combat

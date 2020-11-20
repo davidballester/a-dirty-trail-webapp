@@ -1,0 +1,7 @@
+id: mudPeople_robbers
+title: Mud people
+actions:
+    '"I got something for you robbers. Some lead"':
+        nextSceneId: mudPeople_threatened
+    '"We don''t have anything, anyway"':
+        nextSceneId: mudPeople_nothing

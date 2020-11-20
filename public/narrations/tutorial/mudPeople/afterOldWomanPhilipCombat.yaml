@@ -1,0 +1,5 @@
+id: mudPeople_afterOldWomanPhilipCombat
+title: Mud people
+actions:
+    '{{playerName}} braced for impact':
+        nextSceneId: mudPeople_lizzieOneEyedManCombat

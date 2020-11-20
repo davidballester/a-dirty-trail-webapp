@@ -1,15 +1,5 @@
 id: theRoad
 title: The road
 actions:
-    'She looked for the water stream':
-        check:
-            skill: perception
-            modifier: -0.05
-            success:
-                nextSceneId: theRoad_thePond
-            failure:
-                nextSceneId: theRoad_theBushes
-    'She kept going (-1 hitpoints)':
-        nextSceneId: theOldLady
-        sideEffect:
-            modifyHealth: -1
+    Alys lead on:
+        nextSceneId: theRoad_theWalk

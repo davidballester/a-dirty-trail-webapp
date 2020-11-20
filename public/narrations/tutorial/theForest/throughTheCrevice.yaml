@@ -1,0 +1,5 @@
+id: theForest_throughTheCrevice
+title: The forest
+actions:
+    She went back to the road:
+        nextSceneId: mudPeople

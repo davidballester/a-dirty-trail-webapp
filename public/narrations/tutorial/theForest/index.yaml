@@ -1,0 +1,18 @@
+id: theForest_forest
+title: The forest
+actions:
+    She looked for the blockade (_perception_):
+        check:
+            skill: perception
+            success:
+                nextSceneId: theForest_blockadeFound
+            failure:
+                nextSceneId: theForest_lostInTheForest
+    She lowered herself to the crevice (_survival - **dangerous**_):
+        check:
+            skill: survival
+            modifier: 0.3
+            success:
+                nextSceneId: theForest_crevice
+            failure:
+                nextSceneId: theForest_creviceFall

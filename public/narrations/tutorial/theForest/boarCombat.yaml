@@ -1,0 +1,20 @@
+id: theForest_boarCombat
+title: The forest
+actors:
+    Boar:
+        health: 4-4
+        inventory:
+            weapons:
+                Tusks:
+                    canBeLooted: false
+                    damage: 1-2
+                    skill: charge
+                    type: fangs
+            trinkets:
+                - name: Tusk
+                  description: Useful for showing off
+        skills:
+            charge: 0.5
+actions:
+    'She still had to find a way out':
+        nextSceneId: theForest_afterBoarCombat

@@ -1,0 +1,10 @@
+id: theRoad_theWalk
+title: The road
+actions:
+    She tried to focus on it (_perception_):
+        check:
+            skill: perception
+            success:
+                nextSceneId: theRoad_somethingInTheWoods
+            failure:
+                nextSceneId: theRoad_nothingInTheWoods

@@ -1,0 +1,6 @@
+id: theRoad_atopTheBlockade
+title: The road
+actions:
+    She ventured into the forest:
+        nextSceneId: theForest
+        addFlag: theRoad_atopTheBlockade

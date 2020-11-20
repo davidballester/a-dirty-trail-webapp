@@ -1,0 +1,5 @@
+id: theStagecoach_outside
+title: The stagecoach
+actions:
+    'She raised the revolver':
+        nextSceneId: theStagecoach_combat

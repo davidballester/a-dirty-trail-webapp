@@ -1,0 +1,14 @@
+id: theForest_afterBoarCombat
+title: The forest
+actions:
+    '"Hello? Lady Willsbourgh! Minister?"':
+        nextSceneId: theForest_backToTheRoad
+    '"Come on, you can do this. Just find the damn blockade" (_survival_)':
+        check:
+            skill: survival
+            success:
+                nextSceneId: theForest_blockadeFound
+            failure:
+                nextSceneId: theForest_deadInTheForest
+        sideEffect:
+            addFlag: theRoadBoar

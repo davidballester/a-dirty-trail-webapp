@@ -10,6 +10,7 @@
         "start": "next start",
         "lint": "eslint --max-warnings=0 --no-error-on-unmatched-pattern components/**/*.tsx contexts/**/*.tsx helpers/**/*.ts hooks/**/*.ts pages/**/*.tsx",
         "lint-fix": "npm run lint -- --fix",
+        "pretest": "npm run buildNarrations",
         "test": "jest tests/.*.spec.ts",
         "buildNarrations": "node buildNarrations.js"
     },

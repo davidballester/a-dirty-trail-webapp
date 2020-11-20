@@ -1,0 +1,13 @@
+id: theStagecoach_ministerFriend
+title: The stagecoach
+actions:
+    '"Alys"':
+        nextSceneId: theStagecoach_ministerFriend_name
+        sideEffect:
+            addFlag: alys
+            rename: Alys
+    '"Lady Cartwright"':
+        nextSceneId: theStagecoach_ministerFriend_name
+        sideEffect:
+            addFlag: ladyCartwright
+            rename: Lady Cartwright

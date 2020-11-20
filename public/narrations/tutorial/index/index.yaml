@@ -1,14 +1,11 @@
 id: index
-title: The stage coach
+title: The stagecoach
 player:
     name: The damsel
     health: 8-8
     inventory:
-        trinkets:
-            - name: Opened letter
-              description: A worrying farewell from her uncle.
         weapons:
-            'Letter opener':
+            'Hair clip':
                 type: 'knife'
                 damage: 1-1
                 skill: stab
@@ -16,12 +13,13 @@ player:
         aim: 0.6
         stab: 0.75
         perception: 0.5
+        survival: 0.4
 actions:
-    '"Alys"':
+    '"Please, minister, don''t be rude"':
         sideEffect:
-            rename: Alys
-        nextSceneId: theStageCoach_alys
-    '"Lady Cartwright"':
+            addFlag: ladyFriend
+        nextSceneId: theStagecoach_ladyFriend
+    '"I thought she was visiting her grandchildren!"':
         sideEffect:
-            rename: Lady Cartwright
-        nextSceneId: theStageCoach_ladyCartwright
+            addFlag: ministerFriend
+        nextSceneId: theStagecoach_ministerFriend

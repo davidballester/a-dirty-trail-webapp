@@ -1,5 +1,0 @@
-id: theOldLady_lie
-title: The old lady
-actions:
-    '{{playerName}} prepared to face her':
-        nextSceneId: theOldLady_combat

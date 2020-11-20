@@ -1,0 +1,16 @@
+id: theForest_crevice
+title: The forest
+actions:
+    With her bare hands, she tore apart and made way (_survival_):
+        condition:
+            doesNotHaveTrinket: Tusk
+        check:
+            skill: survival
+            success:
+                nextSceneId: theForest_throughTheCrevice
+            failure:
+                nextSceneId: theForest_throughTheCreviceWounded
+    '"Hey, I can use that **tusk** I got"':
+        condition:
+            hasTrinket: Tusk
+        nextSceneId: theForest_throughTheCrevice

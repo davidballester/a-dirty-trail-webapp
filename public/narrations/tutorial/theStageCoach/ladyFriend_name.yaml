@@ -1,0 +1,7 @@
+id: theStagecoach_ladyFriend_name
+title: The stagecoach
+actions:
+    '"Your hair looks aweful, Lady Willsbourgh!"':
+        nextSceneId: theStagecoach_revolver
+    '"Shooty?"':
+        nextSceneId: theStagecoach_revolver

@@ -1,9 +1,0 @@
-id: theOldLady_necklace
-title: The old lady
-actions:
-    She kept going:
-        nextSceneId: theInn
-        sideEffect:
-            lose:
-                trinkets:
-                    - Necklace

@@ -1,0 +1,5 @@
+id: theRoad_nothingInTheWoods
+title: The road
+actions:
+    The kept going:
+        nextSceneId: theRoad_aBlockade

@@ -1,0 +1,7 @@
+id: theRoad_somethingInTheWoods
+title: The road
+actions:
+    They kept going:
+        nextSceneId: theRoad_aBlockade
+        sideEffect:
+            addFlag: demonsInTheWoods

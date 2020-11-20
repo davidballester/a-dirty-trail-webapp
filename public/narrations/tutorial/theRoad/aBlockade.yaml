@@ -1,0 +1,12 @@
+id: theRoad_aBlockade
+title: The road
+actions:
+    '"You tell me"':
+        nextSceneId: theRoad_theMinisterClimbs
+    'She tried to (_survival_)':
+        check:
+            skill: survival
+            success:
+                nextSceneId: theRoad_atopTheBlockade
+            failure:
+                nextSceneId: theRoad_fallFromBlockade

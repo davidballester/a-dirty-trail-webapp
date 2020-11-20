@@ -1,0 +1,7 @@
+id: theStagecoach_nowWhat
+title: The stagecoach
+actions:
+    '"Have you done this before, minister?"':
+        nextSceneId: theStagecoach_leave
+    '"What can go wrong?"':
+        nextSceneId: theStagecoach_leave

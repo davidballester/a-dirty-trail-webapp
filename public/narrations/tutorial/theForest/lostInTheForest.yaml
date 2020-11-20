@@ -1,0 +1,21 @@
+id: theForest_lostInTheForest
+title: The forest
+actions:
+    '"I might as well just start walking" (_survival_)':
+        condition:
+            hasNotFlag: theRoadBoar
+        check:
+            skill: survival
+            success:
+                nextSceneId: theForest_backToTheRoad
+            failure:
+                nextSceneId: theForest_theBoar
+    'She kept walking':
+        condition:
+            hasFlag: theRoadBoar
+        check:
+            skill: survival
+            success:
+                nextSceneId: theForest_backToTheRoad
+            failure:
+                nextSceneId: theForest_deadInTheForest

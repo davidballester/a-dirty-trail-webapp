@@ -1,0 +1,7 @@
+id: theForest_deadInTheForest
+title: The forest
+actions:
+    Are you serious?:
+        sideEffect:
+            modifyHealth: -50
+        nextSceneId: theForest_deadDead

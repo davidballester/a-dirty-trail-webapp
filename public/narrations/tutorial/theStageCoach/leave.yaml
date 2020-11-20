@@ -1,0 +1,5 @@
+id: theStagecoach_leave
+title: The stagecoach
+actions:
+    '{{playerName}} held tight':
+        nextSceneId: theRoad

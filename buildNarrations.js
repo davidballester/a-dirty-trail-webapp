@@ -35,6 +35,7 @@ function isFolder(folderPath) {
 }
 
 function buildScenes(scenePath, prefix, outputFolderPath) {
+    console.log(scenePath, prefix);
     const files = fs.readdirSync(scenePath);
     const pairedFiles = pairFiles(files);
     pairedFiles.forEach(({ yaml, md }) => {

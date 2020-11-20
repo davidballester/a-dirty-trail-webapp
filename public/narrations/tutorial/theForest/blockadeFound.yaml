@@ -1,0 +1,16 @@
+id: theForest_blockadeFound
+title: The forest
+actions:
+    She looked for the crevice again (_perception_):
+        condition:
+            hasNotFlag: theForestSecondAttempt
+        check:
+            skill: perception
+            success:
+                nextSceneId: theForest_creviceAndBlockade
+            failure:
+                nextSceneId: theForest_lostInTheForest
+    This time, she followed the crevice:
+        condition:
+            hasFlag: theForestSecondAttempt
+        nextSceneId: theForest_creviceAndBlockade

@@ -1,0 +1,7 @@
+id: theRoad_atopTheBlockade
+title: The road
+actions:
+    She ventured into the forest (_-1 health_):
+        nextSceneId: theForest
+        sideEffect:
+            modifyHealth: -1

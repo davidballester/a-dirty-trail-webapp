@@ -1,0 +1,9 @@
+id: theStagecoach_afterCombat
+title: The stagecoach
+actions:
+    '"It''ll be sunset before she figures it out, minister"':
+        nextSceneId: theStagecoach_nowWhat
+        sideEffect:
+            addFlag: theStagecoach_ministerExplanation
+    '"He''s had a severe case of bullet to the chest"':
+        nextSceneId: theStagecoach_nowWhat

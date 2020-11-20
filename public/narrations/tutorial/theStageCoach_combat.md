@@ -1,36 +1,36 @@
 ---
-id: theStageCoach_combat
-title: The stage coach
+id: theStagecoach_combat
+title: The stagecoach
 actions:
-    'Continue':
-        nextSceneId: theStageCoach_afterTheShootout
+    '"Well, that was something"':
+        nextSceneId: theStagecoach_afterCombat
 actors:
-    'Scarred brigand':
+    'The ugly one':
         health: 2-2
-        inventory:
-            ammunitions:
-                'big bullets': 4
-            weapons:
-                'One-shot rifle':
-                    type: rifle
-                    damage: 2-2
-                    skill: aim
-                    ammunitionType: big bullets
-                    ammunition: 0-1
-        skills:
-            aim: 0.4
-    'Brigand':
-        health: 2-2
-        inventory:
-            ammunitions:
-                'big bullets': 2
-            weapons:
-                'One-shot rifle':
-                    type: rifle
-                    damage: 2-2
-                    skill: aim
-                    ammunitionType: big bullets
-                    ammunition: 1-1
         skills:
             aim: 0.3
+        inventory:
+            weapons:
+                'One-shot rifle':
+                    ammunition: 0-1
+                    ammunitionType: Big bullets
+                    skill: aim
+                    damage: 2-2
+                    type: rifle
+            ammunitions:
+                Big bullets: 2
+    'Good-mannered one':
+        health: 2-2
+        skills:
+            aim: 0.4
+        inventory:
+            weapons:
+                'One-shot rifle':
+                    ammunition: 1-1
+                    ammunitionType: Big bullets
+                    skill: aim
+                    damage: 2-2
+                    type: rifle
+            ammunitions:
+                Big bullets: 3
 ---

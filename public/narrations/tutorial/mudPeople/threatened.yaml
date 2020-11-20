@@ -1,0 +1,5 @@
+id: mudPeople_threatened
+title: Mud people
+actions:
+    '"What do we do now?"':
+        nextSceneId: mudPeople_arrangement
