@@ -56,7 +56,7 @@ const AdvanceAction = ({
     const executePlayerAction = useExecutePlayerAction();
     return (
         <Button
-            variant="outline-dark"
+            variant="dark"
             onClick={() => {
                 executePlayerAction(action);
             }}
