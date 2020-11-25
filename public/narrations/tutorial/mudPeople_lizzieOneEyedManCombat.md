@@ -25,5 +25,5 @@ actors:
                     canBeLooted: false
 actions:
     '"I could do this all day long!""':
-        nextSceneId: backToTheRoad_afterCombatMinister
+        nextSceneId: mudPeople_afterCombatMinister
 ---

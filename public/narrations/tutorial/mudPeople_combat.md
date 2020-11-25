@@ -49,7 +49,7 @@ actors:
                     damage: 1-2
 actions:
     '"Call me The Reaper"':
-        nextSceneId: backToTheRoad_afterCombat
+        nextSceneId: mudPeople_afterCombat
         sideEffect:
             rename: The Reaper
 ---

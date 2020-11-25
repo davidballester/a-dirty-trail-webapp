@@ -28,5 +28,5 @@ actors:
                     damage: 1-2
 actions:
     There was mud everywhere:
-        nextSceneId: backToTheRoad_afterOldWomanPhilipCombat
+        nextSceneId: mudPeople_afterOldWomanPhilipCombat
 ---

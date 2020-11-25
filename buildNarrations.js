@@ -20,6 +20,7 @@ function buildNarration(narrationTitle) {
         'public/narrations',
         narrationTitle
     );
+    deleteTopLevelNarrationFiles(narrationPath);
     const folders = fs
         .readdirSync(narrationPath)
         .filter((folderName) => isFolder(path.join(narrationPath, folderName)));
@@ -27,6 +28,22 @@ function buildNarration(narrationTitle) {
         const folderPath = path.join(narrationPath, folderName);
         buildScenes(folderPath, folderName, narrationPath);
     });
+}
+
+function deleteTopLevelNarrationFiles(narrationPath) {
+    const files = fs.readdirSync(narrationPath);
+    files.forEach((file) => {
+        const extension = getFileExtension(file);
+        if (extension === 'md') {
+            const filePath = path.join(narrationPath, file);
+            fs.unlinkSync(filePath);
+        }
+    });
+}
+
+function getFileExtension(file) {
+    const extension = path.extname(file);
+    return extension.substring(1);
 }
 
 function isFolder(folderPath) {
@@ -58,11 +75,6 @@ function pairFiles(files) {
             extension
         );
     }, []);
-}
-
-function getFileExtension(file) {
-    const extension = path.extname(file);
-    return extension.substring(1);
 }
 
 function getFileNameWithoutExtension(file, extension) {
