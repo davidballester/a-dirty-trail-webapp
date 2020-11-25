@@ -21,6 +21,10 @@ const iconMakers = [
         link: 'https://www.flaticon.es/autores/prosymbols',
         name: 'Prosymbols',
     },
+    {
+        link: 'https://www.flaticon.com/authors/those-icons',
+        name: 'Those icons',
+    },
 ];
 
 const IconsAttribution = (): ReactElement => (
