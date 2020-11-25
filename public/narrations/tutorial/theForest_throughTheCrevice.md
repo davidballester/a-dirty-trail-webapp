@@ -3,7 +3,7 @@ id: theForest_throughTheCrevice
 title: The forest
 actions:
     She went back to the road:
-        nextSceneId: backToTheRoad
+        nextSceneId: mudPeople
 ---
 
 {{#if-has-trinket "Tusk"}}The tusk wasn't the greatest tool, but it was better than nothing. {{/if-has-trinket}}The roots fell one after another and, crouching and minding the thorny stuff and the sharp edges of the rocks, she made it through.

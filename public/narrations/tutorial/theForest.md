@@ -9,7 +9,7 @@ actions:
                 nextSceneId: theForest_blockadeFound
             failure:
                 nextSceneId: theForest_lostInTheForest
-    She lowered herself to the crevice (_survival - dangerous_):
+    She lowered herself to the crevice (_survival - **dangerous**_):
         check:
             skill: survival
             modifier: 0.3

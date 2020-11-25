@@ -4,6 +4,7 @@ title: The road
 actions:
     She ventured into the forest:
         nextSceneId: theForest
+        addFlag: theRoad_atopTheBlockade
 ---
 
 {{playerName}} had never been one of those that climb trees for fun, yet her fingers found the spaces between the logs, and her feet pushed her up. Before she knew how, she had reached the top, and she sat down there, feeling that standing up would only make her fall, thus ruining that small victory.
