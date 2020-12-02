@@ -1,5 +1,5 @@
 ---
-id: mudPeople_afterCombat
+id: mudPeople_afterCombatMinister
 title: Mud people
 actions:
     'They both looked at the minister, and then at the blockade':

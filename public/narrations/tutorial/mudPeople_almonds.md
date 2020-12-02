@@ -1,5 +1,5 @@
 ---
-id: mudPeople
+id: mudPeople_almonds
 title: Mud people
 actions:
     '{{playerName}} thought she could take out these two':

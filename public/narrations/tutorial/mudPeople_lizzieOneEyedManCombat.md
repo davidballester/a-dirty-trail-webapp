@@ -1,5 +1,5 @@
 ---
-id: mudPeople_combat
+id: mudPeople_lizzieOneEyedManCombat
 title: Mud people
 actors:
     One-eyed man:
