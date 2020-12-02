@@ -12,7 +12,9 @@
         "lint-fix": "npm run lint -- --fix",
         "pretest": "npm run buildNarrations",
         "test": "jest tests/.*.spec.ts",
-        "buildNarrations": "node buildNarrations.js"
+        "buildNarrations": "node buildNarrations.js",
+        "narrationsToGraph": "node narrationsToGraph.js",
+        "prenarrationsToGraph": "npm run buildNarrations"
     },
     "husky": {
         "hooks": {
@@ -47,6 +49,7 @@
         "eslint-plugin-react": "^7.21.5",
         "husky": "^4.3.0",
         "jest": "^26.6.3",
+        "markdown-yaml-metadata-parser": "^2.1.1",
         "patch-package": "^6.2.2",
         "prettier": "^2.1.2",
         "pretty-quick": "^3.1.0",
