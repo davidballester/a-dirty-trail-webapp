@@ -97,8 +97,8 @@ function addToPairedFiles(pairedFiles, fileNameWithoutExtension, extension) {
 }
 
 function buildScene(yamlPath, mdPath, prefix, outputFolderPath) {
-    const yamlContent = fs.readFileSync(yamlPath);
-    const mdContent = fs.readFileSync(mdPath);
+    const yamlContent = fs.readFileSync(yamlPath, 'utf-8');
+    const mdContent = fs.readFileSync(mdPath, 'utf-8');
     const sceneContent = buildSceneContent(yamlContent, mdContent);
     let fileName = path.basename(mdPath);
     if (fileName === 'index.md') {
@@ -112,7 +112,8 @@ function buildScene(yamlPath, mdPath, prefix, outputFolderPath) {
 
 function buildSceneContent(yaml, md) {
     return `---
-${yaml}
+${yaml.trim()}
 ---
+
 ${md}`;
 }
