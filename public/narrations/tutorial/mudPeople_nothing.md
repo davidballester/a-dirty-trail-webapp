@@ -1,5 +1,5 @@
 ---
-id: mudPeople_threatened
+id: mudPeople_nothing
 title: Mud people
 actions:
     '"What do we do now?"':
