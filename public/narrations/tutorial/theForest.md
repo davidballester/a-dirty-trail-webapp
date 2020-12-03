@@ -1,5 +1,5 @@
 ---
-id: theForest_forest
+id: theForest
 title: The forest
 actions:
     She looked for the blockade (_perception_):

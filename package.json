@@ -14,7 +14,9 @@
         "test": "jest tests/.*.spec.ts",
         "buildNarrations": "node buildNarrations.js",
         "narrationsToGraph": "node narrationsToGraph.js",
-        "prenarrationsToGraph": "npm run buildNarrations"
+        "prenarrationsToGraph": "npm run buildNarrations",
+        "narrationsReport": "node narrationsReport.js",
+        "prenarrationsReport": "npm run buildNarrations"
     },
     "husky": {
         "hooks": {
