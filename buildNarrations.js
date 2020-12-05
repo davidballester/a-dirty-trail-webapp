@@ -52,13 +52,18 @@ function isFolder(folderPath) {
 }
 
 function buildScenes(scenePath, prefix, outputFolderPath) {
-    console.log(scenePath, prefix);
+    console.log(scenePath);
     const files = fs.readdirSync(scenePath);
     const pairedFiles = pairFiles(files);
     pairedFiles.forEach(({ yaml, md }) => {
-        const yamlPath = path.join(scenePath, yaml);
-        const mdPath = path.join(scenePath, md);
-        buildScene(yamlPath, mdPath, prefix, outputFolderPath);
+        try {
+            const yamlPath = path.join(scenePath, yaml);
+            const mdPath = path.join(scenePath, md);
+            buildScene(yamlPath, mdPath, prefix, outputFolderPath);
+        } catch (err) {
+            console.error('Error building scene', yaml, md);
+            throw err;
+        }
     });
 }
 

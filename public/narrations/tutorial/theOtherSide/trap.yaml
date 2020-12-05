@@ -1,0 +1,7 @@
+id: theOtherSide_trap
+title: The other side
+actions:
+    At least, the pit had no spears at the bottom (_-2 health_):
+        nextSceneId: theOtherSide_bottomOfTrap
+        sideEffect:
+            modifyHealth: -2

@@ -1,0 +1,7 @@
+id: theOtherSide_dogsPerceived
+title: The other side
+actions:
+    But trouble was her middle name:
+        nextSceneId: theOtherSide_dogsCombat
+    She retreated slowly:
+        nextSceneId: theOtherSide_lookForTheTowerAfterDogs

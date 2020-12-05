@@ -1,0 +1,5 @@
+id: theOtherSide_walking
+title: The other side
+actions:
+    '"I think I see something up ahead"':
+        nextSceneId: theOtherSide_tower

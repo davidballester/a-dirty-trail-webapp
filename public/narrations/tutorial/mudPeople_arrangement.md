@@ -4,6 +4,9 @@ title: Mud people
 actions:
     '"Yes, I did. And you''re going to love it"':
         nextSceneId: theOtherSide
+        sideEffect:
+            addFlag: bothCompanionsAlive
+            modifyHealth: +3
 ---
 
 "Listen here, good folks," the minister said. "We don't have anything for you, as you can see. And we are in dire need of refuge."

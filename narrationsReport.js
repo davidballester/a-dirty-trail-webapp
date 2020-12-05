@@ -18,10 +18,16 @@ function getNarrationsList() {
 }
 
 function narrationReport(narrationName) {
-    const graph = createGraph(narrationName);
-    reportNarrationName(narrationName);
-    reportStats(graph);
-    reportSinks(graph);
+    try {
+        const graph = createGraph(narrationName);
+        reportNarrationName(narrationName);
+        reportStats(graph);
+        reportSinks(graph);
+    } catch (error) {
+        console.error(
+            `Error generating report for ${narrationName}: ${error.message}`
+        );
+    }
 }
 
 function createGraph(narrationName) {
@@ -30,7 +36,14 @@ function createGraph(narrationName) {
     const edges = getEdges(scenes);
     const graph = new Graph();
     nodes.forEach((node) => graph.setNode(node.id, node.content));
-    edges.forEach((edge) => graph.setEdge(edge.source, edge.target));
+    edges.forEach((edge) => {
+        if (!graph.node(edge.target)) {
+            throw new Error(
+                `${edge.source} refers to undeclared scene ${edge.target}`
+            );
+        }
+        graph.setEdge(edge.source, edge.target);
+    });
     return graph;
 }
 

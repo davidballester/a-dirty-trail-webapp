@@ -3,5 +3,3 @@ title: Mud people
 actions:
     'They both looked at the minister, and then at the blockade':
         nextSceneId: mudPeople_ministerIsDead
-        sideEffect:
-            addFlag: ministerIsDead

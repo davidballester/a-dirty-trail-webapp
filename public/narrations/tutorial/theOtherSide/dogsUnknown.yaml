@@ -1,0 +1,7 @@
+id: theOtherSide_dogsUnknown
+title: The other side
+actions:
+    '"Here, doggie, doggie."':
+        nextSceneId: theOtherSide_dogsAngry
+    She retreated slowly:
+        nextSceneId: theOtherSide_lookForTheTowerAfterDogs

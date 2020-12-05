@@ -1,0 +1,10 @@
+id: theOtherSide_lookForTheTowerAfterDogs
+title: The other side
+actions:
+    They tried to keep the lights in sight (_perception_):
+        check:
+            skill: perception
+            success:
+                nextSceneId: theTower
+            failure:
+                nextSceneId: theOtherSide_towerOutOfSight

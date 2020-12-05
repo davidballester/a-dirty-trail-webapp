@@ -4,8 +4,6 @@ title: Mud people
 actions:
     '{{playerName}} cried in silence':
         nextSceneId: mudPeople_ladyWillsbourghIsDead
-        sideEffect:
-            addFlag: ladyWillsbourghIsDead
 ---
 
 The smoke cleared and now there were muddy bodies on the muddy road. But not all of them were muddy.

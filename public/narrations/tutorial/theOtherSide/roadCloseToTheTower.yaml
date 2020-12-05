@@ -1,0 +1,10 @@
+id: theOtherSide_roadCloseToTheTower
+title: The other side
+actions:
+    It was not easy (_perception_):
+        check:
+            skill: perception
+            success:
+                nextSceneId: theTower
+            failure:
+                nextSceneId: theOtherSide_dogsInTheWoods

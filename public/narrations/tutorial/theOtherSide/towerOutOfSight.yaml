@@ -1,0 +1,14 @@
+id: theOtherSide_towerOutOfSight
+title: The other side
+actions:
+    She tried to find the tower before advancing (_-1 health_):
+        nextSceneId: theTower
+        sideEffect:
+            modifyHealth: -1
+    She pushed through (_survival_):
+        check:
+            skill: survival
+            success:
+                nextSceneId: theTower
+            failure:
+                nextSceneId: theOtherSide_ravine

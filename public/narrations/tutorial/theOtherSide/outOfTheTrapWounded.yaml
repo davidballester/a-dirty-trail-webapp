@@ -1,0 +1,7 @@
+id: theOtherSide_outOfTheTrapWounded
+title: The other side
+actions:
+    The walked through the woods (_-1 health_):
+        nextSceneId: theTower
+        sideEffect:
+            modifyHealth: -1

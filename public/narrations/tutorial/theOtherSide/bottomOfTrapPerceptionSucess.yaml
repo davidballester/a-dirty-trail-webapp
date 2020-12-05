@@ -1,0 +1,10 @@
+id: theOtherSide_bottomOfTrapPerceptionSucess
+title: The other side
+actions:
+    They climbed using the roots (_survival_):
+        check:
+            skill: survival
+            success:
+                nextSceneId: theOtherSide_outOfTheTrap
+            failure:
+                nextSceneId: theOtherSide_outOfTheTrapWounded

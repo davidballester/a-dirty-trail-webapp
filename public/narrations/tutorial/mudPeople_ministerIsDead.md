@@ -4,6 +4,9 @@ title: Mud people
 actions:
     And off they went:
         nextSceneId: theOtherSide
+        sideEffect:
+            addFlag: ministerIsDead
+            modifyHealth: +2
 ---
 
 "Where to now?" {{playerName}} dared to ask.

@@ -1,0 +1,7 @@
+id: theOtherSide_ravine
+title: The other side
+actions:
+    They fell into it (_-2 health_):
+        nextSceneId: theOtherSide_ravineFall
+        sideEffect:
+            modifyHealth: -2

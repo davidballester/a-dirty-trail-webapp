@@ -1,0 +1,5 @@
+id: theOtherSide_dogsInTheWoods
+title: The other side
+actions:
+    'How many of those are there? (_combat_)':
+        nextSceneId: theOtherSide_dogsInTheWoodsCombat

@@ -1,0 +1,5 @@
+id: theOtherSide_outOfTheTrap
+title: The other side
+actions:
+    The walked through the woods:
+        nextSceneId: theTower

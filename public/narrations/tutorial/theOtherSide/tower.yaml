@@ -1,0 +1,13 @@
+id: theOtherSide_tower
+title: The other side
+actions:
+    '"And I can take you there. I think" (_survival (hard)_)':
+        check:
+            skill: survival
+            modifier: -0.2
+            success:
+                nextSceneId: theOtherSide_pathToTheTower
+            failure:
+                nextSceneId: theOtherSide_trap
+    'It looks dangerous, though':
+        nextSceneId: theOtherSide_dogs

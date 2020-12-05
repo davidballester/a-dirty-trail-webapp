@@ -1,0 +1,18 @@
+id: theOtherSide_bottomOfTrap
+title: The other side
+actions:
+    '{{playerName}} looked around, trying to think of a way out (_perception_)':
+        check:
+            skill: perception
+            success:
+                nextSceneId: theOtherSide_bottomOfTrapPerceptionSucess
+            failure:
+                nextSceneId: theOtherSide_bottomOfTrapPerceptionFailure
+    'She lunched herself up the dirt walls to climp up (_survival (hard)_)':
+        check:
+            skill: survival
+            modifier: -0.2
+            success:
+                nextSceneId: theOtherSide_outOfTheTrap
+            failure:
+                nextSceneId: theOtherSide_outOfTheTrapWounded

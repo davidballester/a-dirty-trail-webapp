@@ -1,0 +1,11 @@
+id: theOtherSide_bottomOfTrapPerceptionFailure
+title: The other side
+actions:
+    'She climbed the dirt walls powered by rage (_survival (hard)_)':
+        check:
+            skill: survival
+            modifier: -0.1
+            success:
+                nextSceneId: theOtherSide_outOfTheTrap
+            failure:
+                nextSceneId: theOtherSide_outOfTheTrapWounded

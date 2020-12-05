@@ -1,0 +1,5 @@
+id: theOtherSide_ravineFall
+title: The other side
+actions:
+    They climbed out of the ravine and followed the lights:
+        nextSceneId: theTower

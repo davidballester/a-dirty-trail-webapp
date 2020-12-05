@@ -1,2 +1,5 @@
 id: theOtherSide
 title: The other side
+actions:
+    The march continued:
+        nextSceneId: theOtherSide_walking

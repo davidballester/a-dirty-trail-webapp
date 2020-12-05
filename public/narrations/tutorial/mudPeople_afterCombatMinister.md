@@ -4,8 +4,6 @@ title: Mud people
 actions:
     'They both looked at the minister, and then at the blockade':
         nextSceneId: mudPeople_ministerIsDead
-        sideEffect:
-            addFlag: ministerIsDead
 ---
 
 The smoke cleared and now there were muddy bodies on the muddy road. But not all of them were muddy.

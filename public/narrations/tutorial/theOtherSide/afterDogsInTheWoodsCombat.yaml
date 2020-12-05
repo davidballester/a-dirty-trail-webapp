@@ -1,0 +1,5 @@
+id: theOtherSide_afterDogsInTheWoodsCombat
+title: The other side
+actions:
+    The tower just right ahead:
+        nextSceneId: theTower

@@ -1,0 +1,17 @@
+id: theOtherSide_chasedByDogsOnTheRoad
+title: The other side
+actions:
+    The situation was desperate, so {{playerName}} kept on running:
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: theOtherSide_roadCloseToTheTower
+        sideEffect:
+            addFlag: ministerIsDead
+    She turned back to help the minister:
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: theOtherSide_chasedByDogsOnTheRoadCombat
+    '{{playerName}} turned around to face them':
+        condition:
+            hasNotFlag: bothCompanionsAlive
+        nextSceneId: theOtherSide_chasedByDogsOnTheRoadCombat

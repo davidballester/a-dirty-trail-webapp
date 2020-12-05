@@ -1,0 +1,5 @@
+id: theOtherSide_afterChasedByDogsOnTheRoadCombat
+title: The other side
+actions:
+    They could see the tower in the distance now:
+        nextSceneId: theOtherSide_roadCloseToTheTower
