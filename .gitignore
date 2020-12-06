@@ -35,3 +35,6 @@ yarn-error.log*
 
 # generated graph files
 *.graph
+
+# generated narration files
+/public/narrations/*/*.md
