@@ -1,0 +1,34 @@
+id: theChambers_stairway
+title: The chambers
+actions:
+    She tried to hear intensely (_perception_):
+        condition:
+            hasNotFlag: theChambersStairwayVisited
+        check:
+            skill: perception
+            success:
+                nextSceneId: theChambers_stairwayPerceptionSucess
+            failure:
+                nextSceneId: theChambers_stairwayPerceptionFailure
+    She went upstairs:
+        nextSceneId: upstairs
+        sideEffect:
+            addFlag: theChambersStairwayVisited
+    She went downstairs:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlag: theChambersStairwayVisited
+    She inspected the dry grass:
+        condition:
+            hasNotFlag: theChambersDryGrass
+        nextSceneId: theChambers_dryGrass
+        sideEffect:
+            addFlag: theChambersDryGrass
+    She inspected the trunk:
+        condition:
+            hasNotFlag: theChambersTrunk
+        nextSceneId: theChambers_trunk
+    She went to bed:
+        condition:
+            hasNotFlag: theChambersBed
+        nextSceneId: theChambers_bed

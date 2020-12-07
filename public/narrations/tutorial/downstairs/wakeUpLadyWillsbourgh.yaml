@@ -1,0 +1,15 @@
+id: downstairs_wakeUpLadyWillsbourgh
+title: Downstairs
+actions:
+    She tried to wake up the minister:
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: downstairs_wakeUpMinister
+    She went through Lady Willsbourgh's stuff:
+        condition:
+            hasNotFlag: downstairsLootLadyWillsbourgh
+        nextSceneId: downstairs_lootLadyWillsbourgh
+        sideEffect:
+            addFlag: downstairsLootLadyWillsbourgh
+    She left the room:
+        nextSceneId: downstairs_outOfTheRoom

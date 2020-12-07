@@ -7,3 +7,5 @@ actions:
             addFlag: theStagecoach_ministerExplanation
     '"He''s had a severe case of bullet to the chest"':
         nextSceneId: theStagecoach_nowWhat
+    '{{playerName}} registered the dead driver':
+        nextSceneId: theStagecoach_registerDeadDriver

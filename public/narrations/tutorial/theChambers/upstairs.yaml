@@ -1,0 +1,7 @@
+id: theChambers_upstairs
+title: The chambers
+actions:
+    '{{playerName}} watched her in silence':
+        nextSceneId: theChambers_alone
+    '"Wait, I have questions!"':
+        nextSceneId: theChambers_KolynQuestions

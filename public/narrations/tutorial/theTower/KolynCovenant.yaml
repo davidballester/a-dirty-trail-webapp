@@ -1,0 +1,10 @@
+id: theTower_KolynCovenant
+title: The tower
+actions:
+    They stepped in (_perception_):
+        check:
+            skill: perception
+            success:
+                nextSceneId: theTower_insidePerceptionSuccess
+            failure:
+                nextSceneId: theTower_insidePerceptionFailure

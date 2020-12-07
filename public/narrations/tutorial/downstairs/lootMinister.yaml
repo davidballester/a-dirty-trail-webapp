@@ -1,0 +1,13 @@
+id: downstairs_lootMinister
+title: Downstairs
+actions:
+    She tried to wake up Lady Willsbourgh (_+2 health_):
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: downstairs_wakeUpLadyWillsbourgh
+        sideEffect:
+            modifyHealth: 2
+    She left the room (_+2 health_):
+        nextSceneId: downstairs_outOfTheRoom
+        sideEffect:
+            modifyHealth: 2

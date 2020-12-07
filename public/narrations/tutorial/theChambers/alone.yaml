@@ -1,0 +1,13 @@
+id: theChambers_alone
+title: The chambers
+actions:
+    She inspected the dry grass:
+        nextSceneId: theChambers_dryGrass
+        sideEffect:
+            addFlag: theChambersDryGrass
+    She inspected the trunk:
+        nextSceneId: theChambers_trunk
+    She went to bed:
+        nextSceneId: theChambers_bed
+    She looked at the stairway:
+        nextSceneId: theChambers_stairway

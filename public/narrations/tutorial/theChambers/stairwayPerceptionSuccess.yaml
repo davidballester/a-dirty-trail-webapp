@@ -1,0 +1,25 @@
+id: theChambers_stairwayPerceptionSucess
+title: The chambers
+actions:
+    She went upstairs:
+        nextSceneId: upstairs
+        sideEffect:
+            addFlag: theChambersStairwayVisited
+    She went downstairs:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlag: theChambersStairwayVisited
+    She inspected the dry grass:
+        condition:
+            hasNotFlag: theChambersDryGrass
+        nextSceneId: theChambers_dryGrass
+        sideEffect:
+            addFlag: theChambersDryGrass
+    She inspected the trunk:
+        condition:
+            hasNotFlag: theChambersTrunk
+        nextSceneId: theChambers_trunk
+    She went to bed:
+        condition:
+            hasNotFlag: theChambersBed
+        nextSceneId: theChambers_bed

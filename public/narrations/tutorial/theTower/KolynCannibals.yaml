@@ -1,0 +1,7 @@
+id: theTower_KolynCannibals
+title: The tower
+actions:
+    She sat down, ate and drank:
+        nextSceneId: theTower_KolynFullSupper
+    She sat down and checked the meat and the cup:
+        nextSceneId: theTower_KolynCheckSupper

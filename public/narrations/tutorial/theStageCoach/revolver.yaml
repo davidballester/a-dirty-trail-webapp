@@ -12,3 +12,5 @@ actions:
                         damage: 1-2
                         skill: aim
                         type: revolver
+                ammunitions:
+                    Bullets: 0

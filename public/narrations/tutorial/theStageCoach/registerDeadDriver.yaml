@@ -1,0 +1,17 @@
+id: theStagecoach_registerDeadDriver
+title: The stagecoach
+actions:
+    '"Have you done this before, minister?"':
+        nextSceneId: theStagecoach_leave
+        sideEffect:
+            loot:
+                trinkets:
+                    - name: Ribbon
+                      description: Made of grass. The driver had it.
+    '"What can go wrong?"':
+        nextSceneId: theStagecoach_leave
+        sideEffect:
+            loot:
+                trinkets:
+                    - name: Ribbon
+                      description: Made of grass. The driver had it.

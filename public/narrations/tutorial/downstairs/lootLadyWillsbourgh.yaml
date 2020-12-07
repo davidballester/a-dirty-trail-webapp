@@ -1,0 +1,19 @@
+id: downstairs_lootLadyWillsbourgh
+title: Downstairs
+actions:
+    She tried to wake up the minister:
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: downstairs_wakeUpMinister
+        sideEffect:
+            loot:
+                trinkets:
+                    - name: Gloves
+                      description: Lady Willsbourgh's.
+    She left the room:
+        nextSceneId: downstairs_outOfTheRoom
+        sideEffect:
+            loot:
+                trinkets:
+                    - name: Gloves
+                      description: Lady Willsbourgh's.

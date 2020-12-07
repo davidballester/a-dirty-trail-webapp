@@ -1,0 +1,15 @@
+id: theTower_insidePerceptionFailure
+title: The tower
+actions:
+    '"Oh, no. You''re cannibales, aren''t you?"':
+        nextSceneId: theTower_KolynCannibals
+        sideEffect:
+            addFlag: covenantKolynNo
+    '"I trade you that minister for a fillet"':
+        condition:
+            hasNotFlag: ministerIsDead
+        nextSceneId: theTower_KolynTradeMeat
+    '"I trade you that lady for a fillet"':
+        condition:
+            hastNotFlag: ladyWillsbourghIsDead
+        nextSceneId: theTower_KolynTradeMeat

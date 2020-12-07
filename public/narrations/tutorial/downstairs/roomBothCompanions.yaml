@@ -1,0 +1,9 @@
+id: downstairs_roomBothCompanions
+title: Downstairs
+actions:
+    She got out of the room:
+        nextSceneId: downstairs_outOfTheRoom
+    She tried to wake up the minister:
+        nextSceneId: downstairs_wakeUpMinister
+    She tried to wake up Lady Willsbourgh:
+        nextSceneId: downstairs_wakeUpLadyWillsbourgh

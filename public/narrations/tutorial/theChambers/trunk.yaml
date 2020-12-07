@@ -1,0 +1,19 @@
+id: theChambers_trunk
+title: The chambers
+actions:
+    She busted the trunk open:
+        nextSceneId: theChambers_trunkOpen
+        sideEffect:
+            addFlag: theChambersTrunk
+    She inspected the dry grass:
+        condition:
+            hasNotFlag: theChambersDryGrass
+        nextSceneId: theChambers_dryGrass
+        sideEffect:
+            addFlag: theChambersDryGrass
+    She went to bed:
+        condition:
+            hasNotFlag: theChambersBed
+        nextSceneId: theChambers_bed
+    She looked at the stairway:
+        nextSceneId: theChambers_stairway

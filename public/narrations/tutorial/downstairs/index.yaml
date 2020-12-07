@@ -1,0 +1,19 @@
+id: downstairs
+title: Downstairs
+actions:
+    She opened the door to the the minister and Lady Willsbourgh's room:
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: downstairs_roomBothCompanions
+    She opened the door to Lady Willsbourgh's room:
+        condition:
+            hasNotFlags:
+                - ladyWillsbourghIsDead
+                - bothCompanionsAlive
+        nextSceneId: downstairs_roomLadyWillsbourgh
+    She opened the door to the minister's room:
+        condition:
+            hasNotFlags:
+                - ministerIsDead
+                - bothCompanionsAlive
+        nextSceneId: downstairs_roomMinister

@@ -1,7 +1,7 @@
 {{#if-has-flag "theStagecoach_ministerExplanation"}}
 "His soul has abandoned his body, Lady Willsbourgh," the minister said. {{playerName}} could see that his patience ran thinner than his hair.
 {{/if-has-flag}}
-"Do you mean...?" Lady Willsbourgh eyes opened wide and she covered her mouth with one hand.
+"Do you mean...?" Lady Willsbourgh's eyes opened wide and she covered her mouth with one hand.
 
 "That took a while", {{playerName}} grunted. "What will we do now?"
 

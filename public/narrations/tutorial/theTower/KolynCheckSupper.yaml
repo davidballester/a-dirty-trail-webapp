@@ -1,0 +1,21 @@
+id: theTower_KolynCheckSupper
+title: The tower
+actions:
+    She waited for Lady Willsbourgh and the minister to finish:
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: theTower_KolynChambers
+        sideEffect:
+            addFlag: covenantKolynNo
+    She waited for Lady Willsbourgh to finish:
+        condition:
+            hasNotFlag: ladyWillsbourghIsDead
+        nextSceneId: theTower_KolynChambers
+        sideEffect:
+            addFlag: covenantKolynNo
+    She waited for the minister to finish:
+        condition:
+            hasNotFlag: ministerIsDead
+        nextSceneId: theTower_KolynChambers
+        sideEffect:
+            addFlag: covenantKolynNo

@@ -1,0 +1,5 @@
+id: theTower_KolynChambers
+title: The tower
+actions:
+    And so they did:
+        nextSceneId: theChambers

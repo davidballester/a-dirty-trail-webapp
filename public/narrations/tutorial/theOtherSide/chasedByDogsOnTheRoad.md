@@ -1,6 +1,6 @@
-When se had woken up this morning, {{playerName}} had not thought she'd learn so many things in a day. Here's a quick summary:
+When she had woken up this morning, {{playerName}} had not thought she'd learn so many things in a day. Here's a quick summary:
 
--   You can develop weird bonds with stragers you meet in a stagecoach.
+-   You can develop weird bonds with strangers you meet in a stagecoach.
 -   People could live covered in mud.
     {{#if-has-flag "theRoadBoar"}}
 -   Boars will attack if desperate enough.

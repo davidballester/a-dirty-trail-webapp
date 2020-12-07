@@ -1,2 +1,15 @@
 id: theTower
 title: The tower
+actions:
+    'Hi. Is this the covenant?':
+        nextSceneId: theTower_KolynCovenant
+        sideEffect:
+            addFlag: covenantKolynNo
+    'Please, we need help. Desperately':
+        nextSceneId: theTower_KolynHelp
+    ? "{{playerName}} showed the girl the ribbon she found in the driver's pocket"
+    : condition:
+          hasTrinket: Ribbon
+      nextSceneId: theTower_KolynRibbon
+      sideEffect:
+          addFlag: covenantKolynNo
