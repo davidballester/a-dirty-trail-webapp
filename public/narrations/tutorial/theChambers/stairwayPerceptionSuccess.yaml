@@ -1,5 +1,3 @@
-id: theChambers_stairwayPerceptionSucess
-title: The chambers
 actions:
     She went upstairs:
         nextSceneId: upstairs

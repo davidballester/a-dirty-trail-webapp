@@ -1,5 +1,3 @@
-id: mudPeople_arrangement
-title: Mud people
 actions:
     '"Yes, I did. And you''re going to love it"':
         nextSceneId: theOtherSide

@@ -1,5 +1,3 @@
-id: downstairs_outOfTheRoom
-title: Downstairs
 actions:
     She went upstairs:
         nextSceneId: theChambers_stairway

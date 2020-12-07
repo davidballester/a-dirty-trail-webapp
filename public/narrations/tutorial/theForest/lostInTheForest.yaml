@@ -1,5 +1,3 @@
-id: theForest_lostInTheForest
-title: The forest
 actions:
     '"I might as well just start walking" (_survival_)':
         condition:

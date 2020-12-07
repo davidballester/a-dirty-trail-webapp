@@ -1,5 +1,3 @@
-id: theChambers_KolynQuestions
-title: The chambers
 actions:
     She looked around:
         nextSceneId: theChambers_alone

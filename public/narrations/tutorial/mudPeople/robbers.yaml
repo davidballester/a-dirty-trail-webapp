@@ -1,5 +1,3 @@
-id: mudPeople_robbers
-title: Mud people
 actions:
     '"I got something for you robbers. Some lead"':
         nextSceneId: mudPeople_threatened

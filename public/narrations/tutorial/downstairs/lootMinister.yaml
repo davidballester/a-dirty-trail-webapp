@@ -1,5 +1,3 @@
-id: downstairs_lootMinister
-title: Downstairs
 actions:
     She tried to wake up Lady Willsbourgh (_+2 health_):
         condition:

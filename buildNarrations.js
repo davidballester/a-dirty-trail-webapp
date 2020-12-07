@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { snakeCase, capitalize } = require('lodash');
 
 buildNarrations();
 
@@ -102,7 +103,11 @@ function addToPairedFiles(pairedFiles, fileNameWithoutExtension, extension) {
 }
 
 function buildScene(yamlPath, mdPath, prefix, outputFolderPath) {
-    const yamlContent = fs.readFileSync(yamlPath, 'utf-8');
+    let yamlContent;
+    try {
+        yamlContent = fs.readFileSync(yamlPath, 'utf-8');
+        yamlContent = completeYamlContent(yamlContent, yamlPath);
+    } catch (err) {}
     const mdContent = fs.readFileSync(mdPath, 'utf-8');
     const sceneContent = buildSceneContent(yamlContent, mdContent);
     let fileName = path.basename(mdPath);
@@ -115,7 +120,37 @@ function buildScene(yamlPath, mdPath, prefix, outputFolderPath) {
     fs.writeFileSync(outputScenePath, sceneContent, { encoding: 'utf-8' });
 }
 
+function completeYamlContent(yamlContent, yamlPath) {
+    yamlContent = completeId(yamlContent, yamlPath);
+    yamlContent = completeTitle(yamlContent, yamlPath);
+    return yamlContent;
+}
+
+function completeId(yamlContent, yamlPath) {
+    const fileName = path.basename(yamlPath);
+    const extension = path.extname(fileName);
+    const folderName = path.basename(path.dirname(yamlPath));
+    const id =
+        fileName === 'index.yaml'
+            ? folderName
+            : `${folderName}_${fileName.replace(extension, '')}`;
+    return `id: ${id}
+${yamlContent}
+`;
+}
+
+function completeTitle(yamlContent, yamlPath) {
+    const folderName = path.basename(path.dirname(yamlPath));
+    const title = capitalize(snakeCase(folderName).replace('_', ' '));
+    return `title: ${title}
+${yamlContent}
+`;
+}
+
 function buildSceneContent(yaml, md) {
+    if (!yaml) {
+        return md;
+    }
     return `---
 ${yaml.trim()}
 ---

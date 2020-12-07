@@ -1,5 +1,3 @@
-id: theTower_KolynBusyPlace
-title: The tower
 actions:
     She sat down, ate and drank:
         nextSceneId: theTower_KolynFullSupper

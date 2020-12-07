@@ -1,5 +1,3 @@
-id: theRoad
-title: The road
 actions:
     Alys lead on:
         nextSceneId: theRoad_theWalk

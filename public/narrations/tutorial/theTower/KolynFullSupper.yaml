@@ -1,5 +1,3 @@
-id: theTower_KolynFullSupper
-title: The tower
 actions:
     Soon, they had all had their fill (_+3 health_):
         nextSceneId: theTower_KolynChambers

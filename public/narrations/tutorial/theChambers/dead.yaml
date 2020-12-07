@@ -1,5 +1,3 @@
-id: theChambers_dead
-title: The chambers
 actions:
     Are you serious?:
         nextSceneId: theChambers_deadDead

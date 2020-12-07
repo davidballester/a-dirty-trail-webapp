@@ -1,5 +1,3 @@
-id: theChambers_trunk
-title: The chambers
 actions:
     She busted the trunk open:
         nextSceneId: theChambers_trunkOpen

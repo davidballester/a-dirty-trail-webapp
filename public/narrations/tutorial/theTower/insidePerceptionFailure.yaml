@@ -1,5 +1,3 @@
-id: theTower_insidePerceptionFailure
-title: The tower
 actions:
     '"Oh, no. You''re cannibales, aren''t you?"':
         nextSceneId: theTower_KolynCannibals

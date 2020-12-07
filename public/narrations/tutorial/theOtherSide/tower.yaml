@@ -1,5 +1,3 @@
-id: theOtherSide_tower
-title: The other side
 actions:
     '"And I can take you there. I think" (_survival (hard)_)':
         check:

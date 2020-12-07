@@ -1,5 +1,3 @@
-id: theStagecoach_combat
-title: The stagecoach
 actions:
     '"Well, that was something"':
         nextSceneId: theStagecoach_afterCombat

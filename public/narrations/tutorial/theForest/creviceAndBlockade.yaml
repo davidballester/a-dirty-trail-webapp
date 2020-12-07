@@ -1,5 +1,3 @@
-id: theForest_creviceAndBlockade
-title: The forest
 actions:
     And so she did:
         nextSceneId: theForest_crevice

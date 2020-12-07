@@ -1,5 +1,3 @@
-id: theStagecoach_ladyFriend
-title: The stagecoach
 actions:
     '"Alys"':
         nextSceneId: theStagecoach_ladyFriend_name

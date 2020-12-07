@@ -1,5 +1,3 @@
-id: theStagecoach_afterCombat
-title: The stagecoach
 actions:
     '"It''ll be sunset before she figures it out, minister"':
         nextSceneId: theStagecoach_nowWhat

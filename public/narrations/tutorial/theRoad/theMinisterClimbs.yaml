@@ -1,5 +1,3 @@
-id: theRoad_theMinisterClimbs
-title: The road
 actions:
     She ventured into the forest:
         nextSceneId: theForest

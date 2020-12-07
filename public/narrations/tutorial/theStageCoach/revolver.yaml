@@ -1,5 +1,3 @@
-id: theStagecoach_revolver
-title: The stagecoach
 actions:
     '{{playerName}} stepped outside':
         nextSceneId: theStagecoach_outside

@@ -1,5 +1,3 @@
-id: theChambers_bed
-title: The chambers
 actions:
     And that was the last time she slept:
         condition:

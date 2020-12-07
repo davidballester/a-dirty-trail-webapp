@@ -1,5 +1,3 @@
-id: mudPeople_afterCombat
-title: Mud people
 actions:
     '{{playerName}} cried in silence':
         nextSceneId: mudPeople_ladyWillsbourghIsDead

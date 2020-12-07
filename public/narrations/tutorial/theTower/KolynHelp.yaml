@@ -1,5 +1,3 @@
-id: theTower_KolynHelp
-title: The tower
 actions:
     They stepped in (_perception_):
         check:

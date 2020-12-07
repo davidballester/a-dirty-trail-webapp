@@ -1,5 +1,3 @@
-id: theTower_insidePerceptionSuccess
-title: The tower
 actions:
     '"This looks like a busy place"':
         nextSceneId: theTower_KolynBusyPlace

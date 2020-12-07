@@ -1,5 +1,3 @@
-id: theChambers
-title: The chambers
 actions:
     She followed the girl upstairs:
         nextSceneId: theChambers_upstairs

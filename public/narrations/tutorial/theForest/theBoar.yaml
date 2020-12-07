@@ -1,5 +1,3 @@
-id: theForest_theBoar
-title: The forest
 actions:
     She took aim:
         nextSceneId: theForest_boarCombat

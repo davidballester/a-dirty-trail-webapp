@@ -1,5 +1,3 @@
-id: mudPeople
-title: Mud people
 actions:
     '"What is going on here?"':
         nextSceneId: mudPeople_mudPeople

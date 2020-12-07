@@ -1,5 +1,3 @@
-id: downstairs_wakeUpMinister
-title: Downstairs
 actions:
     She tried to wake up Lady Willsbourgh:
         condition:

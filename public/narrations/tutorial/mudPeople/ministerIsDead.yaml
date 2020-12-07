@@ -1,5 +1,3 @@
-id: mudPeople_ministerIsDead
-title: Mud people
 actions:
     And off they went:
         nextSceneId: theOtherSide

@@ -1,5 +1,3 @@
-id: theForest_creviceFallAdvance
-title: The forest
 actions:
     She pushed forward:
         nextSceneId: theForest_crevice

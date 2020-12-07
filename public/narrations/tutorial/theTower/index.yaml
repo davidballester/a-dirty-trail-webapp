@@ -1,5 +1,3 @@
-id: theTower
-title: The tower
 actions:
     'Hi. Is this the covenant?':
         nextSceneId: theTower_KolynCovenant

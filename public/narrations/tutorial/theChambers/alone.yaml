@@ -1,5 +1,3 @@
-id: theChambers_alone
-title: The chambers
 actions:
     She inspected the dry grass:
         nextSceneId: theChambers_dryGrass

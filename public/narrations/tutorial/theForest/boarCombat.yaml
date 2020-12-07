@@ -1,5 +1,3 @@
-id: theForest_boarCombat
-title: The forest
 actors:
     Boar:
         health: 4-4

@@ -1,5 +1,3 @@
-id: theForest_afterBoarCombat
-title: The forest
 actions:
     '"Hello? Lady Willsbourgh! Minister?"':
         nextSceneId: theForest_backToTheRoad
