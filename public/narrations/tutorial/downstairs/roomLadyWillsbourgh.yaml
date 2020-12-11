@@ -1,0 +1,5 @@
+actions:
+    She got out of the room:
+        nextSceneId: downstairs_outOfTheRoom
+    She tried to wake her up:
+        nextSceneId: downstairs_wakeUpLadyWillsbourgh

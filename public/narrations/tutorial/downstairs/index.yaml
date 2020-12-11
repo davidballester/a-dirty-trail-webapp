@@ -15,3 +15,11 @@ actions:
                 - ministerIsDead
                 - bothCompanionsAlive
         nextSceneId: downstairs_roomMinister
+    She went downstairs:
+        condition:
+            hasNotFlag: groundFloorCaught
+        nextSceneId: groundFloor
+    She went upstairs:
+        nextSceneId: theChambers_stairway
+        sideEffect:
+            removeFlag: downstairsFromGroundFloor

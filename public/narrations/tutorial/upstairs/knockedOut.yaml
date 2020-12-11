@@ -1,0 +1,3 @@
+actions:
+    Everything went dark:
+        nextSceneId: theChambers_dead

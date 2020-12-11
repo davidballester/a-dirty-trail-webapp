@@ -1,0 +1,3 @@
+actions:
+    '{{playerName}} raised her revolver':
+        nextSceneId: upstairs_stairsCombatKolyn

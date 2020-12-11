@@ -1,0 +1,7 @@
+actions:
+    With nothing left to do down there, she went back upstairs:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlags:
+                - downstairsFromGroundFloor
+                - cellarBox

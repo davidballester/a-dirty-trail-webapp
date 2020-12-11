@@ -1,0 +1,3 @@
+actions:
+    And so, they traveled to the other side of the mountain:
+        nextSceneId: killTheCampamocha_ending

@@ -1,0 +1,3 @@
+actions:
+    '"So, what about the covenant?"':
+        nextSceneId: upstairs_covenant

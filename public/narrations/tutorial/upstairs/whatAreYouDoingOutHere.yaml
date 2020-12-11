@@ -1,0 +1,61 @@
+actions:
+    '"Why are you bound to it?"':
+        condition:
+            hasNotFlag: upstairsQuestioningWhyAreYouBoundToIt
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_whyAreYouBoundToIt
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningWhyAreYouBoundToIt
+                - covenantQuestion
+    '"What if _I_ killed the Campamocha?"':
+        condition:
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_proposal
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningWhyAreYouBoundToIt
+                - covenantQuestion
+    '"Who the hell are you?"':
+        condition:
+            hasNotFlag: upstairsQuestioningWhoAreYou
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_covenantWhoAreYou
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningWhoAreYou
+                - covenantQuestion
+    '"Were you waiting for us?"':
+        condition:
+            hasNotFlag: upstairsQuestioningWereYouWaitingForUs
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_wereYouWaitingForUs
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningWereYouWaitingForUs
+                - covenantQuestion
+    '"Why did you exile the mud people?"':
+        condition:
+            hasNotFlag: upstairsQuestioningMudPeople
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_whyExileMudPeople
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningMudPeople
+                - covenantQuestion
+    '"But enough with the questions," said the man':
+        condition:
+            flagIsGreaterThan:
+                name: covenantQuestion
+                value: 3
+        nextSceneId: upstairs_feedAndLetGo

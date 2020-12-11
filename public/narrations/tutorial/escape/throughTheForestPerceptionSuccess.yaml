@@ -1,0 +1,3 @@
+actions:
+    When the shouts sounded close again, she got up (_+2 health_):
+        nextSceneId: escape_preCombat

@@ -2,5 +2,7 @@ actions:
     '"Yes, I did. And you''re going to love it"':
         nextSceneId: theOtherSide
         sideEffect:
-            addFlag: bothCompanionsAlive
+            addFlags:
+                - bothCompanionsAlive
+                - oneEyedManBoxLocation
             modifyHealth: +3

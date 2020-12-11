@@ -1,0 +1,7 @@
+actions:
+    The girl stood there as {{playerName}} went up:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlags:
+                - downstairsFromGroundFloor
+                - groundFloorCaught

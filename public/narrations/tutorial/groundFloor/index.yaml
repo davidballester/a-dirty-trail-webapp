@@ -1,0 +1,14 @@
+actions:
+    '"Hey, young lady"':
+        nextSceneId: groundFloor_Kolyn
+    She tried to sneak downstairs (_survival_):
+        check:
+            skill: survival
+            success:
+                nextSceneId: cellar
+            failure:
+                nextSceneId: groundFloor_caught
+    She went upstairs:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlag: downstairsFromGroundFloor

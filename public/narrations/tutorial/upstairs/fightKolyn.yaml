@@ -1,0 +1,8 @@
+actions:
+    She wrestled Kolyn (_survival_):
+        check:
+            skill: survival
+            success:
+                nextSceneId: upstairs_wrestleKolynSuccess
+            failure:
+                nextSceneId: upstairs_wrestleKolynFailure

@@ -1,0 +1,3 @@
+actions:
+    They got out of the woods and followed the road:
+        nextSceneId: escape_afterCombatEnding

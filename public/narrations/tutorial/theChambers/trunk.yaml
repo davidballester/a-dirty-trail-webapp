@@ -3,6 +3,9 @@ actions:
         nextSceneId: theChambers_trunkOpen
         sideEffect:
             addFlag: theChambersTrunk
+            loot:
+                trinkets:
+                    - name: Small key
     She inspected the dry grass:
         condition:
             hasNotFlag: theChambersDryGrass

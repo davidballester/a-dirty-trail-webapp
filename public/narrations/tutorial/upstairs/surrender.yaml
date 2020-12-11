@@ -1,0 +1,10 @@
+actions:
+    She complied:
+        nextSceneId: upstairs_knockedOut
+    She tried to fight (_survival_):
+        check:
+            skill: survival
+            success:
+                nextSceneId: upstairs_fight
+            failure:
+                nextSceneId: upstairs_knockedOut

@@ -1,0 +1,12 @@
+actions:
+    '"I''ll have the rest upstairs"':
+        nextSceneId: groundFloor_drinkUpstairs
+        sideEffect:
+            addFlag: covenantKolynNo
+    She took it all (_survival_):
+        check:
+            skill: survival
+            success:
+                nextSceneId: groundFloor_finishedDrinkSuccess
+            failure:
+                nextSceneId: groundFloor_finishedDrinkFailure

@@ -1,0 +1,15 @@
+actors:
+    The Campamocha:
+        health: 6-6
+        inventory:
+            weapons:
+                Pincers:
+                    type: fangs
+                    canBeLooted: false
+                    damage: 2-4
+                    skill: bite
+        skills:
+            bite: 0.8
+actions:
+    Having killed the Campamocha, she turned to the old woman:
+        nextSceneId: killTheCampamocha_afterCombat

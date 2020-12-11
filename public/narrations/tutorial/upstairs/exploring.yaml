@@ -1,0 +1,9 @@
+actions:
+    '"Are you guys going to eat us?"':
+        nextSceneId: upstairs_eatUs
+        sideEffect:
+            addFlag: covenantJohnNo
+    '"I just wanted to know what I''ve gotten myself into"':
+        nextSceneId: upstairs_whatImInto
+    '"I''ll go downstairs, if that''s fine"':
+        nextSceneId: upstairs_goDownstairs

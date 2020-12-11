@@ -1,0 +1,5 @@
+actions:
+    '"Not a chance in hell"':
+        nextSceneId: upstairs_rejectCovenant
+    '"If that is the only way..." she said, surrendering':
+        nextSceneId: upstairs_acceptCovenant

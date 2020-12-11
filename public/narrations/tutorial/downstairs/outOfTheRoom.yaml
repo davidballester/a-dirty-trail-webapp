@@ -1,5 +1,11 @@
 actions:
     She went upstairs:
         nextSceneId: theChambers_stairway
+        sideEffect:
+            removeFlag: downstairsFromGroundFloor
     She went downstairs:
+        condition:
+            hasNotFlag: groundFloor
         nextSceneId: groundFloor
+        sideEffect:
+            addFlag: groundFloor

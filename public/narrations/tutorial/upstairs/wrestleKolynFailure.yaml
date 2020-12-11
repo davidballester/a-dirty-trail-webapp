@@ -1,0 +1,5 @@
+actions:
+    '"Fine, let''s dance" (_-1 health, _combat_)':
+        nextSceneId: upstairs_combatKolyn
+        sideEffect:
+            modifyHealth: -1

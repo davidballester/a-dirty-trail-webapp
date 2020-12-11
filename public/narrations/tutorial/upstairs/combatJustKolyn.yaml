@@ -1,0 +1,14 @@
+actors:
+    Kolyn:
+        health: 2-2
+        inventory:
+            weapons:
+                Knife:
+                    type: knife
+                    damage: 1-1
+                    skill: stab
+        skills:
+            stab: 0.5
+actions:
+    She took a deep breath:
+        nextSceneId: upstairs_afterCombatKolyn

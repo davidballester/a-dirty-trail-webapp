@@ -1,0 +1,30 @@
+actions:
+    She unlocked the box:
+        condition:
+            hasTrinket: Small key
+        nextSceneId: cellar_oneEyedManBoxOpen
+        sideEffect:
+            loot:
+                weapons:
+                    Pirate gun:
+                        type: pirateGun
+                        ammunition: 1-1
+                        ammunitionType: Balls
+                        skill: aim
+                        damage: 3-4
+            addFlag: cellarBox
+    She went upstairs, avoiding the girl:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlag: downstairsFromGroundFloor
+    She looked around for something useful (_perception_):
+        condition:
+            hasNotFlag: cellarSearched
+        check:
+            skill: perception
+            success:
+                nextSceneId: cellar_perceptionSuccess
+            failure:
+                nextSceneId: cellar_perceptionFailure
+        sideEffect:
+            addFlag: cellarSearched

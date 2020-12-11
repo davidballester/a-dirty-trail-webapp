@@ -1,0 +1,7 @@
+actions:
+    '"I just wanted to talk"':
+        nextSceneId: groundFloor_talk
+        sideEffect:
+            addFlag: covenantKolynNo
+    '"I''m... thirsty?"':
+        nextSceneId: groundFloor_thirsty

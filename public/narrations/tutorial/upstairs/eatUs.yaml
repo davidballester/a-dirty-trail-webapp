@@ -1,0 +1,5 @@
+actions:
+    She reached for the stairs:
+        nextSceneId: upstairs_stairs
+    She took the revolver out and pointed at them:
+        nextSceneId: upstairs_gunpoint

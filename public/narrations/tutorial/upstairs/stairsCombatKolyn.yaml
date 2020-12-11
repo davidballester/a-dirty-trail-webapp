@@ -1,0 +1,40 @@
+actors:
+    Bearded guy:
+        health: 3-3
+        inventory:
+            weapons:
+                Shotgun:
+                    type: shotgun
+                    damage: 1-3
+                    ammunition: 2-2
+                    ammunitionType: Shells
+                    skill: aim
+            ammunitions:
+                Shells: 2
+        skills:
+            aim: 0.4
+    Skinny guy:
+        health: 1-1
+        inventory:
+            weapons:
+                Hatchet:
+                    type: axe
+                    damage: 1-2
+                    skill: stab
+        skills:
+            stab: 0.5
+    Tall guy:
+        health: 2-2
+        inventory:
+            weapons:
+                Derringer:
+                    skill: aim
+                    damage: 1-1
+                    type: derringer
+                    ammunitionType: Bullets
+                    ammunition: 1-1
+                ammunitions:
+                    Bullets: 3
+actions:
+    '"This better be the last of them"':
+        nextSceneId: upstairs_afterStairsCombat

@@ -5,9 +5,9 @@ actions:
             addFlag: covenantKolynNo
     'Please, we need help. Desperately':
         nextSceneId: theTower_KolynHelp
-    ? "{{playerName}} showed the girl the ribbon she found in the driver's pocket"
-    : condition:
-          hasTrinket: Ribbon
-      nextSceneId: theTower_KolynRibbon
-      sideEffect:
-          addFlag: covenantKolynNo
+    "She showed the girl the ribbon she had found in the driver's pocket":
+        condition:
+            hasTrinket: Ribbon
+        nextSceneId: theTower_KolynRibbon
+        sideEffect:
+            addFlag: covenantKolynNo

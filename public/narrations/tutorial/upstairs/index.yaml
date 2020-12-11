@@ -1,0 +1,11 @@
+actions:
+    '"I was looking for some blankets"':
+        nextSceneId: upstairs_blankets
+        sideEffect:
+            addFlag: covenantJohnNo
+    '"I was exploring a bit"':
+        nextSceneId: upstairs_exploring
+    She showed them the dead driver's grass ribbon:
+        condition:
+            hasTrinket: Ribbon
+        nextSceneId: upstairs_ribbon

@@ -1,0 +1,5 @@
+actions:
+    She shot him:
+        nextSceneId: upstairs_shootJohn
+    '"Let''s give you a fair fight" (_combat_)':
+        nextSceneId: upstairs_combat

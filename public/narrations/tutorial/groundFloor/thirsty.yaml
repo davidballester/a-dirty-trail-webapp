@@ -1,0 +1,7 @@
+actions:
+    She took a sip:
+        nextSceneId: groundFloor_sip
+    '"I''ll have this upstairs"':
+        nextSceneId: groundFloor_drinkUpstairs
+        sideEffect:
+            addFlag: covenantKolynNo

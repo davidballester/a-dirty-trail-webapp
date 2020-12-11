@@ -1,0 +1,31 @@
+actors:
+    Man:
+        health: 3-3
+        inventory:
+            weapons:
+                Gun:
+                    type: revolver
+                    ammunition: 5-6
+                    ammunitionType: Bullets
+                    damage: 1-2
+                    skill: aim
+                Fists:
+                    type: fangs
+                    damage: 1-1
+                    skill: stab
+        skills:
+            aim: 0.6
+            stab: 0.6
+    Kolyn:
+        health: 2-2
+        inventory:
+            weapons:
+                Knife:
+                    type: knife
+                    damage: 1-1
+                    skill: stab
+        skills:
+            stab: 0.5
+actions:
+    She took a deep breath:
+        nextSceneId: upstairs_afterCombatKolyn

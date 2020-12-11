@@ -1,0 +1,8 @@
+actions:
+    '"Oh, boy" (_+3 health)':
+        nextSceneId: killTheCampamocha
+        sideEffect:
+            modifyHealth: +3
+            loot:
+                ammunitions:
+                    Bullets: 10

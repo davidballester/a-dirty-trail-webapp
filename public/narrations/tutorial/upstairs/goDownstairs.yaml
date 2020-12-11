@@ -1,0 +1,5 @@
+actions:
+    '"Do you have something in mind?"':
+        nextSceneId: upstairs_somethingInMind
+    '"What about feeding us in the morning and letting us go?"':
+        nextSceneId: upstairs_feedAndLetGo

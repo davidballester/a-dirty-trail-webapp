@@ -1,0 +1,19 @@
+actions:
+    She went upstairs, avoiding the girl:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlag: downstairsFromGroundFloor
+    '"Now, where''s that box the one-eyed guy told me about?"':
+        condition:
+            hasFlag: oneEyedManBoxLocation
+            hasNotFlag: cellarBox
+        nextSceneId: cellar_oneEyedManBox
+    She looked around for something useful (_perception_):
+        check:
+            skill: perception
+            success:
+                nextSceneId: cellar_perceptionSuccess
+            failure:
+                nextSceneId: cellar_perceptionFailure
+        sideEffect:
+            addFlag: cellarSearched

@@ -1,0 +1,3 @@
+actions:
+    It was not a bear:
+        nextSceneId: escape_theThing

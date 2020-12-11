@@ -1,0 +1,7 @@
+actions:
+    '"I''m sorry," {{playerName}} said, and shot her companions':
+        condition:
+            hasFlag: bothCompanionsAlive
+        nextSceneId: escape_companionsSacrificed
+    "{{playerName}} wouldn't go gentle into the good night (_combat_)":
+        nextSceneId: escape_combat

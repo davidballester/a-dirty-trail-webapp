@@ -1,0 +1,3 @@
+actions:
+    She prepared for a fight (_combat_):
+        nextSceneId: upstairs_combatKolyn

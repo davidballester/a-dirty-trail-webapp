@@ -1,0 +1,7 @@
+actions:
+    She raised her hands:
+        nextSceneId: upstairs_surrenderKolyn
+    She drew her gun:
+        nextSceneId: upstairs_dead
+    She ran for the stairs:
+        nextSceneId: upstairs_dead

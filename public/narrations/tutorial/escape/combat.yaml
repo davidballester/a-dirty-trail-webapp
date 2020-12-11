@@ -1,0 +1,15 @@
+actors:
+    The thing:
+        health: 6-6
+        inventory:
+            weapons:
+                Pincers:
+                    type: fangs
+                    canBeLooted: false
+                    damage: 2-4
+                    skill: bite
+        skills:
+            bite: 0.8
+actions:
+    Then, she turned to face the hooded figures:
+        nextSceneId: escape_afterCombat

@@ -1,0 +1,5 @@
+actions:
+    She rushed downstairs:
+        nextSceneId: upstairs_preStairsCombatKolyn
+    She hid behind the old woman and waited:
+        nextSceneId: upstairs_behindOldWomanKolyn

@@ -1,0 +1,8 @@
+actions:
+    '"Wel..." (_perception_)':
+        check:
+            skill: perception
+            success:
+                nextSceneId: escape_throughTheForestPerceptionSuccess
+            failure:
+                nextSceneId: escape_throughTheForestPerceptionFailure

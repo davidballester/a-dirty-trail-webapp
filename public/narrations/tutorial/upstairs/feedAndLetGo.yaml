@@ -1,0 +1,20 @@
+actions:
+    She reached for the stairs:
+        condition:
+            hasNotFlag: covenantJohnNo
+        nextSceneId: upstairs_stairs
+    She took the revolver out and pointed at them:
+        condition:
+            hasNotFlag: covenantJohnNo
+        nextSceneId: upstairs_gunpoint
+    '"Aye," said Kolyn':
+        condition:
+            hasNotFlags:
+                - covenantJohnNo
+                - covenantKolynNo
+        nextSceneId: upstairs_kolynYes
+    '"Nay," said Kolyn':
+        condition:
+            hasFlag: covenantKolynNo
+            hasNotFlag: covenantJohnNo
+        nextSceneId: upstairs_kolynNo

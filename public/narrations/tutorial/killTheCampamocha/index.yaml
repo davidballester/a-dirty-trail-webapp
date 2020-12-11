@@ -1,0 +1,3 @@
+actions:
+    '{{playerName}} thought this might have been the wrong call (_combat_)':
+        nextSceneId: killTheCampamocha_combat

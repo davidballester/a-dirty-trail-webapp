@@ -1,0 +1,50 @@
+actions:
+    '"What is the Campamocha?"':
+        condition:
+            hasNotFlag: upstairsQuestioningWhatAreYouDoingOutHere
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_whatAreYouDoingOutHere
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningWhatAreYouDoingOutHere
+                - covenantQuestion
+    '"What if _I_ killed the Campamocha?"':
+        condition:
+            hasFlag: upstairsQuestioningWhatAreYouDoingOutHere
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_proposal
+        sideEffect:
+            addFlags:
+                - covenantQuestion
+    '"Who the hell are you?"':
+        condition:
+            hasNotFlag: upstairsQuestioningWhoAreYou
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_covenantWhoAreYou
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningWhoAreYou
+                - covenantQuestion
+    '"Were you waiting for us?"':
+        condition:
+            hasNotFlag: upstairsQuestioningWereYouWaitingForUs
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: upstairs_wereYouWaitingForUs
+        sideEffect:
+            addFlags:
+                - upstairsQuestioningWereYouWaitingForUs
+                - covenantQuestion
+    '"But enough with the questions," said the man':
+        condition:
+            flagIsGreaterThan:
+                name: covenantQuestion
+                value: 3
+        nextSceneId: upstairs_feedAndLetGo
