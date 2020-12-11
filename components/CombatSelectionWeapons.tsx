@@ -65,14 +65,25 @@ const WeaponButton = ({ weapon }: { weapon: Weapon }): ReactElement => {
             {weapon.getAmmunition() && (
                 <WeaponAmmunition ammunition={weapon.getAmmunition()} />
             )}
-            <p
+            <div
                 className={css`
                     margin: 0;
-                    padding: 0.5rem 0;
+                    padding-top: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 `}
             >
-                Hit chance: <strong>{hitChance}%</strong>
-            </p>
+                <img
+                    src="hitChance.svg"
+                    alt="Hit chance"
+                    className={css`
+                        height: 1.2rem;
+                        margin-right: 0.5rem;
+                    `}
+                />{' '}
+                <strong>{hitChance}%</strong>
+            </div>
         </CombatSelectionIconButton>
     );
 };
