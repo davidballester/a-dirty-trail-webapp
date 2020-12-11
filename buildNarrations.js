@@ -140,6 +140,9 @@ ${yamlContent}
 }
 
 function completeTitle(yamlContent, yamlPath) {
+    if (yamlContent.indexOf('title:') >= 0) {
+        return yamlContent;
+    }
     const folderName = path.basename(path.dirname(yamlPath));
     const title = capitalize(snakeCase(folderName).replace('_', ' '));
     return `title: ${title}
