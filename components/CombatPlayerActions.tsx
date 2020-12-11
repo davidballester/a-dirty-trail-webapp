@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 import { css } from 'emotion';
 import {
-    CombatActionSelectionProvider,
     useClearSelection,
     useIsSelectionComplete,
     useSelectedPlayerAction,
@@ -23,24 +22,22 @@ const CombatPlayerActions = (): ReactElement => {
     const isPlayerTurn = useIsPlayerTurn();
     return (
         <section>
-            <CombatActionSelectionProvider>
-                <ExecuteActionOnSelectionCompleted>
-                    <Transition
-                        items={isPlayerTurn || undefined}
-                        from={{ opacity: 0 }}
-                        enter={{ opacity: 1 }}
-                    >
-                        {(style) => (
-                            <animated.div style={style}>
-                                <CombatSelectionBreadcrumb />
-                                <SelectionItems />
-                                <CombatSelectionClear />
-                                <CombatSelectionExitCombat />
-                            </animated.div>
-                        )}
-                    </Transition>
-                </ExecuteActionOnSelectionCompleted>
-            </CombatActionSelectionProvider>
+            <ExecuteActionOnSelectionCompleted>
+                <Transition
+                    items={isPlayerTurn || undefined}
+                    from={{ opacity: 0 }}
+                    enter={{ opacity: 1 }}
+                >
+                    {(style) => (
+                        <animated.div style={style}>
+                            <CombatSelectionBreadcrumb />
+                            <SelectionItems />
+                            <CombatSelectionClear />
+                            <CombatSelectionExitCombat />
+                        </animated.div>
+                    )}
+                </Transition>
+            </ExecuteActionOnSelectionCompleted>
         </section>
     );
 };

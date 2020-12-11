@@ -13,6 +13,7 @@ import {
     useScene,
 } from '../contexts/combatSceneEngineContext';
 import PlayerDead from './PlayerDead';
+import { CombatActionSelectionProvider } from '../contexts/combatActionSelectionContext';
 
 const CombatView = (): ReactElement => {
     const scene = useScene();
@@ -25,21 +26,23 @@ const CombatView = (): ReactElement => {
         <CombatBoard>
             {player.isAlive() && (
                 <OponentsIconsProvider>
-                    <CombatPlayerArea />
-                    <div
-                        className={css`
-                            margin-top: 1.5rem;
-                            @media (min-width: 900px) {
-                                margin-top: 3rem;
-                            }
-                        `}
-                    >
-                        <CombatOponents />
-                    </div>
-                    <CombatLog />
-                    <div className="absolute-bottom-left">
-                        <CombatPlayerActions />
-                    </div>
+                    <CombatActionSelectionProvider>
+                        <CombatPlayerArea />
+                        <div
+                            className={css`
+                                margin-top: 1.5rem;
+                                @media (min-width: 900px) {
+                                    margin-top: 3rem;
+                                }
+                            `}
+                        >
+                            <CombatOponents />
+                        </div>
+                        <CombatLog />
+                        <div className="absolute-bottom-left">
+                            <CombatPlayerActions />
+                        </div>
+                    </CombatActionSelectionProvider>
                 </OponentsIconsProvider>
             )}
             {!player.isAlive() && <PlayerDead />}

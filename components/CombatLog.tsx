@@ -11,36 +11,42 @@ import LootAction from 'a-dirty-trail/build/actions/LootAction';
 import GameHealth from 'a-dirty-trail/build/core/Health';
 import Actor from 'a-dirty-trail/build/core/Actor';
 import Inventory from 'a-dirty-trail/build/core/Inventory';
+import useBreadcrumbText from '../hooks/useCombatBreadcrumbText';
+import { Transition, animated } from 'react-spring';
 
 const CombatLog = (): ReactElement => {
+    const breadcrumbText = useBreadcrumbText();
     const [action, outcome] = useLastActionAndOutcome();
-    if (!action) {
-        return null;
-    }
     return (
-        <section
-            className={css`
-                text-align: center;
-                position: relative;
-            `}
+        <Transition
+            items={action && !breadcrumbText ? action.getId() : undefined}
+            from={{ opacity: 0 }}
+            enter={{ opacity: 1 }}
+            leave={{ opacity: 0 }}
         >
-            <div
-                className={
-                    'absolute-top-left ' +
-                    css`
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 2rem;
+            {(style) => (
+                <animated.section
+                    style={style as any}
+                    className={css`
+                        text-align: center;
+                        position: relative;
                         will-change: opacity;
-                    `
-                }
-            >
-                <div>
-                    <ActionOutcome action={action} outcome={outcome} />
-                </div>
-            </div>
-        </section>
+                    `}
+                >
+                    <div
+                        className={css`
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        `}
+                    >
+                        <div>
+                            <ActionOutcome action={action} outcome={outcome} />
+                        </div>
+                    </div>
+                </animated.section>
+            )}
+        </Transition>
     );
 };
 
