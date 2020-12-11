@@ -9,11 +9,16 @@ import { OponentsIconsProvider } from '../contexts/oponentIconsContext';
 import {
     useExecuteNextOponentAction,
     useIsPlayerTurn,
+    useLastActionAndOutcome,
     usePlayer,
     useScene,
 } from '../contexts/combatSceneEngineContext';
 import PlayerDead from './PlayerDead';
 import { CombatActionSelectionProvider } from '../contexts/combatActionSelectionContext';
+import CombatSelectionBreadcrumb from './CombatSelectionBreadcrumbs';
+import useBreadcrumbText from '../hooks/useCombatBreadcrumbText';
+import { animated, Transition } from 'react-spring';
+import Action from 'a-dirty-trail/build/actions/Action';
 
 const CombatView = (): ReactElement => {
     const scene = useScene();
@@ -38,7 +43,7 @@ const CombatView = (): ReactElement => {
                         >
                             <CombatOponents />
                         </div>
-                        <CombatLog />
+                        <CombatText />
                         <div className="absolute-bottom-left">
                             <CombatPlayerActions />
                         </div>
@@ -119,3 +124,46 @@ const GradientBackground = (): ReactElement => (
         }
     />
 );
+
+const CombatText = (): ReactElement => {
+    const breadcrumbText = useBreadcrumbText();
+    const [action] = useLastActionAndOutcome();
+    return (
+        <div
+            className={css`
+                position: relative;
+                > * {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                }
+            `}
+        >
+            <Transition
+                items={[breadcrumbText || action]}
+                from={{ opacity: 0 }}
+                enter={{ opacity: 1 }}
+            >
+                {(style, item) => (
+                    <animated.section
+                        style={style as any}
+                        className={css`
+                            text-align: center;
+                            position: relative;
+                            will-change: opacity;
+                            > * {
+                            }
+                        `}
+                    >
+                        {item instanceof Action ? (
+                            <CombatLog />
+                        ) : (
+                            <CombatSelectionBreadcrumb />
+                        )}
+                    </animated.section>
+                )}
+            </Transition>
+        </div>
+    );
+};

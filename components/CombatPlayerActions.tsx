@@ -5,7 +5,6 @@ import {
     useIsSelectionComplete,
     useSelectedPlayerAction,
 } from '../contexts/combatActionSelectionContext';
-import CombatSelectionBreadcrumb from './CombatSelectionBreadcrumbs';
 import CombatSelectionActionType from './CombatSelectionActionType';
 import CombatSelectionOponents from './CombatSelectionOponents';
 import CombatSelectionDeadOponents from './CombatSelectionDeadOponents';
@@ -30,7 +29,6 @@ const CombatPlayerActions = (): ReactElement => {
                 >
                     {(style) => (
                         <animated.div style={style}>
-                            <CombatSelectionBreadcrumb />
                             <SelectionItems />
                             <CombatSelectionClear />
                             <CombatSelectionExitCombat />
