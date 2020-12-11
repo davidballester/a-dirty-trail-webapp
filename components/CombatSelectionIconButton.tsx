@@ -8,12 +8,14 @@ const CombatSelectionIconButton = ({
     name,
     onClick,
     children,
+    caption = true,
 }: {
     iconSrc?: string;
     icon?: ReactElement;
     name: string;
     onClick: () => void;
     children?: ReactElement | ReactElement[];
+    caption?: boolean;
 }): ReactElement => (
     <Button
         variant="outline-dark"
@@ -47,7 +49,9 @@ const CombatSelectionIconButton = ({
             {iconSrc ? <img src={iconSrc} alt={name} /> : null}
             {icon ? icon : null}
             {children}
-            <figcaption className="text-capitalize">{name}</figcaption>
+            {caption ? (
+                <figcaption className="text-capitalize">{name}</figcaption>
+            ) : null}
         </figure>
     </Button>
 );

@@ -37,6 +37,7 @@ const OponentButton = ({
             icon={<OponentIcon oponent={oponent} />}
             name={oponent.getName()}
             onClick={() => selectOponent(oponent)}
+            caption={false}
         />
     );
 };
