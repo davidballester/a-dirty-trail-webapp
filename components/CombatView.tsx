@@ -44,7 +44,11 @@ const CombatView = (): ReactElement => {
                             <CombatOponents />
                         </div>
                         <CombatText />
-                        <div className="absolute-bottom-left">
+                        <div
+                            className={css`
+                                margin-top: 2rem;
+                            `}
+                        >
                             <CombatPlayerActions />
                         </div>
                     </CombatActionSelectionProvider>
@@ -79,20 +83,17 @@ const CombatBoard = ({
         className={css`
             position: relative;
             width: 100vw;
-            height: 100vh;
+            height: 100%;
+            min-height: 100vh;
             background-color: var(--light);
         `}
     >
         <GradientBackground />
         <div
-            className={
-                'absolute-top-left ' +
-                css`
-                    height: 100%;
-                    z-index: 10;
-                    padding: 1rem;
-                `
-            }
+            className={css`
+                z-index: 10;
+                padding: 1rem;
+            `}
         >
             <div
                 className={css`
@@ -100,7 +101,12 @@ const CombatBoard = ({
                     max-width: 600px;
                     height: 100%;
                     margin: auto;
-                    padding: 0 2rem;
+                    @media (min-width: 900px) {
+                        padding: 0 2rem;
+                    }
+                    @media (max-width: 900px) {
+                        padding: 0 1rem;
+                    }
                 `}
             >
                 {children}
