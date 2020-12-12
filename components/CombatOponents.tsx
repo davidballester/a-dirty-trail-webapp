@@ -67,6 +67,7 @@ const NoOponents = (): ReactElement => (
                     alt="No oponents left"
                     className={css`
                         max-width: 10rem;
+                        margin-bottom: 2rem;
                     `}
                 />
             </animated.div>

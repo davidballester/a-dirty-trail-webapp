@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect } from 'react';
 import { css } from 'emotion';
 import {
+    useActionType,
     useClearSelection,
     useIsSelectionComplete,
     useSelectedPlayerAction,
@@ -19,6 +20,7 @@ import {
 
 const CombatPlayerActions = (): ReactElement => {
     const isPlayerTurn = useIsPlayerTurn();
+    const actionType = useActionType();
     return (
         <section>
             <ExecuteActionOnSelectionCompleted>
@@ -31,7 +33,7 @@ const CombatPlayerActions = (): ReactElement => {
                         <animated.div style={style}>
                             <SelectionItems />
                             <CombatSelectionClear />
-                            <CombatSelectionExitCombat />
+                            {actionType ? null : <CombatSelectionExitCombat />}
                         </animated.div>
                     )}
                 </Transition>

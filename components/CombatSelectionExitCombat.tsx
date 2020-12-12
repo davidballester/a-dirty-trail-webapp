@@ -1,20 +1,25 @@
 import React, { ReactElement } from 'react';
-import CombatSelectionCategoryTransition from './CombatSelectionCategory';
 import { Button } from 'react-bootstrap';
 import { usePlayerActions } from '../contexts/combatSceneEngineContext';
 import AdvanceAction from 'a-dirty-trail/build/actions/AdvanceAction';
 import { useExecutePlayerAction } from '../contexts/narrativeSceneEngineContext';
+import { animated, Transition } from 'react-spring';
 
 const CombatSelectionExitCombat = (): ReactElement => {
     const playerActions = usePlayerActions();
     const advanceActions = playerActions.getAdvanceActions();
     return (
-        <CombatSelectionCategoryTransition
-            visible={advanceActions.length > 0}
+        <Transition
             items={advanceActions}
+            from={{ opacity: 0 }}
+            enter={{ opacity: 1 }}
         >
-            {(advanceAction) => <ExitButton action={advanceAction} />}
-        </CombatSelectionCategoryTransition>
+            {(style, advanceAction) => (
+                <animated.div style={style}>
+                    <ExitButton action={advanceAction} />
+                </animated.div>
+            )}
+        </Transition>
     );
 };
 
