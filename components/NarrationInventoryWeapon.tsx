@@ -32,6 +32,7 @@ const NarrationInventoryWeapon = ({
                     display: flex;
                     align-items: center;
                     justify-content: left;
+                    position: relative;
                 `}
             >
                 <NarrationInventoryItemIcon
@@ -117,6 +118,10 @@ const WeaponActions = ({
             className={css`
                 border: 1px solid var(--dark);
                 border-radius: 0.25rem;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
             `}
         >
             {reloadAction && (

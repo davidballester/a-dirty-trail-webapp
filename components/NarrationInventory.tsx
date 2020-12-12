@@ -42,8 +42,8 @@ const ListOfItems = (): ReactElement => {
                 `
             }
         >
-            <Weapons weapons={inventory.getWeapons()} />
             <Ammunitions ammunitions={inventory.getAmmunitionsByType()} />
+            <Weapons weapons={inventory.getWeapons()} />
             <Trinkets trinkets={inventory.getTrinkets()} />
         </ul>
     );
@@ -64,16 +64,19 @@ const Ammunitions = ({
 }: {
     ammunitions: AmmunitionByType;
 }): ReactElement => (
-    <>
+    <li
+        className={css`
+            display: flex;
+        `}
+    >
         {Object.keys(ammunitions).map((ammunitionType) => (
-            <li key={ammunitionType}>
-                <Ammunition
-                    type={ammunitionType}
-                    quantity={ammunitions[ammunitionType]}
-                />
-            </li>
+            <Ammunition
+                key={ammunitionType}
+                type={ammunitionType}
+                quantity={ammunitions[ammunitionType]}
+            />
         ))}
-    </>
+    </li>
 );
 
 const Trinkets = ({ trinkets }: { trinkets: GameTrinket[] }): ReactElement => (
