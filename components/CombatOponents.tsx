@@ -119,9 +119,11 @@ const OponentCard = ({
             className={css`
                 width: 4rem;
                 min-width: 4rem;
+                min-height: 4rem;
                 @media (min-width: 900px) {
                     width: 5rem;
                     min-width: 5rem;
+                    min-height: 5rem;
                 }
             `}
         />
