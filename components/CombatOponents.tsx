@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { css } from 'emotion';
 import Health from './Health';
 import { animated, Spring } from 'react-spring';
@@ -12,8 +12,18 @@ import Action from 'a-dirty-trail/build/actions/Action';
 import AttackAction from 'a-dirty-trail/build/actions/AttackAction';
 import ReloadAction from 'a-dirty-trail/build/actions/ReloadAction';
 import OponentIcon from './OponentIcon';
+import { Carousel } from 'react-bootstrap';
 
 const Oponents = (): ReactElement => {
+    const firstCarouselPageRef = useRef<HTMLDivElement>();
+    const [carouselPageHeight, setCarouselPageHeight] = useState<number>(
+        undefined
+    );
+    useEffect(() => {
+        if (firstCarouselPageRef.current && !carouselPageHeight) {
+            setCarouselPageHeight(firstCarouselPageRef.current.clientHeight);
+        }
+    }, [firstCarouselPageRef.current, carouselPageHeight]);
     const scene = useScene();
     if (!scene) {
         return null;
@@ -22,28 +32,93 @@ const Oponents = (): ReactElement => {
     if (!oponents.length) {
         return <NoOponents />;
     }
+    const carouselPages = useCarouselPages();
     return (
-        <section>
-            <ul
-                className={
-                    'list-unstyled ' +
-                    css`
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        > li {
-                            margin-right: 1rem;
-                        }
-                    `
+        <Carousel
+            interval={null}
+            className={css`
+                .carousel-indicators {
+                    bottom: -2rem;
+                    li {
+                        background-color: var(--dark);
+                    }
                 }
-            >
-                {oponents.map((oponent) => (
-                    <li key={oponent.getId()}>
-                        <Oponent oponent={oponent} />
-                    </li>
-                ))}
-            </ul>
-        </section>
+                .carousel-control-next,
+                .carousel-control-prev {
+                    color: var(--dark);
+                    font-size: 3rem;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                }
+                .carousel-control-prev {
+                    left: -1.5rem;
+                    justify-content: flex-start;
+                }
+
+                .carousel-control-next-icon {
+                    background-image: none;
+                    &:before {
+                        content: '>';
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                }
+
+                .carousel-control-next {
+                    right: -1.5rem;
+                    justify-content: flex-end;
+                }
+
+                .carousel-control-prev-icon {
+                    background-image: none;
+                    &:before {
+                        content: '<';
+                        display: flex;
+                        justify-content: flex-start;
+                    }
+                }
+            `}
+        >
+            {carouselPages.map((carouselPage, index) => (
+                <Carousel.Item
+                    key={carouselPage.id}
+                    ref={index === 0 ? firstCarouselPageRef : undefined}
+                    className={
+                        carouselPageHeight
+                            ? css`
+                                  min-height: ${carouselPageHeight}px;
+                              `
+                            : undefined
+                    }
+                >
+                    <ul
+                        className={
+                            'list-unstyled ' +
+                            css`
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 1rem 2rem;
+                                > li {
+                                    margin-right: 1rem;
+
+                                    &:last-child {
+                                        margin-right: 0;
+                                    }
+                                }
+                            `
+                        }
+                    >
+                        {carouselPage.oponents.map((oponent) => (
+                            <li key={oponent.getId()}>
+                                <Oponent oponent={oponent} />
+                            </li>
+                        ))}
+                    </ul>
+                </Carousel.Item>
+            ))}
+        </Carousel>
     );
 };
 
@@ -74,6 +149,39 @@ const NoOponents = (): ReactElement => (
         )}
     </Spring>
 );
+
+const useCarouselPages = (): CarouselPage[] => {
+    const scene = useScene();
+    const oponents = scene.getAliveActors();
+    const oponentsPerPage = useOponentsPerPage();
+    let pagesCount = Math.floor(oponents.length / oponentsPerPage);
+    if (oponents.length % oponentsPerPage > 0) {
+        pagesCount++;
+    }
+    return new Array(pagesCount).fill(null).map((_, index) => {
+        const oponentsInPage = oponents.slice(
+            index * oponentsPerPage,
+            (index + 1) * oponentsPerPage
+        );
+        return {
+            id: oponentsInPage.map((oponent) => oponent.getId()).join(','),
+            oponents: oponentsInPage,
+        };
+    });
+};
+
+const useOponentsPerPage = (): number => {
+    if (document.body.clientWidth > 600) {
+        return 3;
+    } else {
+        return 2;
+    }
+};
+
+interface CarouselPage {
+    id: string;
+    oponents: NonPlayableActor[];
+}
 
 const Oponent = ({ oponent }: { oponent: NonPlayableActor }): ReactElement => {
     const isNextOponent = useIsNextOponent(oponent);
