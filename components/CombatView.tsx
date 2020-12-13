@@ -46,7 +46,7 @@ const CombatView = (): ReactElement => {
                         <CombatText />
                         <div
                             className={css`
-                                margin-top: 2rem;
+                                margin-top: 1rem;
                             `}
                         >
                             <CombatPlayerActions />

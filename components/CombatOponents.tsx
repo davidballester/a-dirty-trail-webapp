@@ -16,6 +16,7 @@ import { Carousel } from 'react-bootstrap';
 
 const Oponents = (): ReactElement => {
     const firstCarouselPageRef = useRef<HTMLDivElement>();
+    const carouselPages = useCarouselPages();
     const [carouselPageHeight, setCarouselPageHeight] = useState<number>(
         undefined
     );
@@ -24,6 +25,7 @@ const Oponents = (): ReactElement => {
             setCarouselPageHeight(firstCarouselPageRef.current.clientHeight);
         }
     }, [firstCarouselPageRef.current, carouselPageHeight]);
+    const [carouselPage, onCarouselPageChange] = useCarouselPage();
     const scene = useScene();
     if (!scene) {
         return null;
@@ -32,11 +34,13 @@ const Oponents = (): ReactElement => {
     if (!oponents.length) {
         return <NoOponents />;
     }
-    const carouselPages = useCarouselPages();
     return (
         <Carousel
             interval={null}
+            activeIndex={carouselPage}
+            onSelect={onCarouselPageChange}
             className={css`
+                margin-bottom: 1rem;
                 .carousel-indicators {
                     bottom: -2rem;
                     li {
@@ -99,14 +103,8 @@ const Oponents = (): ReactElement => {
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                padding: 1rem 2rem;
-                                > li {
-                                    margin-right: 1rem;
-
-                                    &:last-child {
-                                        margin-right: 0;
-                                    }
-                                }
+                                margin-bottom: 0;
+                                padding: 0.25rem;
                             `
                         }
                     >
@@ -182,6 +180,30 @@ interface CarouselPage {
     id: string;
     oponents: NonPlayableActor[];
 }
+
+const useCarouselPage = (): [number, (newPage: number) => void] => {
+    const [currentPage, setCurrentPage] = useState(0);
+    const nextOponentPage = useNextOponentPage();
+    useEffect(() => {
+        setCurrentPage(nextOponentPage);
+    }, [nextOponentPage]);
+    return [currentPage, setCurrentPage];
+};
+
+const useNextOponentPage = (): number => {
+    const carouselPages = useCarouselPages();
+    const combatSceneEngine = useCombatSceneEngine();
+    const actorCurrentTurn = combatSceneEngine.getActorCurrentTurn();
+    const actorNextTurn = combatSceneEngine.getActorNextTurn();
+    const nextOponent =
+        actorCurrentTurn instanceof NonPlayableActor
+            ? actorCurrentTurn
+            : actorNextTurn;
+    const nextOponentPage = carouselPages.findIndex((carouselPage) =>
+        carouselPage.oponents.some((oponent) => oponent.equals(nextOponent))
+    );
+    return nextOponentPage;
+};
 
 const Oponent = ({ oponent }: { oponent: NonPlayableActor }): ReactElement => {
     const isNextOponent = useIsNextOponent(oponent);
