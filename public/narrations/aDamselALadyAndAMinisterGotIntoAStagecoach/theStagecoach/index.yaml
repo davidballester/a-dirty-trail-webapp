@@ -1,0 +1,10 @@
+title: The stagecoach
+actions:
+    '"Please, minister, don''t be rude"':
+        sideEffect:
+            addFlag: ladyFriend
+        nextSceneId: theStagecoach_ladyFriend
+    '"I thought she was visiting her grandchildren!"':
+        sideEffect:
+            addFlag: ministerFriend
+        nextSceneId: theStagecoach_ministerFriend

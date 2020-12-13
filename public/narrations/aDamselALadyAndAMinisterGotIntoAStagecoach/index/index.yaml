@@ -1,4 +1,4 @@
-title: The stagecoach
+title: Before we begin
 player:
     name: The damsel
     health: 8-8
@@ -9,16 +9,56 @@ player:
                 damage: 1-1
                 skill: stab
     skills:
-        aim: 0.6
-        stab: 0.75
-        perception: 0.5
-        survival: 0.4
+        aim: 0
+        stab: 0
+        perception: 0
+        survival: 0
 actions:
-    '"Please, minister, don''t be rude"':
+    Combat skills, perception, survival:
         sideEffect:
-            addFlag: ladyFriend
-        nextSceneId: theStagecoach_ladyFriend
-    '"I thought she was visiting her grandchildren!"':
+            modifySkills:
+                - name: aim
+                  value: 0.6
+                - name: stab
+                  value: 0.75
+                - name: perception
+                  value: 0.5
+                - name: survival
+                  value: 0.3
+        nextSceneId: beforeWeBegin
+    Combat skills, survival, perception:
         sideEffect:
-            addFlag: ministerFriend
-        nextSceneId: theStagecoach_ministerFriend
+            modifySkills:
+                - name: aim
+                  value: 0.6
+                - name: stab
+                  value: 0.75
+                - name: perception
+                  value: 0.3
+                - name: survival
+                  value: 0.5
+        nextSceneId: beforeWeBegin
+    Perception, combat skills, survival:
+        sideEffect:
+            modifySkills:
+                - name: aim
+                  value: 0.5
+                - name: stab
+                  value: 0.5
+                - name: perception
+                  value: 0.75
+                - name: survival
+                  value: 0.3
+        nextSceneId: beforeWeBegin
+    Survival, combat skills, perception:
+        sideEffect:
+            modifySkills:
+                - name: aim
+                  value: 0.5
+                - name: stab
+                  value: 0.5
+                - name: perception
+                  value: 0.3
+                - name: survival
+                  value: 0.75
+        nextSceneId: beforeWeBegin
