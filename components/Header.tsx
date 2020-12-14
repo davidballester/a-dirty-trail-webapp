@@ -5,7 +5,9 @@ import MainTitle from './MainTitle';
 const Header = (): ReactElement => (
     <header
         className={css`
-            position: sticky;
+            @media (max-width: 900px) {
+                display: none;
+            }
         `}
     >
         <MainTitle />
