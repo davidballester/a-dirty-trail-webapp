@@ -16,6 +16,14 @@ enum Tab {
     inventory = 2,
     settings = 3,
 }
+
+const centered = css`
+    position: relative;
+    margin: auto;
+    max-width: 600px;
+    padding: 0 2rem;
+`;
+
 const NarrationView = (): ReactElement => {
     const scene = useScene();
     const player = usePlayer();
@@ -26,25 +34,34 @@ const NarrationView = (): ReactElement => {
     }
     return (
         <section>
-            <CenteredContainer>
+            <div className={centered}>
                 <Header />
-                {player.isAlive() && (
-                    <>
-                        <TabsButtons
-                            currentTab={currentTab}
-                            onClick={(newTab) => {
-                                setPrevTab(currentTab);
-                                setCurrentTab(newTab);
-                            }}
-                        />
+            </div>
+            {player.isAlive() && (
+                <>
+                    <TabsButtons
+                        currentTab={currentTab}
+                        onClick={(newTab) => {
+                            setPrevTab(currentTab);
+                            setCurrentTab(newTab);
+                        }}
+                    />
+                    <div
+                        className={css`
+                            ${centered}
+                            @media (max-width: 900px) {
+                                padding-top: 4rem;
+                            }
+                        `}
+                    >
                         <TabContentsWithTransition
                             prevTab={prevTab}
                             currentTab={currentTab}
                         />
-                    </>
-                )}
-                {!player.isAlive() && <PlayerDead />}
-            </CenteredContainer>
+                    </div>
+                </>
+            )}
+            {!player.isAlive() && <PlayerDead />}
         </section>
     );
 };
@@ -91,23 +108,6 @@ const TabContentsWithTransition = ({
     );
 };
 
-const CenteredContainer = ({
-    children,
-}: {
-    children: React.ReactElement | React.ReactElement[];
-}): ReactElement => (
-    <main
-        className={css`
-            position: relative;
-            margin: auto;
-            max-width: 600px;
-            padding: 0 2rem;
-        `}
-    >
-        {children}
-    </main>
-);
-
 const TabsButtons = ({
     onClick,
     currentTab,
@@ -115,23 +115,37 @@ const TabsButtons = ({
     onClick: (newTab: Tab) => void;
     currentTab: Tab;
 }): ReactElement => (
-    <nav>
-        <NarrationButton
-            onClick={() => onClick(Tab.narration)}
-            selected={currentTab === Tab.narration}
-        />
-        <PlayerButton
-            onClick={() => onClick(Tab.player)}
-            selected={currentTab === Tab.player}
-        />
-        <InventoryButton
-            onClick={() => onClick(Tab.inventory)}
-            selected={currentTab === Tab.inventory}
-        />
-        <SettingsButton
-            onClick={() => onClick(Tab.settings)}
-            selected={currentTab === Tab.settings}
-        />
+    <nav
+        className={css`
+            @media (max-width: 900px) {
+                position: fixed;
+                width: 100%;
+                top: 0;
+                background: var(--white);
+                z-index: 2;
+                box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+                    0px 4px 5px 0px rgba(0, 0, 0, 0.14);
+            }
+        `}
+    >
+        <div className={centered}>
+            <NarrationButton
+                onClick={() => onClick(Tab.narration)}
+                selected={currentTab === Tab.narration}
+            />
+            <PlayerButton
+                onClick={() => onClick(Tab.player)}
+                selected={currentTab === Tab.player}
+            />
+            <InventoryButton
+                onClick={() => onClick(Tab.inventory)}
+                selected={currentTab === Tab.inventory}
+            />
+            <SettingsButton
+                onClick={() => onClick(Tab.settings)}
+                selected={currentTab === Tab.settings}
+            />
+        </div>
     </nav>
 );
 
