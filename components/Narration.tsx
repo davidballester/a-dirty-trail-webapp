@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { css } from 'emotion';
 import { animated, Transition } from 'react-spring';
 import NarrationPlayerActions from './NarrationPlayerActions';
@@ -21,6 +21,13 @@ const SceneTitle = ({ title }: { title: string }): ReactElement => (
 );
 
 const SceneSetup = ({ sceneSetup }: { sceneSetup: string }): ReactElement => {
+    const scene = useScene();
+    useEffect(() => {
+        window.scrollTo({
+            behavior: 'smooth',
+            top: 0,
+        });
+    }, [scene]);
     return (
         <section
             className={css`
