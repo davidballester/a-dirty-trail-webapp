@@ -8,11 +8,13 @@ import NarrationPlayer from './NarrationPlayer';
 import Header from './Header';
 import { usePlayer, useScene } from '../contexts/narrativeSceneEngineContext';
 import PlayerDead from './PlayerDead';
+import Settings from './Settings';
 
 enum Tab {
     narration = 0,
     player = 1,
     inventory = 2,
+    settings = 3,
 }
 const NarrationView = (): ReactElement => {
     const scene = useScene();
@@ -81,6 +83,7 @@ const TabContentsWithTransition = ({
                         {item === Tab.narration && <Narration />}
                         {item === Tab.inventory && <NarrationInventory />}
                         {item === Tab.player && <NarrationPlayer />}
+                        {item === Tab.settings && <Settings />}
                     </animated.div>
                 )}
             </Transition>
@@ -125,6 +128,10 @@ const TabsButtons = ({
             onClick={() => onClick(Tab.inventory)}
             selected={currentTab === Tab.inventory}
         />
+        <SettingsButton
+            onClick={() => onClick(Tab.settings)}
+            selected={currentTab === Tab.settings}
+        />
     </nav>
 );
 
@@ -153,6 +160,14 @@ const InventoryButton = ({ onClick, selected }: ButtonProps): ReactElement => (
         onClick={onClick}
         iconAlt="inventory"
         iconSrc={selected ? 'inventory-selected.svg' : 'inventory.svg'}
+    />
+);
+
+const SettingsButton = ({ onClick, selected }: ButtonProps): ReactElement => (
+    <TabButton
+        onClick={onClick}
+        iconAlt="settings"
+        iconSrc={selected ? 'settings-selected.svg' : 'settings.svg'}
     />
 );
 
