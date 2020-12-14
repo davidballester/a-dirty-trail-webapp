@@ -34,6 +34,9 @@ const Oponents = (): ReactElement => {
     if (!oponents.length) {
         return <NoOponents />;
     }
+    if (carouselPages.length === 1) {
+        return <OponentsList oponents={carouselPages[0].oponents} />;
+    }
     return (
         <Carousel
             interval={null}
@@ -96,24 +99,7 @@ const Oponents = (): ReactElement => {
                             : undefined
                     }
                 >
-                    <ul
-                        className={
-                            'list-unstyled ' +
-                            css`
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                margin-bottom: 0;
-                                padding: 0.25rem;
-                            `
-                        }
-                    >
-                        {carouselPage.oponents.map((oponent) => (
-                            <li key={oponent.getId()}>
-                                <Oponent oponent={oponent} />
-                            </li>
-                        ))}
-                    </ul>
+                    <OponentsList oponents={carouselPage.oponents} />
                 </Carousel.Item>
             ))}
         </Carousel>
@@ -204,6 +190,31 @@ const useNextOponentPage = (): number => {
     );
     return nextOponentPage;
 };
+
+const OponentsList = ({
+    oponents,
+}: {
+    oponents: NonPlayableActor[];
+}): ReactElement => (
+    <ul
+        className={
+            'list-unstyled ' +
+            css`
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0;
+                padding: 0.25rem;
+            `
+        }
+    >
+        {oponents.map((oponent) => (
+            <li key={oponent.getId()}>
+                <Oponent oponent={oponent} />
+            </li>
+        ))}
+    </ul>
+);
 
 const Oponent = ({ oponent }: { oponent: NonPlayableActor }): ReactElement => {
     const isNextOponent = useIsNextOponent(oponent);
