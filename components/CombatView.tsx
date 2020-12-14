@@ -32,24 +32,36 @@ const CombatView = (): ReactElement => {
             {player.isAlive() && (
                 <OponentsIconsProvider>
                     <CombatActionSelectionProvider>
-                        <CombatPlayerArea />
                         <div
                             className={css`
-                                margin-top: 1.5rem;
-                                @media (min-width: 900px) {
-                                    margin-top: 3rem;
-                                }
+                                display: flex;
+                                flex-direction: column;
+                                min-height: calc(100vh - 2rem);
                             `}
                         >
-                            <CombatOponents />
-                        </div>
-                        <CombatText />
-                        <div
-                            className={css`
-                                margin-top: 1rem;
-                            `}
-                        >
-                            <CombatPlayerActions />
+                            <CombatPlayerArea />
+                            <div
+                                className={css`
+                                    margin-top: 1.5rem;
+                                    @media (min-width: 900px) {
+                                        margin-top: 3rem;
+                                    }
+                                `}
+                            >
+                                <CombatOponents />
+                            </div>
+                            <CombatText />
+                            <div
+                                className={css`
+                                    margin-top: 1rem;
+                                    flex-grow: 1;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: flex-end;
+                                `}
+                            >
+                                <CombatPlayerActions />
+                            </div>
                         </div>
                     </CombatActionSelectionProvider>
                 </OponentsIconsProvider>
