@@ -1,7 +1,8 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import cookie from 'cookie';
 import { SAVED_GAME_COOKIE } from '../helpers/constants';
+import { animated, Transition } from 'react-spring';
 
 const Settings = (): ReactElement => (
     <article>
@@ -14,14 +15,43 @@ const Settings = (): ReactElement => (
 
 export default Settings;
 
+const initialText = {
+    color: 'secondary',
+    text: 'Watch out! You current progress will be lost.',
+};
 const ClearSavedGames = (): ReactElement => {
+    const [enabled, setEnabled] = useState(true);
+    const [text, setText] = useState(initialText);
     const clearSavedGames = useClearSavedGames();
     return (
         <p>
-            <Button variant="outline-dark" onClick={clearSavedGames} block>
+            <Button
+                variant="outline-dark"
+                onClick={() => {
+                    clearSavedGames();
+                    setText({ color: 'danger', text: 'Saved game deleted!' });
+                    setEnabled(false);
+                    setTimeout(() => {
+                        setText(initialText);
+                        setEnabled(true);
+                    }, 3000);
+                }}
+                block
+                disabled={!enabled}
+            >
                 Remove saved games
             </Button>
-            <small>Watch out! You current progress will be lost.</small>
+            <Transition
+                items={[text]}
+                from={{ opacity: 0 }}
+                enter={{ opacity: 1 }}
+            >
+                {(style, { color, text }) => (
+                    <animated.span style={style} className={`text-${color}`}>
+                        {text}
+                    </animated.span>
+                )}
+            </Transition>
         </p>
     );
 };
