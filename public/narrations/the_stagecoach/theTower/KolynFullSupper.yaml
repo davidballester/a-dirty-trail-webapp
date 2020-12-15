@@ -1,6 +1,6 @@
+sideEffect:
+    modifyHealth: 3
+    addFlag: theTowerHadSupper
 actions:
-    Soon, they had all had their fill (_+3 health_):
+    Soon, they had all had their fill:
         nextSceneId: theTower_KolynChambers
-        sideEffect:
-            modifyHealth: 3
-            addFlag: theTowerHadSupper

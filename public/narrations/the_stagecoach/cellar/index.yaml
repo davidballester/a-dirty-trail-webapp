@@ -8,7 +8,7 @@ actions:
             hasFlag: oneEyedManBoxLocation
             hasNotFlag: cellarBox
         nextSceneId: cellar_oneEyedManBox
-    She looked around for something useful (_perception_):
+    She looked around (_perception_):
         check:
             skill: perception
             success:

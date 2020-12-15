@@ -3,19 +3,20 @@ actors:
         health: 3-3
         inventory:
             weapons:
-                Gun:
+                Revolver:
                     type: revolver
                     ammunition: 5-6
                     ammunitionType: Bullets
                     damage: 1-2
                     skill: aim
                 Fists:
-                    type: fangs
+                    type: fist
                     damage: 1-1
-                    skill: stab
+                    skill: punch
+                    canBeLooted: false
         skills:
             aim: 0.6
-            stab: 0.6
+            punch: 0.6
 actions:
     She took a deep breath:
         nextSceneId: upstairs_afterCombat

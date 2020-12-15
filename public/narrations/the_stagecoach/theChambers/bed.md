@@ -11,5 +11,5 @@ If she ever had a sixth sense, it had failed her this time.
 
 But she lied there, looking at the wooden ceiling, feeling the cold air squeezing through the walls and the window. Even the candle projected weird looking shadows everywhere.
 
-"This is dreadful," said she, and got up. "I can't fall asleep here." She would have loved to mean that she had to figure out what was going on, but she really meant she needed something to eat.
+"This is dreadful," said she, and got up. "I can't fall asleep here."
 {{/if-has-flag}}

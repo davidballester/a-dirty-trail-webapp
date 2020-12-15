@@ -12,5 +12,5 @@ One of the vicious creatures had reached the minister, who had fallen to the mud
 
 "Do something!" cried Lady Willsbourgh, as she ran for her life.
 {{else}}
-The dogs were upon them.
+The dogs were now upon them.
 {{/if-has-flag}}

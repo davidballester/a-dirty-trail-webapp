@@ -9,7 +9,7 @@ actions:
     She lowered herself to the crevice (_survival - **dangerous**_):
         check:
             skill: survival
-            modifier: 0.3
+            modifier: -0.3
             success:
                 nextSceneId: theForest_crevice
             failure:

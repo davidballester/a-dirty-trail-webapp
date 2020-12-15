@@ -1,4 +1,4 @@
-The horses stopped suddenly and something fell from the driver's seat. Maybe a sack of potatoes, {{playerName}} thought.
+The horses stopped suddenly and something fell from the driver's seat, groaning. Maybe a sack of potatoes, {{playerName}} thought.
 
 "Who's shouting?" Lady Willsbourgh asked frantically.
 
@@ -8,11 +8,11 @@ The horses stopped suddenly and something fell from the driver's seat. Maybe a s
 
 "I thought it matched your eyes! What do you imagine?"
 
-"Oh, no. You take it," {{playerName}} said.
+"Oh, no. You take it," said {{playerName}}.
 
-"{{playerName}} is right, you know?" Lady Willsbourgh said. {{#if-has-flag ladyCartwright}}"It's not a lady's duty to handle these kind of things."{{else}}"It's a man's job!"{{/if-has-flag}}
+"{{playerName}} is right, you know?" Lady Willsbourgh said. {{#if-has-flag ladyCartwright}}"It's not a lady's duty to handle this kind of thing."{{else}}"It's a man's job!"{{/if-has-flag}}
 
-"That's not what I meant," said {{playerName}}.
+"That's not what I meant," said {{playerName}}, raising an eyebrow.
 
 "Anyway, I'm no good with this," protested the minister. "It was but ten minutes ago that I realized there were two of you in the stagecoach with me. I could not hit a barn right now."
 

@@ -1,5 +1,5 @@
 actions:
-    'She climbed the dirt walls powered by rage (_survival (hard)_)':
+    'She climbed the dirt walls powered by rage (_survival **dangerous**_)':
         check:
             skill: survival
             modifier: -0.1

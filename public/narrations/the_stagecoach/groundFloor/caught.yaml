@@ -1,3 +1,5 @@
+sideEffect:
+    addFlag: groundFloorCaught
 actions:
     '"I just wanted to talk"':
         nextSceneId: groundFloor_talk

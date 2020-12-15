@@ -6,7 +6,7 @@ There was some light to the east, but the forest was still shrouded in darkness.
 
 "Thanks for that," said {{playerName}}, and they all remained silent.
 
-They got a clearing, and there, the members of the covenant sang. The scene sent chills through {{playerName}}'s spine.
+They got to a clearing, and there the members of the covenant sang. The scene sent chills through {{playerName}}'s spine.
 
 Then, it appeared. And it was massive.
 
@@ -16,4 +16,4 @@ The thing looked as if it was made of giant leaves. Its head was triangular, and
 
 Two pincers on its face moved, and it made a clicking sound.
 
-"That is your fate now," said the old woman to {{playerName}}. "Face it. For you and for us."
+"That is your fate now," said the old woman to {{playerName}}. "Face it. For you. And for us."

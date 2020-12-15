@@ -5,10 +5,10 @@ actions:
         check:
             skill: perception
             success:
-                nextSceneId: theForest_creviceAndBlockade
+                nextSceneId: theForest_creviceAndBlockadePerceptionCheck
             failure:
                 nextSceneId: theForest_lostInTheForest
-    This time, she followed the crevice:
+    This time, she followed the blockade:
         condition:
             hasFlag: theForestSecondAttempt
         nextSceneId: theForest_creviceAndBlockade

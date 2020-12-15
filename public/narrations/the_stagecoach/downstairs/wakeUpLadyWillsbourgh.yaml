@@ -7,13 +7,5 @@ actions:
         condition:
             hasNotFlag: downstairsLootLadyWillsbourgh
         nextSceneId: downstairs_lootLadyWillsbourgh
-        sideEffect:
-            addFlag: downstairsLootLadyWillsbourgh
-            loot:
-                trinkets:
-                    - name: Spectacles
-                      description: Lady Willsbourgh's. Great for finding hidden stuff (_perception +10%).
-                      skillsModifiers:
-                          perception: 0.1
     She left the room:
         nextSceneId: downstairs_outOfTheRoom

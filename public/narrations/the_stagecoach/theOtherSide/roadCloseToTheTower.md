@@ -19,7 +19,7 @@ The tower loomed among the trees, with dots of light all over it, like giant fir
 
 More dogs barked now, approaching.
 
-"Yeah, probably not."
+"Yeah, probably not," said the minister.
 {{/if-has-flag}}
 
 "Come on, we have to get there," {{playerName}} said, as she ventured into the thicket, trying to keep the blobs of light in sight among the darkness.

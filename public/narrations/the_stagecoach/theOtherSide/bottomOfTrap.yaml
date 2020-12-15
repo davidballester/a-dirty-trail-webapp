@@ -1,3 +1,5 @@
+sideEffect:
+    modifyHealth: -2
 actions:
     '{{playerName}} looked around, trying to think of a way out (_perception_)':
         check:
@@ -6,7 +8,7 @@ actions:
                 nextSceneId: theOtherSide_bottomOfTrapPerceptionSucess
             failure:
                 nextSceneId: theOtherSide_bottomOfTrapPerceptionFailure
-    'She lunched herself up the dirt walls to climp up (_survival (hard)_)':
+    'She tried to climb up the dirt walls (_survival **dangerous**_)':
         check:
             skill: survival
             modifier: -0.2

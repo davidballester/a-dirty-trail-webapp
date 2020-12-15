@@ -1,5 +1,5 @@
 actions:
     '"Why not?"':
-        nextSceneId: upstairs_proposalAccepted
+        nextSceneId: covenant_proposalAccepted
     '"I''d rather kill y''all," she said, drawing her revolver':
         nextSceneId: upstairs_gunpoint

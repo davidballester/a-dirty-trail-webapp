@@ -1,3 +1,3 @@
 actions:
-    She took aim:
+    She took aim (_combat_):
         nextSceneId: theForest_boarCombat

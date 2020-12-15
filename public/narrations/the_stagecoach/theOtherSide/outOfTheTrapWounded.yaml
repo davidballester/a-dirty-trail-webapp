@@ -1,5 +1,5 @@
+sideEffect:
+    modifyHealth: -1
 actions:
-    The walked through the woods (_-1 health_):
+    The walked through the woods:
         nextSceneId: theTower
-        sideEffect:
-            modifyHealth: -1

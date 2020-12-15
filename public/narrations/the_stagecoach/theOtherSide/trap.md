@@ -1,3 +1,5 @@
+_Perception check **failed**_
+
 Things were not easy in the forest. There was not a path to be found, and the darkness was soon complete. And the coldness. {{playerName}} could not remember such cold.
 
 The tower was nowhere to be seen.
@@ -13,9 +15,9 @@ The tower was nowhere to be seen.
 
 "Oh, that's marvelous," Lady Willsbourgh said with a smile.
 
-"Now, if you'd ask me if we would be alive when the night was over, now that is a different matter."
+"Now, if you ask me if we would be alive when the night is over, now that is a different matter."
 
 Lady Willsbourgh's smile died right away.
 {{/if-has-not-flag}}
 
-Not five minutes have passed that they saw lights ahead. They came from the tower, but they didn't get a chance to say anything about them, because the ground split open below their feet and they fell
+Not five minutes have passed and they saw lights ahead. They came from the tower, but they didn't get a chance to say anything about them, because the ground split open below their feet and they fell.

@@ -1,4 +1,8 @@
-Watching {{playerName}} climb out of the whole would have been a feast for the eyes. Such grace, such swiftness. She got out and with the same boldness and sportsmanship, got to the ground and help {{#if-has-flag "bothCompanionsAlive"}}the others{{else}}her companion{{/if-has-flag}} out.
+_Survival check succeeded_
+
+Watching {{playerName}} climb out of the hole would have been a feast for the eyes. Such grace, such swiftness.
+
+She got out and with the same boldness and sportsmanship, got to the ground and help {{#if-has-flag "bothCompanionsAlive"}}the others{{else}}her companion{{/if-has-flag}} out.
 
 "And now, to the tower," {{playerName}} said.
 
@@ -9,5 +13,5 @@ Watching {{playerName}} climb out of the whole would have been a feast for the e
 "And a pair of eyes," added the minister.
 {{/if-has-not-flag}}
 {{else}}
-"Let's see if we make it in one piece," the minister said."
+"Let's see if we make it in one piece," said the minister.
 {{/if-has-not-flag}}

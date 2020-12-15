@@ -4,7 +4,7 @@ The girl laughed.
 
 "Well, I've never seen one, so how could I know?"
 
-"It's deer," the girl said, pointing at the meat. {{playerName}} raised an eyebrow.
+"It's deer," the girl said
 
 "Dear to you, you mean? Is it the meat of someone you knew?"
 

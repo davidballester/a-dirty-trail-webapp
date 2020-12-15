@@ -1,8 +1,9 @@
+sideEffect:
+    loot:
+        ammunitions:
+            Bullets: 2
 actions:
     She went upstairs, avoiding the girl:
         nextSceneId: downstairs
         sideEffect:
             addFlag: downstairsFromGroundFloor
-            loot:
-                ammunitions:
-                    Bullets: 2

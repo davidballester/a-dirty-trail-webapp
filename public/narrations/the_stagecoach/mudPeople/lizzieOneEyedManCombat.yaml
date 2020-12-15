@@ -2,7 +2,7 @@ actors:
     One-eyed man:
         health: 2-2
         skills:
-            stab: 0.3
+            stab: 0.5
         inventory:
             weapons:
                 Hatchet:
@@ -12,7 +12,7 @@ actors:
     Big Lizzie:
         health: 4-4
         skills:
-            hand-to-hand: 0.3
+            hand-to-hand: 0.5
         inventory:
             weapons:
                 Bare hands:

@@ -1,3 +1,11 @@
+sideEffect:
+    addFlag: downstairsLootLadyWillsbourgh
+    loot:
+        trinkets:
+            - name: Spectacles
+              description: Lady Willsbourgh's. Great for finding hidden stuff (_perception +10%).
+              skillsModifiers:
+                  perception: 0.1
 actions:
     She tried to wake up the minister:
         condition:

@@ -1,7 +1,7 @@
 actions:
-    '"And I can take you there. I think" (_survival (hard)_)':
+    '"And I can take you there. I think" (_perception **dangerous**_)':
         check:
-            skill: survival
+            skill: perception
             modifier: -0.2
             success:
                 nextSceneId: theOtherSide_pathToTheTower

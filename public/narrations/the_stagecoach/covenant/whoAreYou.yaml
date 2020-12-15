@@ -1,36 +1,36 @@
 actions:
-    '"Who the hell are you?"':
+    '"And what''s your cause?"':
         condition:
-            hasNotFlag: upstairsQuestioningWhoAreYou
+            hasNotFlag: covenantQuestioningWhatAreYouDoingOutHere
             flagIsLowerThan:
                 name: covenantQuestion
                 value: 4
-        nextSceneId: upstairs_covenantWhoAreYou
+        nextSceneId: covenant_whatAreYouDoingOutHere
         sideEffect:
             addFlags:
-                - upstairsQuestioningWhoAreYou
+                - covenantQuestioningWhatAreYouDoingOutHere
                 - covenantQuestion
-    '"What are you doing out here?"':
+    '"Were you waiting for us?"':
         condition:
-            hasNotFlag: upstairsQuestioningWhatAreYouDoingOutHere
+            hasNotFlag: covenantQuestioningWereYouWaitingForUs
             flagIsLowerThan:
                 name: covenantQuestion
                 value: 4
-        nextSceneId: upstairs_whatAreYouDoingOutHere
+        nextSceneId: covenant_wereYouWaitingForUs
         sideEffect:
             addFlags:
-                - upstairsQuestioningWhatAreYouDoingOutHere
+                - covenantQuestioningWereYouWaitingForUs
                 - covenantQuestion
     '"Why did you exile the mud people?"':
         condition:
-            hasNotFlag: upstairsQuestioningMudPeople
+            hasNotFlag: covenantQuestioningMudPeople
             flagIsLowerThan:
                 name: covenantQuestion
                 value: 4
-        nextSceneId: upstairs_whyExileMudPeople
+        nextSceneId: covenant_whyExileMudPeople
         sideEffect:
             addFlags:
-                - upstairsQuestioningMudPeople
+                - covenantQuestioningMudPeople
                 - covenantQuestion
     '"But enough with the questions," said the man':
         condition:

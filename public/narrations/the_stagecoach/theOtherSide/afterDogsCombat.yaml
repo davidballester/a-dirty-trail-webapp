@@ -2,4 +2,4 @@ actions:
     She followed the road back to where they first saw the tower:
         nextSceneId: theOtherSide_chasedByDogsOnTheRoad
     She ventured into the woods to lose the dogs:
-        nextSceneId: theOtherSide_dogsInTheWoods
+        nextSceneId: theOtherSide_losingTheDogsInTheWoods

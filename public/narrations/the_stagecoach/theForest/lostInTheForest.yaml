@@ -1,18 +1,18 @@
 actions:
-    '"I might as well just start walking" (_survival_)':
+    '"I might as well just start walking" (_perception_)':
         condition:
             hasNotFlag: theRoadBoar
         check:
-            skill: survival
+            skill: perception
             success:
                 nextSceneId: theForest_backToTheRoad
             failure:
                 nextSceneId: theForest_theBoar
-    'She kept walking':
+    'She kept walking (_perception_)':
         condition:
             hasFlag: theRoadBoar
         check:
-            skill: survival
+            skill: perception
             success:
                 nextSceneId: theForest_backToTheRoad
             failure:

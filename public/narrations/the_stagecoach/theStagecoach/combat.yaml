@@ -2,7 +2,7 @@ actions:
     '"Well, that was something"':
         nextSceneId: theStagecoach_afterCombat
 actors:
-    'The ugly one':
+    The ugly one:
         health: 2-2
         skills:
             aim: 0.3
@@ -16,7 +16,7 @@ actors:
                     type: rifle
             ammunitions:
                 Big bullets: 2
-    'Good-mannered one':
+    Good-mannered one:
         health: 2-2
         skills:
             aim: 0.4

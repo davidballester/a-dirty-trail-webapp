@@ -36,7 +36,7 @@ Then she heard it. It came from outside, carried by the wind.
 
 "Oh, dear," said Lady Willbourgh. "I had a terrible nightmare. It was my wedding day, and my hairdresser could not amend my hair. You know, because of the bullet."
 
-"If that was the only thing now, Lady Willsbourgh," {{playerName}} said.
+"If that was the only thing now, Lady Willsbourgh," said {{playerName}}.
 
 {{#if-has-trinket "Spectacles"}}
 "Are those my spectacles?" asked Lady Willsbourgh.

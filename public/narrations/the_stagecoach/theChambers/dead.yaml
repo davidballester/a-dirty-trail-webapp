@@ -1,5 +1,0 @@
-actions:
-    Are you serious?:
-        nextSceneId: theChambers_deadDead
-        sideEffect:
-            modifyHealth: -50

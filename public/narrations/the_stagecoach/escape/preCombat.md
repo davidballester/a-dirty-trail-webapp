@@ -14,6 +14,6 @@ But then a shadow moved between the trees.
 {{else}}
 "Is that a bear?" asked Lady Willsbourgh.
 
-"There are not any bears that massive," said {{playerName}}.
+"There are no bears that massive," said {{playerName}}.
 {{/if-has-not-flag}}
 {{/if-has-flag}}

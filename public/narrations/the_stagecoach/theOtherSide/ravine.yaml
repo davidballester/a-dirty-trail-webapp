@@ -1,5 +1,3 @@
 actions:
-    They fell into it (_-2 health_):
+    They fell into it:
         nextSceneId: theOtherSide_ravineFall
-        sideEffect:
-            modifyHealth: -2

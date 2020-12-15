@@ -37,7 +37,7 @@ The people on the street stopped in their tracks to look at them.
 {{#if-has-flag "bothCompanionsAlive"}}
 "Oh, do I have something on my face?" asked Lady Willsbourgh, turning to {{playerName}} and the minister.
 
-"Mud," said the minister. "And blood."
+"Mud," said the minister.
 
 "Lack of insight," added {{playerName}}.
 

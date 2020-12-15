@@ -11,8 +11,6 @@ They got to the upper floor and the girl pointed at a crude door.
 {{/if-has-not-flag}}
 {{/if-has-flag}}
 
-{{playerName}} stood there while the girl opened the door and lead them inside. She looked up the stairs, wondering how farther they went on.
+{{playerName}} stood there while the girl opened the door and led them inside.
 
-"Three more floors, at least," she said to herself. Then the girl got out of the room and closed behind her.
-
-"Now, come with me, please."
+"Now, come with me, please," the girl said when she had got out and closed behind her.

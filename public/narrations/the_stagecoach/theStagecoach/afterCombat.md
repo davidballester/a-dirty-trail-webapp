@@ -1,12 +1,10 @@
-{{#if-has-flag "alys"}}"Well done, my dear,"{{else}}"Well done, mylady,"{{/if-has-flag}} the minister said, hoping out of the stagecoach and almost losing his balance.
+{{#if-has-flag "alys"}}"Well done, my dear,"{{else}}"Well done, milady,"{{/if-has-flag}} said the minister, hoping out of the stagecoach.
 
-"You gave those thugs a lesson they won't easily forget," Lady Willsbourgh said, getting out of the stagecoach too, and {{playerName}} worried about what kind of memories could dead bodies hold, but shook it off.
+"You gave those thugs a lesson they won't easily forget," said Lady Willsbourgh, getting out of the stagecoach too, and {{playerName}} worried about what kind of memories could dead bodies hold.
 
-"Give me that," she said as she took the flask from the minister's trembling hand and emptied it.
+"What happened to the poor driver?" Lady Willsbourgh asked, looking at him, fallen on the dirt of the road not two steps from her.
 
-"What happend to the poor driver?" Lady Willsbourgh asked, looking at him, fallen on the dirt of the road not two steps from her.
-
-"He's embarked for the longest journey, I'm afraid," the minister said, taking the flask {{playerName}} now gave back and looking at how sadly empty it was.
+"He's embarked for the longest journey, I'm afraid," the minister said.
 
 "What do you mean, minister?" Lady Willsbourgh asked.
 

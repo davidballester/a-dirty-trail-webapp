@@ -1,6 +1,6 @@
+sideEffect:
+    modifyHealth: -1
+    addFlag: theForestCreviceWounded
 actions:
     She pushed forward:
         nextSceneId: theForest_throughTheCrevice
-        sideEffect:
-            modifyHealth: -1
-            addFlag: theForestCreviceWounded

@@ -1,40 +1,21 @@
+sideEffect:
+    loot:
+        inventory:
+            ammunitions:
+                Bullets: 3
+                Big bullets: 2
 actions:
     She unlocked the box:
         condition:
             hasTrinket: Small key
         nextSceneId: cellar_boxOpen
-        sideEffect:
-            loot:
-                inventory:
-                    ammunitions:
-                        Bullets: 3
-                        Big bullets: 2
-                weapons:
-                    Pirate gun:
-                        type: pirateGun
-                        ammunition: 1-1
-                        ammunitionType: Balls
-                        skill: aim
-                        damage: 3-4
-    She went upstairs, avoiding the girl:
-        condition:
-            hasTrinket: Small key
-        nextSceneId: downstairs
-        sideEffect:
-            addFlag: downstairsFromGroundFloor
-            loot:
-                inventory:
-                    ammunitions:
-                        Bullets: 3
-                        Big bullets: 2
     Without the key for the box, she decided to go back upstairs:
         condition:
             doesNotHaveTrinket: Small key
         nextSceneId: downstairs
         sideEffect:
             addFlag: downstairsFromGroundFloor
-            loot:
-                inventory:
-                    ammunitions:
-                        Bullets: 3
-                        Big bullets: 2
+    She went upstairs, avoiding the girl:
+        nextSceneId: downstairs
+        sideEffect:
+            addFlag: downstairsFromGroundFloor

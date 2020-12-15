@@ -1,8 +1,8 @@
-"Where are your horses?" asked one of the figures, who to {{playerName}}'s keen eye, started to look as an old woman.
+"Where are your horses?" asked one of the figures, who to {{playerName}}'s keen eye, started to look like an old woman.
 
 "I told you before," said Lady Willsbourgh. "Our horses have escaped."
 
-"Give us your stuff, then," said a one-eyed man. Or maybe it was that the mud covered his eye. Nope, it was missing, {{playerName}} was now sure of it. "Food and whiskey."
+"Give us your stuff, then," said a one-eyed man. "Food and whiskey."
 
 "That was rather specific," {{playerName}} said. "Who the hell are you, though?"
 

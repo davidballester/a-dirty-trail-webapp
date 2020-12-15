@@ -16,7 +16,7 @@ actors:
     Muddy Philip:
         health: 2-2
         skills:
-            stab: 0.2
+            stab: 0.4
         inventory:
             weapons:
                 Rusty knife:

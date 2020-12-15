@@ -1,4 +1,6 @@
-The road was not the way they were going, but they didn't know that. And the woods were foreign to them, but not to their pursuers.
+_Perception check **failed**_
+
+They were not going toward the road, but they didn't know that. And the woods were foreign to them, but not to their pursuers.
 
 {{#if-has-flag "bothCompanionsAlive"}}
 "They're getting close!" shouted the minister.

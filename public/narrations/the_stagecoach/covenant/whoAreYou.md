@@ -1,4 +1,4 @@
-"My name is John," said the man, and there came an awkward silence between them.
+"My name is John," said the man, and then remained silent. For quite a while.
 
 "I meant like, in a broader sense," said {{playerName}}.
 

@@ -2,9 +2,9 @@
 
 "Excuse me, but what are you doing?" asked Lady Willsbourgh.
 
-"She's desecrating the poor fellow, that's what she's doing," the minister answered.
+"She's desecrating the poor fellow, that's what she's doing," said the minister.
 
-"Well, someone has to if we want to know how to get out of here," {{playerName}} complained.
+"Well, someone has to if we want to know how to get out of here," said {{playerName}}.
 
 She expected to find a map of sorts, but all she found was a weird looking ribbon made of grass in his breast pocket.
 
@@ -12,9 +12,7 @@ She expected to find a map of sorts, but all she found was a weird looking ribbo
 
 "Sin like this rarely pays off," said Lady Willsbourgh. "Don't you agree, minister?"
 
-"Oh, but it does. You see, as long as you don't get caught, all sin pays off."
-
-Lady Willsbourgh blushed and fanned herself even more vigorously.
+"Oh, but it does, you see. As long as you don't get caught, all sin pays off."
 
 "What will we do now?" asked {{playerName}}
 

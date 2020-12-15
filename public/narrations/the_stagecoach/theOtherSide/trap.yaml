@@ -1,5 +1,3 @@
 actions:
-    At least, the pit had no spears at the bottom (_-2 health_):
+    At least, the pit had no spears at the bottom:
         nextSceneId: theOtherSide_bottomOfTrap
-        sideEffect:
-            modifyHealth: -2

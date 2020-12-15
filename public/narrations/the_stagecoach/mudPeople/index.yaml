@@ -1,5 +1,5 @@
 actions:
     '"What is going on here?"':
         nextSceneId: mudPeople_mudPeople
-    '"Oh boy, here I go again," she said, **taking aim**':
+    '"Oh boy, here I go again," she said, taking aim (_combat_)':
         nextSceneId: mudPeople_combat

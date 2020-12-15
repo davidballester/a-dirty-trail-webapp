@@ -1,5 +1,3 @@
 actions:
     Is that it?:
-        nextSceneId: upstairs_deadDead
-        sideEffect:
-            modifyHealth: -50
+        nextSceneId: dead

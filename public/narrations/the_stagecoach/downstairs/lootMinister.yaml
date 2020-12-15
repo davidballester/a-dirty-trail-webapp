@@ -1,11 +1,10 @@
+sideEffect:
+    addFlag: downstairsLootMinister
+    modifyHealth: 2
 actions:
-    She tried to wake up Lady Willsbourgh (_+2 health_):
+    She tried to wake up Lady Willsbourgh:
         condition:
             hasFlag: bothCompanionsAlive
         nextSceneId: downstairs_wakeUpLadyWillsbourgh
-        sideEffect:
-            modifyHealth: 2
-    She left the room (_+2 health_):
+    She left the room:
         nextSceneId: downstairs_outOfTheRoom
-        sideEffect:
-            modifyHealth: 2

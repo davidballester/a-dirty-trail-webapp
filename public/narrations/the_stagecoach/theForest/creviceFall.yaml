@@ -1,5 +1,5 @@
+sideEffect:
+    modifyHealth: -3
 actions:
-    Was she alive? (-3 health):
+    She got up:
         nextSceneId: theForest_creviceFallAdvance
-        sideEffect:
-            modifyHealth: -3

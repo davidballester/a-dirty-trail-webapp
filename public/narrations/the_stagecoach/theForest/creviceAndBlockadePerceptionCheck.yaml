@@ -1,0 +1,5 @@
+actions:
+    And so she did:
+        nextSceneId: theForest_crevice
+        sideEffect:
+            addFlag: theForestSafeCreviceDescending

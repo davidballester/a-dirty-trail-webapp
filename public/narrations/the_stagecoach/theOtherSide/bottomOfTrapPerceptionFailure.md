@@ -1,6 +1,8 @@
-{{playerName}} looked all around, but it was getting dark, and in the bottom of a hole, there's not much to find.
+_Perception check **failed**_
 
-"Whoever dug this must have got out somehow," {{playerName}} said, all detectively.
+{{playerName}} looked around, but it was too dark.
+
+"Whoever dug this must have got out somehow," she said.
 
 {{#if-has-not-flag "ministerIsDead"}}
 "A ladder, genius," the minister said. He had sat down and was looking at the sky, not desperate, just waiting.
@@ -14,4 +16,4 @@
 "Moles, maybe." {{playerName}} could not help but laugh. "I'm not a forest person, you see," Lady Willsbourgh said, quite offended.
 {{/if-has-not-flag}}
 
-"Only sheer will power will get me out of here, then," {{playerName}} sait to herself.
+"Only sheer will power will get me out of here, then," {{playerName}} said to herself.

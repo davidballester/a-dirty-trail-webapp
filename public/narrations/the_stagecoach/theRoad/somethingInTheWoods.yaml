@@ -1,5 +1,5 @@
+sideEffect:
+    addFlag: demonsInTheWoods
 actions:
     They kept going:
         nextSceneId: theRoad_aBlockade
-        sideEffect:
-            addFlag: demonsInTheWoods

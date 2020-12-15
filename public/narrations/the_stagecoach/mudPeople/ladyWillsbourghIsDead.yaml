@@ -2,5 +2,4 @@ actions:
     And off they went:
         nextSceneId: theOtherSide
         sideEffect:
-            addFlag: ladyWillsbourghIsDead
             modifyHealth: +2

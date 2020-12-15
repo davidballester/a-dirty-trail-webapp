@@ -16,7 +16,7 @@
 "Oh, dear," Lady Willsbourgh said. "Not more of those things."
 {{/if-has-not-flag}}
 
-"Run!" {{playerName}} shouted, and so she did.
+"Run!" {{playerName}} shouted.
 
 {{#if-has-not-flag "ladyWillsbourghIsDead"}}
 "But, where?" cried Lady Willsbourgh.
@@ -27,5 +27,5 @@
 "To the tower," {{playerName}} replied.
 {{/if-has-not-flag}}
 {{else}}
-"To that tower thing," the minister said, trying to keep up with them.
+"To that tower thing," the minister said, trying to keep up with her.
 {{/if-has-not-flag}}

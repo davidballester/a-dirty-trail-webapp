@@ -2,6 +2,8 @@ actions:
     She complied:
         nextSceneId: upstairs_knockedOut
     She tried to fight (_survival_):
+        sideEffect:
+            addFlag: upstairsSurrenderFight
         check:
             skill: survival
             success:

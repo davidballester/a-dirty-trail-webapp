@@ -1,27 +1,21 @@
+sideEffect:
+    addFlag: theChambersBed
 actions:
     And that was the last time she slept:
         condition:
             hasFlag: theTowerHadSupper
-        nextSceneId: theChambers_dead
+        nextSceneId: sacrificed
     She inspected the dry grass:
         condition:
             hasNotFlags:
                 - theTowerHadSupper
                 - theChambersDryGrass
         nextSceneId: theChambers_dryGrass
-        sideEffect:
-            addFlags:
-                - theChambersDryGrass
-                - theChambersBed
     She inspected the trunk:
         condition:
             hasNotFlags:
                 - theTowerHadSupper
                 - theChambersTrunk
-        sideEffect:
-            addFlags:
-                - theChambersTrunk
-                - theChambersBed
         nextSceneId: theChambers_trunk
     She looked at the stairway:
         condition:

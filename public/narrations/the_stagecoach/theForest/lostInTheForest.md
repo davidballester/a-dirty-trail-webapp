@@ -1,9 +1,9 @@
 {{#if-has-not-flag "theRoadBoar"}}
-"Is it me, or is it getting darker?" she said, and her own voice frightened her in the whispering silence of the woods.
+"Is it me, or is it getting darker?" she said.
 
 It _was_ getting darker. And colder. And {{playerName}} was lost as shit.
 
-"Come on, calm now. Remember what you've read about forests and getting lost." She took a deep breath and look around her, trying to find any landmark that could helper her, but the forest looked the same in all directions, like an Ikea of trees.
+"Come on, calm now. Remember what you've read about forests and getting lost." She took a deep breath and look around, trying to find any landmark that could help her, but the forest looked the same in all directions, like an Ikea of trees.
 
 "Something about moss growing on the north side, isn't it?" But the trunks of the trees had either no moss or were covered in it, and the rocks were no good either.
 {{else}}

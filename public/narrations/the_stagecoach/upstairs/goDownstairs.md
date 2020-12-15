@@ -10,6 +10,4 @@
 
 "Oh."
 
-There was a dumb silence, that the man broke at some point.
-
-"We have to decide what to do with you," said he.
+"We have to decide what to do with you," said the man.

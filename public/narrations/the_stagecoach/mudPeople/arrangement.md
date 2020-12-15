@@ -19,7 +19,7 @@
 {{#if-has-not-flag "mudPeople_lizzieOneEyedManLeft"}}
 "If you're lucky, they might bury your remains," said the one-eyed man. "How's that for lodging?" And he laughed, but so did the minister, which ruined it for him.
 
-"Tell her," the woman said to the one-eyed man.
+"Tell them," the woman said to the one-eyed man.
 
 "Why?" he responded.
 
@@ -33,7 +33,7 @@
 
 "A treasure hunt!" said {{playerName}}. "I love it already! Despite the creepiness, that is."
 {{else}}
-"Cross at your own risk, but think that the ones you encountered down the road were the lucky ones," said the woman.
+"Cross at your own risk, but think that the ones you encountered down the road were the lucky ones," said the old woman.
 {{/if-has-not-flag}}
 
 And with this, they departed.

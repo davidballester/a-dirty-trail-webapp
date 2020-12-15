@@ -1,4 +1,4 @@
-"She's a wretched creature," said Kolyn with a hatred in her face that {{playerName}} thought was only possible on aunt Mary's when talking about her neighbors and their three untamed dogs.
+"She's a wretched creature," said Kolyn with a hatred in her face that {{playerName}} thought was only possible on aunt Holly's when talking about her neighbors and their three untamed children.
 
 "Lies live in her heart," said Kolyn. "She's inconsiderate and ungrateful. I say nay."
 

@@ -5,15 +5,11 @@ actions:
         nextSceneId: downstairs_roomBothCompanions
     She opened the door to Lady Willsbourgh's room:
         condition:
-            hasNotFlags:
-                - ladyWillsbourghIsDead
-                - bothCompanionsAlive
+            hasFlag: ministerIsDead
         nextSceneId: downstairs_roomLadyWillsbourgh
     She opened the door to the minister's room:
         condition:
-            hasNotFlags:
-                - ministerIsDead
-                - bothCompanionsAlive
+            hasFlag: ladyWillsbourghIsDead
         nextSceneId: downstairs_roomMinister
     She went downstairs:
         condition:

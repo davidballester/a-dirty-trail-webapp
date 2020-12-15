@@ -1,3 +1,5 @@
+sideEffect:
+    addFlag: theRoadBoar
 actors:
     Boar:
         health: 4-4
@@ -10,7 +12,7 @@ actors:
                     type: fangs
             trinkets:
                 - name: Tusk
-                  description: Useful for showing off
+                  description: Useful for showing off.
         skills:
             charge: 0.5
 actions:

@@ -1,4 +1,4 @@
-Revolver on the old woman's temple, she waited. From the stairs there came three hooded figures.
+Revolver on the old woman's back, she waited. From the stairs there came three hooded figures.
 
 "Mama!" shouted the skinniest of them all.
 
@@ -10,7 +10,7 @@ Revolver on the old woman's temple, she waited. From the stairs there came three
 
 "No."
 
-"Glad we clarified that. Now drop your weapons and make way or she dies."
+"Glad we clarified that. Now drop your weapons and make way."
 
 The silence at the top of the tower was denser than at a Thanksgiving dinner after uncle Matt cracks a racist joke.
 
@@ -20,7 +20,7 @@ The silence at the top of the tower was denser than at a Thanksgiving dinner aft
 
 "Sure about what?" asked {{playerName}}. "What is going on?"
 
-The old woman nodded, and then the bearded guy shot her right in the chest.
+The old woman nodded, and then a bearded guy shot her right in the chest.
 
 "There goes my advantage," said {{playerName}}, getting up.
 

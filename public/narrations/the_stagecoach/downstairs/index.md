@@ -1,9 +1,9 @@
 {{#if-has-not-flag "downstairsFromGroundFloor"}}
-{{playerName}} descended the stairs, trying not to make them complain under her feet, and failing at that.
+{{playerName}} descended the stairs, trying not to make them complain under her feet.
 {{/if-has-not-flag}}
 
 {{#if-has-flag "bothCompanionsAlive"}}
-She got to the floor below. The room that lead to Lady Willsbourgh and the minister's room was closed.
+She got to the floor below. The room that led to Lady Willsbourgh and the minister's room was closed.
 {{else}}
 {{#if-has-not-flag "ministerIsDead"}}
 She got to the floor below. The room that lead to the minister's room was closed.

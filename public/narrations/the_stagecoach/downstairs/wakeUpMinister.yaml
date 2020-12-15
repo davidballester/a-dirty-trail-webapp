@@ -7,7 +7,5 @@ actions:
         condition:
             hasNotFlag: downstairsLootMinister
         nextSceneId: downstairs_lootMinister
-        sideEffect:
-            addFlag: downstairsLootMinister
     She left the room:
         nextSceneId: downstairs_outOfTheRoom

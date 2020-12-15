@@ -35,7 +35,7 @@ From downstairs there came a ruckus of voices and steps.
 
 From downstairs there came a ruckus of voices and steps.
 
-"As part of the covenant," said the man. "But we all cast a vote, and we have all to agree on it. Mama and mine's say yes, but we have to ask Kolyn."
+"As part of the covenant," said the man. "But we all cast a vote, and we all have to agree on it. Mama and mine's say yes, but we have to ask Kolyn."
 
 The girl that had welcomed {{playerName}} when they had reached the tower entered the room.
 

@@ -1,14 +1,10 @@
 actions:
     '"Hello? Lady Willsbourgh! Minister?"':
         nextSceneId: theForest_backToTheRoad
-        sideEffect:
-            addFlag: theRoadBoar
-    '"Come on, you can do this. Just find the damn blockade" (_survival_)':
+    '"Come on, you can do this. Just find the damn blockade" (_perception_)':
         check:
-            skill: survival
+            skill: perception
             success:
                 nextSceneId: theForest_blockadeFound
             failure:
                 nextSceneId: theForest_deadInTheForest
-        sideEffect:
-            addFlag: theRoadBoar

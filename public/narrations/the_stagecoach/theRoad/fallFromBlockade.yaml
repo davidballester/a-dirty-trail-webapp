@@ -1,5 +1,6 @@
+sideEffect:
+    modifyHealth: -1
+
 actions:
-    She ventured into the forest (_-1 health_):
+    She ventured into the forest:
         nextSceneId: theForest
-        sideEffect:
-            modifyHealth: -1

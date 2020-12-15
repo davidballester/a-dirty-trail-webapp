@@ -3,7 +3,7 @@ The thing looked as if it was made of giant leaves. Its head was triangular, and
 Two pincers on its face moved, and it made a clicking sound.
 
 {{#if-has-flag "bothCompanionsAlive"}}
-"What is it that thing?" said Lady Willsbourgh with a shrill voice. {{playerName}} was so proud of her for not having lost control yet.
+"What is it that thing?" said Lady Willsbourgh with a shrill voice.
 
 "Whatever it is, it's going to eat us alive," said the minister. "Time for some final prayers to whatever gods you adore."
 
@@ -16,6 +16,6 @@ By shooting the minister and Lady Willsbourgh and leaving them there for the thi
 {{#if-has-not-flag "ministerIsDead"}}
 "Whatever it is, it's going to eat us alive," said the minister. "Time for some final prayers to whatever gods you adore."
 {{else}}
-"What is it that thing?" said Lady Willsbourgh with a shrill voice. {{playerName}} was so proud of her for not having lost control yet.
+"What is it that thing?" said Lady Willsbourgh with a shrill voice.
 {{/if-has-not-flag}}
 {{/if-has-flag}}

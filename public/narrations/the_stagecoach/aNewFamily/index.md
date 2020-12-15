@@ -1,6 +1,6 @@
 Before dawn, they all gathered in the forest. It was freezing, but the light from the torches warmed them. There were many of them.
 
-"You'll get to know them soon," said Kolyn with a smile.
+"You'll get to know everyone soon," said Kolyn with a smile.
 
 {{#if-has-flag "bothCompanionsAlive"}}
 They gathered in a clearing, and in the middle, they laid down the minister and Lady Willsbourgh, who were barely awake.
@@ -60,7 +60,7 @@ When it approached Lady Willsbourgh, she woke completely up, but there was nothi
 {{/if-has-not-flag}}
 {{/if-has-flag}}
 
-After the feat, the thing retreated into the thicket, and the members of the covenant dispersed. It was dawning.
+After the deed, the thing retreated into the thicket, and the members of the covenant dispersed. It was dawning.
 
 "How often do you do this?" asked {{playerName}}, trembling in horror.
 

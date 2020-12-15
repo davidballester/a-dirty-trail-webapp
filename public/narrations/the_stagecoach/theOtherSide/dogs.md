@@ -1,4 +1,4 @@
-They left behind the tower and kept walking in the darkness. And the cold. It was a miserable night, for sure. Not the worst {{playerName}} had had. That distinction would always be for the New Year's Eve she spent with aunt Leticia and her two old dogs that barked themselves to sleep. She could almost hear them now, barking their throats out.
+They left behind the tower and kept walking in the darkness. It was a miserable night. Not the worst {{playerName}} had had. That prize would always be for the New Year's Eve she spent with aunt Leticia and her two old dogs that barked themselves to sleep. She could almost hear them now, barking their throats out.
 
 {{#if-has-not-flag "ladyWillsbourghIsDead"}}
 "Are those dogs?" asked Lady Willsbourgh.
@@ -8,10 +8,16 @@ They left behind the tower and kept walking in the darkness. And the cold. It wa
 {{#if-has-not-flag "ministerIsDead"}}
 "She meant those, you nut job," said the minister, pointing forward.
 {{else}}
-"Look there," said Lady Willsbourgh.
+"Look! there!"
 {{/if-has-flag}}
+{{else}}
+"Are those dogs?" asked the minister.
+
+"Oh my god, get out of my head!" shouted {{playerName}}.
+
+"I mean those, you nut job," said the minister, pointing forward.
 {{/if-has-not-flag}}
 
-Up ahead, under the moonlight, thre dark dogs growled.
+Up ahead, under the moonlight, three dogs growled.
 
 "Those are way bigger than aunt Leticia's."

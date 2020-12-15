@@ -1,4 +1,4 @@
-The night was pitch black, and a heavy wind blew through the trees, making it the coldest {{playerName}} had had.
+The night was pitch black, and a heavy wind blew through the trees, making it the coldest {{playerName}} had gone through.
 
 {{#if-has-flag "bothCompanionsAlive"}}
 "Do you see that?" asked Lady Willsbourgh, pointing at the trees.
@@ -16,4 +16,4 @@ The night was pitch black, and a heavy wind blew through the trees, making it th
 {{/if-has-not-flag}}
 {{/if-has-flag}}
 
-The chants came from the torches, the dark hooded figures that held them stopped chanting and shouted at them.
+The dark hooded figures that held the torches stopped chanting and shouted at them.

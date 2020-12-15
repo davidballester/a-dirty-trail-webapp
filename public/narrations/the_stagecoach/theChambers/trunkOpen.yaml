@@ -1,10 +1,13 @@
+sideEffect:
+    addFlag: theChambersTrunk
+    loot:
+        trinkets:
+            - name: Small key
 actions:
     She inspected the dry grass:
         condition:
             hasNotFlag: theChambersDryGrass
         nextSceneId: theChambers_dryGrass
-        sideEffect:
-            addFlag: theChambersDryGrass
     She went to bed:
         nextSceneId: theChambers_bed
     She looked at the stairway:

@@ -1,6 +1,8 @@
-The man pulled the blanket aside and got up. He extended his hand.
+_+3 health_
 
-"It's a deal," said he, and {{playerName}} shook it, thinking it was not the first time she agreed to something completely nuts.
+The man pulled the blanket aside and got up.
+
+"It's a deal," said he, and {{playerName}} shook his hand, thinking it was not the first time she agreed to something completely nuts.
 
 Not long afterward, the man, the old woman, and the girl sat at the table downstairs, and so did {{playerName}}.
 

@@ -1,5 +1,5 @@
 actions:
-    '"Your hair looks aweful, Lady Willsbourgh!"':
+    '"Your hair looks awful, Lady Willsbourgh!"':
         nextSceneId: theStagecoach_revolver
     '"Shooty?"':
         nextSceneId: theStagecoach_revolver

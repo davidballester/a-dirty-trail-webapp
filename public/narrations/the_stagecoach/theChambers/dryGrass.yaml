@@ -1,32 +1,19 @@
+sideEffect:
+    addFlag: theChambersDryGrass
+    loot:
+        weapons:
+            Blade:
+                damage: 1-2
+                skill: stab
+                type: 'knife'
 actions:
     She inspected the trunk:
         condition:
             hasNotFlag: theChambersTrunk
         nextSceneId: theChambers_trunk
-        sideEffect:
-            loot:
-                weapons:
-                    Blade:
-                        damage: 1-2
-                        skill: stab
-                        type: 'knife'
     She went to bed:
         condition:
             hasNotFlag: theChambersBed
         nextSceneId: theChambers_bed
-        sideEffect:
-            loot:
-                weapons:
-                    Blade:
-                        damage: 1-2
-                        skill: stab
-                        type: 'knife'
     She looked at the stairway:
         nextSceneId: theChambers_stairway
-        sideEffect:
-            loot:
-                weapons:
-                    Blade:
-                        damage: 1-2
-                        skill: stab
-                        type: 'knife'

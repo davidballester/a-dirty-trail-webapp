@@ -3,7 +3,7 @@
 
 "I almost hear your liver crying for help, minister," Alys said.
 
-"Funny, I always thought it was a chorus of angels preparing to greet me." The minister chuckled, and it was then that the horses neighed, the driver shouted something and then a shot thundered on the road ahead.
+"Funny, I always thought it was a chorus of angels preparing to greet me." The minister chuckled, and it was then that the horses neighed, the driver shouted something, and then a shot thundered on the road ahead.
 {{else}}
 "To Lady Cartwright!" the minister said, way louder than it seemed reasonable, and drank from his flask.
 
@@ -12,7 +12,7 @@
 Lady Willsbourgh was about to say something when the horses neighed, the driver shouted something and then a shot thundered on the road ahead.
 {{/if-has-flag}}
 
-The bullet entered the stagecoach from the front and left through the luggage at the back, leaving on its way a hole in Lady Willsbourgh hair. If nothing else, Alys thought, a cause for celebration.
+The bullet entered the stagecoach from the front and made its way through the luggage at the back, leaving on its way a hole in Lady Willsbourgh's hair. If nothing else, Alys thought, a cause for celebration.
 
 "What is going on?" cried Lady Willsbourgh, touching her hair.
 

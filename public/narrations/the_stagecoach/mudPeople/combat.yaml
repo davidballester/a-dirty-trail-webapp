@@ -26,7 +26,7 @@ actors:
     Big Lizzie:
         health: 4-4
         skills:
-            hand-to-hand: 0.3
+            hand-to-hand: 0.5
         inventory:
             weapons:
                 Bare hands:
@@ -37,7 +37,7 @@ actors:
     Muddy Philip:
         health: 2-2
         skills:
-            stab: 0.2
+            stab: 0.4
         inventory:
             weapons:
                 Rusty knife:

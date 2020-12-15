@@ -1,8 +1,6 @@
 actions:
     She inspected the dry grass:
         nextSceneId: theChambers_dryGrass
-        sideEffect:
-            addFlag: theChambersDryGrass
     She inspected the trunk:
         nextSceneId: theChambers_trunk
     She went to bed:

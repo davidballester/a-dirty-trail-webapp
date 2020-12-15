@@ -1,46 +1,46 @@
 actions:
-    '"What is the Campamocha?"':
-        condition:
-            hasNotFlag: upstairsQuestioningWhatAreYouDoingOutHere
-            flagIsLowerThan:
-                name: covenantQuestion
-                value: 4
-        nextSceneId: upstairs_whatAreYouDoingOutHere
-        sideEffect:
-            addFlags:
-                - upstairsQuestioningWhatAreYouDoingOutHere
-                - covenantQuestion
     '"What if _I_ killed the Campamocha?"':
         condition:
-            hasFlag: upstairsQuestioningWhatAreYouDoingOutHere
             flagIsLowerThan:
                 name: covenantQuestion
                 value: 4
-        nextSceneId: upstairs_proposal
+        nextSceneId: covenant_proposal
         sideEffect:
             addFlags:
+                - covenantQuestioningWhyAreYouBoundToIt
                 - covenantQuestion
     '"Who the hell are you?"':
         condition:
-            hasNotFlag: upstairsQuestioningWhoAreYou
+            hasNotFlag: covenantQuestioningWhoAreYou
             flagIsLowerThan:
                 name: covenantQuestion
                 value: 4
-        nextSceneId: upstairs_covenantWhoAreYou
+        nextSceneId: covenant_whoAreYou
         sideEffect:
             addFlags:
-                - upstairsQuestioningWhoAreYou
+                - covenantQuestioningWhoAreYou
                 - covenantQuestion
     '"Were you waiting for us?"':
         condition:
-            hasNotFlag: upstairsQuestioningWereYouWaitingForUs
+            hasNotFlag: covenantQuestioningWereYouWaitingForUs
             flagIsLowerThan:
                 name: covenantQuestion
                 value: 4
-        nextSceneId: upstairs_wereYouWaitingForUs
+        nextSceneId: covenant_wereYouWaitingForUs
         sideEffect:
             addFlags:
-                - upstairsQuestioningWereYouWaitingForUs
+                - covenantQuestioningWereYouWaitingForUs
+                - covenantQuestion
+    '"Why did you exile the mud people?"':
+        condition:
+            hasNotFlag: covenantQuestioningMudPeople
+            flagIsLowerThan:
+                name: covenantQuestion
+                value: 4
+        nextSceneId: covenant_whyExileMudPeople
+        sideEffect:
+            addFlags:
+                - covenantQuestioningMudPeople
                 - covenantQuestion
     '"But enough with the questions," said the man':
         condition:

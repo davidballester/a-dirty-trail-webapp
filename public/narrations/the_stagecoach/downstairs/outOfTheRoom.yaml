@@ -5,7 +5,5 @@ actions:
             removeFlag: downstairsFromGroundFloor
     She went downstairs:
         condition:
-            hasNotFlag: groundFloor
+            hasNotFlag: groundFloorCaught
         nextSceneId: groundFloor
-        sideEffect:
-            addFlag: groundFloor

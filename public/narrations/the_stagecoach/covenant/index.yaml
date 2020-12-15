@@ -1,0 +1,33 @@
+actions:
+    '"Who the hell are you?"':
+        condition:
+            hasNotFlag: covenantQuestioningWhoAreYou
+        nextSceneId: covenant_whoAreYou
+        sideEffect:
+            addFlags:
+                - covenantQuestioningWhoAreYou
+                - covenantQuestion
+    '"What are you doing out here?"':
+        condition:
+            hasNotFlag: covenantQuestioningWhatAreYouDoingOutHere
+        nextSceneId: covenant_whatAreYouDoingOutHere
+        sideEffect:
+            addFlags:
+                - covenantQuestioningWhatAreYouDoingOutHere
+                - covenantQuestion
+    '"Were you waiting for us?"':
+        condition:
+            hasNotFlag: covenantQuestioningWereYouWaitingForUs
+        nextSceneId: covenant_wereYouWaitingForUs
+        sideEffect:
+            addFlags:
+                - covenantQuestioningWereYouWaitingForUs
+                - covenantQuestion
+    '"Why did you exile the mud people?"':
+        condition:
+            hasNotFlag: covenantQuestioningMudPeople
+        nextSceneId: covenant_whyExileMudPeople
+        sideEffect:
+            addFlags:
+                - covenantQuestioningMudPeople
+                - covenantQuestion

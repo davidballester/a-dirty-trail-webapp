@@ -4,6 +4,6 @@
 
 "It's not that easy," said the man. "If you reject the family we're offering you, you'll be delivered to the Campamocha."
 
-"I knew from the beginning there were going to be people getting eaten," said {{playerName}}.
+"I knew from the beginning there was going to be people getting eaten," said {{playerName}}.
 
 "What's your response?" asked the man.

@@ -1,4 +1,4 @@
-Revolver on the old woman's temple, she waited. From the stairs there came four figures, three hooded ones and the girl from downstairs.
+Revolver on the old woman's back, she waited. From the stairs there came four figures, three hooded ones, and the girl.
 
 "Mama!" shouted the girl.
 
@@ -10,7 +10,7 @@ Revolver on the old woman's temple, she waited. From the stairs there came four 
 
 "No."
 
-"Glad we clarified that. Now drop your weapons and make way or she dies."
+"Glad we clarified that. Now drop your weapons and make way."
 
 The silence at the top of the tower was denser than at a Thanksgiving dinner after uncle Matt cracks a racist joke.
 
@@ -22,6 +22,6 @@ The silence at the top of the tower was denser than at a Thanksgiving dinner aft
 
 The old woman nodded, and then one of the hooded men shot her right in the chest.
 
-"There goes my advantage," said {{playerName}}, getting up.
+"There goes my advantage," said {{playerName}}.
 
-"This is all your fault!" yelled the girl, charging at {{playerName}} with a knife in her hand.
+"This is all your fault!" yelled the girl, charging with a knife in her hand.

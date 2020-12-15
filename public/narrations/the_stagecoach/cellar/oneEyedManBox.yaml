@@ -2,17 +2,7 @@ actions:
     She unlocked the box:
         condition:
             hasTrinket: Small key
-        nextSceneId: cellar_oneEyedManBoxOpen
-        sideEffect:
-            loot:
-                weapons:
-                    Pirate gun:
-                        type: pirateGun
-                        ammunition: 1-1
-                        ammunitionType: Balls
-                        skill: aim
-                        damage: 3-4
-            addFlag: cellarBox
+        nextSceneId: cellar_boxOpen
     She went upstairs, avoiding the girl:
         nextSceneId: downstairs
         sideEffect:

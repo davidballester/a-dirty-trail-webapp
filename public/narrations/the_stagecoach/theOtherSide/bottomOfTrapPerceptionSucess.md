@@ -1,3 +1,5 @@
+_Perception check succeeded_
+
 "Whoever dug this must have got out somehow," {{playerName}} said, all detectively.
 
 {{#if-has-not-flag "ministerIsDead"}}

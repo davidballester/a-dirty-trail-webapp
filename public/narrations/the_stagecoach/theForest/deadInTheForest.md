@@ -1,4 +1,6 @@
-It was dark, and now it wasn't drizzling, it was pouring like a typhoon.
+_Perception check **failed**_
+
+It was dark, and now it wasn't drizzling. It was pouring like a typhoon.
 
 "I guess this is it," she said, crawling under a big fir tree.
 
