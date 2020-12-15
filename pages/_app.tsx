@@ -2,6 +2,7 @@ import { Global, css } from '@emotion/core';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Head from 'next/head';
+import '../public/fonts/index.css';
 
 // eslint-disable-next-line react/prop-types,@typescript-eslint/explicit-module-boundary-types
 const App = ({ Component, pageProps }): React.ReactElement => (
@@ -17,14 +18,24 @@ const App = ({ Component, pageProps }): React.ReactElement => (
             styles={css`
                 html,
                 body {
-                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
-                        Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-                        Helvetica Neue, sans-serif;
+                    font-family: RobotoSlab, serif;
+                    font-weight: 400;
+                    line-spacing: 0.2px;
+                    font-size: 18px;
                     scrollbar-width: 5px;
                     scollbar-color: var(--dark);
                     overflow-y: overlay;
                     overflow-x: hidden;
                     min-height: 100vh;
+                }
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    font-family: NotoSansJP;
                 }
 
                 a {
