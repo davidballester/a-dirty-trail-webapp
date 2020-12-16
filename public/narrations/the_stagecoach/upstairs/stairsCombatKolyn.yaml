@@ -33,8 +33,10 @@ actors:
                     type: derringer
                     ammunitionType: Bullets
                     ammunition: 1-1
-                ammunitions:
-                    Bullets: 3
+            ammunitions:
+                Bullets: 3
+        skills:
+            aim: 0.6
 actions:
     '"This better be the last of them"':
         nextSceneId: upstairs_afterStairsCombat

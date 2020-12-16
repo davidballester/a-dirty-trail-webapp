@@ -2,7 +2,7 @@
 The tusk wasn't the greatest tool, but it was better than nothing.
 {{else}}
 _Survival check succeeded_
-{{/if-has-trinket "Tusk"}}
+{{/if-has-trinket}}
 
 The roots fell one after another and, crouching and minding the thorny bushes and the sharp edges of the rocks, she made it through.
 

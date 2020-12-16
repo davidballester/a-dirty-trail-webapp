@@ -17,6 +17,7 @@ They were not going toward the road, but they didn't know that. And the woods we
 "What does that mean?" asked Lady Willsbourgh.
 
 "Things will get shooty!" replied {{playerName}}.
+{{/if-has-not-flag}}
 {{/if-has-flag}}
 
 But then, all of a sudden, the shouting stopped. Behind them, the hooded figures were now still.

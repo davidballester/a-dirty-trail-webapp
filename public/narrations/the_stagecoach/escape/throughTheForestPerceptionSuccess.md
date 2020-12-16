@@ -1,4 +1,5 @@
 _Perception check succeeded_
+
 _+2 health_
 
 "This way," {{playerName}} said, and they ran among the forest. And soon, the chants disappeared, and the lights went out.

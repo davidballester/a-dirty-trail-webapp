@@ -12,12 +12,8 @@ Lady Willsbourgh got up, fixed her hat, and looked around.
 "What is this place?" she asked.
 
 "It's a pit," {{playerName}} said, looking at the hole they were in. It had the height of two adults, it was narrow enough for them to hardly fit in it, and there seemed to be no way out.
-{{else}}
-{{#if-has-not-flag "ministerIsDead"}}
-"Any broken bones?" asked the minister as they got up.
 {{/if-has-flag}}
-
-{{#if-has-not-flag "ministerIsDead"}}
+{{#if-has-flag "ladyWillsbourghIsDead"}}
 "Any broken bones?" asked the minister as they got up.
 
 "Just a broken pride, minister," said {{playerName}}.
@@ -25,7 +21,8 @@ Lady Willsbourgh got up, fixed her hat, and looked around.
 "I bet you got that broken before." The minister laughed.
 
 {{playerName}} looked at the hole they were in. It had the height of two adults, it was narrow enough for them to hardly fit in it, and there seemed to be no way out.
-{{else}}
+{{/if-has-flag}}
+{{#if-has-flag "ministerIsDead"}}
 "Are we dead?" Lady Willsbourgh asked, still laying on the ground.
 
 "Sadly, no," {{playerName}} answered. "It's too cold for that."
@@ -35,4 +32,4 @@ Lady Willsbourgh got up, fixed her hat, and looked around.
 "What is this place?" she asked.
 
 "It's a pit," {{playerName}} said, looking at the hole they were in. It had the height of two adults, it was narrow enough for them to hardly fit in it, and there seemed to be no way out.
-{{/if-has-not-flag}}
+{{/if-has-flag}}
