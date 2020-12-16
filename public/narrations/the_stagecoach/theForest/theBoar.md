@@ -2,10 +2,6 @@ She walked among the trees and bushes and rocks. The air was damp, and she was c
 
 The blockade was nowhere to be seen. Or the road. Not even the crevice. What she saw, though, was a shadow, not far away, among the trees.
 
-"You have to be kidding me," she said, for demons was not on her list of things she would want to encounter.
+"Just go away!" she shouted, but that only enraged the thing even more, and it charged through the thicket towards her. Her heart skipped a bit as she tried to grab the revolver.
 
-She started to walk quickly, and so did the shadow. She could even hear it grunting, going through the bushes and breaking branches under its hoofs.
-
-"Just go away!" she shouted, but that only enrages the thing even more, and it charged through the thicket towards her. Her heart skipped a bit as she tried to grab the revolver.
-
-The thing was coming at full speed, and just before it arrived, she saw that it was a boar. Not that knowing that made the fear of getting killed by one any less alarming.
+It was coming at full speed, and just before it arrived, she saw that it was a boar. Not that knowing that made the fear of getting killed by one any less alarming.

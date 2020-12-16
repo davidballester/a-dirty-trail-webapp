@@ -31,7 +31,7 @@ actors:
             weapons:
                 Bare hands:
                     skill: hand-to-hand
-                    type: fangs
+                    type: fist
                     damage: 1-2
                     canBeLooted: false
     Muddy Philip:

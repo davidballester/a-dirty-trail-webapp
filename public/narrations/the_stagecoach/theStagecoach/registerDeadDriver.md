@@ -6,7 +6,7 @@
 
 "Well, someone has to if we want to know how to get out of here," said {{playerName}}.
 
-She expected to find a map of sorts, but all she found was a weird looking ribbon made of grass in his breast pocket.
+She expected to find a map of sorts, but all she found was a weird looking **ribbon made of grass** in his breast pocket.
 
 "This is not helpful," she complained, but for some reason, kept the thing.
 
