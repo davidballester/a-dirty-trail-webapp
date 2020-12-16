@@ -33,7 +33,6 @@ const ExitButton = ({ action }: { action: AdvanceAction }): ReactElement => {
             onClick={() => {
                 executePlayerAction(action);
             }}
-            className="text-capitalize"
             block
         >
             {action.getName()}
