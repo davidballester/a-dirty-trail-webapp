@@ -1,8 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import cookie from 'cookie';
-import { SAVED_GAME_COOKIE } from '../helpers/constants';
 import { animated, Transition } from 'react-spring';
+import useClearSavedGames from '../hooks/useClearSavedGames';
 
 const Settings = (): ReactElement => (
     <article>
@@ -54,20 +53,4 @@ const ClearSavedGames = (): ReactElement => {
             </Transition>
         </p>
     );
-};
-
-const useClearSavedGames = (): (() => void) => {
-    return () => {
-        const cookies = cookie.parse(document.cookie);
-        const savedGameCookie = cookies[SAVED_GAME_COOKIE];
-        if (!savedGameCookie) {
-            return;
-        }
-        const deleteSavedGameCookie = cookie.serialize(
-            SAVED_GAME_COOKIE,
-            savedGameCookie,
-            { expires: new Date(0) }
-        );
-        document.cookie = deleteSavedGameCookie;
-    };
 };

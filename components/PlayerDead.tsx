@@ -2,6 +2,8 @@ import React, { ReactElement } from 'react';
 import { css } from 'emotion';
 import { animated, Spring } from 'react-spring';
 import { usePlayer } from '../contexts/narrativeSceneEngineContext';
+import { Button } from 'react-bootstrap';
+import useClearSavedGames from '../hooks/useClearSavedGames';
 
 const PlayerDead = (): ReactElement => {
     const player = usePlayer();
@@ -40,6 +42,7 @@ const PlayerDead = (): ReactElement => {
                             <span> is dead.</span>
                         </figcaption>
                     </figure>
+                    <RestartButton />
                 </animated.div>
             )}
         </Spring>
@@ -47,3 +50,19 @@ const PlayerDead = (): ReactElement => {
 };
 
 export default PlayerDead;
+
+const RestartButton = (): ReactElement => {
+    const clearSavedGames = useClearSavedGames();
+    return (
+        <Button
+            variant="dark"
+            onClick={() => {
+                clearSavedGames();
+                window.location.reload();
+            }}
+            block
+        >
+            Restart
+        </Button>
+    );
+};
