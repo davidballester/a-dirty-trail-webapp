@@ -125,7 +125,8 @@ const NoOponents = (): ReactElement => (
                     src="no-oponents.svg"
                     alt="No oponents left"
                     className={css`
-                        max-width: 10rem;
+                        height: 10rem;
+                        min-height: 10rem;
                         margin-bottom: 2rem;
                     `}
                 />

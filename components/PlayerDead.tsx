@@ -24,7 +24,8 @@ const PlayerDead = (): ReactElement => {
                             src="player-dead.svg"
                             alt={`${player.getName()} is dead`}
                             className={css`
-                                max-width: 15rem;
+                                height: 15rem;
+                                min-height: 15rem;
                             `}
                         />
                         <figcaption
