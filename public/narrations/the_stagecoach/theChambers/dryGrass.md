@@ -8,4 +8,4 @@ The pile of dry grass was just what it looked like, and it smelled like the kitc
 
 Back to the pile of dry grass, {{playerName}} thought it was for the strange ornaments that were hung at the entrance of the tower.
 
-Almost buried by the grass, she found a sharp blade that had been used for trimming the grass. She took it.
+Almost buried by the grass, she found a **sharp blade** that had been used for trimming the grass. She took it.

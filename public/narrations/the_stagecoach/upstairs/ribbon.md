@@ -4,7 +4,7 @@
 
 "Where did you get that from? Did the lost souls give to it you? Or did the exiled ones?"
 
-Lacking a bard to scratch herself, {{playerName}} scratched her head.
+Lacking a beard to scratch herself, {{playerName}} scratched her head.
 
 "It looks like you use a lot of names for stuff. It was in the pocket of our driver. He's dead. Not that you've asked, but," {{playerName}} shrugged.
 

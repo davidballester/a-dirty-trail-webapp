@@ -6,12 +6,12 @@ It was dark now, and the sky was covered with stars. The moon shone bright, luck
 "It looks like a crooked tree," said Lady Willsbourgh.
 
 {{#if-has-flag "alys"}}
-"You need to review your trees, ma'am," said {{playerName}}.
+"You need to review your trees, ma'am," said {{playerName}}. "It's a tower, right there." {{playerName}} pointed at a wooden construction among the trees, among the darkness of the woods.
 {{else}}
-"You need to review your trees, Lady Willsbourgh," said {{playerName}}.
+"You need to review your trees, Lady Willsbourgh," said {{playerName}}. "It's a tower, right there." {{playerName}} pointed at a wooden construction among the trees, among the darkness of the woods.
 {{/if-has-flag}}
 {{else}}
 "I could not see the devil in front of me even if my soul depended on it, child," said the minister.
-{{/if-has-not-flag}}
 
 "It's a tower, right there," said {{playerName}}, pointing at a wooden construction among the trees, among the darkness of the woods.
+{{/if-has-not-flag}}

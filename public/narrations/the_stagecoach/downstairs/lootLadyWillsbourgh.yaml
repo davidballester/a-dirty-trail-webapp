@@ -3,7 +3,7 @@ sideEffect:
     loot:
         trinkets:
             - name: Spectacles
-              description: Lady Willsbourgh's. Great for finding hidden stuff (_perception +10%).
+              description: Lady Willsbourgh's. Great for finding hidden stuff.
               skillsModifiers:
                   perception: 0.1
 actions:

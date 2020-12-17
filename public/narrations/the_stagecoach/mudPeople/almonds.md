@@ -1,6 +1,6 @@
 The mud people stared intensively as {{playerName}} rummaged through her things. She found the small bag of almonds and handed it over to them. Her hand rubbed against the old woman's. The feeling of the sticky mud made her think of fecal waters. Now she was gagging as the mud people discussed how to best divide the almonds.
 
-The biggest of the four, which was called Lizzie, decided that, being bigger, she should eat the lot, and took it from the old woman's hands, then ran away among the trees. Shouting, the one-eyed man followed.
+The biggest of the four, which was called Lizzie, decided that, being bigger, she should eat the lot, and took it from the old woman's hands, then ran away among the trees. Shouting, the smallest of them followed.
 
 "Excuse them," the old woman said. "They haven't had a good meal in a while. Not since we left the covenant."
 

@@ -1,7 +1,9 @@
 {{#if-has-trinket "Tusk"}}
 The tusk wasn't the greatest tool, but it was better than nothing.
 {{else}}
+{{#if-has-not-flag "theForest_throughTheCreviceWounded"}}
 _Survival check succeeded_
+{{/if-has-not-flag}}
 {{/if-has-trinket}}
 
 The roots fell one after another and, crouching and minding the thorny bushes and the sharp edges of the rocks, she made it through.

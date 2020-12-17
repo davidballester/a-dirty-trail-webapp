@@ -1,5 +1,5 @@
 actions:
-    '"Wel..." (_perception_)':
+    '"Well..." (_perception_)':
         check:
             skill: perception
             success:

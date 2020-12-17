@@ -4,3 +4,5 @@ sideEffect:
 actions:
     She pushed forward:
         nextSceneId: theForest_throughTheCrevice
+        sideEffect:
+            addFlag: theForest_throughTheCreviceWounded

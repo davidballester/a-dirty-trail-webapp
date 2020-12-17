@@ -16,7 +16,7 @@ The minister laid back and burped, then reached for his pocket and prepared hims
 
 "I'm sorry, I'm too full to think straight."
 {{/if-has-flag}}
-{{/if-has-flag}}
+{{else}}
 {{#if-has-not-flag "ministerIsDead"}}
 The minister laid back and burped, then reached for his pocket and prepared himself a pipe.
 
@@ -53,6 +53,7 @@ Lady Willsbourgh laid back and wiped her face with a handkerchief that somehow m
 "We'll have to live with that, I suppose," said {{playerName}}
 {{/if-has-flag}}
 {{/if-has-not-flag}}
+{{/if-has-flag}}
 
 The girl stepped out of the shadows and smiled to her guests.
 
