@@ -1,5 +1,5 @@
 actors:
-    The Campamocha:
+    Campamocha:
         health: 6-6
         inventory:
             weapons:
