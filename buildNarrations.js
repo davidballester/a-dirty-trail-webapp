@@ -144,7 +144,7 @@ function completeTitle(yamlContent, yamlPath) {
         return yamlContent;
     }
     const folderName = path.basename(path.dirname(yamlPath));
-    const title = capitalize(snakeCase(folderName).replace('_', ' '));
+    const title = capitalize(snakeCase(folderName).replace(/_/g, ' '));
     return `title: ${title}
 ${yamlContent}
 `;
