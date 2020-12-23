@@ -154,6 +154,9 @@ const InventoryEnumeration = ({
         .getTrinkets()
         .map((trinket) => trinket.getName());
     const allItems = [...weaponNames, ...ammunitions, ...trinkets];
+    if (allItems.length === 0) {
+        return <strong>nothing</strong>;
+    }
     return (
         <>
             {allItems.length === 1 && <ItemName item={allItems[0]} />}
