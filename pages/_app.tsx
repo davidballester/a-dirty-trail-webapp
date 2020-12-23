@@ -13,6 +13,105 @@ const App = ({ Component, pageProps }): React.ReactElement => (
                 content="initial-scale=1.0, width=device-width"
             />
             <link rel="icon" href="/favicon.ico" />
+            <link rel="manifest" href="manifest.json" />
+
+            <meta
+                name="description"
+                content="A minimalistic narrative-first game with simple mechanics."
+            />
+            <meta name="keywords" content="game,text,narrative,choices" />
+
+            <meta name="mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="application-name" content="dirty trail" />
+            <meta name="apple-mobile-web-app-title" content="dirty trail" />
+            <meta name="theme-color" content="#212529" />
+            <meta name="msapplication-navbutton-color" content="#212529" />
+            <meta
+                name="apple-mobile-web-app-status-bar-style"
+                content="black-translucent"
+            />
+            <meta
+                name="msapplication-starturl"
+                content="https://adirtytrail.com"
+            />
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+
+            <link
+                rel="icon"
+                type="image/png"
+                sizes="512x512"
+                href="icons/icon-512-512.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                type="image/png"
+                sizes="512x512"
+                href="icons/icon-512-512.png"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                sizes="192x192"
+                href="icons/icon-192-192.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                type="image/png"
+                sizes="192x192"
+                href="icons/icon-192-192.png"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                sizes="144x144"
+                href="icons/icon-144-144.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                type="image/png"
+                sizes="144x144"
+                href="icons/icon-144-144.png"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                sizes="96x96"
+                href="icons/icon-96-96.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                type="image/png"
+                sizes="96x96"
+                href="icons/icon-96-96.png"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                sizes="72x72"
+                href="icons/icon-72-72.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                type="image/png"
+                sizes="72x72"
+                href="icons/icon-72-72.png"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                sizes="48x48"
+                href="icons/icon-48-48.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                type="image/png"
+                sizes="48x48"
+                href="icons/icon-48-48.png"
+            ></link>
         </Head>
         <Global
             styles={css`

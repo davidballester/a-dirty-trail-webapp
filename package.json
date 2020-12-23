@@ -31,6 +31,7 @@
         "cookie": "^0.4.1",
         "emotion": "^10.0.27",
         "next": "9.5.3",
+        "next-pwa": "^5.0.0",
         "react": "16.13.1",
         "react-bootstrap": "^1.3.0",
         "react-dom": "16.13.1",
