@@ -48,7 +48,7 @@ Then she heard it. It came from outside, carried by the wind.
 "Focus, Lady Willsbourgh!"
 {{/if-has-trinket}}
 
-"What's that sound, dear?" Lady Willsbourgh said, coking her head to hear better. "Is that why you've awakened us?"
+"What's that sound, dear?" Lady Willsbourgh said, coking her head to hear better. "Is that why you've awakened me?"
 
 {{playerName}} tried to listen over the clamorous beating of her heart. There were chants, and they came from outside, carried by the wind.
 {{/if-has-not-flag}}

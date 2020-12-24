@@ -1,4 +1,6 @@
 {{#if-has-not-flag "theForestSafeCreviceDescending"}}
+_Survival check succeeded_
+
 Her shoes were not the kind of shoes you would wear for a stroll through the woods, but there she wes, looking for surfaces and rocks she could trust. And somehow, she did it.
 {{else}}
 {{#if-has-flag "theForestCreviceFall"}}

@@ -7,9 +7,9 @@ actions:
         nextSceneId: theTower_KolynChambers
     She waited for Lady Willsbourgh to finish:
         condition:
-            hasNotFlag: ladyWillsbourghIsDead
+            hasFlag: ministerIsDead
         nextSceneId: theTower_KolynChambers
     She waited for the minister to finish:
         condition:
-            hasNotFlag: ministerIsDead
+            hasFlag: ladyWillsbourghIsDead
         nextSceneId: theTower_KolynChambers
