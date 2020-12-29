@@ -9,18 +9,26 @@ player:
                 damage: 1-1
                 skill: stab
     skills:
-        aim: 0
-        stab: 0
-        perception: 0
-        survival: 0
+        aim:
+            probabilityOfSuccess: 0
+            levelUpDelta: 0.02
+        stab:
+            probabilityOfSuccess: 0
+            levelUpDelta: 0.02
+        perception:
+            probabilityOfSuccess: 0
+            levelUpDelta: 0.05
+        survival:
+            probabilityOfSuccess: 0
+            levelUpDelta: 0.05
 actions:
     Combat skills, perception, survival:
         sideEffect:
             modifySkills:
                 - name: aim
-                  value: 0.6
-                - name: stab
                   value: 0.75
+                - name: stab
+                  value: 0.6
                 - name: perception
                   value: 0.5
                 - name: survival
@@ -30,9 +38,9 @@ actions:
         sideEffect:
             modifySkills:
                 - name: aim
-                  value: 0.6
-                - name: stab
                   value: 0.75
+                - name: stab
+                  value: 0.6
                 - name: perception
                   value: 0.3
                 - name: survival
