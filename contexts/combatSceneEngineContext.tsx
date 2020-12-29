@@ -100,10 +100,11 @@ export const useExecuteNextOponentAction = (): (() => Promise<
     const scene = useScene();
     const dispatch = useDispatch();
     return async () => {
-        const [
-            action,
-            outcome,
-        ] = await combatSceneEngine.executeNextOponentAction();
+        const nextOponentActionAndOutcome = await combatSceneEngine.executeNextOponentAction();
+        if (!nextOponentActionAndOutcome) {
+            return;
+        }
+        const [action, outcome] = nextOponentActionAndOutcome;
         dispatch({
             combatSceneEngine,
             player,
