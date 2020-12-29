@@ -82,7 +82,7 @@ const WeaponButton = ({ weapon }: { weapon: Weapon }): ReactElement => {
                         margin-right: 0.5rem;
                     `}
                 />{' '}
-                <strong>{hitChance}%</strong>
+                <strong>{hitChance.toFixed(0)}%</strong>
             </div>
         </CombatSelectionIconButton>
     );
