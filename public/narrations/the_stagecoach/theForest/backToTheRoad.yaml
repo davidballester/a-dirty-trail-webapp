@@ -1,3 +1,7 @@
+sideEffect:
+    loot:
+        trinkets:
+            - name: Rope
 actions:
     '"Fine, I guess"':
         nextSceneId: theForest

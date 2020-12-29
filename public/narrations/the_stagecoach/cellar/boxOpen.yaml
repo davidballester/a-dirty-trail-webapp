@@ -7,6 +7,9 @@ sideEffect:
                 ammunitionType: Balls
                 skill: aim
                 damage: 3-4
+    removeItems:
+        trinkets:
+            - name: Small key
 actions:
     With nothing left to do down there, she went back upstairs:
         nextSceneId: downstairs

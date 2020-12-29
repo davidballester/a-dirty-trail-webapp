@@ -1,3 +1,7 @@
+sideEffect:
+    removeItems:
+        trinkets:
+            - name: Tusk
 actions:
     She went back to the road:
         nextSceneId: mudPeople

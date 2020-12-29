@@ -1,5 +1,7 @@
 actions:
     She looked for the blockade (_perception_):
+        condition:
+            doesNotHaveTrinket: Rope
         check:
             skill: perception
             success:
@@ -7,6 +9,8 @@ actions:
             failure:
                 nextSceneId: theForest_lostInTheForest
     She lowered herself to the crevice (_survival - **dangerous**_):
+        condition:
+            doesNotHaveTrinket: Rope
         check:
             skill: survival
             modifier: -0.3
@@ -14,3 +18,7 @@ actions:
                 nextSceneId: theForest_crevice
             failure:
                 nextSceneId: theForest_creviceFall
+    Using the rope, she lowered herself to the crevice:
+        condition:
+            hasTrinket: Rope
+        nextSceneId: theForest_creviceRope

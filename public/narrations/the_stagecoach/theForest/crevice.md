@@ -1,7 +1,7 @@
 {{#if-has-not-flag "theForestSafeCreviceDescending"}}
 _Survival check succeeded_
 
-Her shoes were not the kind of shoes you would wear for a stroll through the woods, but there she wes, looking for surfaces and rocks she could trust. And somehow, she did it.
+Her shoes were not the kind of shoes you would wear for a stroll through the woods, but there she was, looking for surfaces and rocks she could trust. And somehow, she did it.
 {{else}}
 {{#if-has-flag "theForestCreviceFall"}}
 She let herself slide through a steep slope, feeling like a child for a second. A child lost in the woods, hunted by shadows, and seriously convinced hypothermia was settling in.
