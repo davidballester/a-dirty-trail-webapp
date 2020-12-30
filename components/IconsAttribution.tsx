@@ -29,6 +29,10 @@ const iconMakers = [
         link: 'https://www.flaticon.com/authors/eucalyp',
         name: 'Eucalyp',
     },
+    {
+        link: 'https://www.flaticon.com/authors/itim2101',
+        name: 'itim2101',
+    },
 ];
 
 const IconsAttribution = (): ReactElement => (
