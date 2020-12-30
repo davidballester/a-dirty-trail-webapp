@@ -9,29 +9,27 @@ import SaveGameOnSceneChange from '../components/SaveGameOnSceneChange';
 import SaveGameNotice from '../components/SaveGameNotice';
 
 const Home = (): React.ReactElement => (
-    <>
-        <Head>
-            <title>A dirty trail</title>
-        </Head>
-        <div
-            className={css`
-                position: relative;
-                padding-bottom: 3rem;
-            `}
-        >
-            <NarrationProvider>
-                <NarrativeSceneEngineProvider>
-                    <CombatSceneEngineProvider>
-                        <SaveGameOnSceneChange>
-                            <SaveGameNotice />
-                            <GameView />
-                        </SaveGameOnSceneChange>
-                    </CombatSceneEngineProvider>
-                </NarrativeSceneEngineProvider>
-            </NarrationProvider>
-        </div>
-        <Footer />
-    </>
+    <NarrationProvider>
+        <NarrativeSceneEngineProvider>
+            <CombatSceneEngineProvider>
+                <SaveGameOnSceneChange>
+                    <Head>
+                        <title>A dirty trail</title>
+                    </Head>
+                    <div
+                        className={css`
+                            position: relative;
+                            padding-bottom: 3rem;
+                        `}
+                    >
+                        <SaveGameNotice />
+                        <GameView />
+                    </div>
+                    <Footer />
+                </SaveGameOnSceneChange>
+            </CombatSceneEngineProvider>
+        </NarrativeSceneEngineProvider>
+    </NarrationProvider>
 );
 
 export default Home;

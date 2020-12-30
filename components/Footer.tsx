@@ -3,8 +3,10 @@ import { css } from 'emotion';
 import AboutButton from './AboutButton';
 import SocialIcons from './SocialIcons';
 import CookiesButton from './CookiesButton';
+import { useScene } from '../contexts/narrativeSceneEngineContext';
 
 const Footer = (): ReactElement => {
+    const scene = useScene();
     return (
         <footer
             className={css`
@@ -13,6 +15,7 @@ const Footer = (): ReactElement => {
                 bottom: 1rem;
                 left: 0;
                 width: 100%;
+                display: ${!scene || scene.isCombat() ? 'none' : 'block'};
             `}
         >
             <div
