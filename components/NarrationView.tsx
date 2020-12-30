@@ -199,11 +199,11 @@ const TabButton = ({
         onClick={onClick}
         className={css`
             :focus {
-                box-shadow: none;
+                box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
             }
-            border: none;
             padding-left: 0;
-            padding-right: 1rem;
+            padding-right: 0;
+            margin-right: 1rem;
         `}
     >
         <img
