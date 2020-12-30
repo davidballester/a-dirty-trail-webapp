@@ -27,6 +27,7 @@ export default CombatSelectionClear;
 
 const CombatSelectionButton = (): ReactElement => {
     const clearSelection = useClearSelection();
+    const actionType = useActionType();
     return (
         <div
             className={css`
@@ -41,6 +42,8 @@ const CombatSelectionButton = (): ReactElement => {
                 variant="outline-dark"
                 onClick={() => clearSelection()}
                 block
+                aria-hidden={!actionType}
+                tabIndex={!actionType ? -1 : undefined}
             >
                 Reset
             </Button>
