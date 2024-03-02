@@ -33,7 +33,7 @@ const App = ({ Component, pageProps }): React.ReactElement => (
             />
             <meta
                 name="msapplication-starturl"
-                content="https://adirtytrail.com"
+                content="https://adirtytrail.netlify.app"
             />
             <meta
                 name="viewport"

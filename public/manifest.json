@@ -2,7 +2,7 @@
     "name": "A dirty trail",
     "short_name": "dirty trail",
     "lang": "en-US",
-    "start_url": "https://adirtytrail.com",
+    "start_url": "https://adirtytrail.netlify.app",
     "display": "fullscreen",
     "orientation": "portrait",
     "theme_color": "#212529",
